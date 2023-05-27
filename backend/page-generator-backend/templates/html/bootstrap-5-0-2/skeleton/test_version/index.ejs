@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="<%-config.lang%>">
+    <%- include(`../../../page_info.ejs`, {config, content}) %>
+
+
+<%# HEAD %>
+<%- include(`../../head/${config.headVersion}/index.ejs`, {config}) %>
+
+    <body>
+        <%# HEADER %>
+        <%- headerHTMLObject.html %>
+        
+        <%# MAIN %>
+        <% for (areaHTMLObject of areaHTMLObjectArr) { %>
+            <%- areaHTMLObject.html %>
+        <% } %>
+        
+        <%# FOOTER %>
+        <%- footerHTMLObject.html %>
+    </body>
+
+</html>

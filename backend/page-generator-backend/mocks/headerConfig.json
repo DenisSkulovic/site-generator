@@ -1,0 +1,12 @@
+{
+    "uuid": "123123",
+    "templateVersion": "test_version",
+    "bootstrapVersion": "bootstrap-5-0-2",
+    "isIncludeNavbar": true,
+    "metadata": {
+        "createdTimestamp": 123,
+        "updatedTimestamp": 123,
+        "clazz": "HeaderConfigMetadata"
+    },
+    "clazz": "HeaderConfig"
+}

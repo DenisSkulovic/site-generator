@@ -1,0 +1,1 @@
+{"version":3,"file":"BlockContentMetadata.d.ts","sourceRoot":"","sources":["../../../../src/components/page/Content/BlockContentMetadata.ts"],"names":[],"mappings":"AAAA,eAAO,MAAM,yBAAyB,QAAS,GAAG,KAAG,oBAOpD,CAAA;AAED,qBAAa,oBAAoB;IAC7B,gBAAgB,EAAE,MAAM,CAAA;IACxB,gBAAgB,EAAE,MAAM,CAAA;IACxB,KAAK,EAAE,MAAM,CAAA;gBAET,gBAAgB,EAAE,MAAM,EACxB,gBAAgB,EAAE,MAAM;CAO/B"}

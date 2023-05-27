@@ -1,0 +1,27 @@
+:root {
+    --primary-blue: blue;
+}
+
+.body-strong {
+    font-size: 1rem;
+    font-weight: 700;
+}
+.body {
+    font-size: 1rem;
+    font-weight: 500;
+}
+.caption {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.link-small {
+    font-size: 0.9rem;
+    color: var(--primary-blue);
+    font-weight: 700;
+}
+.link-default {
+    font-size: 1rem;
+    color: var(--primary-blue);
+    font-weight: 700;
+}

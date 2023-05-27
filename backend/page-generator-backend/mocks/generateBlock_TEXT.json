@@ -1,0 +1,28 @@
+{
+    "blockName": "name",
+    "config": {
+        "uuid": "abc123",
+        "blockName": "name",
+        "bootstrapVersion": "bootstrap-5-0-2",
+        "blockTemplateName": "TEXT",
+        "metadata": {
+            "createdTimestamp": 123,
+            "updatedTimestamp": 123,
+            "clazz": "BlockConfigMetadata"
+        },
+        "clazz": "BlockConfig"
+    },
+    "content": {
+        "uuid": "cba321",
+        "data": {
+            "text": "some text"
+        },
+        "metadata": {
+            "createdTimestamp": 123,
+            "updatedTimestamp": 123,
+            "clazz": "BlockContentMetadata"
+        },
+        "clazz": "BlockContent"
+    },
+    "clazz": "GenerateBlockRequest"
+}

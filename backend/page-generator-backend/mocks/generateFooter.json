@@ -1,0 +1,23 @@
+{
+    "config": {
+        "uuid": "footer_uuid",
+        "templateVersion": "test_version",
+        "bootstrapVersion": "bootstrap-5-0-2",
+        "metadata": {
+            "createdTimestamp": 123,
+            "updatedTimestamp": 123,
+            "clazz": "FooterConfigMetadata"
+        },
+        "clazz": "FooterConfig"
+    },
+    "content": {
+        "uuid": "footer_uuid",
+        "metadata": {
+            "createdTimestamp": 123,
+            "updatedTimestamp": 123,
+            "clazz": "FooterContentMetadata"
+        },
+        "clazz": "FooterContent"
+    },
+    "clazz": "GenerateFooterRequest"
+}

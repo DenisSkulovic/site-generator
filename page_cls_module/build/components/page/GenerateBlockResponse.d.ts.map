@@ -1,0 +1,1 @@
+{"version":3,"file":"GenerateBlockResponse.d.ts","sourceRoot":"","sources":["../../../src/components/page/GenerateBlockResponse.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,eAAe,EAAE,MAAM,QAAQ,CAAA;AAExC,qBAAa,qBAAqB;IAC9B,IAAI,EAAE,eAAe,CAAA;IACrB,KAAK,EAAE,MAAM,CAAA;gBAGT,IAAI,EAAE,eAAe;CAK5B"}

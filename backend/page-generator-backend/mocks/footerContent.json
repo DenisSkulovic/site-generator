@@ -1,0 +1,9 @@
+{
+    "uuid": "footer_uuid",
+    "metadata": {
+        "createdTimestamp": 123,
+        "updatedTimestamp": 123,
+        "clazz": "FooterContentMetadata"
+    },
+    "clazz": "FooterContent"
+}

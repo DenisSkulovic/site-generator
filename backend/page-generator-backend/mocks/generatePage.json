@@ -1,0 +1,179 @@
+{
+    "content": {
+        "uuid": "123123",
+        "data": {
+            "areaconfiguuid1": {
+                "uuid": "142351",
+                "data": {
+                    "abc1233312": {
+                        "uuid": "cba321",
+                        "data": {
+                            "text": "some text 1"
+                        },
+                        "metadata": {
+                            "createdTimestamp": 123,
+                            "updatedTimestamp": 123,
+                            "clazz": "BlockContentMetadata"
+                        },
+                        "clazz": "BlockContent"
+                    },
+                    "abc123123123": {
+                        "uuid": "cba321",
+                        "data": {
+                            "text": "some text 2"
+                        },
+                        "metadata": {
+                            "createdTimestamp": 123,
+                            "updatedTimestamp": 123,
+                            "clazz": "BlockContentMetadata"
+                        },
+                        "clazz": "BlockContent"
+                    }
+                },
+                "metadata": {
+                    "createdTimestamp": 1253,
+                    "updatedTimestamp": 1253,
+                    "clazz": "AreaContentMetadata"
+                },
+                "clazz": "AreaContent"
+            },
+            "areaconfiguuid2": {
+                "uuid": "142351",
+                "data": {
+                    "abc1233312": {
+                        "uuid": "cba321",
+                        "data": {
+                            "text": "some text 1"
+                        },
+                        "metadata": {
+                            "createdTimestamp": 123,
+                            "updatedTimestamp": 123,
+                            "clazz": "BlockContentMetadata"
+                        },
+                        "clazz": "BlockContent"
+                    },
+                    "abc123123123": {
+                        "uuid": "cba321",
+                        "data": {
+                            "text": "some text 2"
+                        },
+                        "metadata": {
+                            "createdTimestamp": 123,
+                            "updatedTimestamp": 123,
+                            "clazz": "BlockContentMetadata"
+                        },
+                        "clazz": "BlockContent"
+                    }
+                },
+                "metadata": {
+                    "createdTimestamp": 1253,
+                    "updatedTimestamp": 1253,
+                    "clazz": "AreaContentMetadata"
+                },
+                "clazz": "AreaContent"
+            }
+        },
+        "metadata": {
+            "createdTimestamp": 123,
+            "updatedTimestamp": 123,
+            "clazz": "PageContentMetadata"
+        },
+        "clazz": "PageContent"
+    },
+    "config": {
+        "uuid": 123,
+        "lang": "lt",
+        "pageName": "testPage",
+        "isIncludeBootstrap": false,
+        "headVersion": "test_version",
+        "bootstrapVersion": "bootstrap-5-0-2",
+        "templateVersion": "test_version",
+        "headerId": 123,
+        "areaConfigArr": [
+            {
+                "uuid": "areaconfiguuid1",
+                "areaName": "areaname",
+                "areaTemplateName": "6_6",
+                "bootstrapVersion": "bootstrap-5-0-2",
+                "childConfigArr": [
+                    {
+                        "uuid": "abc1233312",
+                        "blockName": "name1231515",
+                        "bootstrapVersion": "bootstrap-5-0-2",
+                        "blockTemplateName": "TEXT",
+                        "metadata": {
+                            "createdTimestamp": 123,
+                            "updatedTimestamp": 123,
+                            "clazz": "BlockConfigMetadata"
+                        },
+                        "clazz": "BlockConfig"
+                    },
+                    {
+                        "uuid": "abc123123123",
+                        "blockName": "name3321231",
+                        "bootstrapVersion": "bootstrap-5-0-2",
+                        "blockTemplateName": "TEXT",
+                        "metadata": {
+                            "createdTimestamp": 123,
+                            "updatedTimestamp": 123,
+                            "clazz": "BlockConfigMetadata"
+                        },
+                        "clazz": "BlockConfig"
+                    }
+                ],
+                "metadata": {
+                    "createdTimestamp": 123,
+                    "updatedTimestamp": 123,
+                    "clazz": "AreaConfigMetadata"
+                },
+                "clazz": "AreaConfig"
+            },
+            {
+                "uuid": "areaconfiguuid2",
+                "areaName": "areaname",
+                "areaTemplateName": "6_6",
+                "bootstrapVersion": "bootstrap-5-0-2",
+                "childConfigArr": [
+                    {
+                        "uuid": "abc1233312",
+                        "blockName": "name1231515",
+                        "bootstrapVersion": "bootstrap-5-0-2",
+                        "blockTemplateName": "TEXT",
+                        "metadata": {
+                            "createdTimestamp": 123,
+                            "updatedTimestamp": 123,
+                            "clazz": "BlockConfigMetadata"
+                        },
+                        "clazz": "BlockConfig"
+                    },
+                    {
+                        "uuid": "abc123123123",
+                        "blockName": "name3321231",
+                        "bootstrapVersion": "bootstrap-5-0-2",
+                        "blockTemplateName": "TEXT",
+                        "metadata": {
+                            "createdTimestamp": 123,
+                            "updatedTimestamp": 123,
+                            "clazz": "BlockConfigMetadata"
+                        },
+                        "clazz": "BlockConfig"
+                    }
+                ],
+                "metadata": {
+                    "createdTimestamp": 123,
+                    "updatedTimestamp": 123,
+                    "clazz": "AreaConfigMetadata"
+                },
+                "clazz": "AreaConfig"
+            }
+        ],
+        "footerId": 123,
+        "metadata": {
+            "createdTimestamp": 123,
+            "updatedTimestamp": 123,
+            "clazz": "PageConfigMetadata"
+        },
+        "clazz": "PageConfig"
+    },
+    "clazz": "GeneratePageRequest"
+}

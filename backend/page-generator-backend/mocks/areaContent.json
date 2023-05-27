@@ -1,0 +1,35 @@
+{
+    "uuid": "142351",
+    "data": {
+        "abc1233312": {
+            "uuid": "cba321",
+            "data": {
+                "text": "some text 1"
+            },
+            "metadata": {
+                "createdTimestamp": 123,
+                "updatedTimestamp": 123,
+                "clazz": "BlockContentMetadata"
+            },
+            "clazz": "BlockContent"
+        },
+        "abc123123123": {
+            "uuid": "cba321",
+            "data": {
+                "text": "some text 2"
+            },
+            "metadata": {
+                "createdTimestamp": 123,
+                "updatedTimestamp": 123,
+                "clazz": "BlockContentMetadata"
+            },
+            "clazz": "BlockContent"
+        }
+    },
+    "metadata": {
+        "createdTimestamp": 1253,
+        "updatedTimestamp": 1253,
+        "clazz": "AreaContentMetadata"
+    },
+    "clazz": "AreaContent"
+}

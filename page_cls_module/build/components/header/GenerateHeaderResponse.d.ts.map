@@ -1,0 +1,1 @@
+{"version":3,"file":"GenerateHeaderResponse.d.ts","sourceRoot":"","sources":["../../../src/components/header/GenerateHeaderResponse.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,gBAAgB,EAAC,MAAM,QAAQ,CAAA;AAGvC,qBAAa,sBAAsB;IAE/B,IAAI,EAAE,gBAAgB,CAAA;IACtB,KAAK,EAAE,MAAM,CAAA;gBAET,IAAI,EAAE,gBAAgB;CAK7B"}

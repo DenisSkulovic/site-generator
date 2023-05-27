@@ -1,0 +1,9 @@
+<%- include(`../../../block_info.ejs`, {config}) %>
+
+<% if (content.data.direction === 'horizontal') { %>
+    <hr class="w-100"/>
+<% } else if (content.data.direction === 'vertical') { %>
+    <div style="border-left: <%- content.data.size %>px solid <%- content.data.color %>; height: 100vh;"></div>
+<% } else { %>
+    <p>Invalid direction: <%= content.data.direction %>. Please enter either "horizontal" or "vertical".</p>
+<% } %>

@@ -1,0 +1,12 @@
+{
+    "uuid": "cba321",
+    "data": {
+        "text": "some text"
+    },
+    "metadata": {
+        "createdTimestamp": 123,
+        "updatedTimestamp": 123,
+        "clazz": "BlockContentMetadata"
+    },
+    "clazz": "BlockContent"
+}

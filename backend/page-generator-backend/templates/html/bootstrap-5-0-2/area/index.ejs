@@ -1,0 +1,27 @@
+<%- include(`../../area_info.ejs`, {config}) %>
+
+<div data-area-uuid="<%-config.uuid%>" class="w-100 h-100">
+
+    <% if (cols.length> 0) { %>
+
+        <div class="d-flex flex-row nowrap">
+            <% for (let i=0; i < cols.length; i++) { %>
+                <div class="col-12 col-md-<%- cols[i] %> d-flex <%- classString %>">
+                    <%- HTMLObjectArr[i].html %>
+                </div>
+                <% } %>
+        </div>
+
+        <% } else { %>
+
+            <div class="d-flex flex-column nowrap">
+                <% for (let i=0; i < HTMLObjectArr.length; i++) { %>
+                    <div class="col-12 d-flex <%- classString %>">
+                        <%- HTMLObjectArr[i].html %>
+                    </div>
+                    <% } %>
+            </div>
+
+            <% } %>
+
+</div>

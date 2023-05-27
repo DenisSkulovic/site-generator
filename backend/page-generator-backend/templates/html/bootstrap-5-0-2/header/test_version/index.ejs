@@ -1,0 +1,25 @@
+<%- include(`../../../header_info.ejs`, {config, content}) %>
+
+<header>
+
+    <div>
+        <img src="<%-content.logoUrl%>" alt="<%-content.logoAlt%>"/>
+    </div>
+
+    <link />
+
+</header>
+
+<% if(config.isIncludeNavbar) { %>
+    <nav>
+    
+        <div>
+            <ul>
+                <% content.navItems.forEach(function(navItem){ %>
+                    <li></li>
+                <% }); %>
+            </ul>
+        </div>
+    
+    </nav>
+<% } %>

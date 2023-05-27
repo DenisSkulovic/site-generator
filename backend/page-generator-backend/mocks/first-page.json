@@ -1,0 +1,182 @@
+{
+    "uuid": "ce200e14-85ff-0077-b6f2-405228321711",
+    "html": "<!DOCTYPE html>\n<html lang=\"lt\">\n<!-- PAGE NAME :>> testPage -->\n<!-- PAGE HEADVERSION :>> test_version -->\n<!-- PAGE BOOTSTRAPVERSION :>> bootstrap-5-0-2 -->\n<!-- PAGE TEMPLATEVERSION :>> test_version -->\n<!-- PAGE HEADERID :>> 123 -->\n<!-- PAGE FOOTERID :>> 123 -->\n<!-- PAGE CONFIG UUID :>> 123 -->\n<!-- PAGE CONTENT UUID :>> 123123 -->\n<!-- PAGE CONFIG METADATA :>> {\"createdTimestamp\":123,\"updatedTimestamp\":123,\"clazz\":\"PageConfigMetadata\"} -->\n<!-- PAGE CONTENT METADATA :>> {\"createdTimestamp\":123,\"updatedTimestamp\":123,\"clazz\":\"PageContentMetadata\"} -->\n\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>testPage</title>\n\n    <!-- BOOTSTRAP -->\n    \n        <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\n    \n</head>\n\n    <body>\n        \n        <!-- HEADER CONFIG UUID :>> 123123 -->\n<!-- HEADER CONTENT UUID :>> 123123 -->\n<!-- HEADER CONFIG METADATA :>> {\"createdTimestamp\":123,\"updatedTimestamp\":123,\"clazz\":\"HeaderConfigMetadata\"} -->\n<!-- HEADER CONTENT METADATA :>> {\"createdTimestamp\":123,\"updatedTimestamp\":123,\"clazz\":\"HeaderContentMetadata\"} -->\n<header>\n\n    <div>\n        <img src=\"www.google.com\" alt=\"logoAlt\"/>\n    </div>\n\n    <link />\n\n</header>\n\n\n    <nav>\n    \n        <div>\n            <ul>\n                \n                    <li></li>\n                \n                    <li></li>\n                \n            </ul>\n        </div>\n    \n    </nav>\n\n        \n        \n        \n            <!-- AREA NAME :>> areaname -->\n<!-- AREA UUID :>> areaconfiguuid1 -->\n<!-- AREA METADATA :>> {\"createdTimestamp\":123,\"updatedTimestamp\":123,\"clazz\":\"AreaConfigMetadata\"} -->\n<div data-area-uuid=\"areaconfiguuid1\" class=\"d-flex flex-row nowrap\">\n    <div class=\"col-12 col-md-6\">\n        <!-- BLOCK NAME :>> name1231515 -->\n<!-- BLOCK UUID :>> abc1233312 -->\n<!-- BLOCK METADATA :>> {\"createdTimestamp\":123,\"updatedTimestamp\":123,\"clazz\":\"BlockConfigMetadata\"} -->\n<span data-block-uuid=\"abc1233312\">\n    some text 1\n</span>\n    </div>\n    <div class=\"col-12 col-md-6\">\n        <!-- BLOCK NAME :>> name3321231 -->\n<!-- BLOCK UUID :>> abc123123123 -->\n<!-- BLOCK METADATA :>> {\"createdTimestamp\":123,\"updatedTimestamp\":123,\"clazz\":\"BlockConfigMetadata\"} -->\n<span data-block-uuid=\"abc123123123\">\n    some text 2\n</span>\n    </div>\n</div>\n        \n            <!-- AREA NAME :>> areaname -->\n<!-- AREA UUID :>> areaconfiguuid2 -->\n<!-- AREA METADATA :>> {\"createdTimestamp\":123,\"updatedTimestamp\":123,\"clazz\":\"AreaConfigMetadata\"} -->\n<div data-area-uuid=\"areaconfiguuid2\" class=\"d-flex flex-row nowrap\">\n    <div class=\"col-12 col-md-6\">\n        <!-- BLOCK NAME :>> name1231515 -->\n<!-- BLOCK UUID :>> abc1233312 -->\n<!-- BLOCK METADATA :>> {\"createdTimestamp\":123,\"updatedTimestamp\":123,\"clazz\":\"BlockConfigMetadata\"} -->\n<span data-block-uuid=\"abc1233312\">\n    some text 1\n</span>\n    </div>\n    <div class=\"col-12 col-md-6\">\n        <!-- BLOCK NAME :>> name3321231 -->\n<!-- BLOCK UUID :>> abc123123123 -->\n<!-- BLOCK METADATA :>> {\"createdTimestamp\":123,\"updatedTimestamp\":123,\"clazz\":\"BlockConfigMetadata\"} -->\n<span data-block-uuid=\"abc123123123\">\n    some text 2\n</span>\n    </div>\n</div>\n        \n        \n        \n        <!-- FOOTER CONFIG UUID :>> footer_uuid -->\n<!-- FOOTER CONTENT UUID :>> footer_uuid -->\n<!-- FOOTER CONFIG METADATA :>> {\"createdTimestamp\":123,\"updatedTimestamp\":123,\"clazz\":\"FooterConfigMetadata\"} -->\n<!-- FOOTER CONTENT METADATA :>> {\"createdTimestamp\":123,\"updatedTimestamp\":123,\"clazz\":\"FooterContentMetadata\"} -->\n<footer>\n    <div>\n        This is the footer\n    </div>\n</footer>\n    </body>\n\n</html>",
+    "config": {
+        "uuid": 123,
+        "lang": "lt",
+        "pageName": "testPage",
+        "isIncludeBootstrap": false,
+        "headVersion": "test_version",
+        "bootstrapVersion": "bootstrap-5-0-2",
+        "templateVersion": "test_version",
+        "headerId": 123,
+        "areaConfigArr": [
+            {
+                "uuid": "areaconfiguuid1",
+                "areaName": "areaname",
+                "areaTemplateName": "6_6",
+                "bootstrapVersion": "bootstrap-5-0-2",
+                "childConfigArr": [
+                    {
+                        "uuid": "abc1233312",
+                        "blockName": "name1231515",
+                        "bootstrapVersion": "bootstrap-5-0-2",
+                        "blockTemplateName": "TEXT",
+                        "metadata": {
+                            "createdTimestamp": 123,
+                            "updatedTimestamp": 123,
+                            "clazz": "BlockConfigMetadata"
+                        },
+                        "clazz": "BlockConfig"
+                    },
+                    {
+                        "uuid": "abc123123123",
+                        "blockName": "name3321231",
+                        "bootstrapVersion": "bootstrap-5-0-2",
+                        "blockTemplateName": "TEXT",
+                        "metadata": {
+                            "createdTimestamp": 123,
+                            "updatedTimestamp": 123,
+                            "clazz": "BlockConfigMetadata"
+                        },
+                        "clazz": "BlockConfig"
+                    }
+                ],
+                "metadata": {
+                    "createdTimestamp": 123,
+                    "updatedTimestamp": 123,
+                    "clazz": "AreaConfigMetadata"
+                },
+                "clazz": "AreaConfig"
+            },
+            {
+                "uuid": "areaconfiguuid2",
+                "areaName": "areaname",
+                "areaTemplateName": "6_6",
+                "bootstrapVersion": "bootstrap-5-0-2",
+                "childConfigArr": [
+                    {
+                        "uuid": "abc1233312",
+                        "blockName": "name1231515",
+                        "bootstrapVersion": "bootstrap-5-0-2",
+                        "blockTemplateName": "TEXT",
+                        "metadata": {
+                            "createdTimestamp": 123,
+                            "updatedTimestamp": 123,
+                            "clazz": "BlockConfigMetadata"
+                        },
+                        "clazz": "BlockConfig"
+                    },
+                    {
+                        "uuid": "abc123123123",
+                        "blockName": "name3321231",
+                        "bootstrapVersion": "bootstrap-5-0-2",
+                        "blockTemplateName": "TEXT",
+                        "metadata": {
+                            "createdTimestamp": 123,
+                            "updatedTimestamp": 123,
+                            "clazz": "BlockConfigMetadata"
+                        },
+                        "clazz": "BlockConfig"
+                    }
+                ],
+                "metadata": {
+                    "createdTimestamp": 123,
+                    "updatedTimestamp": 123,
+                    "clazz": "AreaConfigMetadata"
+                },
+                "clazz": "AreaConfig"
+            }
+        ],
+        "footerId": 123,
+        "metadata": {
+            "createdTimestamp": 123,
+            "updatedTimestamp": 123,
+            "clazz": "PageConfigMetadata"
+        },
+        "clazz": "PageConfig"
+    },
+    "content": {
+        "uuid": "123123",
+        "data": {
+            "areaconfiguuid1": {
+                "uuid": "142351",
+                "data": {
+                    "abc1233312": {
+                        "uuid": "cba321",
+                        "data": {
+                            "text": "some text 1"
+                        },
+                        "metadata": {
+                            "createdTimestamp": 123,
+                            "updatedTimestamp": 123,
+                            "clazz": "BlockContentMetadata"
+                        },
+                        "clazz": "BlockContent"
+                    },
+                    "abc123123123": {
+                        "uuid": "cba321",
+                        "data": {
+                            "text": "some text 2"
+                        },
+                        "metadata": {
+                            "createdTimestamp": 123,
+                            "updatedTimestamp": 123,
+                            "clazz": "BlockContentMetadata"
+                        },
+                        "clazz": "BlockContent"
+                    }
+                },
+                "metadata": {
+                    "clazz": "BlockContentMetadata"
+                },
+                "clazz": "AreaContent"
+            },
+            "areaconfiguuid2": {
+                "uuid": "142351",
+                "data": {
+                    "abc1233312": {
+                        "uuid": "cba321",
+                        "data": {
+                            "text": "some text 1"
+                        },
+                        "metadata": {
+                            "createdTimestamp": 123,
+                            "updatedTimestamp": 123,
+                            "clazz": "BlockContentMetadata"
+                        },
+                        "clazz": "BlockContent"
+                    },
+                    "abc123123123": {
+                        "uuid": "cba321",
+                        "data": {
+                            "text": "some text 2"
+                        },
+                        "metadata": {
+                            "createdTimestamp": 123,
+                            "updatedTimestamp": 123,
+                            "clazz": "BlockContentMetadata"
+                        },
+                        "clazz": "BlockContent"
+                    }
+                },
+                "metadata": {
+                    "clazz": "BlockContentMetadata"
+                },
+                "clazz": "AreaContent"
+            }
+        },
+        "metadata": {
+            "createdTimestamp": 123,
+            "updatedTimestamp": 123,
+            "clazz": "PageContentMetadata"
+        },
+        "clazz": "PageContent"
+    },
+    "metadata": {
+        "createdTimestamp": 1683052250910,
+        "updatedTimestamp": 1683052250910,
+        "clazz": "PageHTMLMetadata"
+    },
+    "clazz": "GeneratePageResponse"
+}

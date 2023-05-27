@@ -1,0 +1,49 @@
+{
+  "name": "orchestrator-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "author": "Denis Skulovic, Travelfactory Lab",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node --compiler ttypescript src/dev/server.ts",
+    "start:nodemon": "nodemon ./src/dev/server.ts",
+    "start:prod": "npm run build && node ./dist/src/index.js",
+    "copy": "node setupBuild.js ",
+    "build": "  esbuild ./src/index.ts --bundle  --platform=node --target=es2020 --outfile=dist/index.js --external:./node_modules/pg/lib/native/*",
+    "build:pre": "npx tsc",
+    "build:full": "npx tsc && npm run build && npm run copy",
+    "tsc-init": "tsc --init"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.10",
+    "aws-sdk": "^2.1189.0",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.3",
+    "fs-extra": "^11.1.0"
+  },
+  "devDependencies": {
+    "@aws-sdk/node-http-handler": "^3.226.0",
+    "@types/aws-lambda": "^8.10.92",
+    "@types/http-server": "^0.12.1",
+    "@types/jest": "^27.5.2",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^17.0.45",
+    "@typescript-eslint/eslint-plugin": "^5.10.2",
+    "@typescript-eslint/parser": "^5.10.2",
+    "aws-lambda": "^1.0.7",
+    "esbuild": "^0.14.54",
+    "esbuild-decorators": "^1.0.0",
+    "esbuild-jest": "^0.5.0",
+    "eslint": "^8.8.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.5.1",
+    "ts-node": "^10.9.1",
+    "ttypescript": "^1.5.15",
+    "typescript": "^4.5.5",
+    "typescript-is": "^0.19.0"
+  }
+}
