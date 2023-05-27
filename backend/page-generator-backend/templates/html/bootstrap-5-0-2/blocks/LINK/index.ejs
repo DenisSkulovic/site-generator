@@ -1,5 +1,5 @@
 <%- include(`../../../block_info.ejs`, {config}) %>
 
-<a class="<%- content.data.classes %>" href="<%- content.data.linkHref %>">
+<a data-block-uuid="<%-config.uuid%>" class="<%- content.data.classes %>" href="<%- content.data.linkHref %>">
     <%- content.data.linkText %>
 </a>

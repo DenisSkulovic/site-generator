@@ -1,29 +1,19 @@
 <template>
-    <div v-if="props.item" class="d-flex flex-row nowrap" style="gap: 5px;">
-        <div class="link-default" role="button" @click.stop="handleToTopElement">
-            Top
-        </div>
-
-        <div>{{ ' > ' }}</div>
-
+    <div v-if="props.item" class="breadcrumb">
+        <div role="button" class="link-default" @click.stop="handleToTopElement">Top</div>
+        <div class="breadcrumb-separator"> > </div>
         <template v-if="parentItem">
-    
             <template v-if="isParentHasParent">
-                <div>{{ ' ... ' }}</div>
-                <div>{{ ' > ' }}</div>
+                <div class="breadcrumb-ellipsis"> ... </div>
+                <div class="breadcrumb-separator"> > </div>
             </template>
-            
-            <div class="link-default" role="button" @click.stop="handleDisplayParent">{{ parentItemName }}</div>
-            
-            <div>{{ ' > ' }}</div>
-
+            <div role="button" class="link-default" @click.stop="handleDisplayParent">{{ parentItemName }}</div>
+            <div class="breadcrumb-separator"> > </div>
         </template>
-
-        <div class="body-strong">{{ itemName }}</div>
-
+        <div class="breadcrumb-item">{{ itemName }}</div>
     </div>
 </template>
-
+  
 <script setup lang="ts">
 import { NestableItem } from "../../classes/NestableItem"
 import { NestableItemArea } from "../../classes/NestableItemArea"
@@ -32,9 +22,13 @@ import { computed } from "vue"
 import type { ComputedRef } from "vue"
 import handleDisplayNestableItem from "../../logic/handlers/handleDisplayNestableItem"
 
-const props = defineProps<{
-    item: NestableItem |  null
-}>()
+const props = defineProps({
+    item: {
+        type: Object as () => NestableItem | null,
+        default: null
+    }
+});
+
 
 const itemName: ComputedRef<string> = computed(() => {
     if (!props.item) return ""
@@ -72,4 +66,21 @@ const handleDisplayParent = () => {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+.breadcrumb {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+
+.breadcrumb-separator,
+.breadcrumb-ellipsis {
+    color: gray;
+}
+
+.breadcrumb-item {
+    font-weight: bold;
+}
+</style>
+  

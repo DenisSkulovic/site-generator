@@ -35,7 +35,8 @@ const blockTemplateNames: ComputedRef<{ label: BlockTemplateEnum, value: BlockTe
 })
 
 const handleChange = (fieldName: string, newVal: any) => {
-    console.log('change', fieldName, newVal)
+    console.log(`props.blockConfig`, props.blockConfig)
+    console.log(`newVal`, newVal)
     props.blockConfig[fieldName] = newVal
 }
 

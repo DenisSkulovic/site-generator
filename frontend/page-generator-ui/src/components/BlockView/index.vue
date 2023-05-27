@@ -1,73 +1,92 @@
 <template>
-    <div>
-
-        <div>
-            <h3>BLOCK CONFIG</h3>
-            <div>
-                <h4>CONTROLS</h4>
-                <button v-if="!nestableItem.isNew" :disabled="!props.nestableItem.isConfigEdited" class="btn btn-success"
-                    @click="handleResetConfigClick">Reset</button>
+    <GridFrame>
+        <template #top>
+            <div class="block-section">
+                <h3>Block: {{ nestableItem.blockConfig_edit.blockName }}</h3>
+                <ItemBreadcrumb :item="nestableItem"></ItemBreadcrumb>
             </div>
-            <CollapseExpand :active="getIsActive(NameEnum.CONFIG)" :class="NameEnum.CONFIG"
-                @toggle-click="handleToggleSection(NameEnum.CONFIG)">
-                <template #title>
-                    {{ TitleEnum.CONFIG }}
-                </template>
-                <template #content>
-                    <BlockConfigView :blockConfig="props.nestableItem.blockConfig_edit"></BlockConfigView>
-                </template>
-            </CollapseExpand>
-        </div>
-
-        <LineComponent class="py-3"></LineComponent>
-
-        <div>
-            <h3>BLOCK CONTENT</h3>
+        </template>
+        <template #main>
             <div>
-                <h4>CONTROLS</h4>
-                <button v-if="!nestableItem.isNew" :disabled="!props.nestableItem.isContentEdited" class="btn btn-success"
-                    @click="handleResetContentClick">Reset</button>
-            </div>
-            <CollapseExpand :active="getIsActive(NameEnum.CONTENT)" :class="NameEnum.CONTENT"
-                @toggle-click="handleToggleSection(NameEnum.CONTENT)">
-                <template #title>
-                    {{ TitleEnum.CONTENT }}
-                </template>
-                <template #content>
-                    <BlockContentView :blockDefinition="blockDefinition"
-                        :blockContent="props.nestableItem.blockContent_edit"></BlockContentView>
-                </template>
-            </CollapseExpand>
-        </div>
 
-    </div>
+                <div>
+                    <h3>BLOCK CONFIG</h3>
+                    <div>
+                        <h4>CONTROLS</h4>
+                        <button v-if="!nestableItem.isNew" :disabled="!props.nestableItem.isConfigEdited"
+                            class="btn btn-success" @click="handleResetConfigClick">Reset</button>
+                    </div>
+                    <CollapseExpand :active="getIsActive(NameEnum.CONFIG)" :class="NameEnum.CONFIG"
+                        @toggle-click="handleToggleSection(NameEnum.CONFIG)">
+                        <template #title>
+                            {{ TitleEnum.CONFIG }}
+                        </template>
+                        <template #content>
+                            <BlockConfigView :blockConfig="props.nestableItem.blockConfig_edit"></BlockConfigView>
+                        </template>
+                    </CollapseExpand>
+                </div>
+
+                <LineComponent class="py-3"></LineComponent>
+
+                <div>
+                    <h3>BLOCK CONTENT</h3>
+                    <div>
+                        <h4>CONTROLS</h4>
+                        <button v-if="!nestableItem.isNew" :disabled="!props.nestableItem.isContentEdited"
+                            class="btn btn-success" @click="handleResetContentClick">Reset</button>
+                    </div>
+                    <CollapseExpand :active="getIsActive(NameEnum.CONTENT)" :class="NameEnum.CONTENT"
+                        @toggle-click="handleToggleSection(NameEnum.CONTENT)">
+                        <template #title>
+                            {{ TitleEnum.CONTENT }}
+                        </template>
+                        <template #content>
+                            <BlockContentView :blockDefinition="blockDefinition"
+                                :blockContent="props.nestableItem.blockContent_edit"></BlockContentView>
+                        </template>
+                    </CollapseExpand>
+                </div>
+
+            </div>
+        </template>
+        <template #bottom>
+            <div class="action-section">
+                <button class="btn btn-secondary" @click.stop="handleToggleJSONView">TOGGLE JSON VIEW</button>
+                <button :disabled="!isDataForRefreshValid" class="btn btn-success"
+                    @click.stop="handleRefreshUI">REFRESH</button>
+            </div>
+        </template>
+    </GridFrame>
 </template>
 
 <script setup lang="ts">
 // misc
 import { reactive, computed, onMounted, watch } from "vue"
 import type { ComputedRef } from "vue"
-import { cloneDeep } from "lodash"
 
 // classes
 import CollapseExpand from '../CollapseExpand.vue';
+import type { NestableItemBlock } from "../../classes/NestableItemBlock";
 
 // components
 import BlockConfigView from "./BlockConfigView.vue"
 import BlockContentView from "./BlockContentView.vue"
 import LineComponent from "../Line.vue"
+import GridFrame from "../MainSidebar/GridFrame.vue";
+import ItemBreadcrumb from "../common/ItemBreadcrumb.vue"
 
 // computed
-import { NestableItemBlock } from "../../classes/NestableItemBlock";
+import isDataForRefreshValid from "../../computed/generation/isDataForRefreshValid"
 
 // logic
 import handleDisplayNestableItem from "../../logic/handlers/handleDisplayNestableItem"
+import handleRefreshUI from "../../logic/handlers/handleRefreshUI"
+import handleToggleJSONView from "../../logic/handlers/handleToggleJSONView"
 
 // config
 import blocks from "../../config/blocks"
 import type { BlockDefinition } from "../../config/blocks"
-import defaultBlockFieldMap from "../../config/defaultFields/blockContent"
-
 
 const props = defineProps<{
     nestableItem: NestableItemBlock
@@ -97,12 +116,6 @@ const handleToggleSection = (name: string) => {
         state.collapsedSet.delete(name)
     }
 }
-const handleToTopElement = () => {
-    handleDisplayNestableItem(null)
-}
-const handleToParentElement = () => {
-    handleDisplayNestableItem(props.nestableItem.parentNestableItem)
-}
 
 const handleResetConfigClick = () => {
     props.nestableItem.resetConfig()
@@ -126,7 +139,9 @@ const blockDefinition: ComputedRef<BlockDefinition> = computed(() => {
 
 watch(
     () => props.nestableItem.blockConfig_edit.blockTemplateName,
-    props.nestableItem.setDefaultFields
+    () => {
+        props.nestableItem.setDefaultFields()
+    }
 )
 
 onMounted(() => {
@@ -134,4 +149,8 @@ onMounted(() => {
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.block-section {
+    background-color: rgb(255, 255, 173);
+}
+</style>

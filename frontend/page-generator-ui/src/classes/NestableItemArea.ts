@@ -17,6 +17,7 @@ import unsetHoveredAreaBlockClasses from "../logic/unsetHoveredAreaBlockClasses"
 import unsetSelectedAreaBlockClasses from "../logic/unsetSelectedAreaBlockClasses"
 
 export class NestableItemArea extends NestableItem {
+    public isCollapsed: boolean = false
     constructor(
         id: string,
         children: NestableItem[]
@@ -177,5 +178,9 @@ export class NestableItemArea extends NestableItem {
         if (blockEl) {
             blockEl.classList.add("currently-hovered-area")
         }
+    }
+
+    public toggleCollapseExpand() {
+        this.isCollapsed = !this.isCollapsed
     }
 }

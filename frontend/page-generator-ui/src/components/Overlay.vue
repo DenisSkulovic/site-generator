@@ -1,48 +1,36 @@
 <template>
-    <div :style="styles" @click.stop="handleClick" class="overlay d-flex justify-content-center align-items-center">
+    <div class="overlay" :class="{ 'overlay--open': isOpen, 'overlay--transitioning': isTransitioning }"
+        @click.stop="handleClick">
         <slot />
     </div>
 </template>
 
-<script>
-export default {
-    name: "OverlayComponent",
-    props: {
-        position: String,
-        background: String,
-        backdropFilter: String,
-        zIndex: Number,
-        isTransitioning: {
-            type: Boolean,
-            default: true,
-        },
-        transitionSpeed: {
-            type: Number,
-            default: 250,
-        }
-    },
-    computed: {
-        styles() {
-            return {
-                position: this.position,
-                background: this.background,
-                backdropFilter: this.backdropFilter,
-                zIndex: this.zIndex,
-                transition: this.isTransitioning ? `background ${this.transitionSpeed}ms ease-in-out, opacity ${this.transitionSpeed}ms ease-in-out` : ''
-            }
-        }
-    },
-    methods: {
-        handleClick() {
-            this.$emit("overlayClick")
-        }
-    }
+<script lang="ts" setup>
+withDefaults(defineProps<{
+    isOpen: boolean,
+    isTransitioning: boolean,
+    transitionSpeed: number
+}>(), {
+    isOpen: false,
+    isTransitioning: true,
+    transitionSpeed: 250
+})
+
+const emit = defineEmits<{
+    (e: "overlayClick"): void
+}>()
+
+const handleClick = () => {
+    emit("overlayClick");
 }
+
 </script>
 
 <style lang="scss" scoped>
 .overlay {
     display: none;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
     backdrop-filter: blur(4px);
@@ -50,9 +38,15 @@ export default {
     position: absolute;
     background: #0D141BC2;
     opacity: 0;
-}
+    transition: background 0ms ease-in-out, opacity 0ms ease-in-out;
 
-.overlay.open {
-    opacity: 1;
+    &.overlay--open {
+        opacity: 1;
+        display: flex;
+    }
+
+    &.overlay--transitioning {
+        transition: background var(--transition-speed)ms ease-in-out, opacity var(--transition-speed)ms ease-in-out;
+    }
 }
 </style>
