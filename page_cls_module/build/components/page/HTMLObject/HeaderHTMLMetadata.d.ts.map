@@ -1,1 +1,0 @@
-{"version":3,"file":"HeaderHTMLMetadata.d.ts","sourceRoot":"","sources":["../../../../src/components/page/HTMLObject/HeaderHTMLMetadata.ts"],"names":[],"mappings":"AAAA,eAAO,MAAM,uBAAuB,QAAS,GAAG,KAAG,kBAOlD,CAAA;AAED,qBAAa,kBAAkB;IAC3B,gBAAgB,EAAE,MAAM,CAAA;IACxB,gBAAgB,EAAE,MAAM,CAAA;IACxB,KAAK,EAAE,MAAM,CAAA;gBAET,gBAAgB,EAAE,MAAM,EACxB,gBAAgB,EAAE,MAAM;CAM/B"}

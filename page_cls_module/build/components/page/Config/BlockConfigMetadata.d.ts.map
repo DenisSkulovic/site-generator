@@ -1,1 +1,0 @@
-{"version":3,"file":"BlockConfigMetadata.d.ts","sourceRoot":"","sources":["../../../../src/components/page/Config/BlockConfigMetadata.ts"],"names":[],"mappings":"AAAA,qBAAa,mBAAmB;IAC5B,gBAAgB,EAAE,MAAM,CAAA;IACxB,gBAAgB,EAAE,MAAM,CAAA;IACxB,KAAK,EAAE,MAAM,CAAA;gBAET,gBAAgB,EAAE,MAAM,EACxB,gBAAgB,EAAE,MAAM;CAM/B"}

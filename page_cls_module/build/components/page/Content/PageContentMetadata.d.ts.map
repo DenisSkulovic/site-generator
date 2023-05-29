@@ -1,1 +1,0 @@
-{"version":3,"file":"PageContentMetadata.d.ts","sourceRoot":"","sources":["../../../../src/components/page/Content/PageContentMetadata.ts"],"names":[],"mappings":"AAAA,eAAO,MAAM,wBAAwB,QAAS,GAAG,KAAG,mBAOnD,CAAA;AAED,qBAAa,mBAAmB;IAC5B,gBAAgB,EAAE,MAAM,CAAA;IACxB,gBAAgB,EAAE,MAAM,CAAA;IACxB,KAAK,EAAE,MAAM,CAAA;gBAET,gBAAgB,EAAE,MAAM,EACxB,gBAAgB,EAAE,MAAM;CAM/B"}

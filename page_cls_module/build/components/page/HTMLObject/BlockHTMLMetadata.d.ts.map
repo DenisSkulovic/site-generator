@@ -1,1 +1,0 @@
-{"version":3,"file":"BlockHTMLMetadata.d.ts","sourceRoot":"","sources":["../../../../src/components/page/HTMLObject/BlockHTMLMetadata.ts"],"names":[],"mappings":"AAAA,eAAO,MAAM,sBAAsB,QAAS,GAAG,KAAG,iBAOjD,CAAA;AAED,qBAAa,iBAAiB;IAC1B,gBAAgB,EAAE,MAAM,CAAA;IACxB,gBAAgB,EAAE,MAAM,CAAA;IACxB,KAAK,EAAE,MAAM,CAAA;gBAET,gBAAgB,EAAE,MAAM,EACxB,gBAAgB,EAAE,MAAM;CAM/B"}
