@@ -1,0 +1,1 @@
+{"version":3,"file":"FooterContentMetadata.d.ts","sourceRoot":"","sources":["../../../src/components/footer/FooterContentMetadata.ts"],"names":[],"mappings":"AAAA,eAAO,MAAM,0BAA0B,QAAS,GAAG,KAAG,qBAOrD,CAAA;AAED,qBAAa,qBAAqB;IAC9B,gBAAgB,EAAE,MAAM,CAAA;IACxB,gBAAgB,EAAE,MAAM,CAAA;IACxB,KAAK,EAAE,MAAM,CAAA;gBAET,gBAAgB,EAAE,MAAM,EACxB,gBAAgB,EAAE,MAAM;CAM/B"}

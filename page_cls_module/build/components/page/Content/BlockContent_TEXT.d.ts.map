@@ -1,0 +1,1 @@
+{"version":3,"file":"BlockContent_TEXT.d.ts","sourceRoot":"","sources":["../../../../src/components/page/Content/BlockContent_TEXT.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,oBAAoB,EAAE,MAAM,WAAW,CAAC;AAE/D,qBAAa,iBAAkB,SAAQ,YAAY;gBAG3C,IAAI,EAAE,MAAM,EACZ,IAAI,EAAE;QACF,IAAI,EAAE,MAAM,CAAC;KAChB,EACD,QAAQ,EAAE,oBAAoB;CAKrC"}
