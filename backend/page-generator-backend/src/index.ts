@@ -20,7 +20,7 @@ import {
     GeneratePageResponse,
     GenerateAreaResponse,
     GenerateBlockResponse,
-} from "../../../page_cls_module";
+} from "@page_cls_module";
 import * as dotenv from "dotenv"
 import handleError from "./logic/handleError"
 import Response from "./classes/Response"

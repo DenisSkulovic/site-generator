@@ -1,4 +1,4 @@
-import { HeaderConfig, HeaderContent } from "../../../../../../page_cls_module"
+import { HeaderConfig, HeaderContent } from "@page_cls_module"
 
 export class RenderData_Header {
     content: HeaderContent

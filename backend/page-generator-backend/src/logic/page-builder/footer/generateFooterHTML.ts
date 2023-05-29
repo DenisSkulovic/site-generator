@@ -1,4 +1,4 @@
-import * as DTO from "../../../../../../page_cls_module"
+import * as DTO from "@page_cls_module"
 import ejs from "ejs"
 import getDirName from "../../../utils/getDirName"
 import guid from "../../../utils/guid"

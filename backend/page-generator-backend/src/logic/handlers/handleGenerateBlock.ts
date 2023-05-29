@@ -1,4 +1,4 @@
-import * as DTO from "../../../../../page_cls_module"
+import * as DTO from "@page_cls_module"
 import constructBlock from "../page-builder/page/constructBlock"
 
 const handleGenerateBlock = async (

@@ -1,4 +1,4 @@
-import { BlockConfig, BlockContent } from "../../../../../../page_cls_module"
+import { BlockConfig, BlockContent } from "@page_cls_module"
 
 export class RenderData_Block {
     content: BlockContent

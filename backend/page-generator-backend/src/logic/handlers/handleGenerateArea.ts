@@ -1,5 +1,5 @@
 import constructArea from "../page-builder/page/constructArea"
-import {AreaConfig, AreaContent, GenerateAreaRequest, GenerateAreaResponse, AreaHTMLObject} from "../../../../../page_cls_module"
+import {AreaConfig, AreaContent, GenerateAreaRequest, GenerateAreaResponse, AreaHTMLObject} from "@page_cls_module"
 
 const handleGenerateArea = async (
     requestData: GenerateAreaRequest,

@@ -1,4 +1,4 @@
-import { BlockContent, BlockTemplateEnum } from "../../../../../../page_cls_module/src"
+import { BlockContent, BlockTemplateEnum } from "@page_cls_module"
 import blockContentsArr from "../../../config/blockContentsArr"
 
 const getBlockContentConstructor = (template: BlockTemplateEnum): Constructor<BlockContent> | undefined => {

@@ -1,4 +1,4 @@
-import * as DTO from "../../../../../page_cls_module";
+import * as DTO from "@page_cls_module";
 import generateFooterHTML from "../page-builder/footer/generateFooterHTML"
 
 

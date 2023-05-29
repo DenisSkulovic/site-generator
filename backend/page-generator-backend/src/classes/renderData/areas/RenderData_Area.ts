@@ -1,5 +1,5 @@
 import * as _ from "lodash"
-import {AreaConfig, AreaContent, AreaHTMLObject, BlockHTMLObject} from "../../../../../../page_cls_module"
+import {AreaConfig, AreaContent, AreaHTMLObject, BlockHTMLObject} from "@page_cls_module"
 
 export class RenderData_Area {
     config: AreaConfig

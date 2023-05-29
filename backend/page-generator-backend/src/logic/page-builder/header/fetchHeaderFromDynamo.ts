@@ -1,5 +1,5 @@
 import * as CLASSES from "../../../../../../classes_module/src"
-import * as DTO from "../../../../../../page_cls_module/src"
+import * as DTO from "@page_cls_module"
 import * as AWS from "aws-sdk"
 
 

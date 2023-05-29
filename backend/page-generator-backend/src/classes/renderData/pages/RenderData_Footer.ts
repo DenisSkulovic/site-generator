@@ -1,4 +1,4 @@
-import { FooterConfig, FooterContent } from "../../../../../../page_cls_module/src";
+import { FooterConfig, FooterContent } from "@page_cls_module";
 
 export class RenderData_Footer {
     content: FooterContent

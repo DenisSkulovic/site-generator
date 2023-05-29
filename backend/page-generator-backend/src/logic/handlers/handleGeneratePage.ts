@@ -1,4 +1,4 @@
-import * as DTO from "../../../../../page_cls_module"
+import * as DTO from "@page_cls_module"
 import constructPage from "../page-builder/page/constructPage"
 import fetchFooter from "../page-builder/footer/fetchFooterFromDynamo"
 import fetchHeader from "../page-builder/header/fetchHeaderFromDynamo"
