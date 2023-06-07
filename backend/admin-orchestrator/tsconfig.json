@@ -30,8 +30,23 @@
       "@/*": [
         "src/*"
       ],
-      "@requests": [
-        "../requests-module"
+      "@page_cls_module": [
+        "../../page_cls_module"
+      ],
+      "@cloudfront_module": [
+        "../../cloudfront_module"
+      ],
+      "@repository_module": [
+        "../repository_module"
+      ],
+      "@auth_module": [
+        "../../auth_module"
+      ],
+      "@admin_cls_module": [
+        "../../admin_cls_module"
+      ],
+      "@s3_module": [
+        "../s3_module"
       ]
     }, /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
@@ -106,18 +121,31 @@
   "references": [
     {
       "path": "../../page_cls_module",
-      // add 'prepend' if you want to include the referenced project in your output file
       "prepend": false
     },
     {
-      "path": "../../classes_module",
-      // add 'prepend' if you want to include the referenced project in your output file
+      "path": "../../cloudfront_module",
       "prepend": false
     },
     {
-      "path": "../../page-generator-backend",
-      // add 'prepend' if you want to include the referenced project in your output file
+      "path": "../repository_module",
       "prepend": false
     },
+    {
+      "path": "../s3_module",
+      "prepend": false
+    },
+    {
+      "path": "../../auth_module",
+      "prepend": false
+    },
+    {
+      "path": "../../admin_cls_module",
+      "prepend": false
+    },
+    {
+      "path": "../page-generator-backend",
+      "prepend": false
+    }
   ]
 }

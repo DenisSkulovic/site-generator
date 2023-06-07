@@ -1,4 +1,4 @@
-import { BootstrapVersionEnum, AreaConfig, BlockConfig } from '../../../../../../page_cls_module';
+import type { BootstrapVersionEnum, AreaConfig, BlockConfig } from '../../../../../../page_cls_module';
 import editedAreaConfigMap from "../../../computed/pageConfig/editedAreaConfigMap"
 import editedBlockConfigMap from "../../../computed/pageConfig/editedBlockConfigMap"
 

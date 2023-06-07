@@ -1,4 +1,4 @@
-import * as CLASSES from "../../../../../../classes_module/src"
+import * as CLASSES from "../../../../../../repository_module"
 import * as DTO from "@page_cls_module"
 import * as AWS from "aws-sdk"
 

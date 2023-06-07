@@ -38,6 +38,7 @@ const updateDeletedItemsFromNestableConfig = () => {
             toDeleteAreaContentMap.value.set(item.areaContent_current.uuid, item.areaContent_current)
         } else if (item instanceof NestableItemBlock) {
             toDeleteBlockConfigMap.value.set(item.blockConfig_current.uuid, item.blockConfig_current)
+            if (!item.blockContent_current) throw new Error("item.blockContent_current is undefined here, so probably an issue with having a new page without a current config")
             toDeleteBlockContentMap.value.set(item.blockContent_current.uuid, item.blockContent_current)
         } else {
             throw new Error("uuid has to be an area or a block, so what is this? UUID: " + item.id)

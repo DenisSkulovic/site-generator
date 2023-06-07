@@ -1,6 +1,7 @@
 import {ref} from "vue"
 import type {Ref} from "vue"
 
-const loadingSet: Ref<Set<string>> = ref(new Set())
+const set: Set<string> = new Set()
+const loadingSet: Ref<Set<string>> = ref(set)
 
 export default loadingSet

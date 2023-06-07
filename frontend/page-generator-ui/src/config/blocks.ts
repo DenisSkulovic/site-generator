@@ -1,5 +1,6 @@
+import type { Component } from "vue"
 import { BlockTemplateEnum } from "../../../../page_cls_module"
-import FieldsEnum from "../enum/FieldsEnum"
+import fieldsMap from "../config/fieldsMap"
 
 type Option = {
     label: string,
@@ -9,12 +10,12 @@ type Option = {
 export class BlockDefinitionInput {
     label: string // this is used to display a name on the UI of the editor
     name: string // name is used inside the ejs template to access the value
-    component: FieldsEnum
+    component: Component
     options?: Option[]
     constructor(
         label: string,
         name: string,
-        component: FieldsEnum,
+        component: Component,
         options?: Option[]
     ) {
         this.label = label
@@ -48,7 +49,7 @@ const HTML: BlockDefinition = new BlockDefinition(
     "Raw HTML",
     "www.google.com",
     [
-        new BlockDefinitionInput("Raw HTML", "raw_html", FieldsEnum.TEXTAREA)
+        new BlockDefinitionInput("Raw HTML", "raw_html", fieldsMap.TEXTAREA)
     ],
 )
 
@@ -58,8 +59,8 @@ const IMAGE: BlockDefinition = new BlockDefinition(
     "Image",
     "www.google.com",
     [
-        new BlockDefinitionInput("Image URL", "imgSrc", FieldsEnum.TEXT),
-        new BlockDefinitionInput("Image Alt", "imgAlt", FieldsEnum.TEXT),
+        new BlockDefinitionInput("Image URL", "imgSrc", fieldsMap.TEXT),
+        new BlockDefinitionInput("Image Alt", "imgAlt", fieldsMap.TEXT),
     ],
 )
 
@@ -81,8 +82,8 @@ const TEXT: BlockDefinition = new BlockDefinition(
     "Text",
     "www.google.com",
     [
-        new BlockDefinitionInput("Text", "text", FieldsEnum.TEXTAREA),
-        new BlockDefinitionInput("Tag", "tag", FieldsEnum.SELECT, tags),
+        new BlockDefinitionInput("Text", "text", fieldsMap.TEXTAREA),
+        new BlockDefinitionInput("Tag", "tag", fieldsMap.SELECT, tags),
     ],
 )
 
@@ -97,8 +98,8 @@ const SEPARATOR: BlockDefinition = new BlockDefinition(
     "Separator",
     "www.google.com",
     [
-        new BlockDefinitionInput("Color", "color", FieldsEnum.TEXT),
-        new BlockDefinitionInput("Direction", "direction", FieldsEnum.SELECT, separators),
+        new BlockDefinitionInput("Color", "color", fieldsMap.TEXT),
+        new BlockDefinitionInput("Direction", "direction", fieldsMap.SELECT, separators),
     ],
 )
 
@@ -109,9 +110,9 @@ const LINK: BlockDefinition = new BlockDefinition(
     "Link",
     "www.google.com",
     [
-        new BlockDefinitionInput("Link URL", "linkHref", FieldsEnum.TEXT),
-        new BlockDefinitionInput("Link Text", "linkText", FieldsEnum.TEXT),
-        new BlockDefinitionInput("Classes", "classes", FieldsEnum.TEXT),
+        new BlockDefinitionInput("Link URL", "linkHref", fieldsMap.TEXT),
+        new BlockDefinitionInput("Link Text", "linkText", fieldsMap.TEXT),
+        new BlockDefinitionInput("Classes", "classes", fieldsMap.TEXT),
     ],
 )
 

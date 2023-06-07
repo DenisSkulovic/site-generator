@@ -115,7 +115,7 @@ const handleHoverScroll = () => {
         if (el) {
             el.scrollIntoView({ behavior: "smooth", block: "center" })
         }
-    }, 500)
+    }, 500) as any
 }
 const handleChangeName = (e: any) => {
     props.item.areaConfig_edit.areaName = e.target.value

@@ -1,4 +1,4 @@
-import { NestableItem } from "../../../classes/NestableItem"
+import type { NestableItem } from "../../../classes/NestableItem"
 import currentNestableItem from "../../../state/nestable/currentNestableItem"
 import getIsBlockUUID from "../../../logic/blockConfig/getIsBlockUUID"
 import setSidebarView from "./setSidebarView"

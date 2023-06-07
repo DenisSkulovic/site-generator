@@ -8,7 +8,7 @@
                     <span>{{ "< ...>" }}</span>
                 </div>
             </template>
-            <component :is="item instanceof NestableItemArea ? NestableItemAreaComp : NestableItemBlockComp" :item="item">
+            <component :is="item instanceof NestableItemArea ? NestableItemAreaComp : NestableItemBlockComp" :item="(item as any)">
             </component>
 
             <template v-if="item instanceof NestableItemArea && item.isCollapsed">

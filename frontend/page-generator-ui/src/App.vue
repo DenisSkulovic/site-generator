@@ -92,6 +92,7 @@ watch(
     resetPageConfig()
     resetPageHTMLObject()
     setNestableConfigFromData()
+    if (!currentPageHTMLObject.value) throw new Error("currentPageHTMLObject.value cannot be undefined")
     renderPageHTMLObject(currentPageHTMLObject.value)
   }
 )

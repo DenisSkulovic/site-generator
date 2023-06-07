@@ -95,8 +95,8 @@ const skeletonVersions: ComputedRef<{label: SkeletonVersionEnum, value: Skeleton
 })
 
 const handleChange = (fieldName: string, newVal: any) => {
-    console.log('change', fieldName, newVal)
-    props.pageConfig[fieldName] = newVal
+    console.log('change', fieldName, newVal);
+    (props.pageConfig as any)[fieldName] = newVal
 }
 
 watch(

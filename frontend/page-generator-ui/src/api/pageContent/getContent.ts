@@ -1,5 +1,5 @@
-import type {PageContent} from "../../../../../page_cls_module/src"
-import {buildPageContent} from "../../../../../page_cls_module/src"
+import type {PageContent} from "../../../../../page_cls_module"
+import {buildPageContent} from "../../../../../page_cls_module"
 import axios from "axios"
 
 const getContent = async (content_uuid: string): Promise<PageContent> => {

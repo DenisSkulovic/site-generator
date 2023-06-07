@@ -9,6 +9,8 @@ import renderPageHTMLObject from "@/logic/generation/renderPageHTMLObject"
 const handleRefreshUI = async () => {
     const {startLoadingThis, stopLoadingThis} = useLoading()
     startLoadingThis()
+    if (!editPageConfig.value) throw new Error("editPageConfig.value cannot be undefined")
+    if (!editPageContent.value) throw new Error("editPageContent.value cannot be undefined")
     const resp: GeneratePageResponse = await generatePage(
         editPageConfig.value,
         editPageContent.value,

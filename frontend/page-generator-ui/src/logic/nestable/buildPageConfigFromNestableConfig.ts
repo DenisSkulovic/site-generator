@@ -34,6 +34,7 @@ const processItem = ( // recursion
 }
 
 const buildPageConfigFromNestableConfig = (nestableConfig: NestableConfig): PageConfig => {
+    if (!editPageConfig.value) throw new Error("editPageConfig.value cannot be undefined")
     const pageConfigClone: PageConfig = reactive(cloneDeep(editPageConfig.value))
     pageConfigClone.areaConfigArr = [] // clone, but empty the array
     nestableConfig.forEach((nestableItem: NestableItem) => {

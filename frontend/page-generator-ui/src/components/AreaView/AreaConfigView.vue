@@ -84,8 +84,8 @@ const areaTemplateNames: ComputedRef<{label: AreaLayoutEnum, value: AreaLayoutEn
 })
 
 const handleChange = (fieldName: string, newVal: any) => {
-    console.log('change', fieldName, newVal)
-    props.areaConfig[fieldName] = newVal
+    console.log('change', fieldName, newVal);
+    (props.areaConfig as any)[fieldName] = newVal
 }
 
 

@@ -1,9 +1,15 @@
 {
+  "ts-node": {
+    // Do not forget to `npm i -D tsconfig-paths`
+    "require": [
+      "tsconfig-paths/register"
+    ]
+  },
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
     /* Projects */
     // "incremental": true,                              /* Save .tsbuildinfo files to allow for incremental compilation of projects. */
-    "composite": true,                                /* Enable constraints that allow a TypeScript project to be used with project references. */
+    "composite": true, /* Enable constraints that allow a TypeScript project to be used with project references. */
     // "tsBuildInfoFile": "./.tsbuildinfo",              /* Specify the path to .tsbuildinfo incremental compilation file. */
     // "disableSourceOfProjectReferenceRedirect": true,  /* Disable preferring source files instead of declaration files when referencing composite projects. */
     // "disableSolutionSearching": true,                 /* Opt a project out of multi-project reference checking when editing. */
@@ -29,6 +35,9 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "@repository_module": [
+        "../../repository_module"
       ],
       "@page_cls_module": [
         "../../page_cls_module"
@@ -110,7 +119,7 @@
       "prepend": false
     },
     {
-      "path": "../../classes_module",
+      "path": "../repository_module",
       // add 'prepend' if you want to include the referenced project in your output file
       "prepend": false
     },

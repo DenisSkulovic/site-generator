@@ -1,16 +1,67 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "exclude": [
+    "node_modules"
+  ],
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
     "baseUrl": ".",
+    "strict": true,
     "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
+      "@/*": [
+        "src/*"
+      ],
+      "@page_cls_module": [
+        "../../page_cls_module"
+      ],
+      "@cloudfront_module": [
+        "../../cloudfront_module"
+      ],
 
+      "@auth_module": [
+        "../../auth_module"
+      ],
+      "@admin_cls_module": [
+        "../../admin_cls_module"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ],
+    "skipLibCheck": true,
+    "types": [
+      "webpack-env",
+      "node"
+    ]
+  },
   "references": [
     {
       "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "../../page_cls_module",
+      "prepend": false
+    },
+    {
+      "path": "../../cloudfront_module",
+      "prepend": false
+    },
+    {
+      "path": "../../auth_module",
+      "prepend": false
+    },
+    {
+      "path": "../../admin_cls_module",
+      "prepend": false
+    },
+    {
+      "path": "../backend/page-generator-backend",
+      "prepend": false
     }
   ]
 }

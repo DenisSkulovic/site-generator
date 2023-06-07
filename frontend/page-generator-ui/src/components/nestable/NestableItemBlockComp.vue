@@ -51,7 +51,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue"
 import type { ComputedRef, Ref } from "vue"
-import { NestableItemBlock } from "../../classes/NestableItemBlock";
+import type { NestableItemBlock } from "../../classes/NestableItemBlock";
 import SearchSvg from "../svg/SearchSvg.vue";
 import TrashSvg from "../svg/TrashSvg.vue";
 import { BlockTemplateEnum } from '../../../../../page_cls_module/src';
@@ -92,7 +92,7 @@ const handleHoverScroll = () => {
         if (el) {
             el.scrollIntoView({ behavior: "smooth", block: "center" })
         }
-    }, 500)
+    }, 500) as any
 }
 const handleChangeName = (e: any) => {
     props.item.blockConfig_edit.blockName = e.target.value

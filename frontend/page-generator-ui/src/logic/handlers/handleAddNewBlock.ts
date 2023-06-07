@@ -23,7 +23,9 @@ const handleAddNewBlock = (
     const newBlockContent: BlockContent = getNewBlockContent()
 
     const defaultFields = defaultBlockFieldMap.get(newBlockConfig.blockTemplateName)
-    newBlockContent.data = cloneDeep(defaultFields)
+    if (defaultFields) {
+        newBlockContent.data = cloneDeep(defaultFields)
+    }
 
     // record the new block
     newBlockConfigMap.value.set(newBlockConfig.uuid, newBlockConfig)

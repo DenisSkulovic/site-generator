@@ -36,6 +36,7 @@ const processItem = (
 
 
 const buildPageContentFromNestableConfig = (nestableConfig: NestableConfig) => {
+    if (!editPageContent.value) throw new Error("editPageContent.value cannot be undefined")
     const pageContentClone: PageContent = reactive(cloneDeep(editPageContent.value))
     pageContentClone.data = {} // clone, but empty the data object
     nestableConfig.forEach((nestableItem: NestableItem) => {

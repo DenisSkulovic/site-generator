@@ -59,4 +59,5 @@ export { HeadVersionEnum } from "./components/page/enum/HeadVersionEnum";
 export { FooterTemplateVersionEnum } from "./components/page/enum/FooterTemplateVersionEnum";
 export { HeaderTemplateVersionEnum } from "./components/page/enum/HeaderTemplateVersionEnum";
 export { LangEnum } from "./components/page/enum/LangEnum";
+export { Product } from "./components/Product";
 //# sourceMappingURL=index.d.ts.map

@@ -2,7 +2,7 @@
     <div :style="styles" class="line" />
 </template>
 
-<script>
+<script lang="ts">
 export default {
     name: "LineComponent",
     props: {
@@ -25,7 +25,7 @@ export default {
     },
     computed: {
         styles() {
-            const styles = { border: "none" }
+            const styles: {[key: string]: any} = { border: "none" }
             const border = `${this.thickness} ${this.borderType} ${this.color}`
             if (this.direction === "horizontal") {
                 styles["border-bottom"] = border

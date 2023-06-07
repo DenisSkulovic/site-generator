@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
-  "author": "Denis Skulovic, Travelfactory Lab",
+  "author": "Denis Skulovic",
   "license": "MIT",
   "scripts": {
     "start": "ts-node --compiler ttypescript src/dev/server.ts",
@@ -47,10 +47,15 @@
     "nodemon": "^2.0.20",
     "prettier": "^2.5.1",
     "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
     "ttypescript": "^1.5.15",
     "typescript": "^4.9.5",
     "typescript-is": "^0.19.0",
     "typescript-transform-paths": "^3.4.6",
     "zip-local": "^0.3.5"
+  },
+  "_moduleAliases": {
+    "@page_cls_module": "../../page_cls_module",
+    "@repository_module": "../../repository_module"
   }
 }

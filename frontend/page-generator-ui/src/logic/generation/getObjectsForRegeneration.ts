@@ -1,13 +1,16 @@
 import nestableConfig from "@/state/nestable/nestableConfig"
 import { GeneratePageRequest, type AreaConfig, type AreaContent, type BlockConfig, type BlockContent, GenerateAreaRequest, GenerateBlockRequest, type PageConfig, type PageContent } from "../../../../../page_cls_module/src"
-import currentPageConfig from "@/state/pageConfig/currentPageConfig"
-import currentPageContent from "@/state/pageContent/currentPageContent"
 import editPageConfig from "@/state/pageConfig/editPageConfig"
 import editPageContent from "@/state/pageContent/editPageContent"
 import lastRenderedData from "@/state/lastRenderedData"
 import type { NestableItem } from "@/classes/NestableItem"
 import { NestableItemArea } from "@/classes/NestableItemArea"
 import { NestableItemBlock } from "@/classes/NestableItemBlock"
+import editedAreaConfigMap from "@/computed/pageConfig/editedAreaConfigMap"
+import editedAreaContentMap from "@/computed/pageContent/editedAreaContentMap"
+import editedBlockConfigMap from "@/computed/pageConfig/editedBlockConfigMap"
+import editedBlockContentMap from "@/computed/pageContent/editedBlockContentMap"
+
 
 type GenerateObjects = {
     page?: GeneratePageRequest,
@@ -39,7 +42,6 @@ const getIsNeedToRegenerateArea = (
     editAreaConfig: AreaConfig,
     renderedAreaContent: AreaContent | null,
     editAreaContent: AreaContent,
-
 ): boolean => {
     // check some fields
     if (editAreaConfig.isIncludeContainer !== renderedAreaConfig?.isIncludeContainer) return true
@@ -79,8 +81,22 @@ const getIsNeedToRegenerateBlock = (
 
 const processNestableItem = (nestableItem: NestableItem, obj: GenerateObjects) => {
     if (nestableItem instanceof NestableItemArea) {
+        const renderedAreaConfig: AreaConfig | undefined = lastRenderedData.areaConfigMap?.get(nestableItem.id)
+        const renderedAreaContent: AreaContent | undefined = lastRenderedData.areaContentMap?.get(nestableItem.contentId)
+        if (!renderedAreaConfig) throw new Error("renderedAreaConfig cannot be undefined")
+        if (!renderedAreaContent) throw new Error("renderedAreaContent cannot be undefined")
 
-        const isNeedToRegenArea: boolean = getIsNeedToRegenerateArea()
+        const editAreaConfig: AreaConfig | undefined = editedAreaConfigMap.value.get(nestableItem.id)
+        const editAreaContent: AreaContent | undefined = editedAreaContentMap.value.get(nestableItem.contentId)
+        if (!editAreaConfig) throw new Error("editAreaConfig cannot be undefined")
+        if (!editAreaContent) throw new Error("editAreaContent cannot be undefined")
+
+        const isNeedToRegenArea: boolean = getIsNeedToRegenerateArea(
+            renderedAreaConfig,
+            editAreaConfig,
+            renderedAreaContent,
+            editAreaContent,
+        )
         console.log(`isNeedToRegenArea`, isNeedToRegenArea)
         if (isNeedToRegenArea) {
             const req = new GenerateAreaRequest(
@@ -95,7 +111,22 @@ const processNestableItem = (nestableItem: NestableItem, obj: GenerateObjects) =
             })
         }
     } else if (nestableItem instanceof NestableItemBlock) {
-        const isNeedToRegenBlock: boolean = getIsNeedToRegenerateBlock()
+        const renderedBlockConfig: BlockConfig | undefined = lastRenderedData.blockConfigMap?.get(nestableItem.id)
+        const renderedBlockContent: BlockContent | undefined = lastRenderedData.blockContentMap?.get(nestableItem.contentId)
+        if (!renderedBlockConfig) throw new Error("renderedBlockConfig cannot be undefined")
+        if (!renderedBlockContent) throw new Error("renderedBlockContent cannot be undefined")
+
+        const editBlockConfig: BlockConfig | undefined = editedBlockConfigMap.value.get(nestableItem.id)
+        const editBlockContent: BlockContent | undefined = editedBlockContentMap.value.get(nestableItem.contentId)
+        if (!editBlockConfig) throw new Error("editBlockConfig cannot be undefined")
+        if (!editBlockContent) throw new Error("editBlockContent cannot be undefined")
+
+        const isNeedToRegenBlock: boolean = getIsNeedToRegenerateBlock(
+            renderedBlockConfig,
+            editBlockConfig,
+            renderedBlockContent,
+            editBlockContent,
+        )
         console.log(`isNeedToRegenBlock`, isNeedToRegenBlock)
         if (isNeedToRegenBlock) {
             const req = new GenerateBlockRequest(

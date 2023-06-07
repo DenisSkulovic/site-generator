@@ -7,8 +7,7 @@
 
 <script setup lang="ts">
 // components
-import { watch } from 'vue';
-import { NestableItem } from '../../classes/NestableItem';
+import type { NestableItem } from '../../classes/NestableItem';
 import NestedDraggableComp from '../../components/nestable/NestedDraggableComp.vue';
 
 // state

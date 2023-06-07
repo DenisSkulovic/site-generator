@@ -1,4 +1,4 @@
-import { NestableItem } from "../../classes/NestableItem";
+import type { NestableItem } from "../../classes/NestableItem";
 import displayAreaView from "../../components/MainSidebar/func/displayAreaView";
 import displayBlockView from "../../components/MainSidebar/func/displayBlockView";
 import displayMainView from "../../components/MainSidebar/func/displayMainView";

@@ -128,6 +128,7 @@ export class NestableItemBlock extends NestableItem {
     }
     public setDefaultFields() {
         const defaultFields = cloneDeep(defaultBlockFieldMap.get(this.blockConfig_edit.blockTemplateName))
+        if (!defaultFields) return
         Object.entries(defaultFields).forEach((entry) => {
             const key = entry[0]
             const value = entry[1]

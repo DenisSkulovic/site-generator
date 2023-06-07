@@ -15,7 +15,7 @@
 </template>
   
 <script setup lang="ts">
-import { NestableItem } from "../../classes/NestableItem"
+import type { NestableItem } from "../../classes/NestableItem"
 import { NestableItemArea } from "../../classes/NestableItemArea"
 import { NestableItemBlock } from "../../classes/NestableItemBlock"
 import { computed } from "vue"

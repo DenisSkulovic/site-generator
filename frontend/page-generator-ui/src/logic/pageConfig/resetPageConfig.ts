@@ -6,7 +6,8 @@ import * as _ from "lodash"
 const resetPageConfig = () => {
     console.log(`resetPageConfig`)
     const areaConfigArr: AreaConfig[] = editPageConfig.value?.areaConfigArr || []
-    const newConfig: PageConfig = _.cloneDeep(currentPageConfig.value)
+    const newConfig: PageConfig | null = _.cloneDeep(currentPageConfig.value)
+    if (!newConfig) throw new Error("newConfig cannot be undefined")
     newConfig.areaConfigArr = areaConfigArr
     editPageConfig.value = newConfig
 }

@@ -110,7 +110,7 @@
       "prepend": false
     },
     {
-      "path": "../../classes_module",
+      "path": "../../repository_module",
       // add 'prepend' if you want to include the referenced project in your output file
       "prepend": false
     },

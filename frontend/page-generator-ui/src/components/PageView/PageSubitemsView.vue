@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 // classes
-import { NestableItem } from "../../classes/NestableItem"
+import type { NestableItem } from "../../classes/NestableItem"
 
 // components
 import NestedDraggableComp from '../../components/nestable/NestedDraggableComp.vue';
