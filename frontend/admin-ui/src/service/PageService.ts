@@ -1,6 +1,8 @@
-import type { PageConfig, PageContent, PageHTMLObject } from "../../../../page_cls_module/src";
+import { pagesCurrent, pagesEdit } from "@/state/pages";
+import { buildPageHTMLObject, type PageHTMLObject } from "../../../../page_cls_module/src";
 import { AdminService } from "./AdminService";
 import axios from "axios"
+import {cloneDeep} from "lodash"
 
 export class PageService extends AdminService {
     constructor(adminUrl: string) {
@@ -13,8 +15,20 @@ export class PageService extends AdminService {
     }
 
     async fetchPageHTMLObjectAll(): Promise<PageHTMLObject[]> {
-        const url = `${this.adminUrl}/page-html/all`
-        return await axios.get(url)
+        const url = `${this.adminUrl}/page-html/all`;
+        const {data} = await axios.get(url);
+        // Make sure data is an array before mapping over it
+        if (!Array.isArray(data)) {
+            throw new Error("Invalid data received from the server. Expected an array.");
+        }
+        // Build PageHTMLObject for each item in the array
+        const pageHTMLObjects: PageHTMLObject[] = data.map(buildPageHTMLObject);
+        return pageHTMLObjects;
+    }
+
+    async getPageHTMLObjectAll(): Promise<void> {
+        pagesCurrent.value = await this.fetchPageHTMLObjectAll()
+        pagesEdit.value = cloneDeep(pagesCurrent.value)
     }
 
     private async savePageHTMLObject(pageHTMLObject: PageHTMLObject) {

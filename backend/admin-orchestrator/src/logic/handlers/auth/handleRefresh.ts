@@ -1,18 +1,24 @@
-import {AuthManager} from "@auth_module"
-import {type APIGatewayEvent} from "aws-lambda"
+import { APIGatewayEvent } from "aws-lambda";
+import { AuthManager } from "@auth_module";
+import getEnvVariable from "@/logic/getEnvVariable";
 
-const handleRefresh = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<{accessToken: string}> => {
-    // TODO check this, maybe use body, or different header name, or query param
-    const refreshToken: string = event.headers['AUTHORIZATION']
-    if (!refreshToken) throw new Error("AUTHORIZATION is a mandatory header")
-    const jwtSecret = process.env.JWT_SECRET
-    if (!jwtSecret) throw new Error("JWT_SECRET is a mandatory env param")
+const handleRefresh = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<{ accessToken: string }> => {
+    const refreshToken: string = event.headers['AUTHORIZATION'];
+    if (!refreshToken) throw new Error("AUTHORIZATION is a mandatory header");
 
-    const auth = new AuthManager(jwtSecret, process.env.DEFAULT_TOKEN_EXPIRY || "3h")
-    const accessToken = auth.refreshAccessToken(refreshToken)
+    const jwtSecret = getEnvVariable("JWT_SECRET");
+    const defaultTokenExpiry = getEnvVariable("DEFAULT_TOKEN_EXPIRY") || "3h";
+
+    const auth = new AuthManager(jwtSecret, defaultTokenExpiry);
+    const accessToken = auth.refreshAccessToken(refreshToken);
+
+    if (!accessToken) {
+        throw new Error("Access token could not be refreshed");
+    }
+
     return {
         accessToken,
-    }
+    };
 }
 
-export default handleRefresh
+export default handleRefresh;

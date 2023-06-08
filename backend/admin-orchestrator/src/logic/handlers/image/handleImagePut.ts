@@ -1,16 +1,30 @@
-import {S3Operations} from "@s3_module"
-import {type APIGatewayEvent} from "aws-lambda"
+import { APIGatewayEvent } from "aws-lambda";
+import { S3Operations } from "@s3_module";
+import getEnvVariable from "@/logic/getEnvVariable";
 
-const handleImagePut = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {
-    const body = JSON.parse(event.body || "{}")
-    const key: string = body.key
-    if (!key) throw new Error("key is a mandatory path param")
-    const imageData: Buffer = body.imageData
-    if (!imageData) throw new Error("imageData is a mandatory path param")
-    const contentType: string = body.contentType
-    if (!contentType) throw new Error("contentType is a mandatory path param")
-    const s3 = new S3Operations()
-    await s3.uploadImage(imageData, key, contentType)
+interface ImageRequestBody {
+    key: string;
+    imageData: Buffer;
+    contentType: string;
 }
 
-export default handleImagePut
+const handleImagePut = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {
+    const body: ImageRequestBody = JSON.parse(event.body || "{}");
+
+    const { key, imageData, contentType } = body;
+    if (!key) {
+        throw new Error("key is a mandatory path param");
+    }
+    if (!imageData) {
+        throw new Error("imageData is a mandatory path param");
+    }
+    if (!contentType) {
+        throw new Error("contentType is a mandatory path param");
+    }
+
+    const bucketName = getEnvVariable("BUCKET_NAME");
+    const s3 = new S3Operations(bucketName);
+    await s3.uploadImage(imageData, key, contentType);
+}
+
+export default handleImagePut;

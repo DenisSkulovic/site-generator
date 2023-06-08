@@ -7,7 +7,7 @@ export class Repository {
 
     constructor(tableName: string, region: string) {
         this.tableName = tableName
-        AWS.config.update({region}); // set your region
+        AWS.config.update({ region }); // set your region
         this.docClient = new AWS.DynamoDB.DocumentClient();
     }
 
@@ -21,6 +21,27 @@ export class Repository {
             console.log("Added item:", JSON.stringify(item));
         } catch (error) {
             console.error("Unable to add item. Error:", JSON.stringify(error));
+        }
+    }
+
+    async putItems(items: any[]): Promise<void> {
+        const requests = items.map((item) => ({
+            PutRequest: {
+                Item: item,
+            },
+        }));
+
+        const params: DocumentClient.BatchWriteItemInput = {
+            RequestItems: {
+                [this.tableName]: requests,
+            },
+        };
+
+        try {
+            await this.docClient.batchWrite(params).promise();
+            console.log("Added items:", JSON.stringify(items));
+        } catch (error) {
+            console.error("Unable to add items. Error:", JSON.stringify(error));
         }
     }
 

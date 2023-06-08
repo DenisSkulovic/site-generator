@@ -1,43 +1,69 @@
 <template>
     <div>
-        <div>
-            <h3>Header</h3>
-            <div v-if="headerContentEdit.value && headerConfigEdit.value">
-                <h4>Links</h4>
-                <div v-for="(link, link_i) in headerContentEdit.value.navItems">
-
-                </div>
-            </div>
-        </div>
-        <div>
-            <h3>Footer</h3>
-            <div v-if="footerContentEdit.value && footerConfigEdit.value">
-
-            </div>
-        </div>
+        <h1>Header and Footer Configuration</h1>
+        <HeaderConfig :config="headerConfigEdit" :content="headerContentEdit" />
+        <FooterConfig :config="footerConfigEdit" :content="footerContentEdit" />
+        <button @click="saveConfig">Save Configuration</button>
+        <button @click="saveContent">Save Content</button>
+        <button @click="regenerate">Regenerate</button>
     </div>
 </template>
+  
+<script lang="ts" setup>
+import { onMounted } from 'vue';
+import HeaderConfig from './HeaderConfig.vue';
+import FooterConfig from './FooterConfig.vue';
+import {
+    headerConfigEdit,
+    footerConfigEdit,
+} from '@/state/configState';
+import {
+    headerContentEdit,
+    footerContentEdit,
+} from '@/state/contentState';
+import adminUrl from '@/state/adminUrl';
+import { FooterService } from '@/service/FooterService';
+import { HeaderService } from '@/service/HeaderService';
 
-<script setup lang="ts">
-import { onMounted } from "vue"
-import { headerConfigEdit, footerConfigEdit } from "@/state/configState"
-import { headerContentEdit, footerContentEdit } from "@/state/contentState"
-import { FooterService } from "@/service/FooterService"
-import { HeaderService } from "@/service/HeaderService"
-import adminUrl from "@/state/adminUrl"
 
-onMounted(async () => {
-    const footerService = new FooterService(adminUrl.value)
-    const headerService = new HeaderService(adminUrl.value)
+// Fetch header and footer configuration and content
+const headerService = new HeaderService(adminUrl.value);
+const footerService = new FooterService(adminUrl.value);
+
+
+// Save header and footer configuration
+const saveConfig = async () => {
     await Promise.all([
-        footerService.fetchFooterConfig(),
-        footerService.fetchFooterContent(),
+        headerService.saveHeaderConfig(),
+        footerService.saveFooterConfig(),
+    ]);
+};
+
+// Save header and footer content
+const saveContent = async () => {
+    await Promise.all([
+        headerService.saveHeaderContent(),
+        footerService.saveFooterContent(),
+    ]);
+};
+
+// Regenerate header and footer
+const regenerate = async () => {
+    await Promise.all([
+        headerService.regenerateHeader(),
+        footerService.regenetareFooter(),
+    ]);
+};
+
+// Fetch configuration and content on component mount
+onMounted(async () => {
+    await Promise.all([
         headerService.fetchHeaderConfig(),
         headerService.fetchHeaderContent(),
+        footerService.fetchFooterConfig(),
+        footerService.fetchFooterContent(),
     ])
-})
-
-
+});
 </script>
 
-<style scoped></style>
+  

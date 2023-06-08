@@ -1,11 +1,11 @@
-import { PageHTMLRepository } from "@repository_module"
-import type {PageHTMLObject} from "@page_cls_module"
-import {type APIGatewayEvent} from "aws-lambda"
+import { APIGatewayEvent } from "aws-lambda";
+import { PageHTMLRepository } from "@repository_module";
+import { PageHTMLObject } from "@page_cls_module";
 
-const handlePageHTMLObjectGetAll = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<PageHTMLObject> => {
-    const repo = new PageHTMLRepository()
-    const item = await repo.getAllItems()
-    return item
-}
+const handlePageHTMLObjectGetAll = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<PageHTMLObject[]> => {
+    const repo = new PageHTMLRepository();
+    const items: PageHTMLObject[] = await repo.getAllItems();
+    return items;
+};
 
-export default handlePageHTMLObjectGetAll
+export default handlePageHTMLObjectGetAll;

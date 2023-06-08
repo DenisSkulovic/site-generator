@@ -14,6 +14,12 @@ export enum PageNameEnum {
   PAGE = "page",
   HEADER_FOOTER_MANAGER = "header-footer-manager"
 }
+export enum PageTitleEnum {
+  HOME = "Home",
+  PAGES = "Pages",
+  PAGE = "Page",
+  HEADER_FOOTER_MANAGER = "Header & Footer Manager"
+}
 
 export class Route {
   path: string
