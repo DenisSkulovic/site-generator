@@ -28,9 +28,7 @@ export const buildPageConfig = (obj: any): PageConfig => {
         obj.headVersion,
         bootstrapVersion,
         templateVersion,
-        obj.headerId,
         areaConfigArr,
-        obj.footerId,
         metadata,
     )
     return pageConfig
@@ -45,9 +43,7 @@ export class PageConfig { // this should be stored as a separate object, on Dyna
     headVersion: HeadVersionEnum
     bootstrapVersion: BootstrapVersionEnum
     templateVersion: SkeletonVersionEnum
-    headerId: string
     areaConfigArr: AreaConfig[]
-    footerId: string
     metadata: PageConfigMetadata
     clazz: string
     constructor(
@@ -59,9 +55,7 @@ export class PageConfig { // this should be stored as a separate object, on Dyna
         headVersion: HeadVersionEnum,
         bootstrapVersion: BootstrapVersionEnum,
         templateVersion: SkeletonVersionEnum,
-        headerId: string,
         areaConfigArr: AreaConfig[],
-        footerId: string,
         metadata: PageConfigMetadata,
     ) {
         this.uuid = uuid
@@ -72,9 +66,7 @@ export class PageConfig { // this should be stored as a separate object, on Dyna
         this.headVersion = headVersion
         this.bootstrapVersion = bootstrapVersion
         this.templateVersion = templateVersion
-        this.headerId = headerId
         this.areaConfigArr = areaConfigArr
-        this.footerId = footerId
         this.metadata = metadata
         this.clazz = this.constructor.name
     }

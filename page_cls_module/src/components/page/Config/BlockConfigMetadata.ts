@@ -1,13 +1,3 @@
-export class BlockConfigMetadata {
-    createdTimestamp: number
-    updatedTimestamp: number
-    clazz: string
-    constructor(
-        createdTimestamp: number,
-        updatedTimestamp: number,
-    ) {
-        this.createdTimestamp = createdTimestamp
-        this.updatedTimestamp = updatedTimestamp
-        this.clazz = this.constructor.name
-    }
-}
+import { Metadata } from "src/components/Metadata";
+
+export class BlockConfigMetadata extends Metadata {}

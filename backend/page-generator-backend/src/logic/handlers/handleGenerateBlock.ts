@@ -1,20 +1,20 @@
-import * as DTO from "@page_cls_module"
+import { BlockConfig, BlockContent, BlockHTMLObject, GenerateBlockRequest, GenerateBlockResponse } from "@page_cls_module"
 import constructBlock from "../page-builder/page/constructBlock"
 
 const handleGenerateBlock = async (
-    requestData: DTO.GenerateBlockRequest,
-): Promise<DTO.GenerateBlockResponse> => {
+    requestData: GenerateBlockRequest,
+): Promise<GenerateBlockResponse> => {
     console.log(`>>> handleGenerateBlock`)
 
-    const config: DTO.BlockConfig = requestData.config
-    const content: DTO.BlockContent = requestData.content
+    const config: BlockConfig = requestData.config
+    const content: BlockContent = requestData.content
 
-    const blockHTMLObject: DTO.BlockHTMLObject = await constructBlock(
+    const blockHTMLObject: BlockHTMLObject = await constructBlock(
         content,
         config,
     )
 
-    const res: DTO.GenerateBlockResponse = new DTO.GenerateBlockResponse(
+    const res: GenerateBlockResponse = new GenerateBlockResponse(
         blockHTMLObject
     )
     console.log(`handleGenerateBlock res`, res)

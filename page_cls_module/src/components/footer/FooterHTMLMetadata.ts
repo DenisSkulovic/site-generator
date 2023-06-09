@@ -1,22 +1,3 @@
-export const buildFooterHTMLMetadata = (obj: any): FooterHTMLMetadata => {
-    if (obj.clazz !== "FooterHTMLMetadata") throw new Error("clazz cannot be anything other than 'FooterHTMLMetadata'")
-    const footerHTMLMetadata: FooterHTMLMetadata = new FooterHTMLMetadata(
-        obj.createdTimestamp,
-        obj.updatedTimestamp,
-    )
-    return footerHTMLMetadata
-}
+import { Metadata } from "src/components/Metadata";
 
-export class FooterHTMLMetadata {
-    createdTimestamp: number
-    updatedTimestamp: number
-    clazz: string
-    constructor(
-        createdTimestamp: number,
-        updatedTimestamp: number,
-    ) {
-        this.createdTimestamp = createdTimestamp
-        this.updatedTimestamp = updatedTimestamp
-        this.clazz = this.constructor.name
-    }
-}
+export class FooterHTMLMetadata extends Metadata {}

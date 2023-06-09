@@ -74,7 +74,7 @@ const routes: Routes = {
 };
 
 
-export const handler: HandlerFunction = async (
+export const handler = async (
     event: APIGatewayEvent,
     context: Context,
     callback?: APIGatewayProxyCallbackV2,

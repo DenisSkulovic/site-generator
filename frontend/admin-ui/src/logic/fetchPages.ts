@@ -3,7 +3,7 @@ import { PageService } from "@/service";
 import adminUrl from "@/state/adminUrl";
 
 const fetchPages = async () => {
-    const { startLoadingThis, stopLoadingThis, isLoadingThis } = useLoading();
+    const { startLoadingThis, stopLoadingThis } = useLoading();
     try {
         startLoadingThis();
         const pageService = new PageService(adminUrl.value);

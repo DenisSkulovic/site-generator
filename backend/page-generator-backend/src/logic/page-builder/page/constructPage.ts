@@ -1,60 +1,100 @@
-import * as DTO from "@page_cls_module"
-import ejs from "ejs"
-import getDirName from "../../../utils/getDirName"
-import guid from "../../../utils/guid"
+import { AreaConfig, AreaContent, AreaHTMLObject, BootstrapVersionEnum, FooterHTMLObject, HeaderHTMLObject, PageConfig, PageContent, PageHTMLMetadata, PageHTMLObject, SkeletonVersionEnum } from "@page_cls_module"
 import { RenderData_Page } from "../../../classes/renderData/pages/RenderData_Page"
-import constructArea from "./constructArea"
+import ejs from "ejs"
 
-const constructPage = async (
-    pageContent: DTO.PageContent,
-    pageConfig: DTO.PageConfig,
-    headerHTMLObject: DTO.HeaderHTMLObject,
-    footerHTMLObject: DTO.FooterHTMLObject,
-): Promise<DTO.PageHTMLObject> => {
-    const templateVersion = pageConfig.templateVersion
-    const uuid: string = guid()
-
-    const __dirname: string = getDirName()
-    const skeletonTemplatePath = `${__dirname}/templates/html/${pageConfig.bootstrapVersion}/skeleton/${templateVersion}/index.ejs`
-
-    const areaConfigArr: DTO.AreaConfig[] = pageConfig.areaConfigArr
-    const areasContentObject: { [areaConfigId: string]: DTO.AreaContent; } = pageContent.data
-
-    const areaHTMLObjectsPromiseArr: Promise<DTO.AreaHTMLObject>[] = areaConfigArr.map(async (areaConfig: DTO.AreaConfig) => {
-        const areaContent: DTO.AreaContent | undefined = areasContentObject[areaConfig.uuid]
-        if (!areaContent) throw new Error("areaContent cannot be undefined")
-        const areaHTMLObject: DTO.AreaHTMLObject = await constructArea(
-            areaConfig,
-            areaContent,
-        )
-        return areaHTMLObject
-    })
-    const areaHTMLObjectsArr: DTO.AreaHTMLObject[] = await Promise.all(areaHTMLObjectsPromiseArr)
-
-    const pageRenderData: RenderData_Page = new RenderData_Page(
-        pageConfig,
-        pageContent,
-        headerHTMLObject,
-        areaHTMLObjectsArr,
-        footerHTMLObject,
-    )
-    const pageHtml: string = await ejs.renderFile(skeletonTemplatePath, pageRenderData)
-
-    const createdTimestamp: number = Date.now()
-    const updatedTimestamp = createdTimestamp
-
-    const pageMetadata: DTO.PageHTMLMetadata = new DTO.PageHTMLMetadata(
-        createdTimestamp,
-        updatedTimestamp,
-    )
-    const pageHTMLObject: DTO.PageHTMLObject = new DTO.PageHTMLObject(
+export const buildPageHTMLObject = (
+    uuid: string,
+    pageHtml: string,
+    pageConfig: PageConfig,
+    pageContent: PageContent,
+    pageMetadata: PageHTMLMetadata,
+) => {
+    return new PageHTMLObject(
         uuid,
         pageHtml,
         pageConfig,
         pageContent,
         pageMetadata,
-    )
-    return pageHTMLObject
+    );
 }
 
-export default constructPage
+export const buildPageHTMLMetadata = (
+    createdTimestamp: number,
+    updatedTimestamp: number,
+) => {
+    return new PageHTMLMetadata(
+        createdTimestamp,
+        updatedTimestamp,
+    );
+}
+
+export const renderEjsFile = async (
+    skeletonTemplatePath: string,
+    pageRenderData: RenderData_Page,
+) => {
+    return await ejs.renderFile(skeletonTemplatePath, pageRenderData);
+}
+
+export const buildPageRenderData = (
+    pageConfig: PageConfig,
+    pageContent: PageContent,
+    headerHTMLObject: HeaderHTMLObject,
+    areaHTMLObjectsArr: AreaHTMLObject[],
+    footerHTMLObject: FooterHTMLObject,
+) => {
+    return new RenderData_Page(
+        pageConfig,
+        pageContent,
+        headerHTMLObject,
+        areaHTMLObjectsArr,
+        footerHTMLObject,
+    );
+}
+
+export const getSkeletonTemplatePath = (
+    __dirname: string,
+    bootstrapVersion: BootstrapVersionEnum,
+    templateVersion: SkeletonVersionEnum,
+) => {
+    return `${__dirname}/templates/html/${bootstrapVersion}/skeleton/${templateVersion}/index.ejs`;
+}
+
+export const constructPage = async (
+    pageContent: PageContent,
+    pageConfig: PageConfig,
+    headerHTMLObject: HeaderHTMLObject,
+    footerHTMLObject: FooterHTMLObject,
+    __dirname: string,
+    constructArea: (areaConfig: AreaConfig, areaContent: AreaContent) => Promise<AreaHTMLObject>,
+    guidFn: () => string,
+) => {
+    const templateVersion = pageConfig.templateVersion
+    const uuid: string = guidFn()
+
+    const skeletonTemplatePath = getSkeletonTemplatePath(__dirname, pageConfig.bootstrapVersion, templateVersion)
+
+    const areaConfigArr: AreaConfig[] = pageConfig.areaConfigArr
+    const areasContentObject: { [areaConfigId: string]: AreaContent; } = pageContent.data
+
+    const areaHTMLObjectsPromiseArr: Promise<AreaHTMLObject>[] = areaConfigArr.map(async (areaConfig: AreaConfig) => {
+        const areaContent: AreaContent | undefined = areasContentObject[areaConfig.uuid]
+        if (!areaContent) throw new Error("areaContent cannot be undefined")
+        const areaHTMLObject: AreaHTMLObject = await constructArea(
+            areaConfig,
+            areaContent,
+        )
+        return areaHTMLObject
+    })
+    const areaHTMLObjectsArr: AreaHTMLObject[] = await Promise.all(areaHTMLObjectsPromiseArr)
+
+    const pageRenderData = buildPageRenderData(pageConfig, pageContent, headerHTMLObject, areaHTMLObjectsArr, footerHTMLObject)
+    const pageHtml = await renderEjsFile(skeletonTemplatePath, pageRenderData)
+
+    const createdTimestamp: number = Date.now()
+    const updatedTimestamp = createdTimestamp
+
+    const pageMetadata = buildPageHTMLMetadata(createdTimestamp, updatedTimestamp)
+    const pageHTMLObject = buildPageHTMLObject(uuid, pageHtml, pageConfig, pageContent, pageMetadata)
+    
+    return pageHTMLObject
+}

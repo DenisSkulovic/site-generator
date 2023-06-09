@@ -1,17 +1,19 @@
-import * as DTO from "@page_cls_module"
-import constructPage from "../page-builder/page/constructPage"
-import fetchFooter from "../page-builder/footer/fetchFooterFromDynamo"
+import { FooterHTMLObject, GeneratePageRequest, GeneratePageResponse, HeaderHTMLObject, PageConfig, PageContent, PageHTMLObject } from "@page_cls_module"
+import {constructPage} from "../page-builder/page/constructPage"
+import constructArea from "../page-builder/page/constructArea"
+import fetchFooter from "../page-builder/footer/fetchFooterFromS3"
 import fetchHeader from "../page-builder/header/fetchHeaderFromDynamo"
+import guid from "@/utils/guid"
 
 const handleGeneratePage = async (
-    requestData: DTO.GeneratePageRequest,
-): Promise<DTO.GeneratePageResponse> => {
+    requestData: GeneratePageRequest,
+): Promise<GeneratePageResponse> => {
     console.log(`>>> handleGeneratePage`)
 
-    const content: DTO.PageContent = requestData.content
-    const config: DTO.PageConfig = requestData.config
+    const content: PageContent = requestData.content
+    const config: PageConfig = requestData.config
 
-    const promises: [Promise<DTO.HeaderHTMLObject | undefined>, Promise<DTO.FooterHTMLObject | undefined>] = [
+    const promises: [Promise<HeaderHTMLObject | undefined>, Promise<FooterHTMLObject | undefined>] = [
         fetchHeader(config.headerId),
         fetchFooter(config.footerId),
     ]
@@ -21,14 +23,17 @@ const handleGeneratePage = async (
     if (!headerHTMLObject) throw new Error("failed to fetch header")
     if (!footerHTMLObject) throw new Error("failed to fetch footer")
 
-    const pageHTMLObject: DTO.PageHTMLObject = await constructPage(
+    const pageHTMLObject: PageHTMLObject = await constructPage(
         content,
         config,
         headerHTMLObject,
         footerHTMLObject,
+        __dirname,
+        constructArea,
+        guid,
     )
 
-    const resp: DTO.GeneratePageResponse = new DTO.GeneratePageResponse(
+    const resp: GeneratePageResponse = new GeneratePageResponse(
         pageHTMLObject
     )
     console.log(`handleGeneratePage resp`, resp)
