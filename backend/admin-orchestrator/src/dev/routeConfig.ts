@@ -1,77 +1,120 @@
-
-export type RouteConfigEntry = {
-    routeKey: string,
-    pathParameters?: Array<string>
-}
-
-export type RouteConfig = {
-    [regex: string]: RouteConfigEntry
-}
-
-const routeConfig: RouteConfig = {
+const routeConfig = {
 
     /** AUTHENTICATION */
     // login
-    "^\/admin\/login$": {
-        routeKey: "/login",
+    "^/admin/auth/login$": {
+        routeKey: "/auth/login",
+        pathParameters: [],
+    },
+    // refresh
+    "^/admin/auth/refresh$": {
+        routeKey: "/auth/refresh",
         pathParameters: [],
     },
 
+    /** CLOUDFRONT */
+    "^/admin/cloudfront/invalidate$": {
+        routeKey: "/cloudfront/invalidate",
+        pathParameters: [],
+    },
 
-    /** PRODUCT MANAGEMENT */
-    // all
-    "^\/admin\/product\/all$": {
+    /** FOOTER */
+    "^/admin/footer-config$": {
+        routeKey: "/footer-config",
+        pathParameters: [],
+    },
+    "^/admin/footer-content$": {
+        routeKey: "/footer-content",
+        pathParameters: [],
+    },
+
+    /** HEADER */
+    "^/admin/header-config$": {
+        routeKey: "/header-config",
+        pathParameters: [],
+    },
+    "^/admin/header-content$": {
+        routeKey: "/header-content",
+        pathParameters: [],
+    },
+
+    /** IMAGE */
+    "^/admin/image/([^/]+)$": {
+        routeKey: "/image/{key}",
+        pathParameters: ["key"],
+    },
+
+    /** PAGE CONFIG */
+    "^/admin/page-config/([^/]+)$": {
+        routeKey: "/page-config/{uuid}",
+        pathParameters: ["uuid"],
+    },
+
+    /** PAGE CONTENT */
+    "^/admin/page-content/([^/]+)$": {
+        routeKey: "/page-content/{uuid}",
+        pathParameters: ["uuid"],
+    },
+
+    /** PAGE GENERATOR */
+    "^/admin/page-generator/footer$": {
+        routeKey: "/page-generator/footer",
+        pathParameters: [],
+    },
+    "^/admin/page-generator/header$": {
+        routeKey: "/page-generator/header",
+        pathParameters: [],
+    },
+    "^/admin/page-generator/page$": {
+        routeKey: "/page-generator/page",
+        pathParameters: [],
+    },
+
+    /** PAGE HTML OBJECTS */
+    "^/admin/page-html-object/all$": {
+        routeKey: "/page-html-object/all",
+        pathParameters: [],
+    },
+    "^/admin/page-html-object/([^/]+)$": {
+        routeKey: "/page-html-object/{key}",
+        pathParameters: ["key"],
+    },
+
+    /** PAGES */
+    "^/admin/page-s3$": {
+        routeKey: "/page-s3",
+        pathParameters: [],
+    },
+    "^/admin/page-s3/([^/]+)$": {
+        routeKey: "/page-s3/{key}",
+        pathParameters: ["key"],
+    },
+
+    /** PRODUCT */
+    "^/admin/product/all$": {
         routeKey: "/product/all",
         pathParameters: [],
     },
-    // by id
-    "^\/admin\/product\/([^\/]+)$": {
-        routeKey: "/product/{product_id}",
-        pathParameters: ["product_id"],
+    "^/admin/product/([^/]+)$": {
+        routeKey: "/product/{uuid}",
+        pathParameters: ["uuid"],
     },
-    // search
-    "^\/admin\/product\/search$": {
-        routeKey: "/product/search",
+
+    /** SITE CONFIG */
+    "^/admin/site-config$": {
+        routeKey: "/site-config",
+        pathParameters: [],
+    },
+    "^/admin/design-system$": {
+        routeKey: "/design-system",
         pathParameters: [],
     },
 
-
-    /** CONTENT MANAGEMENT */
-    // image uploading
-    "^\/admin\/content\/image$": {
-        routeKey: "/upload-image",
+    /** PAGE ASSETS */
+    "^/admin/page-assets$": {
+        routeKey: "/page-assets",
         pathParameters: [],
     },
-    // page text localization
-    "^\/admin\/page-content\/$": {
-        routeKey: "/upload-image",
-        pathParameters: [],
-    },
-    
-    // PAGE GENERATION CONTROLS
-    // regenerate
-    "^\/admin\/page-management\/([^\/]+)\/regenerate$": {
-        routeKey: "/page-management/{page_name}/regenerate",
-        pathParameters: ["page_name"],
-    },
-    // preview
-    "^\/admin\/page-management\/([^\/]+)\/preview$": {
-        routeKey: "/page-management/{page_name}/preview",
-        pathParameters: ["page_name"],
-    },
-
-    /** PAGE AND HEADER & FOOTER CONFIG */
-    // page config
-    "^\/admin\/page-management\/([^\/]+)\/page-config$": {
-        routeKey: "/page-management/{page_name}/page-config",
-        pathParameters: ["page_name"],
-    },
-    // header and footer config
-    "^\/admin\/page-management\/header-footer-config$": {
-        routeKey: "/page-management/header-footer-config",
-        pathParameters: [],
-    },
-
 }
 
-export default routeConfig
+export default routeConfig;
