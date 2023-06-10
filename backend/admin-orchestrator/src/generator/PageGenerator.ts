@@ -45,7 +45,7 @@ export class PageGenerator {
         return data
     }
     async generatePage(content: PageContent, config: PageConfig): Promise<GeneratePageResponse {
-        const url = `${this.baseUrl}/generate-header`
+        const url = `${this.baseUrl}/generate-page`
         const headers = {
             "Content-Type": "application/json"
         }

@@ -88,7 +88,7 @@ export const handler = async (
 
     const env: "dev" | "prod" = "dev" // TODO make dynamic
 
-    const path = `${event.httpMethod} /promo${event.resource}`;
+    const path = `${event.httpMethod} /admin${event.resource}`;
 
     console.log(`path`, path);
 
