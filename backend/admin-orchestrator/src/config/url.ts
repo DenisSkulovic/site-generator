@@ -1,1 +1,0 @@
-export const fnacDartyUrl = 'https://api.passfnacdarty.com/api/check'
