@@ -1,5 +1,5 @@
 import {reactive} from "vue"
-import type {AreaConfig, AreaContent, BlockConfig, BlockContent, PageConfig, PageContent, PageHTMLObject} from "../../../../page_cls_module/src"
+import type {AreaConfig, AreaContent, BlockConfig, BlockContent, PageConfig, PageContent, PageHTMLObject} from "@page_cls_module"
 
 const lastRenderedData: {
     config: PageConfig | null,

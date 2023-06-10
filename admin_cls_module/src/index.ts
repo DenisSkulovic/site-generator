@@ -1,4 +1,3 @@
-export {AdminGeneratePageRequest, buildAdminGeneratePageRequest} from "./AdminGeneratePageRequest"
-export {AdminGenerateHeaderRequest, buildAdminGenerateHeaderRequest} from "./AdminGenerateHeaderRequest"
-export {AdminGenerateFooterRequest, buildAdminGenerateFooterRequest} from "./AdminGenerateFooterRequest"
+export * as mockFactories from "./mockFactories"
+
 export {SiteConfig, buildSiteConfig} from "./SiteConfig"

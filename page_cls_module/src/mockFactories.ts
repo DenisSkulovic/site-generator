@@ -67,7 +67,7 @@ export function createBlockConfig(params: Partial<DTO.BlockConfig>): DTO.BlockCo
         bootstrapVersion: DTO.BootstrapVersionEnum.BOOTSTRAP_5_0_2,
         blockTemplateName: DTO.BlockTemplateEnum.IMAGE,
         metadata: createBlockConfigMetadata({}),
-        clazz: 'DTO.BlockConfig'
+        clazz: 'BlockConfig'
     };
 
     return { ...defaultConfig, ...params };
@@ -78,7 +78,7 @@ export function createAreaContent(params: Partial<DTO.AreaContent>): DTO.AreaCon
         uuid: guid(),
         data: {},
         metadata: createAreaContentMetadata({}),
-        clazz: 'DTO.AreaContent'
+        clazz: 'AreaContent'
     };
 
     return { ...defaultContent, ...params };
@@ -89,7 +89,7 @@ export function createBlockContent(params: Partial<DTO.BlockContent>): DTO.Block
         uuid: guid(),
         data: {},
         metadata: createBlockContentMetadata({}),
-        clazz: 'DTO.BlockContent'
+        clazz: 'BlockContent'
     };
 
     return { ...defaultContent, ...params };
@@ -183,17 +183,29 @@ export function createBlockHTMLObject(params: Partial<DTO.BlockHTMLObject>): DTO
     return { ...defaultObject, ...params };
 }
 
+export function createProduct(params: Partial<DTO.Product>): DTO.Product {
+    const defaultProduct: DTO.Product = {
+        uuid: "",
+        clazz: 'Product',
+    };
+
+    return { ...defaultProduct, ...params };
+}
+
 export function createMetadata(params: Partial<DTO.Metadata>): DTO.Metadata {
     const defaultMetadata: DTO.Metadata = {
         createdTimestamp: Date.now(),
         updatedTimestamp: Date.now(),
-        clazz: 'DTO.Metadata'
+        clazz: 'Metadata'
     };
 
     return { ...defaultMetadata, ...params };
 }
 
-export const createNavItem = ({ label = "Test", url = "https://test.com" }) => new DTO.NavItem(label, url);
+export const createNavItem = ({
+    label = "Test",
+    url = "https://test.com",
+}) => new DTO.NavItem(label, url);
 
 export const createHeaderContent = ({
     uuid = "123",
@@ -213,8 +225,9 @@ export const createHeaderConfig = ({
 
 export const createFooterContent = ({
     uuid = "123",
+    email = "email",
     metadata = createFooterContentMetadata({})
-}) => new DTO.FooterContent(uuid, metadata);
+}) => new DTO.FooterContent(uuid, email, metadata);
 
 export const createFooterConfig = ({
     uuid = "123",

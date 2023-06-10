@@ -24,5 +24,38 @@ export class SiteConfigService extends AdminService {
         await s3.value.putJson("site-config", siteConfigEdit.value)
         siteConfigCurrent.value = cloneDeep(siteConfigEdit.value)
     }
+
+    async downloadDesignSystemCSS() {
+        const response = await fetch(this.adminUrl + '/design-system', {
+            method: 'GET',
+        });
     
+        if (response.ok) {
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'design-system.css');
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+        } else {
+            throw new Error('Failed to download design system CSS');
+        }
+    }
+    
+    async uploadDesignSystemCSS(file: File) {
+        const formData = new FormData();
+        formData.append('file', file);
+    
+        const response = await fetch(this.adminUrl + '/design-system', {
+            method: 'PUT',
+            body: formData
+        });
+    
+        if (!response.ok) {
+            throw new Error('Failed to upload design system CSS');
+        }
+    }
+
 }

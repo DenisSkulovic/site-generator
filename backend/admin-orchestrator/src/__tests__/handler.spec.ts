@@ -1,4 +1,4 @@
-import { APIGatewayEvent } from "aws-lambda";
+import { APIGatewayEvent, Context } from "aws-lambda";
 import { handler } from "../";
 
 describe("handler", () => {
@@ -15,7 +15,7 @@ describe("handler", () => {
             multiValueQueryStringParameters: {},
             isBase64Encoded: false,
         } as unknown as APIGatewayEvent;
-        const response = await handler(event, null);
+        const response = await handler(event, null as unknown as Context);
         expect(response.statusCode).toEqual(200);
     });
 
@@ -32,7 +32,7 @@ describe("handler", () => {
             multiValueQueryStringParameters: {},
             isBase64Encoded: false,
         } as unknown as APIGatewayEvent;
-        const response = await handler(event, null);
+        const response = await handler(event, null as unknown as Context);
         expect(response.statusCode).toEqual(404);
     });
 });

@@ -1,0 +1,10 @@
+
+.dropzone[data-v-018dbd86] {
+    border: 2px dashed #aaa;
+    padding: 20px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+.dropzone[data-v-018dbd86]:hover {
+    background-color: #f0f0f0;
+}

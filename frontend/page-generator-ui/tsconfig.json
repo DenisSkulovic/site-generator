@@ -10,7 +10,8 @@
     "baseUrl": ".",
     "strict": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@page_cls_module": ["../../page_cls_module"]
     },
     "lib": [
       "esnext",

@@ -20,6 +20,7 @@ import * as pageHTMLObjects from "./logic/handlers/pageHTMLObjects";
 import * as pages from "./logic/handlers/pages";
 import * as product from "./logic/handlers/product";
 import * as siteConfig from "./logic/handlers/site-config";
+import * as pageAssets from "./logic/handlers/page-assets";
 
 
 
@@ -71,6 +72,10 @@ const routes: Routes = {
     'DELETE /admin/product/{uuid}': product.handleProductDelete,
     'GET /admin/site-config': siteConfig.handleSiteConfigGet,
     'PUT /admin/site-config': siteConfig.handleSiteConfigPut,
+    'GET /admin/design-system': siteConfig.handleDesignSystemGet,
+    'PUT /admin/design-system': siteConfig.handleDesignSystemPut,
+    'GET /admin/page-assets': pageAssets.handleAssetDownload,
+    'PUT /admin/page-assets': pageAssets.handleAssetUpload,
 };
 
 
