@@ -1,4 +1,4 @@
-import { AreaConfig, AreaContent, AreaHTMLObject, BootstrapVersionEnum, FooterHTMLObject, HeaderHTMLObject, PageConfig, PageContent, PageHTMLMetadata, PageHTMLObject, SkeletonVersionEnum } from "@page_cls_module"
+import { AreaConfig, AreaContent, AreaHTMLObject, Asset, BootstrapVersionEnum, FooterHTMLObject, HeaderHTMLObject, PageConfig, PageContent, PageHTMLMetadata, PageHTMLObject, SkeletonVersionEnum } from "@page_cls_module"
 import { RenderData_Page } from "../../../classes/renderData/pages/RenderData_Page"
 import ejs from "ejs"
 
@@ -41,6 +41,7 @@ export const buildPageRenderData = (
     headerHTMLObject: HeaderHTMLObject,
     areaHTMLObjectsArr: AreaHTMLObject[],
     footerHTMLObject: FooterHTMLObject,
+    assets: Asset[],
 ) => {
     return new RenderData_Page(
         pageConfig,
@@ -48,6 +49,7 @@ export const buildPageRenderData = (
         headerHTMLObject,
         areaHTMLObjectsArr,
         footerHTMLObject,
+        assets,
     );
 }
 
@@ -87,7 +89,7 @@ export const constructPage = async (
     })
     const areaHTMLObjectsArr: AreaHTMLObject[] = await Promise.all(areaHTMLObjectsPromiseArr)
 
-    const pageRenderData = buildPageRenderData(pageConfig, pageContent, headerHTMLObject, areaHTMLObjectsArr, footerHTMLObject)
+    const pageRenderData = buildPageRenderData(pageConfig, pageContent, headerHTMLObject, areaHTMLObjectsArr, footerHTMLObject, pageConfig.assets)
     const pageHtml = await renderEjsFile(skeletonTemplatePath, pageRenderData)
 
     const createdTimestamp: number = Date.now()

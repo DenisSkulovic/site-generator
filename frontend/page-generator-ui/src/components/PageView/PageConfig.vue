@@ -38,18 +38,17 @@
                     :options="skeletonVersions" @change="(newVal) => handleChange('templateVersion', newVal)">
                 </SelectInputField>
 
-                <LineComp class="my-2"></LineComp>
+            </template>
+        </CollapseExpand>
 
-                <!-- HEADER ID -->
-                <TextInputField :label="'Header ID'" :value="props.pageConfig.headerId"
-                    @change="(newVal) => handleChange('headerId', newVal)"></TextInputField>
+        <LineComp class="my-2"></LineComp>
 
-                <LineComp class="my-2"></LineComp>
-
-                <!-- FOOTER ID -->
-                <TextInputField :label="'Footer ID'" :value="props.pageConfig.footerId"
-                    @change="(newVal) => handleChange('footerId', newVal)"></TextInputField>
-
+        <CollapseExpand :active="state.isAssetsExpanded" @toggle-click="state.isAssetsExpanded = !state.isAssetsExpanded">
+            <template #title>
+                <h5>{{ 'Page Assets' }}</h5>
+            </template>
+            <template #content>
+                <AssetsSection :assets="pageConfig.assets"></AssetsSection>
             </template>
         </CollapseExpand>
 
@@ -59,38 +58,39 @@
 <script setup lang="ts">
 import { computed, watch, reactive } from "vue"
 import type { ComputedRef } from "vue"
-import { PageConfig, HeadVersionEnum, BootstrapVersionEnum, SkeletonVersionEnum } from '../../../../../page_cls_module/src';
+import { PageConfig, HeadVersionEnum, BootstrapVersionEnum, SkeletonVersionEnum } from '@page_cls_module';
 import LineComp from '../Line.vue';
 import TextInputField from "../fields/TextInputField.vue"
 import CheckBoxField from "../fields/CheckBoxField.vue"
 import SelectInputField from "../fields/SelectInputField.vue"
 import updateBootstrapVersionInSubitems from "./func/updateBootstrapVersionInSubitems"
 import CollapseExpand from '../CollapseExpand.vue';
+import AssetsSection from './assets/AssetsSection.vue';
 
-// TODO instead of having the header and footer id as text input, fetch all available ones, and put them into a select, with some basic info about each, like name, date of creation; probably need to filter ones that have the same bootstrap version; if there is no header and footer with this bootstrap version, I have to unset the value for the id and display an error
 
 const props = defineProps<{
     pageConfig: PageConfig
 }>()
 
 const state = reactive({
-    isAdvancedExpanded: false
+    isAdvancedExpanded: false,
+    isAssetsExpanded: true,
 })
 
 
-const headVersions: ComputedRef<{label: HeadVersionEnum, value: HeadVersionEnum}[]> = computed(() => {
+const headVersions: ComputedRef<{ label: HeadVersionEnum, value: HeadVersionEnum }[]> = computed(() => {
     return Object.values(HeadVersionEnum).map((name) => {
-        return {label: name, value: name}
+        return { label: name, value: name }
     })
 })
-const bootstrapVersions: ComputedRef<{label: BootstrapVersionEnum, value: BootstrapVersionEnum}[]> = computed(() => {
+const bootstrapVersions: ComputedRef<{ label: BootstrapVersionEnum, value: BootstrapVersionEnum }[]> = computed(() => {
     return Object.values(BootstrapVersionEnum).map((name) => {
-        return {label: name, value: name}
+        return { label: name, value: name }
     })
 })
-const skeletonVersions: ComputedRef<{label: SkeletonVersionEnum, value: SkeletonVersionEnum}[]> = computed(() => {
+const skeletonVersions: ComputedRef<{ label: SkeletonVersionEnum, value: SkeletonVersionEnum }[]> = computed(() => {
     return Object.values(SkeletonVersionEnum).map((name) => {
-        return {label: name, value: name}
+        return { label: name, value: name }
     })
 })
 
@@ -98,6 +98,7 @@ const handleChange = (fieldName: string, newVal: any) => {
     console.log('change', fieldName, newVal);
     (props.pageConfig as any)[fieldName] = newVal
 }
+
 
 watch(
     () => props.pageConfig.bootstrapVersion,

@@ -7,6 +7,12 @@
 <%- include(`../../head/${config.headVersion}/index.ejs`, {config}) %>
 
     <body>
+
+        <%# BODY_BEGIN_ASSETS %>
+        <% assets.filter(asset => asset.position === 'body_begin').forEach(asset => { %>
+            <%- include(`../../assets/${asset.clazz}`, { asset }) %>
+        <% }) %>
+
         <%# HEADER %>
         <%- headerHTMLObject.html %>
         
@@ -17,6 +23,11 @@
         
         <%# FOOTER %>
         <%- footerHTMLObject.html %>
+
+        <%# BODY_END_ASSETS %>
+        <% assets.filter(asset => asset.position === 'body_end').forEach(asset => { %>
+            <%- include(`../../assets/${asset.clazz}`, { asset }) %>
+        <% }) %>
     </body>
 
 </html>
