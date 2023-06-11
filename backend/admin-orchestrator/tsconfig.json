@@ -12,13 +12,13 @@
         "../../page_cls_module"
       ],
       "@cloudfront_module": [
-        "../../cloudfront_module"
+        "../cloudfront_module"
       ],
       "@repository_module": [
         "../repository_module"
       ],
       "@auth_module": [
-        "../../auth_module"
+        "../auth_module"
       ],
       "@admin_cls_module": [
         "../../admin_cls_module"
@@ -42,7 +42,7 @@
       "path": "../../page_cls_module"
     },
     {
-      "path": "../../cloudfront_module"
+      "path": "../cloudfront_module"
     },
     {
       "path": "../repository_module"
@@ -51,7 +51,7 @@
       "path": "../s3_module"
     },
     {
-      "path": "../../auth_module"
+      "path": "../auth_module"
     },
     {
       "path": "../../admin_cls_module"

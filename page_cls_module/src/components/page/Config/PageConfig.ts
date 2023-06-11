@@ -1,4 +1,4 @@
-import { AreaConfig, BootstrapVersionEnum, PageConfigMetadata, SkeletonVersionEnum, HeadVersionEnum, LangEnum } from "../../../"
+import { AreaConfig, BootstrapVersionEnum, PageConfigMetadata, SkeletonVersionEnum, HeadVersionEnum, LangEnum, Asset } from "../../../"
 
 import { buildAreaConfig } from "./AreaConfig"
 import { buildPageConfigMetadata } from "./PageConfigMetadata"
@@ -15,6 +15,7 @@ export const buildPageConfig = (obj: any): PageConfig => {
     const lang: LangEnum = obj.lang
     const bootstrapVersion: BootstrapVersionEnum = obj.bootstrapVersion
     const templateVersion: SkeletonVersionEnum = obj.templateVersion
+    const assets: Asset[] = obj.assets // TODO build asset instances based on clazz
     const metadata: PageConfigMetadata = buildPageConfigMetadata(obj.metadata)
     const areaConfigArr: AreaConfig[] = obj.areaConfigArr.map((obj: any) => {
         return buildAreaConfig(obj)
@@ -29,12 +30,13 @@ export const buildPageConfig = (obj: any): PageConfig => {
         bootstrapVersion,
         templateVersion,
         areaConfigArr,
+        assets,
         metadata,
     )
     return pageConfig
 }
 
-export class PageConfig { // this should be stored as a separate object, on DynamoDB
+export class PageConfig {
     uuid: string
     lang: LangEnum
     pageName: string
@@ -44,6 +46,7 @@ export class PageConfig { // this should be stored as a separate object, on Dyna
     bootstrapVersion: BootstrapVersionEnum
     templateVersion: SkeletonVersionEnum
     areaConfigArr: AreaConfig[]
+    assets: Asset[]
     metadata: PageConfigMetadata
     clazz: string
     constructor(
@@ -56,6 +59,7 @@ export class PageConfig { // this should be stored as a separate object, on Dyna
         bootstrapVersion: BootstrapVersionEnum,
         templateVersion: SkeletonVersionEnum,
         areaConfigArr: AreaConfig[],
+        assets: Asset[],
         metadata: PageConfigMetadata,
     ) {
         this.uuid = uuid
@@ -67,6 +71,7 @@ export class PageConfig { // this should be stored as a separate object, on Dyna
         this.bootstrapVersion = bootstrapVersion
         this.templateVersion = templateVersion
         this.areaConfigArr = areaConfigArr
+        this.assets = assets
         this.metadata = metadata
         this.clazz = this.constructor.name
     }

@@ -1,5 +1,5 @@
 import { reactive } from "vue"
-import { PageConfig, PageConfigMetadata } from "../../../../../page_cls_module"
+import { Asset, PageConfig, PageConfigMetadata } from "@page_cls_module"
 import type { AreaConfig, BootstrapVersionEnum, HeadVersionEnum, LangEnum, SkeletonVersionEnum } from "../../../../../page_cls_module"
 import defaultFields from "../../config/defaultFields/pageConfig"
 import getUUID from "../../utils/getUUID"
@@ -24,9 +24,8 @@ const getNewPageConfig = (
     const headVersion: HeadVersionEnum = defaultFields.headVersion
     const bootstrapVersion: BootstrapVersionEnum = defaultFields.bootstrapVersion
     const templateVersion: SkeletonVersionEnum = defaultFields.templateVersion
-    const headerId: string = VITE_APP_DEFAULT_HEADER_ID
     const areaConfigArr: AreaConfig[] = []
-    const footerId: string = VITE_APP_DEFAULT_FOOTER_ID
+    const assets: Asset[] = []
     const metadata: PageConfigMetadata = reactive(new PageConfigMetadata(
         createdTimestamp,
         updatedTimestamp,
@@ -41,9 +40,8 @@ const getNewPageConfig = (
         headVersion,
         bootstrapVersion,
         templateVersion,
-        headerId,
         areaConfigArr,
-        footerId,
+        assets,
         metadata,
     ))
     return obj

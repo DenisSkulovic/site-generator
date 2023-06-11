@@ -22,6 +22,7 @@ export function createPageConfig(params: Partial<DTO.PageConfig>): DTO.PageConfi
         bootstrapVersion: DTO.BootstrapVersionEnum.BOOTSTRAP_5_0_2,
         templateVersion: DTO.SkeletonVersionEnum.TEST_VERSION,
         areaConfigArr: [],
+        assets: [],
         metadata: createPageConfigMetadata({}),
         clazz: "PageConfig"
     };
