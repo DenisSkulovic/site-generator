@@ -74,8 +74,7 @@ const routes: Routes = {
     'PUT /admin/site-config': siteConfig.handleSiteConfigPut,
     'GET /admin/design-system': siteConfig.handleDesignSystemGet,
     'PUT /admin/design-system': siteConfig.handleDesignSystemPut,
-    'GET /admin/page-assets': pageAssets.handleAssetDownload,
-    'PUT /admin/page-assets': pageAssets.handleAssetUpload,
+    'POST /admin/page-assets': pageAssets.handleAssetUpload,
 };
 
 

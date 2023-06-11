@@ -8,15 +8,21 @@ export class ScriptAsset extends Asset {
     isDefer: boolean
     type = AssetTypeEnum.JS
     constructor(
+        uuid: string,
+        name: string,
         isAsync: boolean,
         isDefer: boolean,
-        relativePath: string,
+        path: string,
         s3Path: string,
+        s3Link: string,
         position = AssetPositionEnum.BODY_END
     ) {
         super(
-            relativePath,
+            uuid,
+            name,
+            path,
             s3Path,
+            s3Link,
             position,
             AssetTagEnum.SCRIPT
         )

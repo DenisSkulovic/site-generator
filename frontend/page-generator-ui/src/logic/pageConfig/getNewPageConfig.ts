@@ -19,6 +19,7 @@ const getNewPageConfig = (
     const uuid: string = getUUID()
     const lang: LangEnum = defaultFields.lang
     const pageName: string = defaultFields.pageName
+    const pagePath: string = ""
     const contentId: string = pageContentUUID
     const isIncludeBootstrap: boolean = defaultFields.isIncludeBootstrap
     const headVersion: HeadVersionEnum = defaultFields.headVersion
@@ -35,6 +36,7 @@ const getNewPageConfig = (
         uuid,
         lang,
         pageName,
+        pagePath,
         contentId,
         isIncludeBootstrap,
         headVersion,

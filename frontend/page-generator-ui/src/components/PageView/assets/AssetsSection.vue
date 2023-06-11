@@ -1,6 +1,7 @@
 <template>
     <div>
-        <button @click="addAsset">Add Asset</button>
+        <button @click="addJSAsset">Add Script Asset</button>
+        <button @click="addCSSAsset">Add Style Asset</button>
         <div v-for="(asset, asset_i) in props.assets" :key="asset_i">
             <LineComp v-if="asset_i !== 0" class="my-2"></LineComp>
             <component :is="getAssetComponent(asset.clazz)" :asset="asset" @change="updateAsset(asset_i, $event)"
@@ -12,23 +13,35 @@
 
 <script lang="ts" setup>
 import type { Component } from "vue"
-import LinkAssetComp from "./LinkAsset.vue";
 import ScriptAssetComp from "./ScriptAsset.vue";
 import StyleAssetComp from "./StyleAsset.vue";
-import { AssetRelEnum, type Asset, LinkAsset } from "@page_cls_module";
+import { AssetService } from "@/service/AssetService";
+import adminUrl from "@/state/adminUrl";
+import bucketName from "@/state/bucketName";
+import type { Asset, ScriptAsset, StyleAsset } from "../../../../../../page_cls_module/src";
+import { editPageConfig } from "@/state/pageConfigState";
+
 
 const props = defineProps<{
     assets: Asset[]
 }>()
 
 let assetComponentMap: { [clazz: string]: Component } = {
-    'LinkAsset': LinkAssetComp,
     'ScriptAsset': ScriptAssetComp,
     'StyleAsset': StyleAssetComp,
 }
 
-const addAsset = () => {
-    props.assets.push(new LinkAsset("", "", AssetRelEnum.ICON)); // change this to add default asset of your choice
+const addJSAsset = (): void => {
+    if (!editPageConfig.value) throw new Error("editPageConfig.value cannot be undefined")
+    const assetService = new AssetService(adminUrl.value, bucketName.value, editPageConfig.value.pagePath)
+    const asset: ScriptAsset = assetService.getNewJSAsset()
+    props.assets.push(asset);
+}
+const addCSSAsset = (): void => {
+    if (!editPageConfig.value) throw new Error("editPageConfig.value cannot be undefined")
+    const assetService = new AssetService(adminUrl.value, bucketName.value, editPageConfig.value.pagePath)
+    const asset: StyleAsset = assetService.getNewCSSAsset()
+    props.assets.push(asset);
 }
 
 const getAssetComponent = (clazz: string) => {

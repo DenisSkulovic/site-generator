@@ -22,6 +22,7 @@ export const newBlockConfigMap: { value: Map<BlockConfigUUID, BlockConfig> } = r
 export const toDeleteAreaConfigMap: { value: Map<string, AreaConfig> } = reactive({
     value: new Map()
 })
+
 export const toDeleteBlockConfigMap: { value: Map<string, BlockConfig> } = reactive({
     value: new Map()
 })

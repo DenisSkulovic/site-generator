@@ -6,8 +6,8 @@ export const buildSiteConfig = (obj: any): SiteConfig => {
 
 export class SiteConfig {
     clazz: string
-    constructor() {
-        
+    constructor(
+    ) {
         this.clazz = this.constructor.name
     }
 }

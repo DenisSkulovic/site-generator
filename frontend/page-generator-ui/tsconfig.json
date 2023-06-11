@@ -11,7 +11,8 @@
     "strict": true,
     "paths": {
       "@/*": ["./src/*"],
-      "@page_cls_module": ["../../page_cls_module"]
+      "@page_cls_module": ["../../page_cls_module"],
+      "@common_components_module": ["../common_components_module"]
     },
     "lib": [
       "esnext",
@@ -32,6 +33,11 @@
     },
     {
       "path": "../../page_cls_module",
+      // add 'prepend' if you want to include the referenced project in your output file
+      "prepend": false
+    },
+    {
+      "path": "../common_components_module",
       // add 'prepend' if you want to include the referenced project in your output file
       "prepend": false
     }

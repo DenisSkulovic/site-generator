@@ -6,13 +6,19 @@ import { AssetTypeEnum } from "./AssetTypeEnum"
 export class StyleAsset extends Asset {
     type = AssetTypeEnum.CSS
     constructor(
-        relativePath: string,
+        uuid: string,
+        name: string,
+        path: string,
         s3Path: string,
+        s3Link: string,
         position = AssetPositionEnum.BODY_END
     ) {
         super(
-            relativePath,
+            uuid,
+            name,
+            path,
             s3Path,
+            s3Link,
             position,
             AssetTagEnum.STYLE
         )

@@ -6,14 +6,20 @@ import { AssetPositionEnum } from "./AssetPositionEnum";
 export class LinkAsset extends Asset {
     rel: AssetRelEnum
     constructor(
-        relativePath: string,
+        uuid: string,
+        name: string,
+        path: string,
         s3Path: string,
+        s3Link: string,
         rel: AssetRelEnum,
         position = AssetPositionEnum.HEAD_END
     ) {
         super(
-            relativePath,
+            uuid,
+            name,
+            path,
             s3Path,
+            s3Link,
             position,
             AssetTagEnum.LINK,
         )

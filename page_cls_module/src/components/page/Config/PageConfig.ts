@@ -24,6 +24,7 @@ export const buildPageConfig = (obj: any): PageConfig => {
         obj.uuid,
         lang,
         obj.pageName,
+        obj.pagePath,
         obj.contentId,
         Boolean(obj.isIncludeBootstrap),
         obj.headVersion,
@@ -40,6 +41,7 @@ export class PageConfig {
     uuid: string
     lang: LangEnum
     pageName: string
+    pagePath: string
     contentId: string
     isIncludeBootstrap: boolean
     headVersion: HeadVersionEnum
@@ -53,6 +55,7 @@ export class PageConfig {
         uuid: string,
         lang: LangEnum,
         pageName: string,
+        pagePath: string,
         contentId: string,
         isIncludeBootstrap: boolean,
         headVersion: HeadVersionEnum,
@@ -65,6 +68,7 @@ export class PageConfig {
         this.uuid = uuid
         this.lang = lang
         this.pageName = pageName
+        this.pagePath = pagePath
         this.contentId = contentId
         this.isIncludeBootstrap = isIncludeBootstrap
         this.headVersion = headVersion
