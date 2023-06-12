@@ -1,5 +1,5 @@
-export interface IPageConfigRepository {
-}
-export declare class PageConfigRepository implements IPageConfigRepository {
+import { Repository } from "./Repository";
+export declare class PageConfigRepository extends Repository {
+    constructor();
 }
 //# sourceMappingURL=PageConfigRepository.d.ts.map

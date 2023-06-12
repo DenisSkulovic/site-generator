@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createAreaConfig, createAreaContent, createAreaHTMLObject, createGenerateAreaRequest, createGenerateAreaResponse } from "../../../../../../page_cls_module/src/mockFactories";
 import constructArea from "../../page-builder/page/constructArea";
 import handleGenerateArea from "../handleGenerateArea";

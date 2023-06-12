@@ -56,7 +56,7 @@ export class S3Operations {
         }
     }
 
-    async getImage(key: string): Promise<AWS.S3.GetObjectOutput> {
+    async getImage(key: string): Promise<AWS.S3.GetObjectOutput | undefined> {
         const params: AWS.S3.GetObjectRequest = {
             Bucket: this.bucketName,
             Key: key
@@ -128,7 +128,7 @@ export class S3Operations {
         }
     }
 
-    async getCSS(key: string): Promise<AWS.S3.GetObjectOutput> {
+    async getCSS(key: string): Promise<AWS.S3.GetObjectOutput | undefined> {
         const params: AWS.S3.GetObjectRequest = {
             Bucket: this.bucketName,
             Key: key
@@ -157,7 +157,7 @@ export class S3Operations {
         }
     }
 
-    async downloadAsset(key: string): Promise<AWS.S3.GetObjectOutput> {
+    async downloadAsset(key: string): Promise<AWS.S3.GetObjectOutput | undefined> {
         const params: AWS.S3.GetObjectRequest = {
             Bucket: this.bucketName,
             Key: key

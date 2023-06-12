@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { APIGatewayEvent } from "aws-lambda";
 import { PageConfigRepository } from "@repository_module";
 import { handlePageConfigDelete, handlePageConfigGet, handlePageConfigPost, handlePageConfigPut } from "../";

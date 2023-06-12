@@ -1,7 +1,5 @@
-export declare class BlockConfigMetadata {
-    createdTimestamp: number;
-    updatedTimestamp: number;
-    clazz: string;
-    constructor(createdTimestamp: number, updatedTimestamp: number);
+import { Metadata } from "src/components/Metadata";
+export declare const buildBlockConfigMetadata: (obj: any) => BlockConfigMetadata;
+export declare class BlockConfigMetadata extends Metadata {
 }
 //# sourceMappingURL=BlockConfigMetadata.d.ts.map

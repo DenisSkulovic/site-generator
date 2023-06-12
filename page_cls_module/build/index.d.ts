@@ -1,3 +1,4 @@
+export * as mockFactories from "./mockFactories";
 /**
  * HEADER
  */
@@ -25,14 +26,14 @@ export { GenerateFooterResponse } from "./components/footer/GenerateFooterRespon
  * PAGE GENERATOR
  */
 export { AreaConfig, buildAreaConfig } from "./components/page/Config/AreaConfig";
-export { AreaConfigMetadata } from "./components/page/Config/AreaConfigMetadata";
+export { AreaConfigMetadata, buildAreaConfigMetadata } from "./components/page/Config/AreaConfigMetadata";
 export { AreaContent, buildAreaContent } from "./components/page/Content/AreaContent";
-export { AreaContentMetadata } from "./components/page/Content/AreaContentMetadata";
+export { AreaContentMetadata, buildAreaContentMetadata } from "./components/page/Content/AreaContentMetadata";
 export { AreaHTMLMetadata, buildAreaHTMLMetadata } from "./components/page/HTMLObject/AreaHTMLMetadata";
 export { AreaHTMLObject, buildAreaHTMLObject } from "./components/page/HTMLObject/AreaHTMLObject";
 export { AreaLayoutEnum } from "./components/page/enum/AreaLayoutEnum";
 export { BlockConfig, buildBlockConfig } from "./components/page/Config/BlockConfig";
-export { BlockConfigMetadata } from "./components/page/Config/BlockConfigMetadata";
+export { BlockConfigMetadata, buildBlockConfigMetadata } from "./components/page/Config/BlockConfigMetadata";
 export { BlockContent, buildBlockContent } from "./components/page/Content/BlockContent";
 export { BlockContent_HTML } from "./components/page/Content/BlockContent_HTML";
 export { BlockContent_IMAGE } from "./components/page/Content/BlockContent_IMAGE";
@@ -59,5 +60,17 @@ export { HeadVersionEnum } from "./components/page/enum/HeadVersionEnum";
 export { FooterTemplateVersionEnum } from "./components/page/enum/FooterTemplateVersionEnum";
 export { HeaderTemplateVersionEnum } from "./components/page/enum/HeaderTemplateVersionEnum";
 export { LangEnum } from "./components/page/enum/LangEnum";
-export { Product } from "./components/Product";
+/**
+ * ASSET
+ */
+export { AssetTypeEnum } from "./components/asset/AssetTypeEnum";
+export { AssetTagEnum } from "./components/asset/AssetTagEnum";
+export { AssetRelEnum } from "./components/asset/AssetRelEnum";
+export { AssetPositionEnum } from "./components/asset/AssetPositionEnum";
+export { Asset } from "./components/asset/Asset";
+export { LinkAsset } from "./components/asset/LinkAsset";
+export { ScriptAsset } from "./components/asset/ScriptAsset";
+export { StyleAsset } from "./components/asset/StyleAsset";
+export { Product, buildProduct } from "./components/Product";
+export { Metadata } from "./components/Metadata";
 //# sourceMappingURL=index.d.ts.map

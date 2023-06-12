@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { APIGatewayEvent } from 'aws-lambda';
 import { handleHeaderConfigGet, handleHeaderConfigPut, handleHeaderContentGet, handleHeaderContentPut } from '../';
 

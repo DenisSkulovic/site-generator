@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { APIGatewayEvent } from 'aws-lambda';
 import { handleAssetUpload, handleAssetDownload } from '../';
 import { S3Operations } from '@s3_module';

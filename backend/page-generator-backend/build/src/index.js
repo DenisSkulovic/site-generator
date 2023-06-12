@@ -55,6 +55,7 @@ const handler = async (event, context, callback) => {
             /**
              * GENERATE HEADER
             */
+            case ("POST /generate-header"):
             case ("POST /page-generator/generate-header"): {
                 const requestBody = JSON.parse(event.body || "{}");
                 const request = (0, _page_cls_module_1.buildGenerateHeaderRequest)(requestBody);
@@ -65,6 +66,7 @@ const handler = async (event, context, callback) => {
             /**
              * GENERATE FOOTER
              */
+            case ("POST /generate-footer"):
             case ("POST /page-generator/generate-footer"): {
                 const requestBody = JSON.parse(event.body || "{}");
                 const request = (0, _page_cls_module_1.buildGenerateFooterRequest)(requestBody);
@@ -75,6 +77,7 @@ const handler = async (event, context, callback) => {
             /**
              * GENERATE PAGE
              */
+            case ("POST /generate-page"):
             case ("POST /page-generator/generate-page"): {
                 const requestBody = JSON.parse(event.body || "{}");
                 const request = (0, _page_cls_module_1.buildGeneratePageRequest)(requestBody);
@@ -85,6 +88,7 @@ const handler = async (event, context, callback) => {
             /**
              * GENERATE AREA
              */
+            case ("POST /generate-area"):
             case ("POST /page-generator/generate-area"): {
                 const requestBody = JSON.parse(event.body || "{}");
                 const request = (0, _page_cls_module_1.buildGenerateAreaRequest)(requestBody);
@@ -95,6 +99,7 @@ const handler = async (event, context, callback) => {
             /**
              * GENERATE BLOCK
              */
+            case ("POST /generate-block"):
             case ("POST /page-generator/generate-block"): {
                 const requestBody = JSON.parse(event.body || "{}");
                 const request = (0, _page_cls_module_1.buildGenerateBlockRequest)(requestBody);

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { RenderData_Page } from '@/classes/renderData/pages/RenderData_Page';
 import { buildPageHTMLObject, buildPageHTMLMetadata, buildPageRenderData, renderEjsFile, constructPage, getSkeletonTemplatePath } from '../constructPage';
 import { AreaConfig, AreaContent, AreaHTMLObject, BootstrapVersionEnum, FooterHTMLObject, HeaderHTMLObject, PageConfig, PageContent, PageHTMLMetadata, PageHTMLObject, SkeletonVersionEnum } from "@page_cls_module"

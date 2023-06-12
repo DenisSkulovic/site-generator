@@ -1,3 +1,4 @@
+// @ts-nocheck
 import getDistributionId from "../getDistributionId"
 
 describe('getDistributionId function', () => {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { handleProductDelete, handleProductGet, handleProductGetAll, handleProductPost, handleProductPut, handleProductPutAll } from '../';
 import { APIGatewayEvent } from 'aws-lambda';
 import { ProductRepository } from '@repository_module';

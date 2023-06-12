@@ -8,5 +8,5 @@ var BlockTemplateEnum;
     BlockTemplateEnum["HTML"] = "HTML";
     BlockTemplateEnum["LINK"] = "LINK";
     BlockTemplateEnum["SEPARATOR"] = "SEPARATOR";
-})(BlockTemplateEnum = exports.BlockTemplateEnum || (exports.BlockTemplateEnum = {}));
+})(BlockTemplateEnum || (exports.BlockTemplateEnum = BlockTemplateEnum = {}));
 //# sourceMappingURL=BlockTemplateEnum.js.map

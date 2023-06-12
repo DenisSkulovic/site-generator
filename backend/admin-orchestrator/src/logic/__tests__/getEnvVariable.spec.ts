@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Import the function and any other necessary dependencies
 import getEnvVariable from '../getEnvVariable'
 

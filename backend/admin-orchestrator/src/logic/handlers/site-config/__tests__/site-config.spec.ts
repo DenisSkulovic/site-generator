@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { handleSiteConfigGet, handleSiteConfigPut } from '../';
 import { APIGatewayEvent } from 'aws-lambda';
 import { SiteConfig } from '@admin_cls_module';

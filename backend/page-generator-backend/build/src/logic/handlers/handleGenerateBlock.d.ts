@@ -1,3 +1,3 @@
-import * as DTO from "@page_cls_module";
-declare const handleGenerateBlock: (requestData: DTO.GenerateBlockRequest) => Promise<DTO.GenerateBlockResponse>;
+import { GenerateBlockRequest, GenerateBlockResponse } from "@page_cls_module";
+declare const handleGenerateBlock: (requestData: GenerateBlockRequest) => Promise<GenerateBlockResponse>;
 export default handleGenerateBlock;

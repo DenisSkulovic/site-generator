@@ -1,10 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProductRepository = exports.PageHTMLRepository = exports.PageConfigRepository = exports.HeaderFooterHTMLRepository = exports.HeaderFooterConfigRepository = void 0;
-var HeaderFooterConfigRepository_1 = require("./HeaderFooterConfigRepository");
-Object.defineProperty(exports, "HeaderFooterConfigRepository", { enumerable: true, get: function () { return HeaderFooterConfigRepository_1.HeaderFooterConfigRepository; } });
-var HeaderFooterHTMLRepository_1 = require("./HeaderFooterHTMLRepository");
-Object.defineProperty(exports, "HeaderFooterHTMLRepository", { enumerable: true, get: function () { return HeaderFooterHTMLRepository_1.HeaderFooterHTMLRepository; } });
+exports.ProductRepository = exports.PageHTMLRepository = exports.PageConfigRepository = exports.PageContentRepository = exports.Repository = exports.TableEnum = void 0;
+var TableEnum_1 = require("./TableEnum");
+Object.defineProperty(exports, "TableEnum", { enumerable: true, get: function () { return TableEnum_1.TableEnum; } });
+var Repository_1 = require("./Repository");
+Object.defineProperty(exports, "Repository", { enumerable: true, get: function () { return Repository_1.Repository; } });
+var PageContentRepository_1 = require("./PageContentRepository");
+Object.defineProperty(exports, "PageContentRepository", { enumerable: true, get: function () { return PageContentRepository_1.PageContentRepository; } });
 var PageConfigRepository_1 = require("./PageConfigRepository");
 Object.defineProperty(exports, "PageConfigRepository", { enumerable: true, get: function () { return PageConfigRepository_1.PageConfigRepository; } });
 var PageHTMLRepository_1 = require("./PageHTMLRepository");

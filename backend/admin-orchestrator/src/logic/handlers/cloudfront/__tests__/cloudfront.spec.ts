@@ -1,4 +1,5 @@
-const { handleInvalidateByRegex } = require('../path/to/module');
+// @ts-nocheck
+import  { handleInvalidateByRegex } from "../"
 
 describe('handleInvalidateByRegex', () => {
     const APIGatewayEventMock = {

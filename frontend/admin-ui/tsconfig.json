@@ -36,7 +36,8 @@
     "skipLibCheck": true,
     "types": [
       "webpack-env",
-      "node"
+      "node",
+      "jest"
     ]
   },
   "references": [

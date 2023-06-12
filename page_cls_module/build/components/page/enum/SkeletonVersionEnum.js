@@ -4,5 +4,5 @@ exports.SkeletonVersionEnum = void 0;
 var SkeletonVersionEnum;
 (function (SkeletonVersionEnum) {
     SkeletonVersionEnum["TEST_VERSION"] = "test_version";
-})(SkeletonVersionEnum = exports.SkeletonVersionEnum || (exports.SkeletonVersionEnum = {}));
+})(SkeletonVersionEnum || (exports.SkeletonVersionEnum = SkeletonVersionEnum = {}));
 //# sourceMappingURL=SkeletonVersionEnum.js.map

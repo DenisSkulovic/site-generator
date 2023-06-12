@@ -1,3 +1,12 @@
+export type RouteConfigEntry = {
+    routeKey: string,
+    pathParameters?: Array<string>
+}
+
+export type RouteConfig = {
+    [regex: string]: RouteConfigEntry
+}
+
 const routeConfig = {
 
     /** AUTHENTICATION */

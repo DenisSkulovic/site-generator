@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { handlePageHTMLObjectDelete, handlePageHTMLObjectGet, handlePageHTMLObjectGetAll, handlePageHTMLObjectPost, handlePageHTMLObjectPut } from "../";
 import { APIGatewayEvent } from "aws-lambda";
 import { PageHTMLObject } from "@page_cls_module";

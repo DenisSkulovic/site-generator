@@ -1,9 +1,9 @@
 import { APIGatewayEvent } from "aws-lambda";
 import { PageConfigRepository } from "@repository_module";
-import { PageConfig, buildPageConfig } from "../../../../../../page_cls_module/src";
+import { PageConfig, buildPageConfig } from "@page_cls_module";
 
 export const handlePageConfigDelete = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {
-    const key: string = event.pathParameters?.key;
+    const key: string | undefined = event.pathParameters?.key;
     if (!key) {
         throw new Error("key is a mandatory path param");
     }
@@ -13,7 +13,7 @@ export const handlePageConfigDelete = async (event: APIGatewayEvent, env: "dev" 
 }
 
 export const handlePageConfigGet = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<PageConfig> => {
-    const key: string = event.pathParameters?.key;
+    const key: string | undefined = event.pathParameters?.key;
     if (!key) {
         throw new Error("key is a mandatory path param");
     }

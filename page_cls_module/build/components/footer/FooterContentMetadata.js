@@ -1,19 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FooterContentMetadata = exports.buildFooterContentMetadata = void 0;
+const Metadata_1 = require("src/components/Metadata");
 const buildFooterContentMetadata = (obj) => {
-    if (obj.clazz !== "FooterContentMetadata")
-        throw new Error("clazz cannot be anything other than 'FooterContentMetadata'");
-    const footerContentMetadata = new FooterContentMetadata(obj.createdTimestamp, obj.updatedTimestamp);
-    return footerContentMetadata;
+    const metadata = new FooterContentMetadata(obj.createdTimestamp, obj.updatedTimestamp);
+    return metadata;
 };
 exports.buildFooterContentMetadata = buildFooterContentMetadata;
-class FooterContentMetadata {
-    constructor(createdTimestamp, updatedTimestamp) {
-        this.createdTimestamp = createdTimestamp;
-        this.updatedTimestamp = updatedTimestamp;
-        this.clazz = this.constructor.name;
-    }
+class FooterContentMetadata extends Metadata_1.Metadata {
 }
 exports.FooterContentMetadata = FooterContentMetadata;
 //# sourceMappingURL=FooterContentMetadata.js.map

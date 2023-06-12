@@ -6,5 +6,5 @@ var LangEnum;
     LangEnum["LT"] = "lt";
     LangEnum["EN"] = "en";
     LangEnum["RU"] = "ru";
-})(LangEnum = exports.LangEnum || (exports.LangEnum = {}));
+})(LangEnum || (exports.LangEnum = LangEnum = {}));
 //# sourceMappingURL=LangEnum.js.map

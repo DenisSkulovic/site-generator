@@ -16,6 +16,7 @@ export function createPageConfig(params: Partial<DTO.PageConfig>): DTO.PageConfi
         uuid: '',
         lang: DTO.LangEnum.EN,
         pageName: '',
+        pagePath: '',
         contentId: '',
         isIncludeBootstrap: false,
         headVersion: DTO.HeadVersionEnum.TEST_VERSION,
@@ -444,4 +445,52 @@ export function createHeaderConfigMetadata(params: Partial<DTO.HeaderConfigMetad
         clazz: "HeaderConfigMetadata",
     };
     return { ...defaultObject, ...params };
+}
+
+export function createAsset(params: Partial<DTO.Asset>): DTO.Asset {
+    const defaultAsset: DTO.Asset = {
+        uuid: '',
+        name: '',
+        path: '',
+        s3Path: '',
+        s3Link: '',
+        tag: DTO.AssetTagEnum.SCRIPT, // Use your default enum value here
+        position: DTO.AssetPositionEnum.BODY_END, // Use your default enum value here
+        clazz: "Asset"
+    };
+
+    return { ...defaultAsset, ...params };
+}
+
+export function createLinkAsset(params: Partial<DTO.LinkAsset>): DTO.LinkAsset {
+    const defaultLinkAsset: DTO.LinkAsset = {
+        ...createAsset({tag: DTO.AssetTagEnum.LINK, ...params}),
+        rel: DTO.AssetRelEnum.STYLESHEET, // Use your default enum value here
+        clazz: "LinkAsset"
+    };
+
+    return { ...defaultLinkAsset, ...params };
+}
+
+
+export function createScriptAsset(params: Partial<DTO.ScriptAsset>): DTO.ScriptAsset {
+    const defaultScriptAsset: DTO.ScriptAsset = {
+        ...createAsset({tag: DTO.AssetTagEnum.SCRIPT, ...params}),
+        isAsync: false,
+        isDefer: false,
+        type: DTO.AssetTypeEnum.JS,
+        clazz: "ScriptAsset"
+    };
+
+    return { ...defaultScriptAsset, ...params };
+}
+
+export function createStyleAsset(params: Partial<DTO.StyleAsset>): DTO.StyleAsset {
+    const defaultStyleAsset: DTO.StyleAsset = {
+        ...createAsset({tag: DTO.AssetTagEnum.STYLE, ...params}),
+        type: DTO.AssetTypeEnum.CSS,
+        clazz: "StyleAsset"
+    };
+
+    return { ...defaultStyleAsset, ...params };
 }

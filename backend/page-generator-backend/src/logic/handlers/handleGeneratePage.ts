@@ -2,7 +2,7 @@ import { FooterHTMLObject, GeneratePageRequest, GeneratePageResponse, HeaderHTML
 import {constructPage} from "../page-builder/page/constructPage"
 import constructArea from "../page-builder/page/constructArea"
 import fetchFooter from "../page-builder/footer/fetchFooterFromS3"
-import fetchHeader from "../page-builder/header/fetchHeaderFromDynamo"
+import fetchHeader from "../page-builder/header/fetchHeaderFromS3"
 import guid from "@/utils/guid"
 
 const handleGeneratePage = async (
@@ -14,8 +14,8 @@ const handleGeneratePage = async (
     const config: PageConfig = requestData.config
 
     const promises: [Promise<HeaderHTMLObject | undefined>, Promise<FooterHTMLObject | undefined>] = [
-        fetchHeader(config.headerId),
-        fetchFooter(config.footerId),
+        fetchHeader(),
+        fetchFooter(),
     ]
 
     const [headerHTMLObject, footerHTMLObject] = await Promise.all(promises)

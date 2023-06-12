@@ -6,13 +6,14 @@ const buildFooterContent = (obj) => {
     if (obj.clazz !== "FooterContent")
         throw new Error("clazz cannot be anything other than 'FooterContent'");
     const metadata = (0, FooterContentMetadata_1.buildFooterContentMetadata)(obj.metadata);
-    const footerContent = new FooterContent(obj.uuid, metadata);
+    const footerContent = new FooterContent(obj.uuid, obj.email, metadata);
     return footerContent;
 };
 exports.buildFooterContent = buildFooterContent;
 class FooterContent {
-    constructor(uuid, metadata) {
+    constructor(uuid, email, metadata) {
         this.uuid = uuid;
+        this.email = email;
         this.metadata = metadata;
         this.clazz = this.constructor.name;
     }

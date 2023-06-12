@@ -1,3 +1,4 @@
+// @ts-nocheck
 import getDirName from '@/utils/getDirName';
 import guid from '@/utils/guid';
 import * as ejs from 'ejs';

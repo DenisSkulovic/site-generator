@@ -1,19 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AreaHTMLMetadata = exports.buildAreaHTMLMetadata = void 0;
+const Metadata_1 = require("src/components/Metadata");
 const buildAreaHTMLMetadata = (obj) => {
-    if (obj.clazz !== "AreaHTMLMetadata")
-        throw new Error("clazz cannot be anything other than 'AreaHTMLMetadata'");
-    const areaHTMLMetadata = new AreaHTMLMetadata(obj.createdTimestamp, obj.updatedTimestamp);
-    return areaHTMLMetadata;
+    const metadata = new AreaHTMLMetadata(obj.createdTimestamp, obj.updatedTimestamp);
+    return metadata;
 };
 exports.buildAreaHTMLMetadata = buildAreaHTMLMetadata;
-class AreaHTMLMetadata {
-    constructor(createdTimestamp, updatedTimestamp) {
-        this.createdTimestamp = createdTimestamp;
-        this.updatedTimestamp = updatedTimestamp;
-        this.clazz = this.constructor.name;
-    }
+class AreaHTMLMetadata extends Metadata_1.Metadata {
 }
 exports.AreaHTMLMetadata = AreaHTMLMetadata;
 //# sourceMappingURL=AreaHTMLMetadata.js.map

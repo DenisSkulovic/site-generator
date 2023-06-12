@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { handleImageDelete, handleImageGet, handleImagePost, handleImagePut } from '../';
 import { APIGatewayEvent } from 'aws-lambda';
 import { S3Operations } from '@s3_module';

@@ -1,19 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HeaderHTMLMetadata = exports.buildHeaderHTMLMetadata = void 0;
+const Metadata_1 = require("src/components/Metadata");
 const buildHeaderHTMLMetadata = (obj) => {
-    if (obj.clazz !== "HeaderHTMLMetadata")
-        throw new Error("clazz cannot be anything other than 'HeaderHTMLMetadata'");
-    const headerHTMLMetadata = new HeaderHTMLMetadata(obj.createdTimestamp, obj.updatedTimestamp);
-    return headerHTMLMetadata;
+    const metadata = new HeaderHTMLMetadata(obj.createdTimestamp, obj.updatedTimestamp);
+    return metadata;
 };
 exports.buildHeaderHTMLMetadata = buildHeaderHTMLMetadata;
-class HeaderHTMLMetadata {
-    constructor(createdTimestamp, updatedTimestamp) {
-        this.createdTimestamp = createdTimestamp;
-        this.updatedTimestamp = updatedTimestamp;
-        this.clazz = this.constructor.name;
-    }
+class HeaderHTMLMetadata extends Metadata_1.Metadata {
 }
 exports.HeaderHTMLMetadata = HeaderHTMLMetadata;
 //# sourceMappingURL=HeaderHTMLMetadata.js.map

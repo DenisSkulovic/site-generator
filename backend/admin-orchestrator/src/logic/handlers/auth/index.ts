@@ -6,9 +6,9 @@ export const handleLogin = async (event: APIGatewayEvent, env: "dev" | "prod"): 
     const { username, password } = JSON.parse(event.body || "{}")
 
     // Fetch mandatory environment variables.
-    const adminUsername = getEnvVariable("ADMIN_USERNAME")
-    const adminPassword = getEnvVariable("ADMIN_PASSWORD")
-    const jwtSecret = getEnvVariable("JWT_SECRET")
+    const adminUsername: string = getEnvVariable("ADMIN_USERNAME")
+    const adminPassword: string = getEnvVariable("ADMIN_PASSWORD")
+    const jwtSecret: string = getEnvVariable("JWT_SECRET")
 
     // Check if credentials match.
     if (adminUsername !== username || adminPassword !== password) {
@@ -27,11 +27,11 @@ export const handleLogin = async (event: APIGatewayEvent, env: "dev" | "prod"): 
 }
 
 export const handleRefresh = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<{ accessToken: string }> => {
-    const refreshToken: string = event.headers['AUTHORIZATION'];
+    const refreshToken: string | undefined = event.headers['AUTHORIZATION'];
     if (!refreshToken) throw new Error("AUTHORIZATION is a mandatory header");
 
-    const jwtSecret = getEnvVariable("JWT_SECRET");
-    const defaultTokenExpiry = getEnvVariable("DEFAULT_TOKEN_EXPIRY") || "3h";
+    const jwtSecret: string = getEnvVariable("JWT_SECRET");
+    const defaultTokenExpiry: string = getEnvVariable("DEFAULT_TOKEN_EXPIRY") || "3h";
 
     const auth = new AuthManager(jwtSecret, defaultTokenExpiry);
     const accessToken = auth.refreshAccessToken(refreshToken);

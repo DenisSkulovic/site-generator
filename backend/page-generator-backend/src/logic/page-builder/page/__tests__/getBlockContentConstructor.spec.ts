@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { BlockContent_HTML, BlockContent_TEXT, BlockTemplateEnum } from "@page_cls_module";
 import getBlockContentConstructor from "../getBlockContentConstructor";
 import blockContentsArr from "../../../../config/blockContentsArr";

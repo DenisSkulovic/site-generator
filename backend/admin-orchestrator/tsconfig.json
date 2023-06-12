@@ -4,6 +4,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "baseUrl": "./",
+    "types": ["jest", "node"],
     "paths": {
       "@/*": [
         "src/*"

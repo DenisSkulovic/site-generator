@@ -1,7 +1,5 @@
-export declare class AreaContentMetadata {
-    createdTimestamp: number;
-    updatedTimestamp: number;
-    clazz: string;
-    constructor(createdTimestamp: number, updatedTimestamp: number);
+import { Metadata } from "src/components/Metadata";
+export declare const buildAreaContentMetadata: (obj: any) => AreaContentMetadata;
+export declare class AreaContentMetadata extends Metadata {
 }
 //# sourceMappingURL=AreaContentMetadata.d.ts.map

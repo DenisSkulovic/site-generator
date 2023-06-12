@@ -1,8 +1,5 @@
+import { Metadata } from "src/components/Metadata";
 export declare const buildBlockHTMLMetadata: (obj: any) => BlockHTMLMetadata;
-export declare class BlockHTMLMetadata {
-    createdTimestamp: number;
-    updatedTimestamp: number;
-    clazz: string;
-    constructor(createdTimestamp: number, updatedTimestamp: number);
+export declare class BlockHTMLMetadata extends Metadata {
 }
 //# sourceMappingURL=BlockHTMLMetadata.d.ts.map

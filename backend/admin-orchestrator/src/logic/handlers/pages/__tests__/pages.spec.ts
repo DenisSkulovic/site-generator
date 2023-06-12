@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { handlePageDelete, handlePagePost, handlePagePut } from '../';
 import { APIGatewayEvent } from 'aws-lambda';
 import { S3Operations } from '@s3_module';

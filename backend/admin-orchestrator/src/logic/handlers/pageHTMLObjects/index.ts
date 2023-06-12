@@ -26,17 +26,13 @@ export const handlePageHTMLObjectGetAll = async (event: APIGatewayEvent, env: "d
 export const handlePageHTMLObjectPost = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {
     const body = JSON.parse(event.body || "{}");
     const pageHTMLObject: PageHTMLObject = buildPageHTMLObject(body);
-    const key: string | undefined = event.queryStringParameters?.key;
-    if (!key) throw new Error("key is a mandatory query string param");
     const repo = new PageHTMLRepository();
-    await repo.putItem(key, pageHTMLObject);
+    await repo.putItem(pageHTMLObject);
 };
 
 export const handlePageHTMLObjectPut = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {
     const body = JSON.parse(event.body || "{}");
     const pageHTMLObject: PageHTMLObject = buildPageHTMLObject(body);
-    const key: string | undefined = event.queryStringParameters?.key;
-    if (!key) throw new Error("key is a mandatory query string param");
     const repo = new PageHTMLRepository();
-    await repo.putItem(key, pageHTMLObject);
+    await repo.putItem(pageHTMLObject);
 };

@@ -1,8 +1,5 @@
+import { Metadata } from "src/components/Metadata";
 export declare const buildHeaderContentMetadata: (obj: any) => HeaderContentMetadata;
-export declare class HeaderContentMetadata {
-    createdTimestamp: number;
-    updatedTimestamp: number;
-    clazz: string;
-    constructor(createdTimestamp: number, updatedTimestamp: number);
+export declare class HeaderContentMetadata extends Metadata {
 }
 //# sourceMappingURL=HeaderContentMetadata.d.ts.map

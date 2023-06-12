@@ -1,7 +1,31 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BlockContent_IMAGE = exports.BlockContent_HTML = exports.buildBlockContent = exports.BlockContent = exports.BlockConfigMetadata = exports.buildBlockConfig = exports.BlockConfig = exports.AreaLayoutEnum = exports.buildAreaHTMLObject = exports.AreaHTMLObject = exports.buildAreaHTMLMetadata = exports.AreaHTMLMetadata = exports.AreaContentMetadata = exports.buildAreaContent = exports.AreaContent = exports.AreaConfigMetadata = exports.buildAreaConfig = exports.AreaConfig = exports.GenerateFooterResponse = exports.buildGenerateFooterRequest = exports.GenerateFooterRequest = exports.buildFooterHTMLObject = exports.FooterHTMLObject = exports.buildFooterHTMLMetadata = exports.FooterHTMLMetadata = exports.buildFooterConfigMetadata = exports.FooterConfigMetadata = exports.buildFooterConfig = exports.FooterConfig = exports.buildFooterContentMetadata = exports.FooterContentMetadata = exports.buildFooterContent = exports.FooterContent = exports.GenerateHeaderResponse = exports.buildGenerateHeaderRequest = exports.GenerateHeaderRequest = exports.buildHeaderHTMLMetadata = exports.HeaderHTMLMetadata = exports.buildHeaderHTMLObject = exports.HeaderHTMLObject = exports.buildHeaderConfigMetadata = exports.HeaderConfigMetadata = exports.buildHeaderConfig = exports.HeaderConfig = exports.buildNavItem = exports.NavItem = exports.buildHeaderContentMetadata = exports.HeaderContentMetadata = exports.buildHeaderContent = exports.HeaderContent = void 0;
-exports.Product = exports.LangEnum = exports.HeaderTemplateVersionEnum = exports.FooterTemplateVersionEnum = exports.HeadVersionEnum = exports.SkeletonVersionEnum = exports.buildPageHTMLObject = exports.PageHTMLObject = exports.buildPageHTMLMetadata = exports.PageHTMLMetadata = exports.buildPageContentMetadata = exports.PageContentMetadata = exports.buildPageContent = exports.PageContent = exports.buildPageConfigMetadata = exports.PageConfigMetadata = exports.buildPageConfig = exports.PageConfig = exports.GeneratePageResponse = exports.buildGeneratePageRequest = exports.GeneratePageRequest = exports.GenerateBlockResponse = exports.buildGenerateBlockRequest = exports.GenerateBlockRequest = exports.GenerateAreaResponse = exports.buildGenerateAreaRequest = exports.GenerateAreaRequest = exports.BootstrapVersionEnum = exports.BlockTemplateEnum = exports.buildBlockHTMLObject = exports.BlockHTMLObject = exports.buildBlockHTMLMetadata = exports.BlockHTMLMetadata = exports.buildBlockContentMetadata = exports.BlockContentMetadata = exports.BlockContent_TEXT = void 0;
+exports.buildBlockConfigMetadata = exports.BlockConfigMetadata = exports.buildBlockConfig = exports.BlockConfig = exports.AreaLayoutEnum = exports.buildAreaHTMLObject = exports.AreaHTMLObject = exports.buildAreaHTMLMetadata = exports.AreaHTMLMetadata = exports.buildAreaContentMetadata = exports.AreaContentMetadata = exports.buildAreaContent = exports.AreaContent = exports.buildAreaConfigMetadata = exports.AreaConfigMetadata = exports.buildAreaConfig = exports.AreaConfig = exports.GenerateFooterResponse = exports.buildGenerateFooterRequest = exports.GenerateFooterRequest = exports.buildFooterHTMLObject = exports.FooterHTMLObject = exports.buildFooterHTMLMetadata = exports.FooterHTMLMetadata = exports.buildFooterConfigMetadata = exports.FooterConfigMetadata = exports.buildFooterConfig = exports.FooterConfig = exports.buildFooterContentMetadata = exports.FooterContentMetadata = exports.buildFooterContent = exports.FooterContent = exports.GenerateHeaderResponse = exports.buildGenerateHeaderRequest = exports.GenerateHeaderRequest = exports.buildHeaderHTMLMetadata = exports.HeaderHTMLMetadata = exports.buildHeaderHTMLObject = exports.HeaderHTMLObject = exports.buildHeaderConfigMetadata = exports.HeaderConfigMetadata = exports.buildHeaderConfig = exports.HeaderConfig = exports.buildNavItem = exports.NavItem = exports.buildHeaderContentMetadata = exports.HeaderContentMetadata = exports.buildHeaderContent = exports.HeaderContent = exports.mockFactories = void 0;
+exports.Metadata = exports.buildProduct = exports.Product = exports.StyleAsset = exports.ScriptAsset = exports.LinkAsset = exports.Asset = exports.AssetPositionEnum = exports.AssetRelEnum = exports.AssetTagEnum = exports.AssetTypeEnum = exports.LangEnum = exports.HeaderTemplateVersionEnum = exports.FooterTemplateVersionEnum = exports.HeadVersionEnum = exports.SkeletonVersionEnum = exports.buildPageHTMLObject = exports.PageHTMLObject = exports.buildPageHTMLMetadata = exports.PageHTMLMetadata = exports.buildPageContentMetadata = exports.PageContentMetadata = exports.buildPageContent = exports.PageContent = exports.buildPageConfigMetadata = exports.PageConfigMetadata = exports.buildPageConfig = exports.PageConfig = exports.GeneratePageResponse = exports.buildGeneratePageRequest = exports.GeneratePageRequest = exports.GenerateBlockResponse = exports.buildGenerateBlockRequest = exports.GenerateBlockRequest = exports.GenerateAreaResponse = exports.buildGenerateAreaRequest = exports.GenerateAreaRequest = exports.BootstrapVersionEnum = exports.BlockTemplateEnum = exports.buildBlockHTMLObject = exports.BlockHTMLObject = exports.buildBlockHTMLMetadata = exports.BlockHTMLMetadata = exports.buildBlockContentMetadata = exports.BlockContentMetadata = exports.BlockContent_TEXT = exports.BlockContent_IMAGE = exports.BlockContent_HTML = exports.buildBlockContent = exports.BlockContent = void 0;
+exports.mockFactories = __importStar(require("./mockFactories"));
 /**
  * HEADER
  */
@@ -65,11 +89,13 @@ Object.defineProperty(exports, "AreaConfig", { enumerable: true, get: function (
 Object.defineProperty(exports, "buildAreaConfig", { enumerable: true, get: function () { return AreaConfig_1.buildAreaConfig; } });
 var AreaConfigMetadata_1 = require("./components/page/Config/AreaConfigMetadata");
 Object.defineProperty(exports, "AreaConfigMetadata", { enumerable: true, get: function () { return AreaConfigMetadata_1.AreaConfigMetadata; } });
+Object.defineProperty(exports, "buildAreaConfigMetadata", { enumerable: true, get: function () { return AreaConfigMetadata_1.buildAreaConfigMetadata; } });
 var AreaContent_1 = require("./components/page/Content/AreaContent");
 Object.defineProperty(exports, "AreaContent", { enumerable: true, get: function () { return AreaContent_1.AreaContent; } });
 Object.defineProperty(exports, "buildAreaContent", { enumerable: true, get: function () { return AreaContent_1.buildAreaContent; } });
 var AreaContentMetadata_1 = require("./components/page/Content/AreaContentMetadata");
 Object.defineProperty(exports, "AreaContentMetadata", { enumerable: true, get: function () { return AreaContentMetadata_1.AreaContentMetadata; } });
+Object.defineProperty(exports, "buildAreaContentMetadata", { enumerable: true, get: function () { return AreaContentMetadata_1.buildAreaContentMetadata; } });
 var AreaHTMLMetadata_1 = require("./components/page/HTMLObject/AreaHTMLMetadata");
 Object.defineProperty(exports, "AreaHTMLMetadata", { enumerable: true, get: function () { return AreaHTMLMetadata_1.AreaHTMLMetadata; } });
 Object.defineProperty(exports, "buildAreaHTMLMetadata", { enumerable: true, get: function () { return AreaHTMLMetadata_1.buildAreaHTMLMetadata; } });
@@ -83,6 +109,7 @@ Object.defineProperty(exports, "BlockConfig", { enumerable: true, get: function 
 Object.defineProperty(exports, "buildBlockConfig", { enumerable: true, get: function () { return BlockConfig_1.buildBlockConfig; } });
 var BlockConfigMetadata_1 = require("./components/page/Config/BlockConfigMetadata");
 Object.defineProperty(exports, "BlockConfigMetadata", { enumerable: true, get: function () { return BlockConfigMetadata_1.BlockConfigMetadata; } });
+Object.defineProperty(exports, "buildBlockConfigMetadata", { enumerable: true, get: function () { return BlockConfigMetadata_1.buildBlockConfigMetadata; } });
 var BlockContent_1 = require("./components/page/Content/BlockContent");
 Object.defineProperty(exports, "BlockContent", { enumerable: true, get: function () { return BlockContent_1.BlockContent; } });
 Object.defineProperty(exports, "buildBlockContent", { enumerable: true, get: function () { return BlockContent_1.buildBlockContent; } });
@@ -148,7 +175,29 @@ var HeaderTemplateVersionEnum_1 = require("./components/page/enum/HeaderTemplate
 Object.defineProperty(exports, "HeaderTemplateVersionEnum", { enumerable: true, get: function () { return HeaderTemplateVersionEnum_1.HeaderTemplateVersionEnum; } });
 var LangEnum_1 = require("./components/page/enum/LangEnum");
 Object.defineProperty(exports, "LangEnum", { enumerable: true, get: function () { return LangEnum_1.LangEnum; } });
+/**
+ * ASSET
+ */
+var AssetTypeEnum_1 = require("./components/asset/AssetTypeEnum");
+Object.defineProperty(exports, "AssetTypeEnum", { enumerable: true, get: function () { return AssetTypeEnum_1.AssetTypeEnum; } });
+var AssetTagEnum_1 = require("./components/asset/AssetTagEnum");
+Object.defineProperty(exports, "AssetTagEnum", { enumerable: true, get: function () { return AssetTagEnum_1.AssetTagEnum; } });
+var AssetRelEnum_1 = require("./components/asset/AssetRelEnum");
+Object.defineProperty(exports, "AssetRelEnum", { enumerable: true, get: function () { return AssetRelEnum_1.AssetRelEnum; } });
+var AssetPositionEnum_1 = require("./components/asset/AssetPositionEnum");
+Object.defineProperty(exports, "AssetPositionEnum", { enumerable: true, get: function () { return AssetPositionEnum_1.AssetPositionEnum; } });
+var Asset_1 = require("./components/asset/Asset");
+Object.defineProperty(exports, "Asset", { enumerable: true, get: function () { return Asset_1.Asset; } });
+var LinkAsset_1 = require("./components/asset/LinkAsset");
+Object.defineProperty(exports, "LinkAsset", { enumerable: true, get: function () { return LinkAsset_1.LinkAsset; } });
+var ScriptAsset_1 = require("./components/asset/ScriptAsset");
+Object.defineProperty(exports, "ScriptAsset", { enumerable: true, get: function () { return ScriptAsset_1.ScriptAsset; } });
+var StyleAsset_1 = require("./components/asset/StyleAsset");
+Object.defineProperty(exports, "StyleAsset", { enumerable: true, get: function () { return StyleAsset_1.StyleAsset; } });
 // misc
 var Product_1 = require("./components/Product");
 Object.defineProperty(exports, "Product", { enumerable: true, get: function () { return Product_1.Product; } });
+Object.defineProperty(exports, "buildProduct", { enumerable: true, get: function () { return Product_1.buildProduct; } });
+var Metadata_1 = require("./components/Metadata");
+Object.defineProperty(exports, "Metadata", { enumerable: true, get: function () { return Metadata_1.Metadata; } });
 //# sourceMappingURL=index.js.map

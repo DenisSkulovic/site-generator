@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { APIGatewayEvent } from "aws-lambda";
 import { FooterConfig, FooterContent } from "@page_cls_module";
 import { S3Operations } from "@s3_module";

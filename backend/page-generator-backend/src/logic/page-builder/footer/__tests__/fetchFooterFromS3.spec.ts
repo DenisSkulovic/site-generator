@@ -1,7 +1,8 @@
+// @ts-nocheck
 import * as AWS from 'aws-sdk';
 import { createFooterHTMLObject } from '../../../../../../../page_cls_module/src/mockFactories';
 import fetchFooterFromS3 from '../fetchFooterFromS3';
-import { FooterHTMLObject } from '../../../../../../../page_cls_module/src';
+import { FooterHTMLObject } from '@page_cls_module';
 
 jest.mock('aws-sdk', () => {
     return {

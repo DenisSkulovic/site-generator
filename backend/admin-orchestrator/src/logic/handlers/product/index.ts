@@ -1,7 +1,6 @@
 import { APIGatewayEvent } from "aws-lambda";
 import { ProductRepository } from "@repository_module";
-import { Product } from "aws-sdk/clients/ssm";
-import { buildProduct } from "../../../../../../page_cls_module/src";
+import { Product, buildProduct } from "@page_cls_module";
 
 export const handleProductDelete = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {
     const uuid: string | undefined = event.pathParameters?.uuid;

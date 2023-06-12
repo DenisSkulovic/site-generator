@@ -1,19 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PageConfigMetadata = exports.buildPageConfigMetadata = void 0;
+const Metadata_1 = require("src/components/Metadata");
 const buildPageConfigMetadata = (obj) => {
-    if (obj.clazz !== "PageConfigMetadata")
-        throw new Error("clazz cannot be anything other than 'PageConfigMetadata'");
-    const pageConfigMetadata = new PageConfigMetadata(obj.createdTimestamp, obj.updatedTimestamp);
-    return pageConfigMetadata;
+    const metadata = new PageConfigMetadata(obj.createdTimestamp, obj.updatedTimestamp);
+    return metadata;
 };
 exports.buildPageConfigMetadata = buildPageConfigMetadata;
-class PageConfigMetadata {
-    constructor(createdTimestamp, updatedTimestamp) {
-        this.createdTimestamp = createdTimestamp;
-        this.updatedTimestamp = updatedTimestamp;
-        this.clazz = this.constructor.name;
-    }
+class PageConfigMetadata extends Metadata_1.Metadata {
 }
 exports.PageConfigMetadata = PageConfigMetadata;
 //# sourceMappingURL=PageConfigMetadata.js.map

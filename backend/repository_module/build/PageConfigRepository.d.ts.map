@@ -1,1 +1,1 @@
-{"version":3,"file":"PageConfigRepository.d.ts","sourceRoot":"","sources":["../src/PageConfigRepository.ts"],"names":[],"mappings":"AAKA,MAAM,WAAW,qBAAqB;CAIrC;AAGD,qBAAa,oBAAqB,YAAW,qBAAqB;CA4JjE"}
+{"version":3,"file":"PageConfigRepository.d.ts","sourceRoot":"","sources":["../src/PageConfigRepository.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,UAAU,EAAE,MAAM,cAAc,CAAA;AAGzC,qBAAa,oBAAqB,SAAQ,UAAU;;CAOnD"}

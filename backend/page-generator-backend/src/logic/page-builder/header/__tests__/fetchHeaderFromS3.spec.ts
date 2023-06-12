@@ -1,8 +1,9 @@
 
+// @ts-nocheck
 import * as AWS from 'aws-sdk';
 import { createHeaderHTMLObject } from '../../../../../../../page_cls_module/src/mockFactories';
 import fetchHeaderFromS3 from '../fetchHeaderFromS3';
-import { HeaderHTMLObject } from '../../../../../../../page_cls_module/src';
+import { HeaderHTMLObject } from '@page_cls_module';
 
 jest.mock('aws-sdk', () => {
     return {

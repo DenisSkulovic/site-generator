@@ -1,8 +1,5 @@
+import { Metadata } from "src/components/Metadata";
 export declare const buildPageConfigMetadata: (obj: any) => PageConfigMetadata;
-export declare class PageConfigMetadata {
-    createdTimestamp: number;
-    updatedTimestamp: number;
-    clazz: string;
-    constructor(createdTimestamp: number, updatedTimestamp: number);
+export declare class PageConfigMetadata extends Metadata {
 }
 //# sourceMappingURL=PageConfigMetadata.d.ts.map

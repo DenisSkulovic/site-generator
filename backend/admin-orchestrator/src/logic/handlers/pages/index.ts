@@ -1,12 +1,12 @@
 import { APIGatewayEvent } from "aws-lambda";
 import { S3Operations } from "@s3_module";
-import { PageHTMLObject, buildPageHTMLObject } from "../../../../../../page_cls_module/src";
+import { PageHTMLObject, buildPageHTMLObject } from "@page_cls_module";
+import getEnvVariable from "@/logic/getEnvVariable";
 
 export const handlePageDelete = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {
     const url: string | undefined = event.queryStringParameters?.url;
     if (!url) throw new Error("url is a mandatory query string param");
-    const bucketName: string | undefined = process.env.BUCKET_NAME;
-    if (!bucketName) throw new Error("BUCKET_NAME is a mandatory env param");
+    const bucketName: string = getEnvVariable("BUCKET_NAME");
     const s3 = new S3Operations(bucketName);
     await s3.deletePage(url);
 };
@@ -16,10 +16,9 @@ export const handlePagePost = async (event: APIGatewayEvent, env: "dev" | "prod"
     const url: string | undefined = event.queryStringParameters?.url;
     if (!url) throw new Error("url is a mandatory query string param");
     const pageHTMLObject: PageHTMLObject = buildPageHTMLObject(body);
-    const bucketName: string | undefined = process.env.BUCKET_NAME;
-    if (!bucketName) throw new Error("BUCKET_NAME is a mandatory env param");
+    const bucketName: string = getEnvVariable("BUCKET_NAME");
     const s3 = new S3Operations(bucketName);
-    await s3.uploadPage(url, pageHTMLObject);
+    await s3.uploadPage(pageHTMLObject.html, url);
 };
 
 export const handlePagePut = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {
@@ -27,8 +26,7 @@ export const handlePagePut = async (event: APIGatewayEvent, env: "dev" | "prod")
     const url: string | undefined = event.queryStringParameters?.url;
     if (!url) throw new Error("url is a mandatory query string param");
     const pageHTMLObject: PageHTMLObject = buildPageHTMLObject(body);
-    const bucketName: string | undefined = process.env.BUCKET_NAME;
-    if (!bucketName) throw new Error("BUCKET_NAME is a mandatory env param");
+    const bucketName: string = getEnvVariable("BUCKET_NAME");
     const s3 = new S3Operations(bucketName);
-    await s3.uploadPage(url, pageHTMLObject);
+    await s3.uploadPage(pageHTMLObject.html, url);
 };

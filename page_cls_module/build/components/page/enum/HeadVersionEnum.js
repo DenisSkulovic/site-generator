@@ -4,5 +4,5 @@ exports.HeadVersionEnum = void 0;
 var HeadVersionEnum;
 (function (HeadVersionEnum) {
     HeadVersionEnum["TEST_VERSION"] = "test_version";
-})(HeadVersionEnum = exports.HeadVersionEnum || (exports.HeadVersionEnum = {}));
+})(HeadVersionEnum || (exports.HeadVersionEnum = HeadVersionEnum = {}));
 //# sourceMappingURL=HeadVersionEnum.js.map

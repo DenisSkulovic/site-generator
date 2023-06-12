@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { BlockConfig, BlockContent, BlockHTMLObject, GenerateBlockRequest, GenerateBlockResponse } from "@page_cls_module"
 import handleGenerateBlock from "../handleGenerateBlock"
 import constructBlock from "../../page-builder/page/constructBlock"

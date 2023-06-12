@@ -24,6 +24,7 @@ export class CloudFrontOperations {
 
         try {
             const data = await this.cloudfront.createInvalidation(params).promise();
+            if (!data.Invalidation) throw new Error("data.Invalidation cannot be undefined")
             console.log("Invalidation created:", JSON.stringify(data.Invalidation.Id));
         } catch (error) {
             console.error("Unable to create invalidation. Error:", JSON.stringify(error));
@@ -33,6 +34,7 @@ export class CloudFrontOperations {
     async listDistributions(): Promise<void> {
         try {
             const data = await this.cloudfront.listDistributions({}).promise();
+            if (!data.DistributionList) throw new Error("data.Invalidation cannot be undefined")
             console.log("Distributions:", JSON.stringify(data.DistributionList.Items));
         } catch (error) {
             console.error("Unable to list distributions. Error:", JSON.stringify(error));
@@ -57,6 +59,7 @@ export class CloudFrontOperations {
         };
         try {
             const data = await this.cloudfront.listInvalidations(params).promise();
+            if (!data.InvalidationList) throw new Error("data.Invalidation cannot be undefined")
             console.log("Invalidations:", JSON.stringify(data.InvalidationList.Items));
         } catch (error) {
             console.error("Unable to list invalidations. Error:", JSON.stringify(error));

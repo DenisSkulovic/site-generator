@@ -1,0 +1,1 @@
+{"version":3,"file":"Metadata.d.ts","sourceRoot":"","sources":["../../src/components/Metadata.ts"],"names":[],"mappings":"AAAA,eAAO,MAAM,aAAa,QAAS,GAAG,KAAG,QAMxC,CAAA;AAED,qBAAa,QAAQ;IACjB,gBAAgB,EAAE,MAAM,CAAA;IACxB,gBAAgB,EAAE,MAAM,CAAA;IACxB,KAAK,EAAE,MAAM,CAAA;gBAET,gBAAgB,EAAE,MAAM,EACxB,gBAAgB,EAAE,MAAM;CAM/B"}

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { constructPage } from "../../page-builder/page/constructPage";
 import fetchFooter from "../../page-builder/footer/fetchFooterFromS3";
 import fetchHeader from "../../page-builder/header/fetchHeaderFromS3";

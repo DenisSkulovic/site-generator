@@ -1,3 +1,4 @@
+// @ts-nocheck
 import handleError from '../handleError';
 import Response from '../../classes/Response';
 

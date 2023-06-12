@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { FooterConfig, FooterContent, FooterHTMLObject, GenerateFooterRequest, GenerateFooterResponse } from "@page_cls_module";
 import handleGenerateFooter from "../handleGenerateFooter";
 import generateFooterHTML from "../../page-builder/footer/generateFooterHTML";

@@ -1,19 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BlockContentMetadata = exports.buildBlockContentMetadata = void 0;
+const Metadata_1 = require("src/components/Metadata");
 const buildBlockContentMetadata = (obj) => {
-    if (obj.clazz !== "BlockContentMetadata")
-        throw new Error("clazz cannot be anything other than 'BlockContentMetadata'");
-    const blockContentMetadata = new BlockContentMetadata(obj.createdTimestamp, obj.updatedTimestamp);
-    return blockContentMetadata;
+    const metadata = new BlockContentMetadata(obj.createdTimestamp, obj.updatedTimestamp);
+    return metadata;
 };
 exports.buildBlockContentMetadata = buildBlockContentMetadata;
-class BlockContentMetadata {
-    constructor(createdTimestamp, updatedTimestamp) {
-        this.createdTimestamp = createdTimestamp;
-        this.updatedTimestamp = updatedTimestamp;
-        this.clazz = this.constructor.name;
-    }
+class BlockContentMetadata extends Metadata_1.Metadata {
 }
 exports.BlockContentMetadata = BlockContentMetadata;
 //# sourceMappingURL=BlockContentMetadata.js.map

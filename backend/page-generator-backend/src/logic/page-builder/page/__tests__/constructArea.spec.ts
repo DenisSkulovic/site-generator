@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { AreaConfig, AreaContent, BlockContent, BootstrapVersionEnum, AreaHTMLObject, BlockHTMLObject, AreaLayoutEnum } from "@page_cls_module";
 import { constructArea, constructChildHTMLObject, getClassString, getCols } from "../constructArea";
 import { createAreaConfig, createAreaContent, createBlockConfig, createBlockContent } from "../../../../../../../page_cls_module/src/mockFactories";

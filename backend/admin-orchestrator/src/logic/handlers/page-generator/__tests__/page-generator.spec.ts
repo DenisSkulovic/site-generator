@@ -1,7 +1,8 @@
+// @ts-nocheck
 import { PageGenerator } from '@/generator/PageGenerator';
 import { handleGenerateFooter, handleGenerateHeader, handleGeneratePage } from '../';
 import { APIGatewayEvent } from "aws-lambda";
-import { GenerateFooterResponse, GenerateHeaderResponse, GeneratePageResponse } from '../../../../../../../page_cls_module/src';
+import { GenerateFooterResponse, GenerateHeaderResponse, GeneratePageResponse } from '@page_cls_module';
 
 const mockEvent: APIGatewayEvent = {
     body: JSON.stringify({

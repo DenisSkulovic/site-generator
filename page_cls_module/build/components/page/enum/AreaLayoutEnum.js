@@ -16,5 +16,5 @@ var AreaLayoutEnum;
     AreaLayoutEnum["LAYOUT_10_2"] = "10_2";
     AreaLayoutEnum["LAYOUT_12"] = "12";
     AreaLayoutEnum["LAYOUT_3_3_3_3"] = "3_3_3_3";
-})(AreaLayoutEnum = exports.AreaLayoutEnum || (exports.AreaLayoutEnum = {}));
+})(AreaLayoutEnum || (exports.AreaLayoutEnum = AreaLayoutEnum = {}));
 //# sourceMappingURL=AreaLayoutEnum.js.map

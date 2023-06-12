@@ -4,5 +4,6 @@ exports.FooterTemplateVersionEnum = void 0;
 var FooterTemplateVersionEnum;
 (function (FooterTemplateVersionEnum) {
     FooterTemplateVersionEnum["TEST_VERSION"] = "test_version";
-})(FooterTemplateVersionEnum = exports.FooterTemplateVersionEnum || (exports.FooterTemplateVersionEnum = {}));
+    FooterTemplateVersionEnum["TEST_VERSION_2"] = "test_version_2";
+})(FooterTemplateVersionEnum || (exports.FooterTemplateVersionEnum = FooterTemplateVersionEnum = {}));
 //# sourceMappingURL=FooterTemplateVersionEnum.js.map

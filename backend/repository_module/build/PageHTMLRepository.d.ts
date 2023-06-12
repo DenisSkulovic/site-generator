@@ -1,5 +1,5 @@
-export interface IPageHTMLRepository {
-}
-export declare class PageHTMLRepository implements IPageHTMLRepository {
+import { Repository } from "./Repository";
+export declare class PageHTMLRepository extends Repository {
+    constructor();
 }
 //# sourceMappingURL=PageHTMLRepository.d.ts.map

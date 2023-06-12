@@ -1,3 +1,4 @@
+// @ts-nocheck
 import constructBlock, { getTemplatePath, buildBlockHTMLObject, buildRenderDataBlock, renderEjsFile } from '../constructBlock'; // Update with the path to your module
 import { BlockConfig, BlockContent, BlockHTMLMetadata, BlockHTMLObject, BlockTemplateEnum, BootstrapVersionEnum } from "@page_cls_module";
 import { RenderData_Block } from "@/classes/renderData/blocks/RenderData_Block";

@@ -4,11 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Response_1 = __importDefault(require("../classes/Response"));
-/**
- *
- * @param err
- * @returns
- */
 const handleError = async (err) => {
     console.error(`my name is steve`, JSON.stringify(err).slice(0, 2000));
     if (err instanceof TypeError || err instanceof SyntaxError) {

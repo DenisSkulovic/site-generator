@@ -10,7 +10,7 @@
     "start:nodemon": "nodemon ./src/dev/server.ts",
     "start:prod": "npm run build && node ./dist/src/index.js",
     "copy": "node setupBuild.js ",
-    "build": "  esbuild ./src/index.ts --bundle  --platform=node --target=es2020 --outfile=dist/index.js --external:./node_modules/pg/lib/native/*",
+    "build": "node build.js",
     "build:pre": "npx tsc",
     "build:full": "npx tsc && npm run build && npm run copy",
     "tsc-init": "tsc --init"
@@ -40,6 +40,7 @@
     "esbuild": "^0.14.54",
     "esbuild-decorators": "^1.0.0",
     "esbuild-jest": "^0.5.0",
+    "esbuild-plugin-alias": "^0.2.1",
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
