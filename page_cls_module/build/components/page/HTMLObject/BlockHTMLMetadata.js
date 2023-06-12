@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BlockHTMLMetadata = exports.buildBlockHTMLMetadata = void 0;
-const Metadata_1 = require("src/components/Metadata");
+const Metadata_1 = require("@/components/Metadata");
 const buildBlockHTMLMetadata = (obj) => {
     const metadata = new BlockHTMLMetadata(obj.createdTimestamp, obj.updatedTimestamp);
     return metadata;

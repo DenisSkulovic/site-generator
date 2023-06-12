@@ -1,4 +1,4 @@
-import { Metadata } from "src/components/Metadata";
+import { Metadata } from "@/components/Metadata";
 export declare const buildHeaderHTMLMetadata: (obj: any) => HeaderHTMLMetadata;
 export declare class HeaderHTMLMetadata extends Metadata {
 }

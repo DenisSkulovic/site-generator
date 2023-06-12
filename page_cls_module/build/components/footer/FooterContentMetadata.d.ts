@@ -1,4 +1,4 @@
-import { Metadata } from "src/components/Metadata";
+import { Metadata } from "@/components/Metadata";
 export declare const buildFooterContentMetadata: (obj: any) => FooterContentMetadata;
 export declare class FooterContentMetadata extends Metadata {
 }

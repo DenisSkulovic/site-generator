@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FooterContentMetadata = exports.buildFooterContentMetadata = void 0;
-const Metadata_1 = require("src/components/Metadata");
+const Metadata_1 = require("@/components/Metadata");
 const buildFooterContentMetadata = (obj) => {
     const metadata = new FooterContentMetadata(obj.createdTimestamp, obj.updatedTimestamp);
     return metadata;

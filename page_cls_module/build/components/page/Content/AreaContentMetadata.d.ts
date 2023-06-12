@@ -1,4 +1,4 @@
-import { Metadata } from "src/components/Metadata";
+import { Metadata } from "@/components/Metadata";
 export declare const buildAreaContentMetadata: (obj: any) => AreaContentMetadata;
 export declare class AreaContentMetadata extends Metadata {
 }

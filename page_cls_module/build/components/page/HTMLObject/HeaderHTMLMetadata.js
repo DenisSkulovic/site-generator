@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HeaderHTMLMetadata = exports.buildHeaderHTMLMetadata = void 0;
-const Metadata_1 = require("src/components/Metadata");
+const Metadata_1 = require("@/components/Metadata");
 const buildHeaderHTMLMetadata = (obj) => {
     const metadata = new HeaderHTMLMetadata(obj.createdTimestamp, obj.updatedTimestamp);
     return metadata;

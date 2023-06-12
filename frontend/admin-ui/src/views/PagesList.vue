@@ -4,7 +4,7 @@
         <div class="controls">
             <v-btn color="green" @click="handleAddNewPageClick">Add New Page</v-btn>
         </div>
-        <vDataTable :headers="tableHeaders" :items="displayedPages" :items-per-page="itemsPerPage" :page.sync="currentPage"
+        <VDataTable :headers="tableHeaders" :items="displayedPages" :items-per-page="itemsPerPage" :page.sync="currentPage"
             :server-items-length="pagesEdit.value.length" :loading="isLoadingThis" @update:page="updateCurrentPage"
             class="elevation-1">
             <template #item.actions="{ item }">
@@ -18,7 +18,7 @@
                     </v-btn>
                 </div>
             </template>
-        </vDataTable>
+        </VDataTable>
     </div>
     <div v-else-if="pagesEdit.value">
         <h2>No pages available</h2>
@@ -27,7 +27,6 @@
   
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
-import { vDataTable } from 'vuetify/lib';
 import { pagesEdit } from '@/state/pages';
 import { handleAddNewPageClick, handleOpenPageInEditor, handleDeletePageClick } from "@/logic/handlers"
 import fetchPages from '@/logic/fetchPages';

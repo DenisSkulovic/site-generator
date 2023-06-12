@@ -1,1 +1,1 @@
-{"version":3,"file":"HeaderContentMetadata.d.ts","sourceRoot":"","sources":["../../../src/components/header/HeaderContentMetadata.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,yBAAyB,CAAC;AAEnD,eAAO,MAAM,0BAA0B,QAAS,GAAG,KAAG,qBAMrD,CAAA;AAED,qBAAa,qBAAsB,SAAQ,QAAQ;CAAG"}
+{"version":3,"file":"HeaderContentMetadata.d.ts","sourceRoot":"","sources":["../../../src/components/header/HeaderContentMetadata.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,uBAAuB,CAAC;AAEjD,eAAO,MAAM,0BAA0B,QAAS,GAAG,KAAG,qBAMrD,CAAA;AAED,qBAAa,qBAAsB,SAAQ,QAAQ;CAAG"}

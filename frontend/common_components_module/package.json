@@ -2,13 +2,13 @@
   "name": "@denis/common_components_module",
   "version": "1.0.0",
   "description": "A Vue.js TypeScript library for dropzone components",
-  "module": "dist/your-library.esm.js",
+  "main": "dist/common-components-module.esm.js",
+  "module": "dist/common-components-module.esm.js",
   "unpkg": "dist/your-library.umd.min.js",
   "files": [
     "dist/*",
     "src/*"
   ],
-  "main": "src/index.ts",
   "scripts": {
     "build": "rollup -c rollup.config.cjs"
   },

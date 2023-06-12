@@ -1,4 +1,4 @@
-import { Metadata } from "src/components/Metadata";
+import { Metadata } from "@/components/Metadata";
 
 export const buildFooterContentMetadata = (obj: any): FooterContentMetadata => {
     const metadata = new FooterContentMetadata(

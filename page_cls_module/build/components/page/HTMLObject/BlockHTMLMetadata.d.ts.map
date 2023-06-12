@@ -1,1 +1,1 @@
-{"version":3,"file":"BlockHTMLMetadata.d.ts","sourceRoot":"","sources":["../../../../src/components/page/HTMLObject/BlockHTMLMetadata.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,yBAAyB,CAAC;AAEnD,eAAO,MAAM,sBAAsB,QAAS,GAAG,KAAG,iBAMjD,CAAA;AAED,qBAAa,iBAAkB,SAAQ,QAAQ;CAAG"}
+{"version":3,"file":"BlockHTMLMetadata.d.ts","sourceRoot":"","sources":["../../../../src/components/page/HTMLObject/BlockHTMLMetadata.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,uBAAuB,CAAC;AAEjD,eAAO,MAAM,sBAAsB,QAAS,GAAG,KAAG,iBAMjD,CAAA;AAED,qBAAa,iBAAkB,SAAQ,QAAQ;CAAG"}

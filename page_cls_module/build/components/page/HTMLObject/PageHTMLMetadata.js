@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PageHTMLMetadata = exports.buildPageHTMLMetadata = void 0;
-const Metadata_1 = require("src/components/Metadata");
+const Metadata_1 = require("@/components/Metadata");
 const buildPageHTMLMetadata = (obj) => {
     const metadata = new PageHTMLMetadata(obj.createdTimestamp, obj.updatedTimestamp);
     return metadata;
