@@ -1,8 +1,7 @@
 import axios from "axios"
 import { AdminService } from "./AdminService"
 import getUUID from "@/utils/getUUID"
-import { type } from "os"
-import { LinkAsset, AssetRelEnum, ScriptAsset, StyleAsset } from "../../../../page_cls_module/src"
+import { ScriptAsset, StyleAsset } from "../../../../page_cls_module/src"
 
 export type S3Path = string
 export class AssetService extends AdminService {
@@ -56,7 +55,7 @@ export class AssetService extends AdminService {
     getNewJSAsset(): ScriptAsset {
         const fileUUID = getUUID()
         const fileExtension = "js"
-        const path = this.generatePath(fileUUID, fileExtension)
+        const path = this.generatePath(fileUUID, "script", fileExtension)
         const S3Path = this.generateS3Link(path, this.pagePath)
         const S3Link = this.generateS3Link(S3Path, this.bucketName)
         const asset = new ScriptAsset(fileUUID, "Script Asset", false, false, path, S3Path, S3Link) // change this to add default asset of your choice
@@ -65,14 +64,14 @@ export class AssetService extends AdminService {
     getNewCSSAsset(): StyleAsset {
         const fileUUID = getUUID()
         const fileExtension = "css"
-        const path = this.generatePath(fileUUID, fileExtension)
+        const path = this.generatePath(fileUUID, "style", fileExtension)
         const S3Path = this.generateS3Path(path, this.pagePath)
         const S3Link = this.generateS3Link(S3Path, this.bucketName)
         const asset = new StyleAsset(fileUUID, "Style Asset", path, S3Path, S3Link) // change this to add default asset of your choice
         return asset
     }
 
-    private generatePath(fileUUID: string, fileExtension: 'css' | 'js' | 'png'): string {
+    private generatePath(fileUUID: string, type: "script" | "style", fileExtension: 'css' | 'js' | 'png'): string {
         const path = `/static/assets/${type}/${fileUUID}.${fileExtension}`;
         return path;
     }

@@ -40,9 +40,9 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 import CollapseExpand from '../../components/CollapseExpand.vue';
-import editPageConfig from '../../state/pageConfig/editPageConfig';
-import editPageContent from '../../state/pageContent/editPageContent';
-import editPageHTMLObject from '../../state/pageHTMLObject/editPageHTMLObject';
+import {editPageConfig} from '../../state/pageConfigState';
+import {editPageContent} from '../../state/pageContentState';
+import {editPageHTMLObject} from '../../state/pageHTMLObjectState';
 
 const toggleState = reactive({
     config: false,

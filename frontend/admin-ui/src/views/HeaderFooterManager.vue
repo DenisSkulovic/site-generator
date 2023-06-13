@@ -1,13 +1,22 @@
 <template>
-    <div>
-        <h1>Header and Footer Configuration</h1>
-        <HeaderConfig :config="headerConfigEdit" :content="headerContentEdit" />
-        <FooterConfig :config="footerConfigEdit" :content="footerContentEdit" />
-        <button @click="saveConfig">Save Configuration</button>
-        <button @click="saveContent">Save Content</button>
-        <button @click="regenerate">Regenerate</button>
-    </div>
+    <v-container>
+        <v-row>
+            <v-col>
+                <h1>Header and Footer Configuration</h1>
+            </v-col>
+        </v-row>
+        <HeaderConfig :config="headerConfigEdit.value" :content="headerContentEdit.value" />
+        <FooterConfig :config="footerConfigEdit.value" :content="footerContentEdit.value" />
+        <v-row>
+            <v-col>
+                <v-btn @click="saveConfig">Save Configuration</v-btn>
+                <v-btn @click="saveContent">Save Content</v-btn>
+                <v-btn @click="regenerate">Regenerate</v-btn>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
+
   
 <script lang="ts" setup>
 import { onMounted } from 'vue';

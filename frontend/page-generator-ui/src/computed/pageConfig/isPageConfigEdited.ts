@@ -1,7 +1,7 @@
 import {computed} from "vue"
 import type {ComputedRef} from "vue"
-import currentPageConfig from "../../state/pageConfig/currentPageConfig"
-import editPageConfig from "../../state/pageConfig/editPageConfig"
+import {currentPageConfig} from "../../state/pageConfigState"
+import {editPageConfig} from "../../state/pageConfigState"
 import {cloneDeep} from "lodash"
 import type { PageConfig } from "../../../../../page_cls_module/src"
 

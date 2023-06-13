@@ -1,6 +1,6 @@
 import { APIGatewayEvent } from "aws-lambda";
-import { PageHTMLRepository } from "@repository_module";
-import { PageHTMLObject, buildPageHTMLObject } from "@page_cls_module";
+import { PageHTMLRepository } from "../../../../../repository_module";
+import { PageHTMLObject, buildPageHTMLObject } from "../../../../../../page_cls_module";
 
 export const handlePageHTMLObjectDelete = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {
     const key: string | undefined = event.pathParameters?.key;

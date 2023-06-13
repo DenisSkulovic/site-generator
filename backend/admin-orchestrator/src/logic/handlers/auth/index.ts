@@ -1,6 +1,6 @@
-import { AuthManager } from "@auth_module"
+import { AuthManager } from "../../../../../auth_module"
 import { type APIGatewayEvent } from "aws-lambda"
-import getEnvVariable from "@/logic/getEnvVariable"
+import getEnvVariable from "../../../logic/getEnvVariable"
 
 export const handleLogin = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<{ accessToken: string, refreshToken: string }> => {
     const { username, password } = JSON.parse(event.body || "{}")

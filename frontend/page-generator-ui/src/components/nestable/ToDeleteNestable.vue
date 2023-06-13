@@ -11,7 +11,7 @@ import type { NestableItem } from '../../classes/NestableItem';
 import NestedDraggableComp from '../../components/nestable/NestedDraggableComp.vue';
 
 // state
-import nestableConfig from "../../state/nestable/nestableConfig"
+import {nestableConfig} from "../../state/nestableState"
 
 const cleanToDeleteItems = () => {
   const newArr: NestableItem[] = nestableConfig.toDelete.filter((item: NestableItem) => {

@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.AreaLayoutEnum = void 0;
-var AreaLayoutEnum;
+export var AreaLayoutEnum;
 (function (AreaLayoutEnum) {
     AreaLayoutEnum["LAYOUT_NONE"] = "";
     AreaLayoutEnum["LAYOUT_2_8_2"] = "2_8_2";
@@ -16,5 +13,5 @@ var AreaLayoutEnum;
     AreaLayoutEnum["LAYOUT_10_2"] = "10_2";
     AreaLayoutEnum["LAYOUT_12"] = "12";
     AreaLayoutEnum["LAYOUT_3_3_3_3"] = "3_3_3_3";
-})(AreaLayoutEnum || (exports.AreaLayoutEnum = AreaLayoutEnum = {}));
+})(AreaLayoutEnum || (AreaLayoutEnum = {}));
 //# sourceMappingURL=AreaLayoutEnum.js.map

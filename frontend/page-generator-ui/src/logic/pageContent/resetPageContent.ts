@@ -1,5 +1,4 @@
-import currentPageContent from "../../state/pageContent/currentPageContent"
-import editPageContent from "../../state/pageContent/editPageContent"
+import {currentPageContent, editPageContent} from "../../state/pageContentState"
 import * as _ from "lodash"
 
 const resetPageContent = () => {

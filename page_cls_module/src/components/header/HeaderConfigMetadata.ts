@@ -1,4 +1,4 @@
-import { Metadata } from "@/components/Metadata";
+import { Metadata } from "../../";
 
 export const buildHeaderConfigMetadata = (obj: any): HeaderConfigMetadata => {
     const metadata = new HeaderConfigMetadata(

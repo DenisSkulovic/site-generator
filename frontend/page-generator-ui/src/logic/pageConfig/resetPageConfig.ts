@@ -1,6 +1,5 @@
 import type { PageConfig, AreaConfig } from "../../../../../page_cls_module/src"
-import currentPageConfig from "../../state/pageConfig/currentPageConfig"
-import editPageConfig from "../../state/pageConfig/editPageConfig"
+import {currentPageConfig, editPageConfig} from "../../state/pageConfigState"
 import * as _ from "lodash"
 
 const resetPageConfig = () => {

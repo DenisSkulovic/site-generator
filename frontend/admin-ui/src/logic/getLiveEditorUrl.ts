@@ -1,6 +1,6 @@
 const getLiveEditorUrl = (env: "dev" | "prod") => {
-    const LIVE_EDITOR_DEV: string | undefined = process.env.LIVE_EDITOR_DEV
-    const LIVE_EDITOR_PROD: string | undefined = process.env.LIVE_EDITOR_PROD
+    const LIVE_EDITOR_DEV: string | undefined = import.meta.env.LIVE_EDITOR_DEV
+    const LIVE_EDITOR_PROD: string | undefined = import.meta.env.LIVE_EDITOR_PROD
 
     let url: string
     if (env !== "prod") {

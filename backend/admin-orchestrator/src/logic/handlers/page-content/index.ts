@@ -1,6 +1,6 @@
 import { APIGatewayEvent } from "aws-lambda";
-import { PageContentRepository } from "@repository_module";
-import { PageContent, buildPageContent } from "@page_cls_module";
+import { PageContentRepository } from "../../../../../repository_module";
+import { PageContent, buildPageContent } from "../../../../../../page_cls_module";
 
 export const handlePageContentDelete = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {
     const key: string | undefined = event.pathParameters?.key;
@@ -19,8 +19,10 @@ export const handlePageContentGet = async (event: APIGatewayEvent, env: "dev" | 
     }
 
     const repo = new PageContentRepository();
-    const item: PageContent = await repo.getItem(key);
-    return item;
+    const data: any = await repo.getItem(key);
+    const objectData = data.Body.toString('utf-8');
+    const jsonData = JSON.parse(objectData); 
+    return buildPageContent(jsonData)
 }
 
 export const handlePageContentPost = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {

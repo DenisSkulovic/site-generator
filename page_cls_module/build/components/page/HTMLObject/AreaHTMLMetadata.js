@@ -1,13 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.AreaHTMLMetadata = exports.buildAreaHTMLMetadata = void 0;
-const Metadata_1 = require("@/components/Metadata");
-const buildAreaHTMLMetadata = (obj) => {
+import { Metadata } from "../../../";
+export const buildAreaHTMLMetadata = (obj) => {
     const metadata = new AreaHTMLMetadata(obj.createdTimestamp, obj.updatedTimestamp);
     return metadata;
 };
-exports.buildAreaHTMLMetadata = buildAreaHTMLMetadata;
-class AreaHTMLMetadata extends Metadata_1.Metadata {
+export class AreaHTMLMetadata extends Metadata {
 }
-exports.AreaHTMLMetadata = AreaHTMLMetadata;
 //# sourceMappingURL=AreaHTMLMetadata.js.map

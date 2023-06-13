@@ -1,7 +1,7 @@
 import { computed } from "vue"
 import type { ComputedRef } from "vue"
 import { AreaConfig, BlockConfig } from "../../../../../page_cls_module/src"
-import currentPageConfig from "../../state/pageConfig/currentPageConfig"
+import {currentPageConfig} from "../../state/pageConfigState"
 
 type BlockConfigUUID = string
 type BlockConfigMap = Map<BlockConfigUUID, BlockConfig>

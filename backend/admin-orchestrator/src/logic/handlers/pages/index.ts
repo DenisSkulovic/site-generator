@@ -1,7 +1,7 @@
 import { APIGatewayEvent } from "aws-lambda";
-import { S3Operations } from "@s3_module";
-import { PageHTMLObject, buildPageHTMLObject } from "@page_cls_module";
-import getEnvVariable from "@/logic/getEnvVariable";
+import { S3Operations } from "../../../../../s3_module";
+import { PageHTMLObject, buildPageHTMLObject } from "../../../../../../page_cls_module";
+import getEnvVariable from "../../../logic/getEnvVariable";
 
 export const handlePageDelete = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {
     const url: string | undefined = event.queryStringParameters?.url;

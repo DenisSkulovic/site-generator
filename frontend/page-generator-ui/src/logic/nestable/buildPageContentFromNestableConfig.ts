@@ -1,5 +1,5 @@
 import type { NestableConfig } from "../../classes/NestableConfig";
-import editPageContent from "../../state/pageContent/editPageContent"
+import {editPageContent} from "../../state/pageContentState"
 import type { PageContent, AreaContent, BlockContent } from "../../../../../page_cls_module"
 import { cloneDeep } from "lodash"
 import type { NestableItem } from "../../classes/NestableItem";
@@ -7,8 +7,7 @@ import { NestableItemArea } from "@/classes/NestableItemArea";
 import { NestableItemBlock } from "@/classes/NestableItemBlock";
 import {reactive} from "vue"
 
-import newAreaContentMap from "@/state/pageContent/newAreaContentMap"
-import newBlockContentMap from "@/state/pageContent/newBlockContentMap"
+import {newAreaContentMap, newBlockContentMap} from "@/state/pageContentState"
 
 const processItem = (
     item: NestableItem,

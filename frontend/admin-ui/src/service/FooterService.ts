@@ -1,5 +1,4 @@
 import { footerConfigCurrent, footerConfigEdit } from "@/state/configState"
-import s3 from "@/state/s3"
 import { AdminService } from "./AdminService"
 import { cloneDeep } from "lodash"
 import axios from "axios"
@@ -20,25 +19,46 @@ export class FooterService extends AdminService {
         if (!force && footerConfigCurrent.value) return
         const url = `${this.adminUrl}/footer-config`
         footerConfigCurrent.value = await axios.get(url)
+        this.resetFooter()
     }
 
     async fetchFooterContent(force = false) {
         if (!force && footerContentCurrent.value) return
         const url = `${this.adminUrl}/footer-content`
         footerContentCurrent.value = await axios.get(url)
+        this.resetFooter()
     }
 
     async saveFooterConfig() {
         if (!this.isFooterConfigEdited) return
-        await s3.value.putJson("footer-config", footerConfigEdit.value)
+        const url = `${this.adminUrl}/footer-config`
+        const body = footerConfigEdit.value
+        const params = {}
+        const headers = {}
+        footerConfigCurrent.value = await axios.put(
+            url,
+            body, {
+                params,
+                headers,
+            },
+        )
         footerConfigCurrent.value = cloneDeep(footerConfigEdit.value)
     }
 
     async saveFooterContent() {
         if (!this.isFooterContentEdited) return
-        await s3.value.putJson("footer-content", footerContentEdit.value)
-        footerContentCurrent.value = cloneDeep(footerContentEdit.value)
-    }
+        const url = `${this.adminUrl}/footer-content`
+        const body = footerContentEdit.value
+        const params = {}
+        const headers = {}
+        footerContentCurrent.value = await axios.put(
+            url,
+            body, {
+                params,
+                headers,
+            },
+        )
+        footerContentCurrent.value = cloneDeep(footerContentEdit.value)    }
 
     async regenetareFooter() {
         if (this.isFooterEdited) throw new Error("cannot generate footer when it isn't saved")

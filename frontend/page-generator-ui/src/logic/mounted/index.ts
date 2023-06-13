@@ -5,9 +5,9 @@ import getPageContent from "../../api/pageContent/getContent"
 import getPageConfig from "../../api/pageConfig/getConfig"
 import getPageHTMLObject from "../../api/pageHTMLObject/getPageHTMLObject"
 import generatePage from "@/api/pageGenerator/generatePage"
-import currentPageConfig from "@/state/pageConfig/currentPageConfig"
-import currentPageContent from "@/state/pageContent/currentPageContent"
-import currentPageHTMLObject from "@/state/pageHTMLObject/currentPageHTMLObject"
+import {currentPageConfig} from "@/state/pageConfigState"
+import {currentPageContent} from "@/state/pageContentState"
+import {currentPageHTMLObject} from "@/state/pageHTMLObjectState"
 import getNewPageConfig from "../pageConfig/getNewPageConfig"
 import getNewPageContent from "../pageContent/getNewPageContent"
 import resetPageContent from "../pageContent/resetPageContent"
@@ -66,6 +66,7 @@ const handleExistingPage = async (
 
 
 const mounted = async () => {
+    console.log(`hi`)
     const urlParams: UrlParams = readUrl()
 
     const page_config_uuid: string | undefined = urlParams.page_config_uuid

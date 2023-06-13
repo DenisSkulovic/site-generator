@@ -1,13 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.FooterHTMLMetadata = exports.buildFooterHTMLMetadata = void 0;
-const Metadata_1 = require("@/components/Metadata");
-const buildFooterHTMLMetadata = (obj) => {
+import { Metadata } from "../../";
+export const buildFooterHTMLMetadata = (obj) => {
     const metadata = new FooterHTMLMetadata(obj.createdTimestamp, obj.updatedTimestamp);
     return metadata;
 };
-exports.buildFooterHTMLMetadata = buildFooterHTMLMetadata;
-class FooterHTMLMetadata extends Metadata_1.Metadata {
+export class FooterHTMLMetadata extends Metadata {
 }
-exports.FooterHTMLMetadata = FooterHTMLMetadata;
 //# sourceMappingURL=FooterHTMLMetadata.js.map

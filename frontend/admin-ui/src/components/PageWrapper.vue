@@ -1,19 +1,26 @@
 <template>
-  <div class="page-wrapper">
-    <header-component></header-component>
+  <v-app>
+    <HeaderComponent />
 
-    <div class="content-area">
-      <sidebar-component></sidebar-component>
+    <v-main>
+      <v-container fluid>
+        <v-row>
+          <v-col cols="3">
+            <SidebarComponent />
+          </v-col>
 
-      <main class="main-content">
-        <!-- This slot is where the actual page content will be injected -->
-        <slot></slot>
-      </main>
-    </div>
+          <v-col cols="9">
+            <!-- This slot is where the actual page content will be injected -->
+            <slot></slot>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
 
-    <footer-component></footer-component>
-  </div>
+    <FooterComponent />
+  </v-app>
 </template>
+
 
 <script lang="ts" setup>
 import HeaderComponent from '@/components/HeaderComponent.vue';

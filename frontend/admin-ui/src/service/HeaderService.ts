@@ -1,9 +1,9 @@
 import { headerConfigEdit, headerConfigCurrent } from "@/state/configState"
-import s3 from "@/state/s3"
 import { AdminService } from "./AdminService"
 import { cloneDeep } from "lodash"
 import { headerContentEdit, headerContentCurrent } from "@/state/contentState"
-import { NavItem } from "@page_cls_module"
+import { NavItem } from "../../../../page_cls_module"
+import axios from "axios"
 
 export class HeaderService extends AdminService {
 
@@ -36,22 +36,46 @@ export class HeaderService extends AdminService {
 
     async fetchHeaderConfig(force = false) {
         if (!force && headerConfigCurrent.value) return
-        headerConfigCurrent.value = await s3.value.getJson("header-config")
+        const url = `${this.adminUrl}/header-config`
+        headerConfigCurrent.value = await axios.get(url)
+        this.resetHeader()
     }
 
     async fetchHeaderContent(force = false) {
         if (!force && headerContentCurrent.value) return
-        headerContentCurrent.value = await s3.value.getJson("header-content")
+        const url = `${this.adminUrl}/header-content`
+        headerContentCurrent.value = await axios.get(url)
+        this.resetHeader()
     }
 
     async saveHeaderConfig() {
-        await s3.value.putJson("header-config", headerConfigEdit.value)
+        const url = `${this.adminUrl}/header-config`
+        const body = headerConfigEdit.value
+        const params = {}
+        const headers = {}
+        headerConfigCurrent.value = await axios.put(
+            url,
+            body, {
+                params,
+                headers,
+            },
+        )
         headerConfigCurrent.value = cloneDeep(headerConfigEdit.value)
     }
 
     async saveHeaderContent() {
-        await s3.value.putJson("header-content", headerContentEdit.value)
-        headerContentCurrent.value = cloneDeep(headerContentEdit.value)
+        const url = `${this.adminUrl}/header-content`
+        const body = headerContentEdit.value
+        const params = {}
+        const headers = {}
+        headerContentCurrent.value = await axios.put(
+            url,
+            body, {
+                params,
+                headers,
+            },
+        )
+        headerContentCurrent.value = cloneDeep(headerContentEdit.value)   
     }
 
     async regenerateHeader() {

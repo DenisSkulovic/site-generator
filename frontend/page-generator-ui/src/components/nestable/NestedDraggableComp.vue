@@ -36,7 +36,6 @@ import NestableItemBlockComp from "./NestableItemBlockComp.vue"
 import type { NestableItem } from "../../classes/NestableItem";
 import NestedDraggableComp from "./NestedDraggableComp.vue"
 import { NestableItemArea } from "../../classes/NestableItemArea";
-import { NestableItemBlock } from "../../classes/NestableItemBlock";
 import setDataFromNestableConfig from "../../logic/nestable/setDataFromNestableConfig"
 import handleDisplayNestableItem from "../../logic/handlers/handleDisplayNestableItem";
 
@@ -61,7 +60,7 @@ const emit = defineEmits<{
 }>()
 
 const onMoveCallback = (e: any): boolean => {
-    const nestableItem: NestableItem = e.draggedContext.element
+    // const nestableItem: NestableItem = e.draggedContext.element
     return true
 }
 

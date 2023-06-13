@@ -1,4 +1,4 @@
-import currentNestableItem from "../../../state/nestable/currentNestableItem"
+import {currentNestableItem} from "../../../state/nestableState"
 import setSidebarView from "./setSidebarView"
 import ViewEnum from "../ViewEnum"
 

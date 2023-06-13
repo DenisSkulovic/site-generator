@@ -108,7 +108,7 @@ export class S3Operations {
             console.log(`Retrieved JSON file "${fileName}.json": ` + JSON.stringify(data))
             return data
         } catch (error) {
-            throw new Error("Unable to upload JSON file. Error: " + JSON.stringify(error));
+            throw new Error("Unable to get JSON file. Error: " + JSON.stringify(error));
         }
     }
 

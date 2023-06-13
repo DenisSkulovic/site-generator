@@ -1,7 +1,7 @@
 import { computed } from "vue"
 import type {ComputedRef} from "vue"
 import type { AreaContent } from "../../../../../page_cls_module/src"
-import editPageContent from "../../state/pageContent/editPageContent"
+import {editPageContent} from "../../state/pageContentState"
 import {processAreaContent} from "./currentAreaContentMap"
 
 type AreaContentUUID = string

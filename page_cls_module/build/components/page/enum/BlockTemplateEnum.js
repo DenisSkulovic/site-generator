@@ -1,12 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.BlockTemplateEnum = void 0;
-var BlockTemplateEnum;
+export var BlockTemplateEnum;
 (function (BlockTemplateEnum) {
     BlockTemplateEnum["IMAGE"] = "IMAGE";
     BlockTemplateEnum["TEXT"] = "TEXT";
     BlockTemplateEnum["HTML"] = "HTML";
     BlockTemplateEnum["LINK"] = "LINK";
     BlockTemplateEnum["SEPARATOR"] = "SEPARATOR";
-})(BlockTemplateEnum || (exports.BlockTemplateEnum = BlockTemplateEnum = {}));
+})(BlockTemplateEnum || (BlockTemplateEnum = {}));
 //# sourceMappingURL=BlockTemplateEnum.js.map

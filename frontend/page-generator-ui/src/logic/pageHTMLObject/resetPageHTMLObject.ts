@@ -1,5 +1,4 @@
-import currentPageHTMLObject from "../../state/pageHTMLObject/currentPageHTMLObject"
-import editPageHTMLObject from  "../../state/pageHTMLObject/editPageHTMLObject"
+import {currentPageHTMLObject, editPageHTMLObject} from "../../state/pageHTMLObjectState"
 import * as _ from "lodash"
 
 const resetPageHTMLObject = (): void => {

@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Asset = void 0;
-class Asset {
+export class Asset {
     constructor(uuid, name, path, s3Path, s3Link, position, tag) {
         this.uuid = uuid;
         this.name = name;
@@ -13,5 +10,4 @@ class Asset {
         this.clazz = this.constructor.name;
     }
 }
-exports.Asset = Asset;
 //# sourceMappingURL=Asset.js.map

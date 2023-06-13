@@ -11,116 +11,116 @@ const routeConfig = {
 
     /** AUTHENTICATION */
     // login
-    "^/admin/auth/login$": {
+    "^/auth/login$": {
         routeKey: "/auth/login",
         pathParameters: [],
     },
     // refresh
-    "^/admin/auth/refresh$": {
+    "^/auth/refresh$": {
         routeKey: "/auth/refresh",
         pathParameters: [],
     },
 
     /** CLOUDFRONT */
-    "^/admin/cloudfront/invalidate$": {
+    "^/cloudfront/invalidate$": {
         routeKey: "/cloudfront/invalidate",
         pathParameters: [],
     },
 
     /** FOOTER */
-    "^/admin/footer-config$": {
+    "^/footer-config$": {
         routeKey: "/footer-config",
         pathParameters: [],
     },
-    "^/admin/footer-content$": {
+    "^/footer-content$": {
         routeKey: "/footer-content",
         pathParameters: [],
     },
 
     /** HEADER */
-    "^/admin/header-config$": {
+    "^/header-config$": {
         routeKey: "/header-config",
         pathParameters: [],
     },
-    "^/admin/header-content$": {
+    "^/header-content$": {
         routeKey: "/header-content",
         pathParameters: [],
     },
 
     /** IMAGE */
-    "^/admin/image/([^/]+)$": {
+    "^/image/([^/]+)$": {
         routeKey: "/image/{key}",
         pathParameters: ["key"],
     },
 
     /** PAGE CONFIG */
-    "^/admin/page-config/([^/]+)$": {
+    "^/page-config/([^/]+)$": {
         routeKey: "/page-config/{uuid}",
         pathParameters: ["uuid"],
     },
 
     /** PAGE CONTENT */
-    "^/admin/page-content/([^/]+)$": {
+    "^/page-content/([^/]+)$": {
         routeKey: "/page-content/{uuid}",
         pathParameters: ["uuid"],
     },
 
     /** PAGE GENERATOR */
-    "^/admin/page-generator/footer$": {
+    "^/page-generator/footer$": {
         routeKey: "/page-generator/footer",
         pathParameters: [],
     },
-    "^/admin/page-generator/header$": {
+    "^/page-generator/header$": {
         routeKey: "/page-generator/header",
         pathParameters: [],
     },
-    "^/admin/page-generator/page$": {
+    "^/page-generator/page$": {
         routeKey: "/page-generator/page",
         pathParameters: [],
     },
 
     /** PAGE HTML OBJECTS */
-    "^/admin/page-html-object/all$": {
+    "^/page-html-object/all$": {
         routeKey: "/page-html-object/all",
         pathParameters: [],
     },
-    "^/admin/page-html-object/([^/]+)$": {
+    "^/page-html-object/([^/]+)$": {
         routeKey: "/page-html-object/{key}",
         pathParameters: ["key"],
     },
 
     /** PAGES */
-    "^/admin/page-s3$": {
+    "^/page-s3$": {
         routeKey: "/page-s3",
         pathParameters: [],
     },
-    "^/admin/page-s3/([^/]+)$": {
+    "^/page-s3/([^/]+)$": {
         routeKey: "/page-s3/{key}",
         pathParameters: ["key"],
     },
 
     /** PRODUCT */
-    "^/admin/product/all$": {
+    "^/product/all$": {
         routeKey: "/product/all",
         pathParameters: [],
     },
-    "^/admin/product/([^/]+)$": {
+    "^/product/([^/]+)$": {
         routeKey: "/product/{uuid}",
         pathParameters: ["uuid"],
     },
 
     /** SITE CONFIG */
-    "^/admin/site-config$": {
+    "^/site-config$": {
         routeKey: "/site-config",
         pathParameters: [],
     },
-    "^/admin/design-system$": {
+    "^/design-system$": {
         routeKey: "/design-system",
         pathParameters: [],
     },
 
     /** PAGE ASSETS */
-    "^/admin/page-assets$": {
+    "^/page-assets$": {
         routeKey: "/page-assets",
         pathParameters: [],
     },

@@ -5,8 +5,8 @@ import currentBlockConfigMap from "../computed/pageConfig/currentBlockConfigMap"
 import editedBlockContentMap from "../computed/pageContent/editedBlockContentMap";
 import currentBlockContentMap from "../computed/pageContent/currentBlockContentMap";
 import displayBlockView from "../components/MainSidebar/func/displayBlockView";
-import newBlockConfigMap from "@/state/pageConfig/newBlockConfigMap";
-import newBlockContentMap from "@/state/pageContent/newBlockContentMap";
+import {newBlockConfigMap} from "@/state/pageConfigState";
+import {newBlockContentMap} from "@/state/pageContentState";
 import unsetHoveredAreaBlockClasses from "../logic/unsetHoveredAreaBlockClasses";
 import unsetSelectedAreaBlockClasses from "../logic/unsetSelectedAreaBlockClasses";
 import { cloneDeep } from "lodash";

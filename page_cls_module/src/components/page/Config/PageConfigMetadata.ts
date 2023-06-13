@@ -1,4 +1,4 @@
-import { Metadata } from "@/components/Metadata";
+import { Metadata } from "../../../";
 
 export const buildPageConfigMetadata = (obj: any): PageConfigMetadata => {
     const metadata = new PageConfigMetadata(

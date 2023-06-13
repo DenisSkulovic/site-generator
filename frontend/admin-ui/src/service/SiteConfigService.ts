@@ -1,8 +1,8 @@
 import { siteConfigEdit, siteConfigCurrent } from "@/state/configState"
-import s3 from "@/state/s3"
 import { AdminService } from "./AdminService"
-import {cloneDeep} from "vue"
+import {cloneDeep} from "lodash"
 import {isSiteConfigEdited} from "@/computed/site-config"
+import axios from "axios"
 
 export class SiteConfigService extends AdminService {
 
@@ -16,13 +16,16 @@ export class SiteConfigService extends AdminService {
 
     async fetchSiteConfig(force = false) {
         if (!force && siteConfigCurrent.value) return
-        siteConfigCurrent.value = await s3.value.getJson("site-config")
+        const url = `${this.adminUrl}/site-config`
+        const {data} = await axios.get(url)
+        siteConfigCurrent.value = data
     }
 
     async saveSiteConfig() {
         if (!siteConfigEdit.value) throw new Error("siteConfigEdit.value cannot be undefined")
-        await s3.value.putJson("site-config", siteConfigEdit.value)
-        siteConfigCurrent.value = cloneDeep(siteConfigEdit.value)
+        const url = `${this.adminUrl}/site-config`
+        const {data} = await axios.put(url)
+        siteConfigCurrent.value = data
     }
 
     async downloadDesignSystemCSS() {

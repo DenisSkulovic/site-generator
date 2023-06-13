@@ -1,24 +1,23 @@
 <template>
-    <div class="input-group mb-3 d-flex justify-content-between" style="gap:10px;">
-        <label class="input-group-text">{{ props.label }}</label>
-        <input class="form-control" type="text" :value="props.value" @input="(e) => handleChange(e)" />
-    </div>
+    <v-text-field
+        :label="props.label"
+        :value="props.value"
+        @input="handleChange"
+        outlined
+    ></v-text-field>
 </template>
 
 <script lang="ts" setup>
-
 const props = defineProps<{
-    label: string
-    value: string | undefined
+    label: string,
+    value: string | undefined,
 }>()
+
 const emit = defineEmits<{
     (e: "change", newVal: string): void
 }>()
 
-const handleChange = (e: any) => {
-    const newVal: string = e.target.value
-    emit("change", newVal)
+const handleChange = (val: string) => {
+    emit("change", val)
 }
 </script>
-
-<style scoped></style>

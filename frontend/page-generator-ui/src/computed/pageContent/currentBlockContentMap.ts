@@ -1,7 +1,7 @@
 import { computed } from "vue"
 import type { ComputedRef } from "vue"
 import { AreaContent, BlockContent } from "../../../../../page_cls_module/src"
-import currentPageContent from "../../state/pageContent/currentPageContent"
+import {currentPageContent} from "../../state/pageContentState"
 
 type BlockContentUUID = string
 type BlockContentMap = Map<BlockContentUUID, BlockContent>

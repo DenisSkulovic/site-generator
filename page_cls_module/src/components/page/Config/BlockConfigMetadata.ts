@@ -1,4 +1,4 @@
-import { Metadata } from "@/components/Metadata";
+import { Metadata } from "../../../";
 
 export const buildBlockConfigMetadata = (obj: any): BlockConfigMetadata => {
     const metadata = new BlockConfigMetadata(

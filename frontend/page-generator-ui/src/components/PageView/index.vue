@@ -1,66 +1,105 @@
 <template>
     <GridFrame>
         <template #top>
-            <div class="area-section">
-                <h1>Page Live Editor</h1>
-            </div>
+            <v-card class="mx-2" flat>
+                <v-card-title>
+                    <h1>Page Live Editor</h1>
+                </v-card-title>
+            </v-card>
         </template>
+
         <template #main>
-            <div class="page-view-wrapper">
-                <div>
-                    <CollapseExpand :active="getIsActive(NameEnum.CONFIG)" :class="NameEnum.CONFIG"
-                        @toggle-click="handleToggleSection(NameEnum.CONFIG)">
-                        <template #title>
-                            <h3>{{ TitleEnum.CONFIG }}</h3>
-                        </template>
-                        <template #content>
-                            <div>
-                                <h4>CONTROLS</h4>
-                                <button :disabled="!isPageConfigEdited" class="btn btn-success"
-                                    @click="handleResetConfigClick">Reset</button>
-                                <button
-                                    :disabled="!!currentPageConfig.value?.headerId && currentPageConfig.value.headerId === editPageConfig.value?.headerId"
-                                    @click.stop="replaceHeader">Refresh Header</button>
-                                <button
-                                    :disabled="!!currentPageConfig.value?.footerId && currentPageConfig.value.footerId === editPageConfig.value?.footerId"
-                                    @click.stop="replaceFooter">Refresh Footer</button>
-                            </div>
-                            <div v-if="editPageConfig?.value">
-                                <PageConfigComp :pageConfig="editPageConfig.value"></PageConfigComp>
-                            </div>
-                        </template>
-                    </CollapseExpand>
-                </div>
+            <v-container fluid>
+                <v-row no-gutters>
 
-                <LineComponent class="py-3"></LineComponent>
+                    <!-- CONFIG SECTION -->
+                    <v-col cols="12">
+                        <CollapseExpand :active="getIsActive(NameEnum.CONFIG)" :class="NameEnum.CONFIG"
+                            @toggle-click="handleToggleSection(NameEnum.CONFIG)">
+                            <template #title>
+                                <h3>{{ TitleEnum.CONFIG }}</h3>
+                            </template>
+                            <template #content>
+                                <v-container>
+                                    <v-row>
+                                        <v-col cols="12">
+                                            <h4>CONTROLS</h4>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col cols="12">
+                                            <v-btn color="success" :disabled="!isPageConfigEdited"
+                                                @click="handleResetConfigClick">
+                                                Reset
+                                            </v-btn>
+                                            <v-btn @click.stop="replaceHeader"
+                                                :disabled="!!currentPageConfig.value?.headerId && currentPageConfig.value.headerId === editPageConfig.value?.headerId">
+                                                Refresh Header
+                                            </v-btn>
+                                            <v-btn @click.stop="replaceFooter"
+                                                :disabled="!!currentPageConfig.value?.footerId && currentPageConfig.value.footerId === editPageConfig.value?.footerId">
+                                                Refresh Footer
+                                            </v-btn>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row v-if="editPageConfig?.value">
+                                        <v-col cols="12">
+                                            <PageConfigComp :pageConfig="editPageConfig.value"></PageConfigComp>
+                                        </v-col>
+                                    </v-row>
+                                </v-container>
+                            </template>
+                        </CollapseExpand>
+                    </v-col>
 
-                <div>
-                    <CollapseExpand :active="getIsActive(NameEnum.SUBITEMS)" :class="NameEnum.SUBITEMS"
-                        @toggle-click="handleToggleSection(NameEnum.SUBITEMS)">
-                        <template #title>
-                            <h3>{{ TitleEnum.SUBITEMS }}</h3>
-                        </template>
-                        <template #content>
-                            <div>
-                                <h4>CONTROLS</h4>
-                                <button class="btn btn-success" @click="handleAddAreaClick">Add area</button>
-                            </div>
-                            <PageSubitemsView :subitems="nestableConfig.config"></PageSubitemsView>
-                        </template>
-                    </CollapseExpand>
+                    <v-divider class="mx-2 py-3"></v-divider>
 
-                </div>
-            </div>
+                    <!-- SUBITEMS SECTION -->
+                    <v-col cols="12">
+                        <CollapseExpand :active="getIsActive(NameEnum.SUBITEMS)" :class="NameEnum.SUBITEMS"
+                            @toggle-click="handleToggleSection(NameEnum.SUBITEMS)">
+                            <template #title>
+                                <h3>{{ TitleEnum.SUBITEMS }}</h3>
+                            </template>
+                            <template #content>
+                                <v-container>
+                                    <v-row>
+                                        <v-col cols="12">
+                                            <h4>CONTROLS</h4>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col cols="12">
+                                            <v-btn color="success" @click="handleAddAreaClick">
+                                                Add area
+                                            </v-btn>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col cols="12">
+                                            <PageSubitemsView :subitems="nestableConfig.config"></PageSubitemsView>
+                                        </v-col>
+                                    </v-row>
+                                </v-container>
+                            </template>
+                        </CollapseExpand>
+                    </v-col>
+
+                </v-row>
+            </v-container>
         </template>
+
         <template #bottom>
-            <div class="action-section">
-                <button class="btn btn-secondary" @click.stop="handleToggleJSONView">TOGGLE JSON VIEW</button>
-                <button :disabled="!isDataForRefreshValid" class="btn btn-success"
-                    @click.stop="handleRefreshUI">REFRESH</button>
-            </div>
+            <v-card class="mx-2" flat>
+                <v-card-actions>
+                    <v-btn color="secondary" @click.stop="handleToggleJSONView">TOGGLE JSON VIEW</v-btn>
+                    <v-btn color="success" :disabled="!isDataForRefreshValid" @click.stop="handleRefreshUI">REFRESH</v-btn>
+                </v-card-actions>
+            </v-card>
         </template>
     </GridFrame>
 </template>
+
 
 <script setup lang="ts">
 import { reactive, computed } from "vue"
@@ -77,9 +116,9 @@ import handleRefreshUI from "../../logic/handlers/handleRefreshUI"
 import type { NestableConfig } from '../../classes/NestableConfig';
 
 // state
-import nestableConfig from "../../state/nestable/nestableConfig"
-import editPageConfig from '../../state/pageConfig/editPageConfig';
-import currentPageConfig from '../../state/pageConfig/currentPageConfig';
+import {nestableConfig} from "../../state/nestableState"
+import {editPageConfig} from '../../state/pageConfigState';
+import {currentPageConfig} from '../../state/pageConfigState';
 
 // components
 import CollapseExpand from '../CollapseExpand.vue';

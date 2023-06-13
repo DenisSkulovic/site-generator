@@ -1,1 +1,1 @@
-{"version":3,"file":"FooterHTMLMetadata.d.ts","sourceRoot":"","sources":["../../../src/components/footer/FooterHTMLMetadata.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,uBAAuB,CAAC;AAEjD,eAAO,MAAM,uBAAuB,QAAS,GAAG,KAAG,kBAMlD,CAAA;AAED,qBAAa,kBAAmB,SAAQ,QAAQ;CAAG"}
+{"version":3,"file":"FooterHTMLMetadata.d.ts","sourceRoot":"","sources":["../../../src/components/footer/FooterHTMLMetadata.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,QAAQ,CAAC;AAElC,eAAO,MAAM,uBAAuB,QAAS,GAAG,KAAG,kBAMlD,CAAA;AAED,qBAAa,kBAAmB,SAAQ,QAAQ;CAAG"}

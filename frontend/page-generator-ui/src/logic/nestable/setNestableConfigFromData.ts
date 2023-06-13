@@ -1,10 +1,10 @@
 import generateNestableConfigFromPageConfig from "./generateNestableConfigFromPageConfig"
 import generateNestableConfigFromToDeleteMaps from "./generateNestableConfigFromToDeleteMaps"
-import editPageConfig from "@/state/pageConfig/editPageConfig"
-import nestableConfig from "@/state/nestable/nestableConfig"
+import {editPageConfig} from "@/state/pageConfigState"
+import {nestableConfig} from "@/state/nestableState"
 import type { NestableConfig } from "@/classes/NestableConfig"
-import toDeleteAreaConfigMap from "@/state/pageConfig/toDeleteAreaConfigMap"
-import toDeleteBlockConfigMap from "@/state/pageConfig/toDeleteBlockConfigMap"
+import {toDeleteAreaConfigMap} from "@/state/pageConfigState"
+import {toDeleteBlockConfigMap} from "@/state/pageConfigState"
 
 const setNestableConfigFromData = () => {
     const pageConfig = editPageConfig.value

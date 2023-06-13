@@ -1,4 +1,4 @@
-import getEnvVariable from "@/logic/getEnvVariable";
+import getEnvVariable from "../../../../logic/getEnvVariable";
 
 const getDistributionId = (env: "dev" | "prod"): string => {
     const envVarName = `DISTRIBUTION_ID_${env.toUpperCase()}`

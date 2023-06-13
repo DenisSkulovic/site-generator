@@ -1,1 +1,1 @@
-{"version":3,"file":"FooterTemplateVersionEnum.js","sourceRoot":"","sources":["../../../../src/components/page/enum/FooterTemplateVersionEnum.ts"],"names":[],"mappings":";;;AAAA,IAAY,yBAGX;AAHD,WAAY,yBAAyB;IACjC,0DAA6B,CAAA;IAC7B,8DAAiC,CAAA;AACrC,CAAC,EAHW,yBAAyB,yCAAzB,yBAAyB,QAGpC"}
+{"version":3,"file":"FooterTemplateVersionEnum.js","sourceRoot":"","sources":["../../../../src/components/page/enum/FooterTemplateVersionEnum.ts"],"names":[],"mappings":"AAAA,MAAM,CAAN,IAAY,yBAGX;AAHD,WAAY,yBAAyB;IACjC,0DAA6B,CAAA;IAC7B,8DAAiC,CAAA;AACrC,CAAC,EAHW,yBAAyB,KAAzB,yBAAyB,QAGpC"}

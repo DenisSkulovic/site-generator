@@ -1,18 +1,16 @@
 <template>
-    <header class="header">
-        <div class="logo">
-            <!-- Place your logo here -->
-            <img :src="logoSrc" alt="Website Logo">
-        </div>
-
-        <div class="logout-button">
-            <button @click="logout">Logout</button>
-        </div>
-    </header>
+    <v-app-bar app color="indigo" dark>
+        <v-toolbar-title>
+            <v-img :src="logoSrc" alt="Website Logo"></v-img>
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn color="white" @click="logout">Logout</v-btn>
+    </v-app-bar>
 </template>
+
   
 <script lang="ts" setup>
-const logoSrc = process.env.VITE_APP_WEBSITE_LOGO
+const logoSrc = import.meta.env.VITE_APP_WEBSITE_LOGO
 if (!logoSrc) throw new Error("VITE_APP_WEBSITE_LOGO is mandatory env param")
 
 const logout = async () => {

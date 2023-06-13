@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.SkeletonVersionEnum = void 0;
-var SkeletonVersionEnum;
+export var SkeletonVersionEnum;
 (function (SkeletonVersionEnum) {
     SkeletonVersionEnum["TEST_VERSION"] = "test_version";
-})(SkeletonVersionEnum || (exports.SkeletonVersionEnum = SkeletonVersionEnum = {}));
+})(SkeletonVersionEnum || (SkeletonVersionEnum = {}));
 //# sourceMappingURL=SkeletonVersionEnum.js.map

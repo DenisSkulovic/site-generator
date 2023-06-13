@@ -1,32 +1,49 @@
 <template>
-    <div v-if="config">
-        <h2>Footer Configuration</h2>
-        <div>
-            <label for="templateVersion">Template Version:</label>
-            <select id="templateVersion" v-model="config.templateVersion">
-                <option v-for="version in templateVersions" :key="version" :value="version">{{ version }}</option>
-            </select>
-        </div>
-        <div>
-            <label for="bootstrapVersion">Bootstrap Version:</label>
-            <select id="bootstrapVersion" v-model="config.bootstrapVersion">
-                <option v-for="version in bootstrapVersions" :key="version" :value="version">{{ version }}</option>
-            </select>
-        </div>
+    <v-container v-if="config">
+        <v-row>
+            <v-col>
+                <h2>Footer Configuration</h2>
+            </v-col>
+        </v-row>
+        <v-row>
+            <v-col>
+                <v-select label="Template Version" v-model="config.templateVersion" :items="templateVersions"></v-select>
+            </v-col>
+        </v-row>
+        <v-row>
+            <v-col>
+                <v-select label="Bootstrap Version" v-model="config.bootstrapVersion" :items="bootstrapVersions"></v-select>
+            </v-col>
+        </v-row>
 
-        <div v-if="content">
-            <h2>Footer Content</h2>
-            <!-- <div>
-                <label for="logoUrl">Logo URL:</label>
-                <input type="text" id="logoUrl" v-model="content.logoUrl" />
-            </div>
-            <div>
-                <label for="logoAlt">Logo Alt Text:</label>
-                <input type="text" id="logoAlt" v-model="content.logoAlt" />
-            </div> -->
-        </div>
-    </div>
+        <v-container v-if="content">
+            <v-row>
+                <v-col>
+                    <h2>Footer Content</h2>
+                </v-col>
+            </v-row>
+            <!--
+            <v-row>
+                <v-col>
+                    <v-text-field
+                        label="Logo URL"
+                        v-model="content.logoUrl"
+                    ></v-text-field>
+                </v-col>
+            </v-row>
+            <v-row>
+                <v-col>
+                    <v-text-field
+                        label="Logo Alt Text"
+                        v-model="content.logoAlt"
+                    ></v-text-field>
+                </v-col>
+            </v-row>
+            -->
+        </v-container>
+    </v-container>
 </template>
+
   
 <script lang="ts" setup>
 import { ref } from 'vue';

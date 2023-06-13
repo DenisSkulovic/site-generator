@@ -1,10 +1,15 @@
 <template>
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; {{ new Date().getFullYear() }} - Your Website Name</p>
-        </div>
-    </footer>
+    <v-footer class="footer" color="grey darken-3">
+        <v-container>
+            <v-row>
+                <v-col class="text-center">
+                    <p class="white--text">&copy; {{ new Date().getFullYear() }} - Your Website Name</p>
+                </v-col>
+            </v-row>
+        </v-container>
+    </v-footer>
 </template>
+
   
 <script lang="ts">
 

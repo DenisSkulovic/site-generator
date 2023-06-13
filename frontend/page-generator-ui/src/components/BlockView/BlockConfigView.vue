@@ -1,37 +1,30 @@
 <template>
-    <div class="d-flex flex-column nowrap">
-
+    <div>
         <!-- BLOCK NAME -->
         <TextInputField :label="'Block Name'" :value="props.blockConfig.blockName"
-            @change="(newVal) => handleChange('blockName', newVal)"></TextInputField>
+            @change="(val) => props.blockConfig.blockName = val" class="mb-4" />
 
-        <LineComp class="my-2"></LineComp>
+        <v-divider class="my-4"></v-divider>
 
         <!-- BLOCK TEMPLATE NAME -->
         <SelectInputField :label="'Block Template Name'" :value="props.blockConfig.blockTemplateName"
-            :options="blockTemplateNames" @change="(newVal) => handleChange('blockTemplateName', newVal)">
-        </SelectInputField>
+            :options="blockTemplateNames" @change="(val) => props.blockConfig.blockTemplateName = val" />
     </div>
 </template>
+
 
 <script setup lang="ts">
 import { computed } from "vue"
 import type { ComputedRef } from "vue"
 import { BlockConfig, BlockTemplateEnum } from '../../../../../page_cls_module/src';
-import TextInputField from "../fields/TextInputField.vue"
-// import CheckBoxField from "../fields/CheckBoxField.vue"
-import SelectInputField from "../fields/SelectInputField.vue"
-import LineComp from '../Line.vue';
+import {SelectInputField, TextInputField} from "@/components/fields"
 
-// TODO
 const props = defineProps<{
     blockConfig: BlockConfig
 }>()
 
-const blockTemplateNames: ComputedRef<{ label: BlockTemplateEnum, value: BlockTemplateEnum }[]> = computed(() => {
-    return Object.values(BlockTemplateEnum).map((name) => {
-        return { label: name, value: name }
-    })
+const blockTemplateNames: ComputedRef<string[]> = computed(() => {
+    return Object.values(BlockTemplateEnum)
 })
 
 const handleChange = (fieldName: string, newVal: any) => {

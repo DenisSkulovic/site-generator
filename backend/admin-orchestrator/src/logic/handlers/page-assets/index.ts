@@ -1,12 +1,50 @@
 import { APIGatewayEvent, APIGatewayProxyResult } from "aws-lambda";
-import { S3Operations } from "@s3_module";
-import { parse } from "aws-lambda-multipart-parser"; // import the parser
-import getEnvVariable from "@/logic/getEnvVariable";
+import { S3Operations } from "../../../../../s3_module";
+import * as Busboy from 'busboy';
+import getEnvVariable from "../../../logic/getEnvVariable";
+
+type File = {
+    content: Buffer;
+    contentType: string;
+};
 
 export const handleAssetUpload = async (event: APIGatewayEvent): Promise<APIGatewayProxyResult> => {
-    const parsedBody = parse(event, true); // parse the event body
-    const file = parsedBody.files.file; // access the uploaded file
-    const pagePath = parsedBody.fields.pagePath; // access the page path
+    const busboy = Busboy.default({
+        headers: {
+            'content-type': event.headers['content-type'] || event.headers['Content-Type'],
+        },
+    });
+
+    let file: File | undefined;
+    let pagePath: string | undefined;
+
+    busboy.on('file', (fieldname: string, fileStream: NodeJS.ReadableStream, filename: string, encoding: string, mimetype: string) => {
+        if (fieldname === 'file') {
+            const chunks: any[] = [];
+            fileStream.on('data', (chunk) => {
+                chunks.push(chunk);
+            });
+
+            fileStream.on('end', () => {
+                file = {
+                    content: Buffer.concat(chunks),
+                    contentType: mimetype,
+                };
+            });
+        }
+    });
+
+    busboy.on('field', (fieldname: string, val: string, fieldnameTruncated: boolean, valTruncated: boolean, encoding: string, mimetype: string) => {
+        if (fieldname === 'pagePath') {
+            pagePath = val;
+        }
+    });
+
+    await new Promise((resolve, reject) => {
+        busboy.on('finish', resolve);
+        busboy.on('error', reject);
+        busboy.end(event.body);
+    });
 
     if (!file || !pagePath) throw new Error("File and pagePath are required");
 

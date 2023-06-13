@@ -1,6 +1,11 @@
 
 export * as mockFactories from "./mockFactories"
 
+// misc
+export { Product, buildProduct } from "./components/Product"
+export { Metadata } from "./components/Metadata"
+
+
 /**
  * HEADER
  */
@@ -79,6 +84,3 @@ export { LinkAsset } from "./components/asset/LinkAsset"
 export { ScriptAsset } from "./components/asset/ScriptAsset"
 export { StyleAsset } from "./components/asset/StyleAsset"
 
-// misc
-export { Product, buildProduct } from "./components/Product"
-export { Metadata } from "./components/Metadata"

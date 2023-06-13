@@ -1,7 +1,7 @@
 import { APIGatewayEvent } from "aws-lambda";
-import { SiteConfig, buildSiteConfig } from "@admin_cls_module";
-import { S3Operations } from "@s3_module";
-import getEnvVariable from "@/logic/getEnvVariable";
+import { SiteConfig, buildSiteConfig } from "../../../../../../admin_cls_module";
+import { S3Operations } from "../../../../../s3_module";
+import getEnvVariable from "../../../logic/getEnvVariable";
 
 export const handleSiteConfigGet = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<SiteConfig> => {
     const bucketName: string | undefined = getEnvVariable("BUCKET_NAME");

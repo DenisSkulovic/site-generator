@@ -1,5 +1,5 @@
 import { APIGatewayEvent } from "aws-lambda";
-import { CloudFrontOperations } from "@cloudfront_module";
+import { CloudFrontOperations } from "../../../../../cloudfront_module";
 import getDistributionId from "./func/getDistributionId";
 
 export const handleInvalidateByRegex = async (event: APIGatewayEvent, env: "dev" | "prod") => {

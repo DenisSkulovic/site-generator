@@ -1,61 +1,78 @@
 <template>
     <GridFrame>
         <template #top>
-            <div class="block-section">
-                <h3>Block: {{ nestableItem.blockConfig_edit.blockName }}</h3>
-                <ItemBreadcrumb :item="nestableItem"></ItemBreadcrumb>
-            </div>
+            <v-card class="mx-2" flat>
+                <v-card-title class="block-section">
+                    <h3>Block: {{ nestableItem.blockConfig_edit.blockName }}</h3>
+                    <ItemBreadcrumb :item="nestableItem"></ItemBreadcrumb>
+                </v-card-title>
+            </v-card>
         </template>
+
         <template #main>
-            <div>
+            <v-container fluid>
+                <v-row no-gutters>
 
-                <div>
-                    <h3>BLOCK CONFIG</h3>
-                    <div>
-                        <h4>CONTROLS</h4>
-                        <button v-if="!nestableItem.isNew" :disabled="!props.nestableItem.isConfigEdited"
-                            class="btn btn-success" @click="handleResetConfigClick">Reset</button>
-                    </div>
-                    <CollapseExpand :active="getIsActive(NameEnum.CONFIG)" :class="NameEnum.CONFIG"
-                        @toggle-click="handleToggleSection(NameEnum.CONFIG)">
-                        <template #title>
-                            {{ TitleEnum.CONFIG }}
-                        </template>
-                        <template #content>
-                            <BlockConfigView :blockConfig="props.nestableItem.blockConfig_edit"></BlockConfigView>
-                        </template>
-                    </CollapseExpand>
-                </div>
+                    <!-- BLOCK CONFIG SECTION -->
+                    <v-col cols="12">
+                        <h3>BLOCK CONFIG</h3>
+                        <v-row>
+                            <v-col cols="12">
+                                <h4>CONTROLS</h4>
+                                <v-btn color="success" v-if="!nestableItem.isNew"
+                                    :disabled="!props.nestableItem.isConfigEdited" @click="handleResetConfigClick">
+                                    Reset
+                                </v-btn>
+                            </v-col>
+                        </v-row>
+                        <CollapseExpand :active="getIsActive(NameEnum.CONFIG)" :class="NameEnum.CONFIG"
+                            @toggle-click="handleToggleSection(NameEnum.CONFIG)">
+                            <template #title>
+                                {{ TitleEnum.CONFIG }}
+                            </template>
+                            <template #content>
+                                <BlockConfigView :blockConfig="props.nestableItem.blockConfig_edit"></BlockConfigView>
+                            </template>
+                        </CollapseExpand>
+                    </v-col>
 
-                <LineComponent class="py-3"></LineComponent>
+                    <v-divider class="mx-2 py-3"></v-divider>
 
-                <div>
-                    <h3>BLOCK CONTENT</h3>
-                    <div>
-                        <h4>CONTROLS</h4>
-                        <button v-if="!nestableItem.isNew" :disabled="!props.nestableItem.isContentEdited"
-                            class="btn btn-success" @click="handleResetContentClick">Reset</button>
-                    </div>
-                    <CollapseExpand :active="getIsActive(NameEnum.CONTENT)" :class="NameEnum.CONTENT"
-                        @toggle-click="handleToggleSection(NameEnum.CONTENT)">
-                        <template #title>
-                            {{ TitleEnum.CONTENT }}
-                        </template>
-                        <template #content>
-                            <BlockContentView :blockDefinition="blockDefinition"
-                                :blockContent="props.nestableItem.blockContent_edit"></BlockContentView>
-                        </template>
-                    </CollapseExpand>
-                </div>
+                    <!-- BLOCK CONTENT SECTION -->
+                    <v-col cols="12">
+                        <h3>BLOCK CONTENT</h3>
+                        <v-row>
+                            <v-col cols="12">
+                                <h4>CONTROLS</h4>
+                                <v-btn color="success" v-if="!nestableItem.isNew"
+                                    :disabled="!props.nestableItem.isContentEdited" @click="handleResetContentClick">
+                                    Reset
+                                </v-btn>
+                            </v-col>
+                        </v-row>
+                        <CollapseExpand :active="getIsActive(NameEnum.CONTENT)" :class="NameEnum.CONTENT"
+                            @toggle-click="handleToggleSection(NameEnum.CONTENT)">
+                            <template #title>
+                                {{ TitleEnum.CONTENT }}
+                            </template>
+                            <template #content>
+                                <BlockContentView :blockDefinition="blockDefinition"
+                                    :blockContent="props.nestableItem.blockContent_edit"></BlockContentView>
+                            </template>
+                        </CollapseExpand>
+                    </v-col>
 
-            </div>
+                </v-row>
+            </v-container>
         </template>
+
         <template #bottom>
-            <div class="action-section">
-                <button class="btn btn-secondary" @click.stop="handleToggleJSONView">TOGGLE JSON VIEW</button>
-                <button :disabled="!isDataForRefreshValid" class="btn btn-success"
-                    @click.stop="handleRefreshUI">REFRESH</button>
-            </div>
+            <v-card class="mx-2" flat>
+                <v-card-actions class="action-section">
+                    <v-btn color="secondary" @click.stop="handleToggleJSONView">TOGGLE JSON VIEW</v-btn>
+                    <v-btn color="success" :disabled="!isDataForRefreshValid" @click.stop="handleRefreshUI">REFRESH</v-btn>
+                </v-card-actions>
+            </v-card>
         </template>
     </GridFrame>
 </template>

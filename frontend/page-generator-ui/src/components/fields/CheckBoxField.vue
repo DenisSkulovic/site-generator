@@ -1,24 +1,18 @@
 <template>
-    <div class="form-check form-switch mb-3 d-flex justify-content-between" style="gap:10px;">
-        <label class="input-group-text">{{props.label}}</label>
-        <input class="form-check-input" type="checkbox" role="switch" :checked="props.value" @change="(e) => handleChange(e)" style="transform: scale(1.8);">
-    </div>
+    <v-switch :label="props.label" :input-value="props.value" @change="handleChange" class="mb-3"></v-switch>
 </template>
 
 <script lang="ts" setup>
-
 const props = defineProps<{
-    label: string
-    value: boolean | undefined
+    label: string,
+    value: boolean | undefined,
 }>()
+
 const emit = defineEmits<{
     (e: "change", newVal: boolean): void
 }>()
 
-const handleChange = (e: any) => {
-    const newVal: boolean = e.target.checked
-    emit("change", newVal)
+const handleChange = (val: boolean) => {
+    emit("change", val)
 }
 </script>
-
-<style scoped></style>

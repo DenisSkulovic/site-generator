@@ -28,8 +28,7 @@ import AreaView from "../AreaView/index.vue"
 import BlockView from "../BlockView/index.vue"
 import ToggleButton from "./ToggleButton.vue"
 // state
-import nestableConfig from "../../state/nestable/nestableConfig"
-import currentNestableItem from "../../state/nestable/currentNestableItem"
+import {nestableConfig, currentNestableItem} from "../../state/nestableState"
 import sidebarState from "./sidebarState"
 
 

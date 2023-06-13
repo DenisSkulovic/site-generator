@@ -1,25 +1,24 @@
 <template>
-    <aside class="sidebar">
-        <nav>
-            <ul>
-                <li>
-                    <router-link :to="PagePathEnum.HOME">{{PageNameEnum.HOME}}</router-link>
-                </li>
-                <li>
-                    <router-link :to="PagePathEnum.HEADER_FOOTER_MANAGER">{{PageNameEnum.HEADER_FOOTER_MANAGER}}</router-link>
-                </li>
-                <li>
-                    <router-link :to="PagePathEnum.PAGES">{{PageNameEnum.PAGES}}</router-link>
-                </li>
-                <!-- You can add more navigation links here -->
-            </ul>
-        </nav>
-    </aside>
+    <v-navigation-drawer app v-model="drawer" color="grey lighten-4">
+        <v-list>
+            <v-list-item :to="PagePathEnum.HOME">
+                <v-list-item-title>{{ PageNameEnum.HOME }}</v-list-item-title>
+            </v-list-item>
+            <v-list-item :to="PagePathEnum.HEADER_FOOTER_MANAGER">
+                <v-list-item-title>{{ PageNameEnum.HEADER_FOOTER_MANAGER }}</v-list-item-title>
+            </v-list-item>
+            <v-list-item :to="PagePathEnum.PAGES">
+                <v-list-item-title>{{ PageNameEnum.PAGES }}</v-list-item-title>
+            </v-list-item>
+            <!-- You can add more navigation links here -->
+        </v-list>
+    </v-navigation-drawer>
 </template>
   
 <script lang="ts" setup>
 import { PagePathEnum, PageNameEnum } from '@/router'
 
+let drawer = true;
 </script>
   
 <style scoped>

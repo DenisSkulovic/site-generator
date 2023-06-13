@@ -1,4 +1,31 @@
 <template>
+    <v-card class="d-flex justify-space-between pa-2" ref="block">
+        <v-row no-gutters>
+            <v-col cols="8">
+                <v-row align="center">
+                    <v-text-field v-if="isEditingName" :value="item.blockConfig_edit.blockName" @input="handleChangeName"
+                        outlined dense />
+                    <v-btn icon small @click.stop="isEditingName = !isEditingName">
+                        <v-icon>{{ isEditingName ? 'mdi-check' : 'mdi-pencil' }}</v-icon>
+                    </v-btn>
+                </v-row>
+            </v-col>
+            <v-col cols="4">
+                <v-select class="my-0" :items="blockTemplateNames" v-model="item.blockConfig_edit.blockTemplateName"
+                    @change="handleChangeTemplate" outlined dense />
+                <v-btn icon small @click.stop="handleDisplayClick">
+                    <v-icon>mdi-magnify</v-icon>
+                </v-btn>
+                <v-btn icon small @click.stop="handleDeleteClick">
+                    <v-icon>mdi-delete</v-icon>
+                </v-btn>
+            </v-col>
+        </v-row>
+    </v-card>
+</template>
+
+
+<!-- <template>
     <div class="draggable-item d-flex flex-row nowrap justify-content-between p-2" style="gap: 10px;" ref="block">
         <div>
             <div class="text-nowrap" v-if="!isEditingName">
@@ -45,7 +72,7 @@
             </div>
         </div>
     </div>
-</template>
+</template> -->
 
 
 <script setup lang="ts">

@@ -1,5 +1,5 @@
 import type { NestableConfig } from "../../classes/NestableConfig";
-import editPageConfig from "../../state/pageConfig/editPageConfig"
+import {editPageConfig} from "../../state/pageConfigState"
 import type { PageConfig, AreaConfig, BlockConfig } from "../../../../../page_cls_module"
 import { cloneDeep } from "lodash"
 import type { NestableItem } from "../../classes/NestableItem";
@@ -7,8 +7,8 @@ import { NestableItemArea } from "@/classes/NestableItemArea";
 import { NestableItemBlock } from "@/classes/NestableItemBlock";
 import { reactive } from "vue";
 
-import newAreaConfigMap from "@/state/pageConfig/newAreaConfigMap"
-import newBlockConfigMap from "@/state/pageConfig/newBlockConfigMap"
+import {newAreaConfigMap} from "@/state/pageConfigState"
+import {newBlockConfigMap} from "@/state/pageConfigState"
 
 const processItem = ( // recursion
     item: NestableItem,

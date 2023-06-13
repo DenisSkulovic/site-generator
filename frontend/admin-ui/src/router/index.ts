@@ -5,19 +5,22 @@ import HomeView from '../views/HomeView.vue'
 export enum PagePathEnum {
   HOME = "/",
   PAGES = "/pages",
-  PAGE = "/page",
+  PRODUCTS = "/products",
+  PRODUCT = "/product",
   HEADER_FOOTER_MANAGER = "/header-footer-manager",
 }
 export enum PageNameEnum {
   HOME = "home",
   PAGES = "pages",
-  PAGE = "page",
+  PRODUCTS = "products",
+  PRODUCT = "product",
   HEADER_FOOTER_MANAGER = "header-footer-manager"
 }
 export enum PageTitleEnum {
   HOME = "Home",
   PAGES = "Pages",
-  PAGE = "Page",
+  PRODUCTS = "Products",
+  PRODUCT = "Product",
   HEADER_FOOTER_MANAGER = "Header & Footer Manager"
 }
 
@@ -41,7 +44,8 @@ export class Route {
 export const routes = [
   new Route(PagePathEnum.HOME, PageNameEnum.HOME, HomeView),
   new Route(PagePathEnum.PAGES, PageNameEnum.PAGES, () => import('../views/PagesList.vue')),
-  new Route(PagePathEnum.PAGE, PageNameEnum.PAGE, () => import('../views/PageDetail.vue')),
+  new Route(PagePathEnum.PRODUCTS, PageNameEnum.PRODUCTS, () => import('../views/ProductsView.vue')),
+  new Route(PagePathEnum.PRODUCT, PageNameEnum.PRODUCT, () => import('../views/ProductView.vue')),
   new Route(PagePathEnum.HEADER_FOOTER_MANAGER, PageNameEnum.HEADER_FOOTER_MANAGER, () => import('../views/HeaderFooterManager.vue')),
 ]
 

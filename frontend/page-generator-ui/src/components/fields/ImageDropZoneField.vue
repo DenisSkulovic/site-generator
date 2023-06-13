@@ -1,12 +1,16 @@
 <template>
-    <div class="input-group mb-3 d-flex justify-content-between" style="gap:10px;">
-        <label class="input-group-text">{{ props.label }}</label>
-        <image-drop-zone :imageUrl="props.value" @upload="handleUpload" />
-    </div>
+    <v-row class="d-flex justify-space-between align-center" no-gutters>
+        <v-col cols="auto">
+            <label>{{ props.label }}</label>
+        </v-col>
+        <v-col cols="auto">
+            <ImageDropZone :imageUrl="props.value" @upload="handleUpload" />
+        </v-col>
+    </v-row>
 </template>
 
 <script lang="ts" setup>
-import ImageDropZone from './ImageDropZone.vue'; 
+import {ImageDropZone} from '../../../../common_components_module';
 
 const props = defineProps({
     label: String,
@@ -19,5 +23,3 @@ const handleUpload = (file: File) => {
     emit('change', file);
 };
 </script>
-
-<style scoped></style>

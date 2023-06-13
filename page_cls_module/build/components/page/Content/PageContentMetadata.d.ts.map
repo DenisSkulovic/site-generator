@@ -1,1 +1,1 @@
-{"version":3,"file":"PageContentMetadata.d.ts","sourceRoot":"","sources":["../../../../src/components/page/Content/PageContentMetadata.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,uBAAuB,CAAC;AAEjD,eAAO,MAAM,wBAAwB,QAAS,GAAG,KAAG,mBAMnD,CAAA;AAED,qBAAa,mBAAoB,SAAQ,QAAQ;CAAG"}
+{"version":3,"file":"PageContentMetadata.d.ts","sourceRoot":"","sources":["../../../../src/components/page/Content/PageContentMetadata.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,WAAW,CAAC;AAErC,eAAO,MAAM,wBAAwB,QAAS,GAAG,KAAG,mBAMnD,CAAA;AAED,qBAAa,mBAAoB,SAAQ,QAAQ;CAAG"}

@@ -1,32 +1,26 @@
 <template>
-    <div>
-        <div
-            class="d-flex flex-row nowrap justify-content-between align-items-center expandable-handle p-3"
+    <v-card class="mx-auto my-2" max-width="800">
+        <v-card-title
             @click.stop="handleToggleClick"
-            role="button"
+            class="cursor-pointer d-flex justify-space-between align-center"
         >
-            <div class="section-title">
+            <div class="title">
                 <slot name="title" />
             </div>
-            <ChevronDownSvg
-                :width="17"
-                :height="9"
-                :style="{
-                    transform: active
-                        ? 'rotate(0deg)'
-                        : 'rotate(-90deg)',
-                }"
-            />
-        </div>
-        <div class="expandable-content p-3" v-show="active">
-            <slot name="content" />
-        </div>
-    </div>
+            <v-icon>
+                {{ active ? 'mdi-chevron-down' : 'mdi-chevron-up' }}
+            </v-icon>
+        </v-card-title>
+
+        <v-expand-transition>
+            <v-card-text v-show="active">
+                <slot name="content" />
+            </v-card-text>
+        </v-expand-transition>
+    </v-card>
 </template>
 
 <script lang="ts" setup>
-import ChevronDownSvg from './svg/ChevronDownSvg.vue'
-
 defineProps<{
     active: boolean
 }>()
@@ -40,15 +34,8 @@ const handleToggleClick = () => {
 }
 </script>
 
-<style lang="scss" scoped>
-
-.expandable-handle {
-    background-color: rgba(128, 128, 128, 0.5);
-    border: 1px solid gray;
-}
-.expandable-content {
-    border: 1px dashed lightgray;
-    background-color: rgba(211, 211, 211, 0.5);
-
+<style scoped>
+.title {
+    font-weight: bold;
 }
 </style>

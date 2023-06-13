@@ -1,17 +1,11 @@
-import nestableConfig from "../../state/nestable/nestableConfig"
+import {nestableConfig} from "../../state/nestableState"
 import type { PageConfig, PageContent } from "../../../../../page_cls_module"
 import buildPageConfigFromNestableConfig from "./buildPageConfigFromNestableConfig"
 import buildPageContentFromNestableConfig from "./buildPageContentFromNestableConfig"
-import editPageConfig from "../../state/pageConfig/editPageConfig"
-import editPageContent from "../../state/pageContent/editPageContent"
 
-import toDeleteAreaConfigMap from "../../state/pageConfig/toDeleteAreaConfigMap"
-import toDeleteBlockConfigMap from "../../state/pageConfig/toDeleteBlockConfigMap"
-import toDeleteAreaContentMap from "../../state/pageContent/toDeleteAreaContentMap"
-import toDeleteBlockContentMap from "../../state/pageContent/toDeleteBlockContentMap"
+import {toDeleteAreaConfigMap, toDeleteBlockConfigMap, newAreaConfigMap, editPageConfig} from "../../state/pageConfigState"
+import {toDeleteAreaContentMap, toDeleteBlockContentMap, editPageContent} from "../../state/pageContentState"
 
-
-import newAreaConfigMap from "../../state/pageConfig/newAreaConfigMap"
 import toDeleteNestableItemMap from "../../computed/nestable/toDeleteNestableItemMap"
 import type { NestableItem } from "@/classes/NestableItem"
 import { NestableItemArea } from "@/classes/NestableItemArea"

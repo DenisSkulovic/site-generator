@@ -1,6 +1,6 @@
 import { APIGatewayEvent } from "aws-lambda";
-import { S3Operations } from "@s3_module";
-import getEnvVariable from "@/logic/getEnvVariable";
+import { S3Operations } from "../../../../../s3_module";
+import getEnvVariable from "../../../logic/getEnvVariable";
 import { GetObjectOutput } from "aws-sdk/clients/s3";
 
 export class ImageRequestBody {

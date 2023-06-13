@@ -1,34 +1,27 @@
 <template>
+    <v-container fluid fill-height>
 
-<div class="grid-frame-wrapper">
-    <div class="top-section p-3">
-        <slot name="top"></slot>
-    </div>
-    <div class="main-section p-3">
-        <slot name="main"></slot>
-    </div>
-    <div class="bottom-section p-3">
-        <slot name="bottom"></slot>
-    </div>
-</div>
+        <!-- TOP SECTION -->
+        <v-row no-gutters class="px-3 pt-3">
+            <slot name="top"></slot>
+        </v-row>
 
+        <!-- MAIN SECTION -->
+        <v-sheet overflow-y-auto class="px-3 my-3">
+            <slot name="main"></slot>
+        </v-sheet>
+
+        <!-- BOTTOM SECTION -->
+        <v-row no-gutters class="px-3 pb-3">
+            <slot name="bottom"></slot>
+        </v-row>
+    </v-container>
 </template>
+
 <style scoped>
-
-.top-section {
-    border: 1px solid grey;
-}
-
-.grid-frame-wrapper {
-    display: grid;
-    grid-template-rows: 1fr 1000fr 1fr;
+.v-container {
+    display: flex;
+    flex-direction: column;
     height: 100vh;
-}
-.main-section {
-    overflow: auto;
-}
-
-.bottom-section {
-    border: 1px solid grey;
 }
 </style>

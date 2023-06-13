@@ -1,6 +1,6 @@
 import sidebarState from "../sidebarState"
 import ViewEnum from "../ViewEnum"
-import currentNestableItem from "../../../state/nestable/currentNestableItem"
+import {currentNestableItem} from "../../../state/nestableState"
 import getIsAreaUUID from "../../../logic/areaConfig/getIsAreaUUID"
 import getIsBlockUUID from "../../../logic/blockConfig/getIsBlockUUID"
 

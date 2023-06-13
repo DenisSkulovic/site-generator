@@ -1,23 +1,18 @@
-// @ts-nocheck
-import * as http from "node:http";
+import * as http from "http";
 import requestListener from "./requestListener"
-import dotenv from "dotenv"
-
-dotenv.config()
 
 
 const host = "localhost";
-const port = process.env.PORT
-if (!port) throw new Error("cannot start the dev server without the PORT env param")
-const port = port;
+const PORT = Number(process.env.PORT)
+if (!PORT) throw new Error("cannot start the dev server without the PORT env param")
 
 const createDevServer = () => {
   const server = http.createServer(requestListener);
-  server.listen(port, host, () => {
-    console.log(`Server is running on http://${host}:${port}`);
+  server.listen(PORT, host, () => {
+    console.log(`Server is running on http://${host}:${PORT}`);
   });
 
-  return server;
+  return server
 }
 
 export default createDevServer

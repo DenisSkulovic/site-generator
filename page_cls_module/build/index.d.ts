@@ -1,4 +1,6 @@
 export * as mockFactories from "./mockFactories";
+export { Product, buildProduct } from "./components/Product";
+export { Metadata } from "./components/Metadata";
 /**
  * HEADER
  */
@@ -71,6 +73,4 @@ export { Asset } from "./components/asset/Asset";
 export { LinkAsset } from "./components/asset/LinkAsset";
 export { ScriptAsset } from "./components/asset/ScriptAsset";
 export { StyleAsset } from "./components/asset/StyleAsset";
-export { Product, buildProduct } from "./components/Product";
-export { Metadata } from "./components/Metadata";
 //# sourceMappingURL=index.d.ts.map

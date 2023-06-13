@@ -1,7 +1,7 @@
 import { computed } from "vue"
 import type { ComputedRef } from "vue"
 import type { AreaConfig } from "../../../../../page_cls_module/src"
-import editPageConfig from "../../state/pageConfig/editPageConfig"
+import {editPageConfig} from "../../state/pageConfigState"
 import {processAreaConfig} from "./currentAreaConfigMap"
 
 type AreaConfigUUID = string

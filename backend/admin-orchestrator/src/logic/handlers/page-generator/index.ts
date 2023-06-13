@@ -1,6 +1,6 @@
 import { APIGatewayEvent } from "aws-lambda";
-import { PageGenerator } from "@/generator/PageGenerator";
-import { GenerateFooterResponse, GenerateHeaderResponse, GeneratePageResponse, buildGenerateFooterRequest, buildGenerateHeaderRequest, buildGeneratePageRequest } from "@page_cls_module";
+import { PageGenerator } from "../../../generator/PageGenerator";
+import { GenerateFooterResponse, GenerateHeaderResponse, GeneratePageResponse, buildGenerateFooterRequest, buildGenerateHeaderRequest, buildGeneratePageRequest } from "../../../../../../page_cls_module";
 
 export const handleGenerateFooter = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<GenerateFooterResponse> => {
     const body = JSON.parse(event.body || "{}");

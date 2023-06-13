@@ -1,7 +1,7 @@
 import {computed} from "vue"
 import type {ComputedRef} from "vue"
 import editedBlockContentMap from "./editedBlockContentMap"
-import newBlockContentMap from "../../state/pageContent/newBlockContentMap"
+import {newBlockContentMap} from "../../state/pageContentState"
 
 const allBlockContentIdSet: ComputedRef<Set<string>> = computed(() => {
     const set: Set<string> = new Set()

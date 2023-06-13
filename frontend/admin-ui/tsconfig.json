@@ -16,10 +16,6 @@
       "@page_cls_module": [
         "../../page_cls_module"
       ],
-      "@cloudfront_module": [
-        "../../cloudfront_module"
-      ],
-
       "@auth_module": [
         "../../auth_module"
       ],
@@ -46,14 +42,6 @@
     },
     {
       "path": "../../page_cls_module",
-      "prepend": false
-    },
-    {
-      "path": "../../cloudfront_module",
-      "prepend": false
-    },
-    {
-      "path": "../../auth_module",
       "prepend": false
     },
     {

@@ -1,28 +1,27 @@
 <template>
-    <div v-if="pagesEdit.value && pagesEdit.value.length">
-        <h1>Page Management</h1>
-        <div class="controls">
-            <v-btn color="green" @click="handleAddNewPageClick">Add New Page</v-btn>
-        </div>
-        <VDataTable :headers="tableHeaders" :items="displayedPages" :items-per-page="itemsPerPage" :page.sync="currentPage"
-            :server-items-length="pagesEdit.value.length" :loading="isLoadingThis" @update:page="updateCurrentPage"
-            class="elevation-1">
-            <template #item.actions="{ item }">
-                <div class="actions">
-
-                    <v-btn color="blue" text @click="handleOpenPageInEditor(item.id)">
-                        Edit
-                    </v-btn>
-                    <v-btn color="red" text @click="handleDeletePageClick(item.id)">
-                        Delete
-                    </v-btn>
-                </div>
-            </template>
-        </VDataTable>
-    </div>
-    <div v-else-if="pagesEdit.value">
-        <h2>No pages available</h2>
-    </div>
+    <v-container v-if="pagesEdit.value && pagesEdit.value.length">
+        <v-row>
+            <v-col>
+                <h1>Page Management</h1>
+                <v-btn color="green" @click="handleAddNewPageClick">Add New Page</v-btn>
+                <v-data-table :headers="tableHeaders" :items="displayedPages" :items-per-page="itemsPerPage"
+                    :page.sync="currentPage" :server-items-length="pagesEdit.value.length" :loading="isLoadingThis"
+                    @update:page="updateCurrentPage" class="elevation-1">
+                    <template v-slot:item.actions="{ item }">
+                        <v-btn color="blue" text @click="handleOpenPageInEditor(item.id)">Edit</v-btn>
+                        <v-btn color="red" text @click="handleDeletePageClick(item.id)">Delete</v-btn>
+                    </template>
+                </v-data-table>
+            </v-col>
+        </v-row>
+    </v-container>
+    <v-container v-else-if="pagesEdit.value">
+        <v-row>
+            <v-col>
+                <h2>No pages available</h2>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
   
 <script setup lang="ts">

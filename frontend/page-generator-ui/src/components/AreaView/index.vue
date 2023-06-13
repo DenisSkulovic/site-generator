@@ -1,62 +1,110 @@
 <template>
     <GridFrame>
         <template #top>
-            <div class="area-section">
-                <h3>Area: {{ nestableItem.areaConfig_edit.areaName }}</h3>
-                <ItemBreadcrumb :item="nestableItem"></ItemBreadcrumb>
-            </div>
+            <v-card class="mx-2" flat>
+                <v-card-title class="area-section">
+                    <h3>Area: {{ nestableItem.areaConfig_edit.areaName }}</h3>
+                    <ItemBreadcrumb :item="nestableItem"></ItemBreadcrumb>
+                </v-card-title>
+            </v-card>
         </template>
+
         <template #main>
-            <div>
-                <div>
-                    <CollapseExpand :active="getIsActive(NameEnum.CONFIG)" :class="NameEnum.CONFIG"
-                        @toggle-click="handleToggleSection(NameEnum.CONFIG)">
-                        <template #title>
-                            <h3>{{ TitleEnum.CONFIG }}</h3>
-                        </template>
-                        <template #content>
-                            <div>
-                                <h4>CONTROLS</h4>
-                                <button v-if="!nestableItem.isNew" :disabled="!props.nestableItem.isConfigEdited"
-                                    class="btn btn-success" @click="handleResetConfigClick">Reset</button>
-                            </div>
-                            <AreaConfigView :areaConfig="props.nestableItem.areaConfig_edit"></AreaConfigView>
-                        </template>
-                    </CollapseExpand>
-                </div>
+            <v-container fluid>
+                <v-row no-gutters>
 
-                <LineComponent class="py-3"></LineComponent>
+                    <!-- CONFIG SECTION -->
+                    <v-col cols="12">
+                        <CollapseExpand :active="getIsActive(NameEnum.CONFIG)" :class="NameEnum.CONFIG"
+                            @toggle-click="handleToggleSection(NameEnum.CONFIG)">
+                            <template #title>
+                                <h3>{{ TitleEnum.CONFIG }}</h3>
+                            </template>
+                            <template #content>
+                                <v-container>
+                                    <v-row>
+                                        <v-col cols="12">
+                                            <h4>CONTROLS</h4>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col cols="12">
+                                            <v-btn color="success" v-if="!nestableItem.isNew"
+                                                :disabled="!props.nestableItem.isConfigEdited"
+                                                @click="handleResetConfigClick">
+                                                Reset
+                                            </v-btn>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col cols="12">
+                                            <AreaConfigView :areaConfig="props.nestableItem.areaConfig_edit">
+                                            </AreaConfigView>
+                                        </v-col>
+                                    </v-row>
+                                </v-container>
+                            </template>
+                        </CollapseExpand>
+                    </v-col>
 
-                <div>
-                    <CollapseExpand :active="getIsActive(NameEnum.SUBITEMS)" :class="NameEnum.SUBITEMS"
-                        @toggle-click="handleToggleSection(NameEnum.SUBITEMS)">
-                        <template #title>
-                            <h3>{{ TitleEnum.SUBITEMS }}</h3>
-                        </template>
-                        <template #content>
-                            <div class="d-flex flex-column nowrap">
-                                <div>
-                                    <h4>CONTROLS</h4>
-                                    <button :disabled="!!nestableItem.slotsMax && !nestableItem.isHaveSlotsAvailable"
-                                        class="btn btn-success" @click="handleAddAreaClick">Add area</button>
-                                    <button :disabled="!!nestableItem.slotsMax && !nestableItem.isHaveSlotsAvailable"
-                                        class="btn btn-success" @click="handleAddBlockClick">Add block</button>
-                                </div>
-                                <SlotAvailability :slots-used="nestableItem.slotsUsed" :slots-max="nestableItem.slotsMax">
-                                </SlotAvailability>
-                                <AreaSubitemsView :subitems="subitems"></AreaSubitemsView>
-                            </div>
-                        </template>
-                    </CollapseExpand>
-                </div>
-            </div>
+                    <v-divider class="mx-2 py-3"></v-divider>
+
+                    <!-- SUBITEMS SECTION -->
+                    <v-col cols="12">
+                        <CollapseExpand :active="getIsActive(NameEnum.SUBITEMS)" :class="NameEnum.SUBITEMS"
+                            @toggle-click="handleToggleSection(NameEnum.SUBITEMS)">
+                            <template #title>
+                                <h3>{{ TitleEnum.SUBITEMS }}</h3>
+                            </template>
+                            <template #content>
+                                <v-container>
+                                    <v-row>
+                                        <v-col cols="12">
+                                            <h4>CONTROLS</h4>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col cols="12">
+                                            <v-btn color="success"
+                                                :disabled="!!nestableItem.slotsMax && !nestableItem.isHaveSlotsAvailable"
+                                                @click="handleAddAreaClick">
+                                                Add area
+                                            </v-btn>
+                                            <v-btn color="success"
+                                                :disabled="!!nestableItem.slotsMax && !nestableItem.isHaveSlotsAvailable"
+                                                @click="handleAddBlockClick">
+                                                Add block
+                                            </v-btn>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col cols="12">
+                                            <SlotAvailability :slots-used="nestableItem.slotsUsed"
+                                                :slots-max="nestableItem.slotsMax">
+                                            </SlotAvailability>
+                                        </v-col>
+                                    </v-row>
+                                    <v-row>
+                                        <v-col cols="12">
+                                            <AreaSubitemsView :subitems="subitems"></AreaSubitemsView>
+                                        </v-col>
+                                    </v-row>
+                                </v-container>
+                            </template>
+                        </CollapseExpand>
+                    </v-col>
+
+                </v-row>
+            </v-container>
         </template>
+
         <template #bottom>
-            <div class="action-section">
-                <button class="btn btn-secondary" @click.stop="handleToggleJSONView">TOGGLE JSON VIEW</button>
-                <button :disabled="!isDataForRefreshValid" class="btn btn-success"
-                    @click.stop="handleRefreshUI">REFRESH</button>
-            </div>
+            <v-card class="mx-2" flat>
+                <v-card-actions class="action-section">
+                    <v-btn color="secondary" @click.stop="handleToggleJSONView">TOGGLE JSON VIEW</v-btn>
+                    <v-btn color="success" :disabled="!isDataForRefreshValid" @click.stop="handleRefreshUI">REFRESH</v-btn>
+                </v-card-actions>
+            </v-card>
         </template>
     </GridFrame>
 </template>
@@ -151,7 +199,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-
 .area-section {
     background-color: rgb(255, 177, 177);
 }

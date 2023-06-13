@@ -1,9 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.PageContent = exports.buildPageContent = void 0;
-const AreaContent_1 = require("./AreaContent");
-const PageContentMetadata_1 = require("./PageContentMetadata");
-const buildPageContent = (obj) => {
+import { buildAreaContent } from "./AreaContent";
+import { buildPageContentMetadata } from "./PageContentMetadata";
+export const buildPageContent = (obj) => {
     if (obj.clazz !== "PageContent")
         throw new Error("clazz cannot be anything other than 'PageContent'");
     const rawData = obj.data;
@@ -14,15 +11,14 @@ const buildPageContent = (obj) => {
     Object.entries(rawData).forEach((entry) => {
         const areaConfigId = entry[0];
         const rawAreaContent = entry[1];
-        const areaContent = (0, AreaContent_1.buildAreaContent)(rawAreaContent);
+        const areaContent = buildAreaContent(rawAreaContent);
         data[areaConfigId] = areaContent;
     });
-    const metadata = (0, PageContentMetadata_1.buildPageContentMetadata)(obj.metadata);
+    const metadata = buildPageContentMetadata(obj.metadata);
     const pageContent = new PageContent(uuid, data, metadata);
     return pageContent;
 };
-exports.buildPageContent = buildPageContent;
-class PageContent {
+export class PageContent {
     constructor(uuid, data, metadata) {
         this.uuid = uuid;
         this.data = data;
@@ -30,5 +26,4 @@ class PageContent {
         this.clazz = this.constructor.name;
     }
 }
-exports.PageContent = PageContent;
 //# sourceMappingURL=PageContent.js.map

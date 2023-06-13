@@ -1,55 +1,66 @@
 <template>
-    <div class="d-flex flex-column nowrap">
-
+    <div>
         <!-- AREA NAME -->
-        <TextInputField :label="'Area Name'" :value="props.areaConfig.areaName"
-            @change="(newVal) => handleChange('areaName', newVal)"></TextInputField>
+        <text-input-field 
+            :label="'Area Name'" 
+            :value="props.areaConfig.areaName" 
+            @change="(val) => props.areaConfig.areaName = val" 
+            class="mb-4" />
 
-        <LineComp class="my-2"></LineComp>
+        <v-divider class="my-4"></v-divider>
 
-        <CollapseExpand :active="state.isAdvancedExpanded"
-            @toggle-click="state.isAdvancedExpanded = !state.isAdvancedExpanded">
-            <template #title>
-                <h5>{{ 'Advanced Configuration' }}</h5>
-            </template>
-            <template #content>
+        <v-expansion-panel>
+            <v-expansion-panel-header
+                @click="state.isAdvancedExpanded = !state.isAdvancedExpanded"
+            >
+                Advanced Configuration
+                <v-icon right>
+                    {{ state.isAdvancedExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down' }}
+                </v-icon>
+            </v-expansion-panel-header>
 
+            <v-expansion-panel-content v-if="state.isAdvancedExpanded">
                 <!-- INCLUDE CONTAINER -->
-                <CheckBoxField :label="'Include Container'" :value="props.areaConfig.isIncludeContainer"
-                    @change="(newVal) => handleChange('isIncludeContainer', newVal)"></CheckBoxField>
-
-                <LineComp class="my-2"></LineComp>
+                <CheckBoxField 
+                    :label="'Include Container'" 
+                    :value="props.areaConfig.isIncludeContainer" 
+                    @change="(val) => props.areaConfig.isIncludeContainer = val" 
+                    class="mb-4" />
 
                 <!-- AREA TEMPLATE NAME -->
-                <SelectInputField :label="'Area Template Name'" :value="props.areaConfig.areaTemplateName"
-                    :options="areaTemplateNames" @change="(newVal) => handleChange('areaTemplateName', newVal)">
-                </SelectInputField>
+                <SelectInputField 
+                    :label="'Area Template Name'" 
+                    :value="props.areaConfig.areaTemplateName" 
+                    :options="areaTemplateNames" 
+                    @change="(val) => props.areaConfig.areaTemplateName = val" 
+                    class="mb-4" />
 
                 <!-- JUSTIFY -->
-                <SelectInputField :label="'Justify Content'" :value="props.areaConfig.justify"
-                    :options="justifyOptions" @change="(newVal) => handleChange('justify', newVal)">
-                </SelectInputField>
+                <SelectInputField 
+                    :label="'Justify Content'" 
+                    :value="props.areaConfig.justify" 
+                    :options="justifyOptions" 
+                    @change="(val) => props.areaConfig.justify = val" 
+                    class="mb-4" />
 
                 <!-- ALIGN -->
-                <SelectInputField :label="'Align Items'" :value="props.areaConfig.align"
-                    :options="alignOptions" @change="(newVal) => handleChange('align', newVal)">
-                </SelectInputField>
-
-
-            </template>
-        </CollapseExpand>
+                <SelectInputField 
+                    :label="'Align Items'" 
+                    :value="props.areaConfig.align" 
+                    :options="alignOptions" 
+                    @change="(val) => props.areaConfig.align = val" 
+                    class="mb-4" />
+            </v-expansion-panel-content>
+        </v-expansion-panel>
     </div>
 </template>
+
 
 <script setup lang="ts">
 import { computed, reactive } from "vue"
 import type { ComputedRef } from "vue"
 import { AreaConfig, AreaLayoutEnum } from '../../../../../page_cls_module/src';
-import LineComp from '../Line.vue';
-import TextInputField from "../fields/TextInputField.vue"
-import CheckBoxField from "../fields/CheckBoxField.vue"
-import SelectInputField from "../fields/SelectInputField.vue"
-import CollapseExpand from '../CollapseExpand.vue';
+import {SelectInputField, CheckBoxField} from "@/components/fields"
 
 const props = defineProps<{
     areaConfig: AreaConfig
@@ -60,27 +71,23 @@ const state = reactive({
 })
 
 const justifyOptions = [
-    {label: "", value: ""},
-    {label: "justify-content-start", value: "justify-content-start"},
-    {label: "justify-content-end", value: "justify-content-end"},
-    {label: "justify-content-center", value: "justify-content-center"},
-    {label: "justify-content-between", value: "justify-content-between"},
-    {label: "justify-content-around", value: "justify-content-around"},
+    "justify-content-start",
+    "justify-content-end",
+    "justify-content-center",
+    "justify-content-between",
+    "justify-content-around",
 ]
 
 const alignOptions = [
-    {label: "", value: ""},
-    {label: "align-items-start", value: "align-items-start"},
-    {label: "align-items-end", value: "align-items-end"},
-    {label: "align-items-center", value: "align-items-center"},
-    {label: "align-items-baseline", value: "align-items-baseline"},
-    {label: "align-items-stretch", value: "align-items-stretch"},
+    "align-items-start",
+    "align-items-end",
+    "align-items-center",
+    "align-items-baseline",
+    "align-items-stretch",
 ]
 
-const areaTemplateNames: ComputedRef<{label: AreaLayoutEnum, value: AreaLayoutEnum}[]> = computed(() => {
-    return Object.values(AreaLayoutEnum).map((name) => {
-        return {label: name, value: name}
-    })
+const areaTemplateNames = computed(() => {
+    return Object.values(AreaLayoutEnum)
 })
 
 const handleChange = (fieldName: string, newVal: any) => {
@@ -88,8 +95,7 @@ const handleChange = (fieldName: string, newVal: any) => {
     (props.areaConfig as any)[fieldName] = newVal
 }
 
-
-
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

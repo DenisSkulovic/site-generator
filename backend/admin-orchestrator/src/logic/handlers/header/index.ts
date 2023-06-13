@@ -1,18 +1,15 @@
 import { APIGatewayEvent } from "aws-lambda";
-import { HeaderConfig, HeaderContent, buildHeaderConfig, buildHeaderContent } from "@page_cls_module";
-import { S3Operations } from "@s3_module";
-import getEnvVariable from "@/logic/getEnvVariable";
+import { HeaderConfig, HeaderContent, buildHeaderConfig, buildHeaderContent } from "../../../../../../page_cls_module";
+import { S3Operations } from "../../../../../s3_module";
+import getEnvVariable from "../../../logic/getEnvVariable";
 
 export const handleHeaderConfigGet = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<HeaderConfig> => {
     const bucketName = getEnvVariable("BUCKET_NAME");
     const s3 = new S3Operations(bucketName);
-    const item = await s3.getJson("header-config");
-
-    if (!item) {
-        throw new Error("No configuration found for header-config.");
-    }
-
-    return buildHeaderConfig(item);
+    const data: any = await s3.getJson("header-config");
+    const objectData = data.Body.toString('utf-8');
+    const jsonData = JSON.parse(objectData); 
+    return buildHeaderConfig(jsonData)
 }
 
 export const handleHeaderConfigPut = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {
@@ -27,13 +24,10 @@ export const handleHeaderConfigPut = async (event: APIGatewayEvent, env: "dev" |
 export const handleHeaderContentGet = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<HeaderContent> => {
     const bucketName = getEnvVariable("BUCKET_NAME");
     const s3 = new S3Operations(bucketName);
-    const item = await s3.getJson("header-content");
-
-    if (!item) {
-        throw new Error("No content found for header-content.");
-    }
-
-    return buildHeaderContent(item);
+    const data: any = await s3.getJson("header-content");
+    const objectData = data.Body.toString('utf-8');
+    const jsonData = JSON.parse(objectData); 
+    return buildHeaderContent(jsonData)
 }
 
 export const handleHeaderContentPut = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {

@@ -34,13 +34,6 @@ dotenv.config()
 
 
 
-/**
- * 
- * @param event
- * @param context
- * @param callback
- * @returns 
- */
 export const handler = async (
     event: APIGatewayEvent,
     context: Context,

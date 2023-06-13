@@ -33,14 +33,11 @@ import renderPageHTMLObject from "./logic/generation/renderPageHTMLObject"
 import unsetSelectedAreaBlockClasses from "./logic/unsetSelectedAreaBlockClasses"
 
 // state
-import currentPageContent from "./state/pageContent/currentPageContent"
-import currentPageConfig from "./state/pageConfig/currentPageConfig"
-import currentPageHTMLObject from "./state/pageHTMLObject/currentPageHTMLObject"
-import nestableConfig from './state/nestable/nestableConfig';
-import newAreaConfigMap from "./state/pageConfig/newAreaConfigMap"
-import newAreaContentMap from "./state/pageContent/newAreaContentMap"
+import {currentPageContent, newAreaContentMap} from "./state/pageContentState"
+import {currentPageConfig, newAreaConfigMap} from "./state/pageConfigState"
+import {currentPageHTMLObject} from "./state/pageHTMLObjectState"
+import {nestableConfig, currentNestableItem} from './state/nestableState';
 import idToIdMap from "./state/idToIdMap"
-import currentNestableItem from "./state/nestable/currentNestableItem"
 import isJSONView from "./state/isJSONView"
 import isDisplaySidebar from "./state/isDisplaySidebar"
 
