@@ -10,7 +10,7 @@ export { NavItem, buildNavItem } from "./components/header/NavItem";
 export { HeaderConfig, buildHeaderConfig } from "./components/header/HeaderConfig";
 export { HeaderConfigMetadata, buildHeaderConfigMetadata } from "./components/header/HeaderConfigMetadata";
 export { HeaderHTMLObject, buildHeaderHTMLObject } from "./components/page/HTMLObject/HeaderHTMLObject";
-export { HeaderHTMLMetadata, buildHeaderHTMLMetadata } from "./components/page/HTMLObject/HeaderHTMLMetadata";
+export { HeaderHTMLMetadata, buildHeaderHTMLMetadata } from "./components/header/HeaderHTMLMetadata";
 export { GenerateHeaderRequest, buildGenerateHeaderRequest } from "./components/header/GenerateHeaderRequest";
 export { GenerateHeaderResponse } from "./components/header/GenerateHeaderResponse";
 /**

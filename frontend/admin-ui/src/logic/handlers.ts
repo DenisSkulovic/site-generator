@@ -1,12 +1,11 @@
 import { FooterService } from "@/service/FooterService"
 import { HeaderService } from "@/service/HeaderService"
 import adminUrl from "@/state/adminUrl"
-import env from "@/state/env";
-import getLiveEditorUrl from "./getLiveEditorUrl";
-import type { PageHTMLObject } from "../../../../page_cls_module/src";
+import getEnvVariable from "./getEnvVariable";
 import useLoading from "@/composables/useLoading";
-import { pagesMapEdit } from "@/computed/pages";
-import { PageService } from "@/service";
+import { pagemetasMapEdit } from "@/computed/pagemetas";
+import { PagemetaService } from "@/service";
+import type { Pagemeta } from "@admin_cls_module";
 
 
 export const handleResetLinks = () => {
@@ -79,7 +78,7 @@ export const handleSaveHeader = async () => {
 }
 
 export const handleAddNewPageClick = () => {
-    const liveEditorUrl = getLiveEditorUrl(env.value)
+    const liveEditorUrl = getEnvVariable("VITE_APP_LIVE_EDITOR_URL")
     window.open(liveEditorUrl)
 };
 
@@ -91,13 +90,12 @@ export const handleDeletePageClick = async (pageId: string) => {
     const { startLoadingThis, stopLoadingThis } = useLoading();
     let res
     if (window.confirm("Are you sure you want to delete this page?")) {
-        // Implement delete logic here
         try {
-            const pageService = new PageService(adminUrl.value);
-            const pageHTMLObject: PageHTMLObject | undefined = pagesMapEdit.value.get(pageId)
-            if (!pageHTMLObject) throw new Error("pageHTMLObject cannot be undefined")
+            const pagemetaService = new PagemetaService(adminUrl.value);
+            const pagemeta: Pagemeta | undefined = pagemetasMapEdit.value.get(pageId)
+            if (!pagemeta) throw new Error("pagemeta cannot be undefined")
             startLoadingThis();
-            res = await pageService.unpublishPage(pageHTMLObject)
+            res = await pagemetaService.unpublishPage(pagemeta)
         } catch (err) {
             console.error(err);
             // Show error to the user

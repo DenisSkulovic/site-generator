@@ -23,14 +23,15 @@ const generateHeaderHTML = async (
     const createdTimestamp: number = Date.now()
     const updatedTimestamp = createdTimestamp
     const metadata: DTO.HeaderHTMLMetadata = new DTO.HeaderHTMLMetadata(
+        headerConfig.uuid,
+        headerContent.uuid,
         createdTimestamp,
         updatedTimestamp,
     )
     const res: DTO.HeaderHTMLObject = new DTO.HeaderHTMLObject(
         uuid,
         html,
-        headerConfig,
-        headerContent,
+
         metadata,
     )
     return res

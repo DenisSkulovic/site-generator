@@ -153,8 +153,6 @@ export function createPageHTMLObject(params: Partial<DTO.PageHTMLObject>): DTO.P
     const defaultObject: DTO.PageHTMLObject = {
         uuid: '',
         html: '',
-        config: createPageConfig({}),
-        content: createPageContent({}),
         metadata: createPageHTMLMetadata({}),
         clazz: "PageHTMLObject"
     };
@@ -165,8 +163,6 @@ export function createAreaHTMLObject(params: Partial<DTO.AreaHTMLObject>): DTO.A
     const defaultObject: DTO.AreaHTMLObject = {
         uuid: '',
         html: '',
-        config: createAreaConfig({}),
-        content: createAreaContent({}),
         metadata: createAreaHTMLMetadata({}),
         clazz: "AreaHTMLObject"
     };
@@ -177,8 +173,6 @@ export function createBlockHTMLObject(params: Partial<DTO.BlockHTMLObject>): DTO
     const defaultObject: DTO.BlockHTMLObject = {
         uuid: '',
         html: '',
-        config: createBlockConfig({}),
-        content: createBlockContent({}),
         metadata: createBlockHTMLMetadata({}),
         clazz: "BlockHTMLObject"
     };
@@ -251,18 +245,14 @@ export const createGenerateHeaderRequest = ({
 export const createFooterHTMLObject = ({
     uuid = "123",
     html = "<div>Footer</div>",
-    content = createFooterContent({}),
-    config = createFooterConfig({}),
     metadata = createFooterHTMLMetadata({})
-}) => new DTO.FooterHTMLObject(uuid, html, content, config, metadata);
+}) => new DTO.FooterHTMLObject(uuid, html, metadata);
 
 export const createHeaderHTMLObject = ({
     uuid = "123",
     html = "<div>Header</div>",
-    config = createHeaderConfig({}),
-    content = createHeaderContent({}),
     metadata = createHeaderHTMLMetadata({})
-}) => new DTO.HeaderHTMLObject(uuid, html, config, content, metadata);
+}) => new DTO.HeaderHTMLObject(uuid, html, metadata);
 
 export const createGenerateFooterResponse = ({
     data = createFooterHTMLObject({})
@@ -386,6 +376,8 @@ export function createBlockConfigMetadata(params: Partial<DTO.BlockConfigMetadat
 
 export function createAreaHTMLMetadata(params: Partial<DTO.AreaHTMLMetadata>): DTO.AreaHTMLMetadata {
     const defaultObject: DTO.AreaHTMLMetadata = {
+        contentUUID: "abc",
+        configUUID: "bcd",
         createdTimestamp: 123,
         updatedTimestamp: 123,
         clazz: "AreaHTMLMetadata",
@@ -395,6 +387,8 @@ export function createAreaHTMLMetadata(params: Partial<DTO.AreaHTMLMetadata>): D
 
 export function createBlockHTMLMetadata(params: Partial<DTO.BlockHTMLMetadata>): DTO.BlockHTMLMetadata {
     const defaultObject: DTO.BlockHTMLMetadata = {
+        contentUUID: "abc",
+        configUUID: "bcd",
         createdTimestamp: 123,
         updatedTimestamp: 123,
         clazz: "BlockHTMLMetadata",
@@ -404,6 +398,8 @@ export function createBlockHTMLMetadata(params: Partial<DTO.BlockHTMLMetadata>):
 
 export function createPageHTMLMetadata(params: Partial<DTO.PageHTMLMetadata>): DTO.PageHTMLMetadata {
     const defaultObject: DTO.PageHTMLMetadata = {
+        contentUUID: "abc",
+        configUUID: "bcd",
         createdTimestamp: 123,
         updatedTimestamp: 123,
         clazz: "PageHTMLMetadata",
@@ -413,6 +409,8 @@ export function createPageHTMLMetadata(params: Partial<DTO.PageHTMLMetadata>): D
 
 export function createFooterHTMLMetadata(params: Partial<DTO.FooterHTMLMetadata>): DTO.FooterHTMLMetadata {
     const defaultObject: DTO.FooterHTMLMetadata = {
+        contentUUID: "abc",
+        configUUID: "bcd",
         createdTimestamp: 123,
         updatedTimestamp: 123,
         clazz: "FooterHTMLMetadata",
@@ -422,6 +420,8 @@ export function createFooterHTMLMetadata(params: Partial<DTO.FooterHTMLMetadata>
 
 export function createHeaderHTMLMetadata(params: Partial<DTO.HeaderHTMLMetadata>): DTO.HeaderHTMLMetadata {
     const defaultObject: DTO.HeaderHTMLMetadata = {
+        contentUUID: "abc",
+        configUUID: "bcd",
         createdTimestamp: 123,
         updatedTimestamp: 123,
         clazz: "HeaderHTMLMetadata",
@@ -464,7 +464,7 @@ export function createAsset(params: Partial<DTO.Asset>): DTO.Asset {
 
 export function createLinkAsset(params: Partial<DTO.LinkAsset>): DTO.LinkAsset {
     const defaultLinkAsset: DTO.LinkAsset = {
-        ...createAsset({tag: DTO.AssetTagEnum.LINK, ...params}),
+        ...createAsset({ tag: DTO.AssetTagEnum.LINK, ...params }),
         rel: DTO.AssetRelEnum.STYLESHEET, // Use your default enum value here
         clazz: "LinkAsset"
     };
@@ -475,7 +475,7 @@ export function createLinkAsset(params: Partial<DTO.LinkAsset>): DTO.LinkAsset {
 
 export function createScriptAsset(params: Partial<DTO.ScriptAsset>): DTO.ScriptAsset {
     const defaultScriptAsset: DTO.ScriptAsset = {
-        ...createAsset({tag: DTO.AssetTagEnum.SCRIPT, ...params}),
+        ...createAsset({ tag: DTO.AssetTagEnum.SCRIPT, ...params }),
         isAsync: false,
         isDefer: false,
         type: DTO.AssetTypeEnum.JS,
@@ -487,7 +487,7 @@ export function createScriptAsset(params: Partial<DTO.ScriptAsset>): DTO.ScriptA
 
 export function createStyleAsset(params: Partial<DTO.StyleAsset>): DTO.StyleAsset {
     const defaultStyleAsset: DTO.StyleAsset = {
-        ...createAsset({tag: DTO.AssetTagEnum.STYLE, ...params}),
+        ...createAsset({ tag: DTO.AssetTagEnum.STYLE, ...params }),
         type: DTO.AssetTypeEnum.CSS,
         clazz: "StyleAsset"
     };

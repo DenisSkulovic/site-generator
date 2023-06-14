@@ -8,8 +8,8 @@ export const getTemplatePath = (__dirname: string, bootstrapVersion: BootstrapVe
     return `${__dirname}/templates/html/${bootstrapVersion}/blocks/${blockTemplateName}/index.ejs`;
 }
 
-export const buildBlockHTMLObject = (uuid: string, blockHtml: string, blockConfig: BlockConfig, blockContent: BlockContent, blockMetadata: BlockHTMLMetadata) => {
-    return new BlockHTMLObject(uuid, blockHtml, blockConfig, blockContent, blockMetadata);
+export const buildBlockHTMLObject = (uuid: string, blockHtml: string, blockMetadata: BlockHTMLMetadata) => {
+    return new BlockHTMLObject(uuid, blockHtml, blockMetadata);
 }
 
 export const buildRenderDataBlock = (blockContent: BlockContent, blockConfig: BlockConfig) => {
@@ -35,9 +35,9 @@ const constructBlock = async (
     const blockTemplatePath = getTemplatePath(__dirname, bootstrapVersion, blockTemplateName);
     const blockRenderData = buildRenderDataBlock(blockContent, blockConfig);
     const blockHtml = await renderEjsFile(blockTemplatePath, blockRenderData);
-    const blockMetadata = new BlockHTMLMetadata(createdTimestamp, updatedTimestamp);
+    const blockMetadata = new BlockHTMLMetadata(blockConfig.uuid, blockContent.uuid, createdTimestamp, updatedTimestamp);
 
-    const res = buildBlockHTMLObject(uuid, blockHtml, blockConfig, blockContent, blockMetadata);
+    const res = buildBlockHTMLObject(uuid, blockHtml, blockMetadata);
 
     return res
 }

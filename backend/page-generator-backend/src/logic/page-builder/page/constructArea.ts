@@ -56,8 +56,8 @@ export const constructArea: ConstructAreaFn = async (areaConfig: AreaConfig, are
     const areaTemplatePath = `${__dirname}/templates/html/${bootstrapVersion}/area/index.ejs`;
 
     const areaHtml: string = await ejs.renderFile(areaTemplatePath, areaRenderData);
-    const areaMetadata: AreaHTMLMetadata = new AreaHTMLMetadata(createdTimestamp, updatedTimestamp);
-    const areaHTMLObject: AreaHTMLObject = new AreaHTMLObject(uuid, areaHtml, areaConfig, areaContent, areaMetadata);
+    const areaMetadata: AreaHTMLMetadata = new AreaHTMLMetadata(areaConfig.uuid, areaContent.uuid, createdTimestamp, updatedTimestamp);
+    const areaHTMLObject: AreaHTMLObject = new AreaHTMLObject(uuid, areaHtml, areaMetadata);
     return areaHTMLObject;
 }
 

@@ -1,5 +1,5 @@
 import { PageService } from './PageService';
-import { pagesCurrent, pagesEdit } from '@/state/pages';
+import { pagesCurrent, pagesEdit } from '@/state/pagemetas';
 import { createPageHTMLObject } from '../../../../../page_cls_module/src/mockFactories';
 import axios from 'axios';
 

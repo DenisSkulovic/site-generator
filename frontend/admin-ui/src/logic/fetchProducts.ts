@@ -2,7 +2,7 @@ import useLoading from "@/composables/useLoading";
 import { ProductService } from "@/service";
 import adminUrl from "@/state/adminUrl";
 
-const fetchProducts = async () => {
+const fetchProducts = async (): Promise<void> => {
     const { startLoadingThis, stopLoadingThis, isLoadingThis } = useLoading();
     try {
         startLoadingThis();

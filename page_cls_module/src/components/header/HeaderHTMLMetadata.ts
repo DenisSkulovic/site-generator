@@ -1,7 +1,7 @@
-import { Metadata } from "../../../";
+import { Metadata } from "../..";
 
-export const buildBlockHTMLMetadata = (obj: any): BlockHTMLMetadata => {
-    const metadata = new BlockHTMLMetadata(
+export const buildHeaderHTMLMetadata = (obj: any): HeaderHTMLMetadata => {
+    const metadata = new HeaderHTMLMetadata(
         obj.configUUID,
         obj.contentUUID,
         obj.createdTimestamp,
@@ -10,7 +10,7 @@ export const buildBlockHTMLMetadata = (obj: any): BlockHTMLMetadata => {
     return metadata
 }
 
-export class BlockHTMLMetadata extends Metadata {
+export class HeaderHTMLMetadata extends Metadata {
     configUUID: string
     contentUUID: string
     constructor(

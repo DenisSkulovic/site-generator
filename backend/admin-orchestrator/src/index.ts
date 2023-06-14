@@ -16,8 +16,8 @@ import * as image from "./logic/handlers/image";
 import * as pageConfig from "./logic/handlers/page-config";
 import * as pageContent from "./logic/handlers/page-content";
 import * as pageGenerator from "./logic/handlers/page-generator";
-import * as pageHTMLObjects from "./logic/handlers/pageHTMLObjects";
-import * as pages from "./logic/handlers/pages";
+import * as pagemetas from "./logic/handlers/pagemetas";
+import * as publishing from "./logic/handlers/publishing";
 import * as product from "./logic/handlers/product";
 import * as siteConfig from "./logic/handlers/site-config";
 import * as pageAssets from "./logic/handlers/page-assets";
@@ -56,14 +56,11 @@ const routes: Routes = {
     'POST /page-generator/footer': pageGenerator.handleGenerateFooter,
     'POST /page-generator/header': pageGenerator.handleGenerateHeader,
     'POST /page-generator/page': pageGenerator.handleGeneratePage,
-    'GET /page-html-object/all': pageHTMLObjects.handlePageHTMLObjectGetAll,
-    'GET /page-html-object/{key}': pageHTMLObjects.handlePageHTMLObjectGet,
-    'POST /page-html-object': pageHTMLObjects.handlePageHTMLObjectPost,
-    'PUT /page-html-object/{key}': pageHTMLObjects.handlePageHTMLObjectPut,
-    'DELETE /page-html-object/{key}': pageHTMLObjects.handlePageHTMLObjectDelete,
-    'POST /page-s3': pages.handlePagePost,
-    'PUT /page-s3/{key}': pages.handlePagePut,
-    'DELETE /page-s3/{key}': pages.handlePageDelete,
+    'GET /pagemeta/all': pagemetas.handlePagemetaGetAll,
+    'GET /pagemeta/{path}': pagemetas.handlePagemetaGet,
+    'GET /publishing/publish-all': publishing.handlePublishPagesAll,
+    'GET /publishing/publish-page': publishing.handlePublishPage,
+    'GET /publishing/unpublish-page': publishing.handleUnpublishPage,
     'GET /product/all': product.handleProductGetAll,
     'PUT /product/all': product.handleProductPutAll,
     'GET /product/{uuid}': product.handleProductGet,

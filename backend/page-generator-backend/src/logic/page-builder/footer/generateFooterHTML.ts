@@ -23,14 +23,15 @@ const generateFooterHTML = async (
     const createdTimestamp: number = Date.now()
     const updatedTimestamp = createdTimestamp
     const metadata: DTO.FooterHTMLMetadata = new DTO.FooterHTMLMetadata(
+        footerContent.uuid,
+        footerConfig.uuid,
         createdTimestamp,
         updatedTimestamp,
     )
     const res: DTO.FooterHTMLObject = new DTO.FooterHTMLObject(
         uuid,
         html,
-        footerContent,
-        footerConfig,
+
         metadata,
     )
     return res

@@ -1,13 +1,13 @@
 import useLoading from "@/composables/useLoading";
-import { PageService } from "@/service";
+import { PagemetaService } from "@/service";
 import adminUrl from "@/state/adminUrl";
 
-const fetchPages = async () => {
+const fetchPagemetas = async (): Promise<void> => {
     const { startLoadingThis, stopLoadingThis } = useLoading();
     try {
         startLoadingThis();
-        const pageService = new PageService(adminUrl.value);
-        pageService.getPageHTMLObjectAll();
+        const pageService = new PagemetaService(adminUrl.value);
+        await pageService.getPagemetaAll();
     } catch (err) {
         console.error(err);
         // Show error to the user
@@ -16,4 +16,4 @@ const fetchPages = async () => {
     }
 };
 
-export default fetchPages
+export default fetchPagemetas

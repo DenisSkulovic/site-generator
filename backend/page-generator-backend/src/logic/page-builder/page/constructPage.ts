@@ -5,24 +5,24 @@ import ejs from "ejs"
 export const buildPageHTMLObject = (
     uuid: string,
     pageHtml: string,
-    pageConfig: PageConfig,
-    pageContent: PageContent,
     pageMetadata: PageHTMLMetadata,
 ) => {
     return new PageHTMLObject(
         uuid,
         pageHtml,
-        pageConfig,
-        pageContent,
         pageMetadata,
     );
 }
 
 export const buildPageHTMLMetadata = (
+    pageConfigUUID: string,
+    pageContentUUID: string,
     createdTimestamp: number,
     updatedTimestamp: number,
 ) => {
     return new PageHTMLMetadata(
+        pageConfigUUID,
+        pageContentUUID,
         createdTimestamp,
         updatedTimestamp,
     );
@@ -95,8 +95,8 @@ export const constructPage = async (
     const createdTimestamp: number = Date.now()
     const updatedTimestamp = createdTimestamp
 
-    const pageMetadata = buildPageHTMLMetadata(createdTimestamp, updatedTimestamp)
-    const pageHTMLObject = buildPageHTMLObject(uuid, pageHtml, pageConfig, pageContent, pageMetadata)
+    const pageMetadata = buildPageHTMLMetadata(pageConfig.uuid, pageContent.uuid, createdTimestamp, updatedTimestamp)
+    const pageHTMLObject = buildPageHTMLObject(uuid, pageHtml, pageMetadata)
     
     return pageHTMLObject
 }
