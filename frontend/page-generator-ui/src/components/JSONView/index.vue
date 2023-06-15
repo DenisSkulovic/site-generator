@@ -5,9 +5,7 @@
                 <h3>CONFIG</h3>
             </template>
             <template #content>
-                <pre>
-          {{ JSON.stringify(editPageConfig.value, null, 4) }}
-        </pre>
+                <TinyMCEReadonly :json="JSON.stringify(editPageConfig.value, null, 4)" />
             </template>
         </CollapseExpand>
     </div>
@@ -17,9 +15,7 @@
                 <h3>CONTENT</h3>
             </template>
             <template #content>
-                <pre>
-          {{ JSON.stringify(editPageContent.value, null, 4) }}
-        </pre>
+                <TinyMCEReadonly :json="JSON.stringify(editPageContent.value, null, 4)" />
             </template>
         </CollapseExpand>
     </div>
@@ -29,9 +25,7 @@
                 <h3>HTML OBJECT</h3>
             </template>
             <template #content>
-                <pre>
-          {{ JSON.stringify(editPageHTMLObject.value, null, 4) }}
-        </pre>
+                <TinyMCEReadonly :json="JSON.stringify(editPageHTMLObject.value, null, 4)" />
             </template>
         </CollapseExpand>
     </div>
@@ -40,9 +34,10 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 import CollapseExpand from '../../components/CollapseExpand.vue';
-import {editPageConfig} from '../../state/pageConfigState';
-import {editPageContent} from '../../state/pageContentState';
-import {editPageHTMLObject} from '../../state/pageHTMLObjectState';
+import TinyMCEReadonly from '../../components/TinyMCEReadonly.vue';
+import { editPageConfig } from '../../state/pageConfigState';
+import { editPageContent } from '../../state/pageContentState';
+import { editPageHTMLObject } from '../../state/pageHTMLObjectState';
 
 const toggleState = reactive({
     config: false,
