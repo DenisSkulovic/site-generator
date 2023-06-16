@@ -29,6 +29,7 @@ export function createPagemeta(params: Partial<Pagemeta> = {}): Pagemeta {
         s3Link: '/s3Link/default/path',
         contentUUID: guid(),
         configUUID: guid(),
+        isPublished: false,
         metadata: createPagemetaMetadata({}),
     };
 

@@ -1,23 +1,41 @@
 import { pagemetasCurrent, pagemetasEdit } from "@/state/pagemetas";
-import { buildPagemeta, type Pagemeta } from "../../../../admin_cls_module";
+import { buildPagemeta, type Pagemeta } from "../../../../admin_cls_module/build";
 import { AdminService } from "./AdminService";
 import axios from "axios"
 import { cloneDeep } from "lodash"
-import type { PageHTMLObject } from "../../../../page_cls_module/src";
+import type { LangEnum, PageConfig, PageContent } from "../../../../page_cls_module/src";
 
 export class PagemetaService extends AdminService {
     constructor(adminUrl: string) {
         super(adminUrl)
     }
 
-    async fetchPagemeta(uuid: string): Promise<Pagemeta> {
-        const url = `${this.adminUrl}/page-html/${uuid}`
-        return await axios.get(url)
+    async fetchPagemeta(path: string, lang: LangEnum): Promise<Pagemeta | undefined> {
+        const url = `${this.adminUrl}/pagemeta`
+        const params = {
+            path,
+            lang,
+        }
+        const headers = {
+
+        }
+        try {
+            const {data} = await axios.get(url, {params, headers})
+            return buildPagemeta(data)
+        } catch (error: any) {
+            console.error(error)
+        }
     }
 
-    async fetchPagemetaAll(): Promise<Pagemeta[]> {
-        const url = `${this.adminUrl}/page-html/all`;
-        const { data } = await axios.get(url);
+    async fetchPagemetaAll(lang: LangEnum): Promise<Pagemeta[]> {
+        const params = {
+            lang
+        }
+        const headers = {
+
+        }
+        const url = `${this.adminUrl}/pagemeta/all`;
+        const { data } = await axios.get(url, {params, headers});
         // Make sure data is an array before mapping over it
         if (!Array.isArray(data)) {
             throw new Error("Invalid data received from the server. Expected an array.");
@@ -27,8 +45,8 @@ export class PagemetaService extends AdminService {
         return pagemetas;
     }
 
-    async getPagemetaAll(): Promise<void> {
-        pagemetasCurrent.value = await this.fetchPagemetaAll()
+    async getPagemetaAll(lang: LangEnum): Promise<void> {
+        pagemetasCurrent.value = await this.fetchPagemetaAll(lang)
         pagemetasEdit.value = cloneDeep(pagemetasCurrent.value)
     }
 
@@ -90,23 +108,69 @@ export class PagemetaService extends AdminService {
         return data
     }
 
-    async uploadAsset(assetPath: string, assetData: any): Promise<AxiosResponse> {
-        const url = `${this.adminUrl}/page-assets`;
-        return await axios.put(url, assetData, {
-            params: {
-                path: assetPath,
-            },
-        });
+    async checkPageExists(path: string, lang: LangEnum): Promise<boolean> {
+        const pagemeta = this.fetchPagemeta(path, lang)
+        return !!pagemeta;
     }
 
-    async downloadAsset(assetPath: string): Promise<AxiosResponse> {
-        const url = `${this.adminUrl}/page-assets`;
-        return await axios.get(url, {
-            params: {
-                path: assetPath,
-            },
-            responseType: 'blob', // Important: axios should handle the response as a Blob
-        });
+    async createPageConfig(config: PageConfig) {
+        const params = {
+
+        }
+        const headers = {
+
+        }
+        const body = config
+        const url = `${this.adminUrl}/page-config`
+        const {data} = await axios.post(
+            url,
+            body,
+            {
+                params,
+                headers,
+            }
+        )
+        return data
+    }
+
+    async createPageContent(content: PageContent) {
+        const params = {
+
+        }
+        const headers = {
+
+        }
+        const body = content
+        const url = `${this.adminUrl}/page-content`
+        const {data} = await axios.post(
+            url,
+            body,
+            {
+                params,
+                headers,
+            }
+        )
+        return data
+    }
+
+    async createPagemeta(pagemeta: Pagemeta) {
+        const params = {
+
+        }
+        const headers = {
+
+        }
+        const body = pagemeta
+        const url = `${this.adminUrl}/pagemeta`
+        const {data} = await axios.post(
+            url,
+            body,
+            {
+                params,
+                headers,
+            }
+        )
+        return data
     }
 
 } 

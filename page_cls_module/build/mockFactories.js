@@ -132,8 +132,6 @@ export function createPageHTMLObject(params) {
     const defaultObject = {
         uuid: '',
         html: '',
-        config: createPageConfig({}),
-        content: createPageContent({}),
         metadata: createPageHTMLMetadata({}),
         clazz: "PageHTMLObject"
     };
@@ -143,8 +141,6 @@ export function createAreaHTMLObject(params) {
     const defaultObject = {
         uuid: '',
         html: '',
-        config: createAreaConfig({}),
-        content: createAreaContent({}),
         metadata: createAreaHTMLMetadata({}),
         clazz: "AreaHTMLObject"
     };
@@ -154,8 +150,6 @@ export function createBlockHTMLObject(params) {
     const defaultObject = {
         uuid: '',
         html: '',
-        config: createBlockConfig({}),
-        content: createBlockContent({}),
         metadata: createBlockHTMLMetadata({}),
         clazz: "BlockHTMLObject"
     };
@@ -183,8 +177,8 @@ export const createFooterContent = ({ uuid = "123", email = "email", metadata = 
 export const createFooterConfig = ({ uuid = "123", templateVersion = DTO.FooterTemplateVersionEnum.TEST_VERSION, bootstrapVersion = DTO.BootstrapVersionEnum.BOOTSTRAP_5_0_2, metadata = createFooterConfigMetadata({}) }) => new DTO.FooterConfig(uuid, templateVersion, bootstrapVersion, metadata);
 export const createGenerateFooterRequest = ({ content = createFooterContent({}), config = createFooterConfig({}) }) => new DTO.GenerateFooterRequest(content, config);
 export const createGenerateHeaderRequest = ({ content = createHeaderContent({}), config = createHeaderConfig({}) }) => new DTO.GenerateHeaderRequest(content, config);
-export const createFooterHTMLObject = ({ uuid = "123", html = "<div>Footer</div>", content = createFooterContent({}), config = createFooterConfig({}), metadata = createFooterHTMLMetadata({}) }) => new DTO.FooterHTMLObject(uuid, html, content, config, metadata);
-export const createHeaderHTMLObject = ({ uuid = "123", html = "<div>Header</div>", config = createHeaderConfig({}), content = createHeaderContent({}), metadata = createHeaderHTMLMetadata({}) }) => new DTO.HeaderHTMLObject(uuid, html, config, content, metadata);
+export const createFooterHTMLObject = ({ uuid = "123", html = "<div>Footer</div>", metadata = createFooterHTMLMetadata({}) }) => new DTO.FooterHTMLObject(uuid, html, metadata);
+export const createHeaderHTMLObject = ({ uuid = "123", html = "<div>Header</div>", metadata = createHeaderHTMLMetadata({}) }) => new DTO.HeaderHTMLObject(uuid, html, metadata);
 export const createGenerateFooterResponse = ({ data = createFooterHTMLObject({}) }) => new DTO.GenerateFooterResponse(data);
 export const createGenerateHeaderResponse = ({ data = createHeaderHTMLObject({}) }) => new DTO.GenerateHeaderResponse(data);
 export function createBlockContent_HTML({ uuid = 'test-html-uuid', data = { html: "<p>Test HTML content</p>" }, metadata = createBlockContentMetadata({}), }) {
@@ -265,6 +259,8 @@ export function createBlockConfigMetadata(params) {
 }
 export function createAreaHTMLMetadata(params) {
     const defaultObject = {
+        contentUUID: "abc",
+        configUUID: "bcd",
         createdTimestamp: 123,
         updatedTimestamp: 123,
         clazz: "AreaHTMLMetadata",
@@ -273,6 +269,8 @@ export function createAreaHTMLMetadata(params) {
 }
 export function createBlockHTMLMetadata(params) {
     const defaultObject = {
+        contentUUID: "abc",
+        configUUID: "bcd",
         createdTimestamp: 123,
         updatedTimestamp: 123,
         clazz: "BlockHTMLMetadata",
@@ -281,6 +279,8 @@ export function createBlockHTMLMetadata(params) {
 }
 export function createPageHTMLMetadata(params) {
     const defaultObject = {
+        contentUUID: "abc",
+        configUUID: "bcd",
         createdTimestamp: 123,
         updatedTimestamp: 123,
         clazz: "PageHTMLMetadata",
@@ -289,6 +289,8 @@ export function createPageHTMLMetadata(params) {
 }
 export function createFooterHTMLMetadata(params) {
     const defaultObject = {
+        contentUUID: "abc",
+        configUUID: "bcd",
         createdTimestamp: 123,
         updatedTimestamp: 123,
         clazz: "FooterHTMLMetadata",
@@ -297,6 +299,8 @@ export function createFooterHTMLMetadata(params) {
 }
 export function createHeaderHTMLMetadata(params) {
     const defaultObject = {
+        contentUUID: "abc",
+        configUUID: "bcd",
         createdTimestamp: 123,
         updatedTimestamp: 123,
         clazz: "HeaderHTMLMetadata",

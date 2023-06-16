@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "ts-node --compiler ttypescript src/dev/server.ts",
-    "start:nodemon": "nodemon ./src/dev/server.ts",
+    "start:nodemon": "nodemon --exec ts-node ./src/dev/server.ts",
     "start:prod": "npm run build && node ./dist/src/index.js",
     "copy": "node setupBuild.js ",
     "build": "node build.js",
@@ -54,9 +54,5 @@
     "typescript-is": "^0.19.0",
     "typescript-transform-paths": "^3.4.6",
     "zip-local": "^0.3.5"
-  },
-  "_moduleAliases": {
-    "@page_cls_module": "../../page_cls_module",
-    "@repository_module": "../../repository_module"
   }
 }

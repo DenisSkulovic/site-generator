@@ -3,6 +3,7 @@ import { AdminService } from "./AdminService"
 import {cloneDeep} from "lodash"
 import {isSiteConfigEdited} from "@/computed/site-config"
 import axios from "axios"
+import { buildSiteConfig, type SiteConfig } from "../../../../admin_cls_module/src"
 
 export class SiteConfigService extends AdminService {
 
@@ -14,11 +15,19 @@ export class SiteConfigService extends AdminService {
         siteConfigEdit.value = cloneDeep(siteConfigCurrent.value)
     }
 
-    async fetchSiteConfig(force = false) {
+    async fetchSiteConfig(force = false): Promise<SiteConfig | undefined> {
         if (!force && siteConfigCurrent.value) return
         const url = `${this.adminUrl}/site-config`
         const {data} = await axios.get(url)
-        siteConfigCurrent.value = data
+        return buildSiteConfig(data)
+    }
+
+    async getSiteConfig(force = false): Promise<void> {
+        if (!force && siteConfigCurrent.value) return
+        const siteConfig: SiteConfig | undefined = await this.fetchSiteConfig(force)
+        if (!siteConfig) throw new Error("failed to get site config")
+        siteConfigCurrent.value = siteConfig
+        this.resetSiteConfig()
     }
 
     async saveSiteConfig() {
@@ -26,25 +35,6 @@ export class SiteConfigService extends AdminService {
         const url = `${this.adminUrl}/site-config`
         const {data} = await axios.put(url)
         siteConfigCurrent.value = data
-    }
-
-    async downloadDesignSystemCSS() {
-        const response = await fetch(this.adminUrl + '/design-system', {
-            method: 'GET',
-        });
-    
-        if (response.ok) {
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', 'design-system.css');
-            document.body.appendChild(link);
-            link.click();
-            link.remove();
-        } else {
-            throw new Error('Failed to download design system CSS');
-        }
     }
     
     async uploadDesignSystemCSS(file: File) {

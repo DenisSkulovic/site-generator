@@ -5,8 +5,8 @@
     "node_modules"
   ],
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
+    "target": "es2019",
+    "module": "CommonJS",
     "baseUrl": ".",
     "strict": true,
     "paths": {

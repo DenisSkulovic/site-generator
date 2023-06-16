@@ -53,18 +53,14 @@ export declare const createGenerateHeaderRequest: ({ content, config }: {
     content?: DTO.HeaderContent | undefined;
     config?: DTO.HeaderConfig | undefined;
 }) => DTO.GenerateHeaderRequest;
-export declare const createFooterHTMLObject: ({ uuid, html, content, config, metadata }: {
+export declare const createFooterHTMLObject: ({ uuid, html, metadata }: {
     uuid?: string | undefined;
     html?: string | undefined;
-    content?: DTO.FooterContent | undefined;
-    config?: DTO.FooterConfig | undefined;
     metadata?: DTO.FooterHTMLMetadata | undefined;
 }) => DTO.FooterHTMLObject;
-export declare const createHeaderHTMLObject: ({ uuid, html, config, content, metadata }: {
+export declare const createHeaderHTMLObject: ({ uuid, html, metadata }: {
     uuid?: string | undefined;
     html?: string | undefined;
-    config?: DTO.HeaderConfig | undefined;
-    content?: DTO.HeaderContent | undefined;
     metadata?: DTO.HeaderHTMLMetadata | undefined;
 }) => DTO.HeaderHTMLObject;
 export declare const createGenerateFooterResponse: ({ data }: {

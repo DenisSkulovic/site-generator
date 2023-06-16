@@ -1,22 +1,22 @@
 import { APIGatewayEvent } from "aws-lambda";
-import { S3Operations } from "../../../../../s3_module";
-import { PageHTMLObject, buildPageHTMLObject } from "../../../../../../page_cls_module";
-import getEnvVariable from "../../../logic/getEnvVariable";
+import { PagemetaRepository } from "../../../../../repository_module/src";
+import { buildPagemeta, Pagemeta } from "../../../../../../admin_cls_module/src";
 
-export const handlePagemetaGetAll = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {
-    const url: string | undefined = event.queryStringParameters?.url;
-    if (!url) throw new Error("url is a mandatory query string param");
-    const bucketName: string = getEnvVariable("BUCKET_NAME");
-    const s3 = new S3Operations(bucketName);
-    await s3.deletePage(url);
+export const handlePagemetaGetAll = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<Pagemeta[]> => {
+    const pagemetaRepo = new PagemetaRepository();
+    const items = await pagemetaRepo.getAllItems();
+    const pagemetas = items.map((item) => {
+        const pagemeta = buildPagemeta(item)
+        return pagemeta
+    })
+    return pagemetas
 };
 
-export const handlePagemetaGet = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {
-    const body = JSON.parse(event.body || "{}");
-    const url: string | undefined = event.queryStringParameters?.url;
-    if (!url) throw new Error("url is a mandatory query string param");
-    const pageHTMLObject: PageHTMLObject = buildPageHTMLObject(body);
-    const bucketName: string = getEnvVariable("BUCKET_NAME");
-    const s3 = new S3Operations(bucketName);
-    await s3.uploadPage(pageHTMLObject.html, url);
+export const handlePagemetaGet = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<Pagemeta> => {
+    const path: string | undefined = event.queryStringParameters?.path;
+    if (!path) throw new Error("path is a mandatory query string param");
+    const pagemetaRepo = new PagemetaRepository();
+    const item = await pagemetaRepo.getItem(path);
+    const pagemeta: Pagemeta = buildPagemeta(item)
+    return pagemeta
 };

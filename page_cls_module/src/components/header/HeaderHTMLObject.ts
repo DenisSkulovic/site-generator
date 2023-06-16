@@ -1,4 +1,4 @@
-import { HeaderHTMLMetadata } from "../../../"
+import { HeaderHTMLMetadata } from "../../"
 import {buildHeaderHTMLMetadata} from "./HeaderHTMLMetadata"
 
 export const buildHeaderHTMLObject = (obj: any): HeaderHTMLObject => {

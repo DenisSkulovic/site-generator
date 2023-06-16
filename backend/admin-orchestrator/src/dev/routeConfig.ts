@@ -79,14 +79,14 @@ const routeConfig = {
         pathParameters: [],
     },
 
-    /** PAGE HTML OBJECTS */
-    "^/page-html-object/all$": {
-        routeKey: "/page-html-object/all",
+    /** PAGEMETA */
+    "^/pagemeta/all$": {
+        routeKey: "/pagemeta/all",
         pathParameters: [],
     },
-    "^/page-html-object/([^/]+)$": {
-        routeKey: "/page-html-object/{key}",
-        pathParameters: ["key"],
+    "^/pagemeta": {
+        routeKey: "/pagemeta",
+        pathParameters: [],
     },
 
     /** PAGES */

@@ -4,7 +4,7 @@
   
 <script lang="ts" setup>
 import { ref, onMounted, watch } from 'vue';
-import tinymce from 'tinymce';
+import tinymce, { Editor } from 'tinymce';
 import 'tinymce/themes/silver';
 import 'tinymce/plugins/code';
 
@@ -12,32 +12,31 @@ const props = defineProps<{
     json: string
 }>()
 
-let editor: any = null;
+let editorObj: Editor | null = null;
 
 const editorValue = ref(JSON.stringify(props.json, null, 4)); // replace this with your own reactive data
-const editorRef = ref(null);
+const editor = ref();
 
-onMounted(() => {
-    tinymce.init({
-        target: editorRef.value,
+onMounted(async () => {
+    const editors: Editor[] = await tinymce.init({
+        target: editor.value,
         plugins: 'code',
         toolbar: 'code',
         theme: 'silver',
         height: 500,
-        readonly: 1,  // makes the editor read-only
+        readonly: true,  // makes the editor read-only
         setup: function (ed: any) {
             ed.on('init', function (args: any) {
                 ed.setContent(editorValue.value);
             });
         }
-    }).then((editors: any) => {
-        editor = editors[0];
-    });
+    })
+    editorObj = editors[0];
 });
 
 watch(editorValue, (newValue) => {
-    if (editor && editor.getContent() !== newValue) {
-        editor.setContent(newValue);
+    if (editorObj && editorObj.getContent() !== newValue) {
+        editorObj.setContent(newValue);
     }
 });
 

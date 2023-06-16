@@ -131,7 +131,7 @@ class S3Operations {
             return data;
         }
         catch (error) {
-            throw new Error("Unable to upload JSON file. Error: " + JSON.stringify(error));
+            throw new Error("Unable to get JSON file. Error: " + JSON.stringify(error));
         }
     }
     async uploadCSS(css, key, contentType = "text/css") {

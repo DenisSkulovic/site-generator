@@ -7,6 +7,7 @@ export const buildPagemeta = (obj: any): Pagemeta => {
         obj.s3Link,
         obj.contentUUID,
         obj.configUUID,
+        obj.isPublished,
         buildPagemetaMetadata(obj.metadata),
     )
     return metadata
@@ -18,6 +19,7 @@ export class Pagemeta {
     s3Link: string
     contentUUID: string
     configUUID: string
+    isPublished: boolean
     metadata: PagemetaMetadata
     constructor(
         path: string,
@@ -25,6 +27,7 @@ export class Pagemeta {
         s3Link: string,
         contentUUID: string,
         configUUID: string,
+        isPublished: boolean,
         metadata: PagemetaMetadata,
     ) {
         this.path = path
@@ -32,6 +35,7 @@ export class Pagemeta {
         this.s3Link = s3Link
         this.contentUUID = contentUUID
         this.configUUID = configUUID
+        this.isPublished = isPublished
         this.metadata = metadata
     }
 }
