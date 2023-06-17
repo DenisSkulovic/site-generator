@@ -5,7 +5,7 @@ import ejs from "ejs"
 import { RenderData_Block } from "../../../classes/renderData/blocks/RenderData_Block"
 
 export const getTemplatePath = (__dirname: string, bootstrapVersion: BootstrapVersionEnum, blockTemplateName: BlockTemplateEnum) => {
-    return `${__dirname}/../../../templates/html/${bootstrapVersion}/blocks/${blockTemplateName}/index.ejs`;
+    return `${__dirname}/templates/html/${bootstrapVersion}/blocks/${blockTemplateName}/index.ejs`;
 }
 
 export const buildBlockHTMLObject = (uuid: string, blockHtml: string, blockMetadata: BlockHTMLMetadata) => {

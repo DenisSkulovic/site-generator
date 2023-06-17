@@ -2,23 +2,35 @@
     <v-navigation-drawer app v-model="drawer" color="grey lighten-4">
         <v-list>
             <v-list-item :to="PagePathEnum.HOME">
-                <v-list-item-title>{{ PageNameEnum.HOME }}</v-list-item-title>
+                <v-list-item-title>{{ PageTitleEnum.HOME }}</v-list-item-title>
             </v-list-item>
             <v-list-item :to="PagePathEnum.HEADER_FOOTER_MANAGER">
-                <v-list-item-title>{{ PageNameEnum.HEADER_FOOTER_MANAGER }}</v-list-item-title>
+                <v-list-item-title>{{ PageTitleEnum.HEADER_FOOTER_MANAGER }}</v-list-item-title>
             </v-list-item>
             <v-list-item :to="PagePathEnum.PAGES">
-                <v-list-item-title>{{ PageNameEnum.PAGES }}</v-list-item-title>
+                <v-list-item-title>{{ PageTitleEnum.PAGES }}</v-list-item-title>
             </v-list-item>
-            <!-- You can add more navigation links here -->
         </v-list>
     </v-navigation-drawer>
 </template>
   
 <script lang="ts" setup>
-import { PagePathEnum, PageNameEnum } from '@/router'
+import { PagePathEnum, PageTitleEnum } from '@/router'
+import { ref, watchEffect } from 'vue';
 
-let drawer = true;
+const props = defineProps({
+    modelValue: Boolean,
+});
+
+const drawer = ref(props.modelValue);
+watchEffect(() => {
+    drawer.value = props.modelValue;
+});
+
+const emit = defineEmits(['update:modelValue']);
+watchEffect(() => {
+    emit('update:modelValue', drawer.value);
+});
 </script>
   
 <style scoped>

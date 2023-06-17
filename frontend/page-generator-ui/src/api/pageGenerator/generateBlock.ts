@@ -1,7 +1,7 @@
 import axios from "axios"
 
-import {GenerateBlockRequest, GenerateBlockResponse, BlockConfig, BlockContent} from "../../../../../page_cls_module"
-import {buildBlockHTMLObject, BlockHTMLObject} from "../../../../../page_cls_module"
+import {GenerateBlockRequest, GenerateBlockResponse, BlockConfig, BlockContent} from "../../../../../page_cls_module/build_browser"
+import {buildBlockHTMLObject, BlockHTMLObject} from "../../../../../page_cls_module/build_browser"
 
 const generateBlock = async (
     blockConfig: BlockConfig,

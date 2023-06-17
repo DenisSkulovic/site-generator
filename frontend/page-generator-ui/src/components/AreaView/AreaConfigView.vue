@@ -59,7 +59,7 @@
 <script setup lang="ts">
 import { computed, reactive } from "vue"
 import type { ComputedRef } from "vue"
-import { AreaConfig, AreaLayoutEnum } from '../../../../../page_cls_module/src';
+import { AreaConfig, AreaLayoutEnum } from '../../../../../page_cls_module/build_browser';
 import {SelectInputField, CheckBoxField} from "@/components/fields"
 
 const props = defineProps<{

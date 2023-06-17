@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <v-card class="d-flex justify-space-between pa-2" ref="area">
         <v-row no-gutters>
             <v-col cols="8">
@@ -25,11 +25,11 @@
             </v-col>
         </v-row>
     </v-card>
-</template>
+</template> -->
 
 
 
-<!-- <template>
+<template>
     <div class="draggable-item d-flex flex-row nowrap justify-content-between p-2" style="gap: 10px;" ref="area">
         <div>
             <div role="button" class="d-flex flex-row" @click="() => item.toggleCollapseExpand()">
@@ -87,7 +87,7 @@
             </div>
         </div>
     </div>
-</template> -->
+</template>
 
 
 <script setup lang="ts">
@@ -96,7 +96,7 @@ import { computed, watch, ref } from "vue";
 import type { ComputedRef, Ref } from "vue";
 import SlotAvailability from "../common/SlotAvailability.vue";
 import ToggleChevron from "./ToggleChevron.vue";
-import { AreaLayoutEnum } from "../../../../../page_cls_module"
+import { AreaLayoutEnum } from "../../../../../page_cls_module/build_browser"
 import SearchSvg from "../svg/SearchSvg.vue";
 import TrashSvg from "../svg/TrashSvg.vue";
 import { useElementHover } from '@vueuse/core'
@@ -126,10 +126,12 @@ const handleChangeAreaTemplate = (e: any) => {
     props.item.areaConfig_edit.areaTemplateName = e.target.value
 }
 const handleAddAreaClick = () => {
+    console.log(`props.item`, props.item)
     if (!!props.item.slotsMax && !props.item.isHaveSlotsAvailable) throw new Error("cannot add new area")
     props.item.addNewArea()
 }
 const handleAddBlockClick = () => {
+    console.log(`props.item`, props.item)
     if (!!props.item.slotsMax && !props.item.isHaveSlotsAvailable) throw new Error("cannot add new block")
     props.item.addNewBlock()
 }

@@ -1,14 +1,21 @@
 <template>
     <div>
-        <button @click="addJSAsset">Add Script Asset</button>
-        <button @click="addCSSAsset">Add Style Asset</button>
+        <v-row>
+            <v-col cols="6">
+                <v-btn @click="addJSAsset" block>Add Script Asset</v-btn>
+            </v-col>
+            <v-col cols="6">
+                <v-btn @click="addCSSAsset" block>Add Style Asset</v-btn>
+            </v-col>
+        </v-row>
         <div v-for="(asset, asset_i) in props.assets" :key="asset_i">
-            <LineComp v-if="asset_i !== 0" class="my-2"></LineComp>
+            <v-divider v-if="asset_i !== 0" class="my-2"></v-divider>
             <component :is="getAssetComponent(asset.clazz)" :asset="asset" @change="updateAsset(asset_i, $event)"
                 @delete="deleteAsset(asset_i)" />
         </div>
     </div>
 </template>
+
 
 
 <script lang="ts" setup>

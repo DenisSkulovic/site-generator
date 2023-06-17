@@ -1,4 +1,4 @@
-import type { AreaConfig, BlockConfig } from "../../../../../page_cls_module"
+import type { AreaConfig, BlockConfig } from "../../../../../page_cls_module/build_browser"
 import { NestableItemArea } from "@/classes/NestableItemArea"
 import { NestableItemBlock } from "@/classes/NestableItemBlock"
 import { NestableConfig } from "@/classes/NestableConfig"

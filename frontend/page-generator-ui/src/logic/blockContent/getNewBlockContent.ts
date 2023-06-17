@@ -1,5 +1,5 @@
 import { reactive } from "vue"
-import { BlockContent, BlockContentMetadata } from "../../../../../page_cls_module/src" 
+import { BlockContent, BlockContentMetadata } from "../../../../../page_cls_module/build_browser" 
 import getUUID from "../../utils/getUUID"
 
 

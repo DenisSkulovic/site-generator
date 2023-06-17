@@ -5,8 +5,16 @@
                 <h1>Header and Footer Configuration</h1>
             </v-col>
         </v-row>
-        <HeaderConfig :config="headerConfigEdit.value" :content="headerContentEdit.value" />
-        <FooterConfig :config="footerConfigEdit.value" :content="footerContentEdit.value" />
+        <v-container>
+            <v-row>
+                <v-col cols="6">
+                    <HeaderConfig :config="headerConfigEdit.value" :content="headerContentEdit.value" />
+                </v-col>
+                <v-col cols="6">
+                    <FooterConfig :config="footerConfigEdit.value" :content="footerContentEdit.value" />
+                </v-col>
+            </v-row>
+        </v-container>
         <v-row>
             <v-col>
                 <v-btn @click="saveConfig">Save Configuration</v-btn>

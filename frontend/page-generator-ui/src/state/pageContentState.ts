@@ -1,4 +1,4 @@
-import type {AreaContent, BlockContent, PageContent} from "@page_cls_module"
+import type {AreaContent, BlockContent, PageContent} from "../../../../page_cls_module/build_browser"
 import {reactive} from "vue"
 import * as _ from "lodash"
 

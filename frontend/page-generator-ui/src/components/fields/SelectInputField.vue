@@ -10,6 +10,7 @@
 </template>
 
 <script lang="ts" setup>
+
 type SelectValue = string | number | boolean | null | undefined
 type Option = {label: string, value: SelectValue}
 const props = defineProps<{
@@ -25,6 +26,4 @@ const emit = defineEmits<{
 const handleChange = (val: SelectValue) => {
     emit("change", val)
 }
-
-const options = computed(() => props.options)
 </script>

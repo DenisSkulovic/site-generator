@@ -1,6 +1,6 @@
 import type { NestableConfig } from "../../classes/NestableConfig";
 import {editPageConfig} from "../../state/pageConfigState"
-import type { PageConfig, AreaConfig, BlockConfig } from "../../../../../page_cls_module"
+import type { PageConfig, AreaConfig, BlockConfig } from "../../../../../page_cls_module/build_browser"
 import { cloneDeep } from "lodash"
 import type { NestableItem } from "../../classes/NestableItem";
 import { NestableItemArea } from "@/classes/NestableItemArea";

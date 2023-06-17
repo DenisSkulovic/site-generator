@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <v-card class="d-flex justify-space-between pa-2" ref="block">
         <v-row no-gutters>
             <v-col cols="8">
@@ -22,10 +22,9 @@
             </v-col>
         </v-row>
     </v-card>
-</template>
+</template> -->
 
-
-<!-- <template>
+<template>
     <div class="draggable-item d-flex flex-row nowrap justify-content-between p-2" style="gap: 10px;" ref="block">
         <div>
             <div class="text-nowrap" v-if="!isEditingName">
@@ -72,7 +71,7 @@
             </div>
         </div>
     </div>
-</template> -->
+</template>
 
 
 <script setup lang="ts">
@@ -81,7 +80,7 @@ import type { ComputedRef, Ref } from "vue"
 import type { NestableItemBlock } from "../../classes/NestableItemBlock";
 import SearchSvg from "../svg/SearchSvg.vue";
 import TrashSvg from "../svg/TrashSvg.vue";
-import { BlockTemplateEnum } from '../../../../../page_cls_module/src';
+import { BlockTemplateEnum } from '../../../../../page_cls_module/build_browser';
 import { useElementHover } from '@vueuse/core'
 
 const isEditingName: Ref<boolean> = ref(false)

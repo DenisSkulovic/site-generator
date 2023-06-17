@@ -1,5 +1,5 @@
 import {nestableConfig} from "../../state/nestableState"
-import type { PageConfig, PageContent } from "../../../../../page_cls_module"
+import type { PageConfig, PageContent } from "../../../../../page_cls_module/build_browser"
 import buildPageConfigFromNestableConfig from "./buildPageConfigFromNestableConfig"
 import buildPageContentFromNestableConfig from "./buildPageContentFromNestableConfig"
 

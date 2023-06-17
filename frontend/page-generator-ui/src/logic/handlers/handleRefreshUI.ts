@@ -1,23 +1,22 @@
 import useLoading from "@/composables/useLoading"
-import {editPageHTMLObject} from "@/state/pageHTMLObjectState"
 import {editPageConfig} from "@/state/pageConfigState"
 import {editPageContent} from "@/state/pageContentState"
-import generatePage from "@/api/pageGenerator/generatePage"
-import type {PageHTMLObject, GeneratePageResponse} from "../../../../../page_cls_module"
-import renderPageHTMLObject from "@/logic/generation/renderPageHTMLObject"
+import type {PageHTMLObject, GeneratePageResponse} from "../../../../../page_cls_module/build_browser"
+import { generatorService, pageHTMLObjectService } from "@/computed/services"
 
 const handleRefreshUI = async () => {
     const {startLoadingThis, stopLoadingThis} = useLoading()
     startLoadingThis()
     if (!editPageConfig.value) throw new Error("editPageConfig.value cannot be undefined")
     if (!editPageContent.value) throw new Error("editPageContent.value cannot be undefined")
-    const resp: GeneratePageResponse = await generatePage(
+
+    const resp: GeneratePageResponse = await generatorService.value.generatePage(
         editPageConfig.value,
         editPageContent.value,
     )
     const pageHTMLObject: PageHTMLObject = resp.data
-    editPageHTMLObject.value = pageHTMLObject
-    renderPageHTMLObject(editPageHTMLObject.value)
+    pageHTMLObjectService.value.setPageHTMLObject(pageHTMLObject)
+    pageHTMLObjectService.value.renderPageHTMLObject()
     stopLoadingThis()
 }
 

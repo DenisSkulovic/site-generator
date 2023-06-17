@@ -1,12 +1,10 @@
-import resetPageContent from "../../logic/pageContent/resetPageContent"
-import resetPageConfig from "../../logic/pageConfig/resetPageConfig"
-import resetPageHTMLObject from "../../logic/pageHTMLObject/resetPageHTMLObject"
 import setNestableConfigFromData from "../../logic/nestable/setNestableConfigFromData"
+import { pageContentService, pageConfigService, pageHTMLObjectService } from "@/computed/services"
 
 const handleReset = () => {
-    resetPageConfig()
-    resetPageContent()
-    resetPageHTMLObject()
+    pageConfigService.value.resetPageConfig()
+    pageContentService.value.resetPageContent()
+    pageHTMLObjectService.value.resetPageHTMLObject()
     setNestableConfigFromData()
 }
 

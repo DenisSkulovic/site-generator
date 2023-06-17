@@ -1,4 +1,4 @@
-import { BlockConfig, BlockConfigMetadata, BootstrapVersionEnum, BlockTemplateEnum } from "../../../../../page_cls_module/src" 
+import { BlockConfig, BlockConfigMetadata, BootstrapVersionEnum, BlockTemplateEnum } from "../../../../../page_cls_module/build_browser" 
 import getUUID from "../../utils/getUUID" 
 import defaultFields from "../../config/defaultFields/blockConfig"
 import { reactive } from "vue"

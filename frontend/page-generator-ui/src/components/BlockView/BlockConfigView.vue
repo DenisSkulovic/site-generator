@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import { computed } from "vue"
 import type { ComputedRef } from "vue"
-import { BlockConfig, BlockTemplateEnum } from '../../../../../page_cls_module/src';
+import { BlockConfig, BlockTemplateEnum } from '../../../../../page_cls_module/build_browser';
 import {SelectInputField, TextInputField} from "@/components/fields"
 
 const props = defineProps<{

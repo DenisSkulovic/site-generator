@@ -1,6 +1,6 @@
 import { NestableItem } from "./NestableItem";
-import type { AreaConfig, AreaContent } from "../../../../page_cls_module/src";
-import { AreaLayoutEnum } from "../../../../page_cls_module/src";
+import type { AreaConfig, AreaContent } from "../../../../page_cls_module/build_browser";
+import { AreaLayoutEnum } from "../../../../page_cls_module/build_browser";
 import currentAreaConfigMap from "../computed/pageConfig/currentAreaConfigMap";
 import editedAreaConfigMap from "../computed/pageConfig/editedAreaConfigMap";
 import currentAreaContentMap from "../computed/pageContent/currentAreaContentMap";
@@ -86,15 +86,15 @@ export class NestableItemArea extends NestableItem {
     }
 
     public get isHaveSlotsAvailable(): boolean {
-        return !!this.slotsMax && this.slotsUsed < this.slotsMax;
+        return !!this.slotsMax ? this.slotsUsed < this.slotsMax : true;
     }
 
     public get isSlotsFull(): boolean {
-        return !!this.slotsMax && this.slotsUsed === this.slotsMax;
+        return !!this.slotsMax ? this.slotsUsed === this.slotsMax : false;
     }
 
     public get isSlotsTooMany(): boolean {
-        return !!this.slotsMax && this.slotsUsed > this.slotsMax;
+        return !!this.slotsMax ? this.slotsUsed > this.slotsMax : false;
     }
 
     public get areaConfig_current(): AreaConfig {

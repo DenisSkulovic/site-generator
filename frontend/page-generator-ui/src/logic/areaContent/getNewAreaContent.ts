@@ -1,5 +1,5 @@
 import { reactive } from "vue"
-import { AreaContent, AreaContentMetadata, BlockContent } from "../../../../../page_cls_module/src" 
+import { AreaContent, AreaContentMetadata, BlockContent } from "../../../../../page_cls_module/build_browser" 
 import getUUID from "../../utils/getUUID" 
 
 const getNewAreaContent = (): AreaContent => {

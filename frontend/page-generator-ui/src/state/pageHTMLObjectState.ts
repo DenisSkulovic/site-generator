@@ -1,4 +1,4 @@
-import type { PageHTMLObject } from "@page_cls_module";
+import type { PageHTMLObject } from "../../../../page_cls_module/build_browser";
 import {reactive} from "vue"
 
 export const currentPageHTMLObject: {value: PageHTMLObject | null} = reactive({

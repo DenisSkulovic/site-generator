@@ -6,7 +6,7 @@ import {NestableItemArea} from "../../classes/NestableItemArea"
 const isDataForRefreshValid: ComputedRef<boolean> = computed(() => {
     for (const item of nestableItemMap.value.values()) {
         if (item instanceof NestableItemArea) {
-            if (item.isSlotsTooMany || item.isHaveSlotsAvailable) return false
+            if (item.slotsMax && (item.isSlotsTooMany || item.isHaveSlotsAvailable)) return false
         }
     }
     return true

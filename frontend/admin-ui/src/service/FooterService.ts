@@ -18,14 +18,16 @@ export class FooterService extends AdminService {
     async fetchFooterConfig(force = false) {
         if (!force && footerConfigCurrent.value) return
         const url = `${this.adminUrl}/footer-config`
-        footerConfigCurrent.value = await axios.get(url)
+        const { data } = await axios.get(url)
+        footerConfigCurrent.value = data
         this.resetFooter()
     }
 
     async fetchFooterContent(force = false) {
         if (!force && footerContentCurrent.value) return
         const url = `${this.adminUrl}/footer-content`
-        footerContentCurrent.value = await axios.get(url)
+        const { data } = await axios.get(url)
+        footerContentCurrent.value = data
         this.resetFooter()
     }
 
@@ -35,13 +37,15 @@ export class FooterService extends AdminService {
         const body = footerConfigEdit.value
         const params = {}
         const headers = {}
-        footerConfigCurrent.value = await axios.put(
+        const { data } = await axios.put(
             url,
-            body, {
+            body,
+            {
                 params,
                 headers,
             },
         )
+        footerConfigCurrent.value = data
         footerConfigCurrent.value = cloneDeep(footerConfigEdit.value)
     }
 
@@ -51,28 +55,31 @@ export class FooterService extends AdminService {
         const body = footerContentEdit.value
         const params = {}
         const headers = {}
-        footerContentCurrent.value = await axios.put(
+        const { data } = await axios.put(
             url,
-            body, {
+            body,
+            {
                 params,
                 headers,
             },
         )
-        footerContentCurrent.value = cloneDeep(footerContentEdit.value)    }
+        footerContentCurrent.value = data
+        footerContentCurrent.value = cloneDeep(footerContentEdit.value)
+    }
 
-        async regenerateFooter() {
-            if (this.isFooterEdited) throw new Error("cannot generate footer when it isn't saved")
-            const url = `${this.adminUrl}/regenerate-footer`
-            const params = {}
-            const headers = {}
-            await axios.get(
-                url,
-                {
-                    params,
-                    headers,
-                },
-            )
-        }
+    async regenerateFooter() {
+        if (this.isFooterEdited) throw new Error("cannot generate footer when it isn't saved")
+        const url = `${this.adminUrl}/regenerate-footer`
+        const params = {}
+        const headers = {}
+        await axios.get(
+            url,
+            {
+                params,
+                headers,
+            },
+        )
+    }
 
     get isFooterContentEdited() {
         return JSON.stringify(footerContentCurrent.value) !== JSON.stringify(footerContentEdit.value)

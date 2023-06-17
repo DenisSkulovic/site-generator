@@ -6,7 +6,7 @@
         <CSSDropZone :downloadUrl="asset.s3Link" :cssExists="isFileExists" @upload="handleUpload" />
         <SelectInputField :label="'Position'" :value="props.asset.position" :options="assetPositions"
             @change="(newVal) => handleChange('position', newVal)"></SelectInputField>
-        <button @click="removeAsset">Delete Asset</button>
+        <v-btn @click="removeAsset">Delete Asset</v-btn>
     </div>
 </template>
 

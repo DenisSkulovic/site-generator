@@ -1,5 +1,5 @@
 import nestableConfig from "@/state/nestable/nestableConfig"
-import { GeneratePageRequest, type AreaConfig, type AreaContent, type BlockConfig, type BlockContent, GenerateAreaRequest, GenerateBlockRequest, type PageConfig, type PageContent } from "../../../../../page_cls_module/src"
+import { GeneratePageRequest, type AreaConfig, type AreaContent, type BlockConfig, type BlockContent, GenerateAreaRequest, GenerateBlockRequest, type PageConfig, type PageContent } from "../../../../../page_cls_module/build_browser"
 import editPageConfig from "@/state/pageConfig/editPageConfig"
 import editPageContent from "@/state/pageContent/editPageContent"
 import lastRenderedData from "@/state/lastRenderedData"

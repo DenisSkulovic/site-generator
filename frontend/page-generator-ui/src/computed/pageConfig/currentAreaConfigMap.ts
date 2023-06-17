@@ -1,6 +1,6 @@
 import { computed } from "vue"
 import type { ComputedRef } from "vue"
-import { AreaConfig, BlockConfig } from "../../../../../page_cls_module/src"
+import { AreaConfig, BlockConfig } from "../../../../../page_cls_module/build_browser"
 import {currentPageConfig} from "../../state/pageConfigState"
 
 type AreaConfigUUID = string

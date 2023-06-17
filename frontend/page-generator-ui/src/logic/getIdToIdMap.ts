@@ -1,5 +1,5 @@
-import {AreaContent} from "../../../../page_cls_module"
-import type {PageContent, BlockContent} from "../../../../page_cls_module"
+import {AreaContent} from "../../../../page_cls_module/build_browser"
+import type {PageContent, BlockContent} from "../../../../page_cls_module/build_browser"
 
 
 

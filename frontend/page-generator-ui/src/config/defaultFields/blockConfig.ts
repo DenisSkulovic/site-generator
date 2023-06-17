@@ -1,4 +1,4 @@
-import {BootstrapVersionEnum, BlockTemplateEnum} from "../../../../../page_cls_module/src"
+import {BootstrapVersionEnum, BlockTemplateEnum} from "../../../../../page_cls_module/build_browser"
 
 export default {
     blockName: "New Text Block",

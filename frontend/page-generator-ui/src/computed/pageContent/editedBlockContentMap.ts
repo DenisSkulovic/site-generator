@@ -1,6 +1,6 @@
 import { computed } from "vue"
 import type { ComputedRef } from "vue"
-import type{ AreaContent, BlockContent } from "../../../../../page_cls_module/src"
+import type{ AreaContent, BlockContent } from "../../../../../page_cls_module/build_browser"
 import {editPageContent} from "../../state/pageContentState"
 import {processAreaContent} from "./currentBlockContentMap"
 

@@ -18,6 +18,9 @@
                             <v-col cols="12">
                                 <v-text-field v-model="state.pagePath" label="Page Path" required></v-text-field>
                             </v-col>
+                            <v-col cols="12">
+                                <v-checkbox v-model="state.isOpenLiveEditor" label="Open in Live Editor"></v-checkbox>
+                            </v-col>
                         </v-row>
                     </v-container>
                 </v-card-text>
@@ -42,13 +45,21 @@ import { handleAddNewPageClick } from "@/logic/handlers"
 import lang from "@/state/lang";
 import isPageExistsError from "@/state/isPageExistsError"
 
+const emit = defineEmits<{
+    (e: "refreshData"): void
+}>();
+
 const state = reactive({
     dialog: false,
     pagePath: '',
+    isOpenLiveEditor: false,
 })
 const createPage = async () => {
     isPageExistsError.value = false
-    await handleAddNewPageClick(state.pagePath, lang.value)
-    state.dialog = false;
+    const isSuccess = await handleAddNewPageClick(state.pagePath, lang.value, state.isOpenLiveEditor)
+    if (isSuccess) {
+        emit('refreshData');
+        state.dialog = false;
+    }
 }
 </script>

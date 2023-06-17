@@ -1,6 +1,6 @@
 import getNewAreaConfig from "../areaConfig/getNewAreaConfig"
 import getNewAreaContent from "../areaContent/getNewAreaContent"
-import type { AreaConfig, AreaContent } from "../../../../../page_cls_module"
+import type { AreaConfig, AreaContent } from "../../../../../page_cls_module/build_browser"
 import {editPageConfig, newAreaConfigMap} from "../../state/pageConfigState"
 import {editPageContent, newAreaContentMap} from "../../state/pageContentState"
 import type {NestableConfig} from "../../classes/NestableConfig"

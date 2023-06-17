@@ -80,11 +80,11 @@ export const handleSaveHeader = async () => {
     return res
 }
 
-export const handleAddNewPageClick = async (pagePath: string, lang: LangEnum) => {
+export const handleAddNewPageClick = async (pagePath: string, lang: LangEnum, isOpenInLiveEditor: boolean): Promise<boolean> => {
     const pagemetaService = new PagemetaService(adminUrl.value)
 
     isPageExistsError.value = await pagemetaService.checkPageExists(pagePath, lang)
-    if (isPageExistsError.value) return
+    if (isPageExistsError.value) return false
 
     // create pagemeta object, page content and page config
     const pageContent: PageContent = getNewPageContent()
@@ -97,7 +97,9 @@ export const handleAddNewPageClick = async (pagePath: string, lang: LangEnum) =>
         pagemetaService.createPagemeta(pagemeta, lang),
     ])
 
-    handleOpenPageInEditor(pagePath, lang)
+    if (isOpenInLiveEditor) handleOpenPageInEditor(pagePath, lang)
+
+    return true
 };
 
 export const handleOpenPageInEditor = (pagePath: string, lang: LangEnum) => {
@@ -105,25 +107,46 @@ export const handleOpenPageInEditor = (pagePath: string, lang: LangEnum) => {
     window.open(liveEditorUrl + `?path=${pagePath}&lang=${lang}`)
 };
 
-export const handleDeletePageClick = async (path: string) => {
+export const handleDeletePageClick = async (path: string): Promise<boolean> => {
     const { startLoadingThis, stopLoadingThis } = useLoading();
-    let res
-    if (window.confirm("Are you sure you want to delete this page?")) {
-        try {
-            const pagemetaService = new PagemetaService(adminUrl.value);
-            const pagemeta: Pagemeta | undefined = pagemetasMapEdit.value.get(path)
-            if (!pagemeta) throw new Error("pagemeta cannot be undefined")
-            startLoadingThis();
-            res = await pagemetaService.unpublishPage(pagemeta)
-        } catch (err) {
-            console.error(err);
-            // Show error to the user
-        } finally {
-            stopLoadingThis();
-        }
+    try {
+        const pagemetaService = new PagemetaService(adminUrl.value);
+        const pagemeta: Pagemeta | undefined = pagemetasMapEdit.value.get(path)
+        if (!pagemeta) throw new Error("pagemeta cannot be undefined")
+        startLoadingThis();
+        if(pagemeta.isPublished) await pagemetaService.unpublishPage(pagemeta)
+        return true
+    } catch (err) {
+        console.error(err);
+        return false
+    } finally {
+        stopLoadingThis();
     }
-    return res
 };
+
+export const handlePublishUnpublishPageClick = async (path: string, newStatus: boolean): Promise<boolean> => {
+    const { startLoadingThis, stopLoadingThis } = useLoading();
+    try {
+        const pagemetaService = new PagemetaService(adminUrl.value);
+        const pagemeta: Pagemeta | undefined = pagemetasMapEdit.value.get(path)
+        if (!pagemeta) throw new Error("pagemeta cannot be undefined")
+        startLoadingThis();
+        if(newStatus) {
+            // publish page
+            await pagemetaService.publishPage(pagemeta);
+        } else {
+            // unpublish page
+            await pagemetaService.unpublishPage(pagemeta);
+        }
+        return true
+    } catch (err) {
+        console.error(err);
+        return false
+    } finally {
+        stopLoadingThis();
+    }
+};
+
 
 export const handleRegenerateAllPages = async () => {
     const pagemetaService = new PagemetaService(adminUrl.value);

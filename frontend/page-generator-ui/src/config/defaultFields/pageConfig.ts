@@ -1,4 +1,4 @@
-import { BootstrapVersionEnum, HeadVersionEnum, LangEnum, SkeletonVersionEnum } from "../../../../../page_cls_module/src";
+import { BootstrapVersionEnum, HeadVersionEnum, LangEnum, SkeletonVersionEnum } from "../../../../../page_cls_module/build_browser";
 
 export default {
     lang: LangEnum.LT,

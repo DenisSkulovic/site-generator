@@ -1,5 +1,5 @@
 import { NestableItemArea } from '../NestableItemArea';
-import { AreaLayoutEnum } from "@page_cls_module";
+import { AreaLayoutEnum } from "@page_cls_module"; // might have to add /build_browser
 import currentAreaConfigMap from "@/computed/pageConfig/currentAreaConfigMap";
 import editedAreaConfigMap from "@/computed/pageConfig/editedAreaConfigMap";
 import currentAreaContentMap from "@/computed/pageContent/currentAreaContentMap";

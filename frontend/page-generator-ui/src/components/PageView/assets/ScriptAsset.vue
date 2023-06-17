@@ -10,13 +10,13 @@
         </CheckBoxField>
         <CheckBoxField :label="'Defer'" :value="props.asset.isDefer" @change="(newVal) => handleChange('isDefer', newVal)">
         </CheckBoxField>
-        <button @click="removeAsset">Delete Asset</button>
+        <v-btn @click="removeAsset">Delete Asset</v-btn>
     </div>
 </template>
 
 <script setup lang="ts">
 import { computed, onMounted, ref, type Ref } from "vue"
-import { ScriptAsset, AssetPositionEnum } from '@page_cls_module';
+import { ScriptAsset, AssetPositionEnum } from '../../../../../../page_cls_module/build_browser';
 import CheckBoxField from "../../fields/CheckBoxField.vue"
 import SelectInputField from "../../fields/SelectInputField.vue"
 import TextInputField from "../../fields/TextInputField.vue"

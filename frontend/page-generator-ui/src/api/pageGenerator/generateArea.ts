@@ -1,7 +1,7 @@
 import axios from "axios"
 
-import {GenerateAreaRequest, GenerateAreaResponse, AreaConfig, AreaContent} from "../../../../../page_cls_module"
-import {buildAreaHTMLObject, AreaHTMLObject} from "../../../../../page_cls_module"
+import {GenerateAreaRequest, GenerateAreaResponse, AreaConfig, AreaContent} from "../../../../../page_cls_module/build_browser"
+import {buildAreaHTMLObject, AreaHTMLObject} from "../../../../../page_cls_module/build_browser"
 
 const generateArea = async (
     areaConfig: AreaConfig,

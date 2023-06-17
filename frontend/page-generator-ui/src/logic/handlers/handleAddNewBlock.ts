@@ -1,6 +1,6 @@
 import getNewBlockConfig from "../blockConfig/getNewBlockConfig"
 import getNewBlockContent from "../blockContent/getNewBlockContent"
-import type { BlockConfig, BlockContent } from "../../../../../page_cls_module"
+import type { BlockConfig, BlockContent } from "../../../../../page_cls_module/build_browser"
 import {editPageConfig, newBlockConfigMap} from "../../state/pageConfigState"
 import {editPageContent, newBlockContentMap} from "../../state/pageContentState"
 import type {NestableConfig} from "../../classes/NestableConfig"

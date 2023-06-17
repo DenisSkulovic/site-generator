@@ -1,4 +1,4 @@
-import { AreaConfig, AreaConfigMetadata, AreaLayoutEnum, BootstrapVersionEnum, BlockConfig } from "../../../../../page_cls_module/src" 
+import { AreaConfig, AreaConfigMetadata, AreaLayoutEnum, BootstrapVersionEnum, BlockConfig } from "../../../../../page_cls_module/build_browser" 
 import getUUID from "../../utils/getUUID" 
 import defaultFields from "../../config/defaultFields/areaConfig"
 import { reactive } from "vue"

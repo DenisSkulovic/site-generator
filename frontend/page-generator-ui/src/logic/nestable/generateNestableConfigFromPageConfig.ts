@@ -1,4 +1,4 @@
-import { AreaConfig, BlockConfig, PageConfig } from "../../../../../page_cls_module"
+import { AreaConfig, BlockConfig, PageConfig } from "../../../../../page_cls_module/build_browser"
 import { NestableConfig } from "../../classes/NestableConfig"
 import type { NestableItem } from "../../classes/NestableItem"
 import { NestableItemArea } from "../../classes/NestableItemArea"
@@ -27,6 +27,8 @@ const processItem = ( // tasty recursion
         ))
         if (!parentNestableItem) nestableConfig.push(newItem)
         else parentNestableItem.children?.push(newItem)
+    } else {
+        throw new Error("can only process AreaConfig or BlockConfig items")
     }
 }
 
@@ -35,6 +37,7 @@ const generateNestableConfigFromPageConfig = (pageConfig: PageConfig): NestableC
     pageConfig.areaConfigArr.forEach((areaConfig: AreaConfig) => {
         processItem(areaConfig, null, nestableConfig)
     })
+    console.log(`nestableConfig`, nestableConfig)
     return nestableConfig
 }
 

@@ -1,6 +1,6 @@
 import { computed } from "vue"
 import type { ComputedRef } from "vue"
-import type { AreaConfig } from "../../../../../page_cls_module/src"
+import type { AreaConfig } from "../../../../../page_cls_module/build_browser"
 import {editPageConfig} from "../../state/pageConfigState"
 import {processAreaConfig} from "./currentAreaConfigMap"
 

@@ -1,5 +1,5 @@
 import { NestableItem } from "./NestableItem";
-import type { BlockConfig, BlockContent } from "../../../../page_cls_module";
+import type { BlockConfig, BlockContent } from "../../../../page_cls_module/build_browser";
 import editedBlockConfigMap from "../computed/pageConfig/editedBlockConfigMap";
 import currentBlockConfigMap from "../computed/pageConfig/currentBlockConfigMap";
 import editedBlockContentMap from "../computed/pageContent/editedBlockContentMap";

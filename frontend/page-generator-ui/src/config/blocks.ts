@@ -1,5 +1,5 @@
 import type { Component } from "vue"
-import { BlockTemplateEnum } from "@page_cls_module"
+import { BlockTemplateEnum } from "../../../../page_cls_module/build_browser"
 import fieldsMap from "../config/fieldsMap"
 
 type Option = {

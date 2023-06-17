@@ -86,6 +86,7 @@
                 <v-card-actions>
                     <v-btn color="secondary" @click.stop="handleToggleJSONView">TOGGLE JSON VIEW</v-btn>
                     <v-btn color="success" :disabled="!isDataForRefreshValid" @click.stop="handleRefreshUI">REFRESH</v-btn>
+                    <v-btn color="success" :disabled="!isPageContentEdited && !isPageConfigEdited" @click.stop="handleSave">SAVE</v-btn>
                 </v-card-actions>
             </v-card>
         </template>
@@ -103,6 +104,7 @@ import replaceHeader from "../../logic/headerFooter/replaceHeader"
 import replaceFooter from "../../logic/headerFooter/replaceFooter"
 import handleToggleJSONView from "../../logic/handlers/handleToggleJSONView"
 import handleRefreshUI from "../../logic/handlers/handleRefreshUI"
+import handleSave from "../../logic/handlers/handleSave"
 
 // classes
 import type { NestableConfig } from '../../classes/NestableConfig';
@@ -120,6 +122,7 @@ import LineComponent from "../Line.vue"
 import GridFrame from "../MainSidebar/GridFrame.vue";
 
 // computed
+import isPageContentEdited from "../../computed/pageContent/isPageContentEdited"
 import isPageConfigEdited from "../../computed/pageConfig/isPageConfigEdited"
 import isDataForRefreshValid from "../../computed/generation/isDataForRefreshValid"
 

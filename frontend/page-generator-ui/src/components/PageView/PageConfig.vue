@@ -1,20 +1,16 @@
 <template>
     <div>
         <!-- PAGE NAME -->
-        <text-input-field :label="'Page Name'" :value="props.pageConfig.pageName"
+        <TextInputField :label="'Page Name'" :value="props.pageConfig.pageName"
             @change="(val) => props.pageConfig.pageName = val" class="mb-4" />
 
         <v-divider class="my-4"></v-divider>
 
-        <v-expansion-panel>
-            <v-expansion-panel-header @click="state.isAdvancedExpanded = !state.isAdvancedExpanded">
-                Advanced Configuration
-                <v-icon right>
-                    {{ state.isAdvancedExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down' }}
-                </v-icon>
-            </v-expansion-panel-header>
-
-            <v-expansion-panel-content v-if="state.isAdvancedExpanded">
+        <CollapseExpand :active="toggleState['advanced_config']" @toggleClick="() => handleToggleExpandable('advanced_config')">
+            <template #title>
+                <h3>Advanced Configuration</h3>
+            </template>
+            <template #content>
                 <!-- INCLUDE BOOTSTRAP -->
                 <CheckBoxField :label="'Include Bootstrap CSS into bundle'" :value="props.pageConfig.isIncludeBootstrap"
                     @change="(val) => props.pageConfig.isIncludeBootstrap = val" class="mb-4" />
@@ -30,23 +26,19 @@
                 <!-- SKELETON VERSION -->
                 <SelectInputField :label="'Skeleton Version'" :value="props.pageConfig.templateVersion"
                     :options="skeletonVersions" @change="(val) => props.pageConfig.templateVersion = val" class="mb-4" />
-            </v-expansion-panel-content>
-        </v-expansion-panel>
+            </template>
+        </CollapseExpand>
 
         <v-divider class="my-4"></v-divider>
 
-        <v-expansion-panel>
-            <v-expansion-panel-header @click="state.isAssetsExpanded = !state.isAssetsExpanded">
-                Page Assets
-                <v-icon right>
-                    {{ state.isAssetsExpanded ? 'mdi-chevron-up' : 'mdi-chevron-down' }}
-                </v-icon>
-            </v-expansion-panel-header>
-
-            <v-expansion-panel-content v-if="state.isAssetsExpanded">
+        <CollapseExpand :active="toggleState['assets']" @toggleClick="() => handleToggleExpandable('assets')">
+            <template #title>
+                <h3>Page Assets</h3>
+            </template>
+            <template #content>
                 <AssetsSection :assets="pageConfig.assets" />
-            </v-expansion-panel-content>
-        </v-expansion-panel>
+            </template>
+        </CollapseExpand>
     </div>
 </template>
 
@@ -54,14 +46,20 @@
 <script setup lang="ts">
 import { computed, watch, reactive } from "vue"
 import type { ComputedRef } from "vue"
-import { PageConfig, HeadVersionEnum, BootstrapVersionEnum, SkeletonVersionEnum } from '@page_cls_module';
+import { PageConfig, HeadVersionEnum, BootstrapVersionEnum, SkeletonVersionEnum } from '../../../../../page_cls_module/build_browser';
 import updateBootstrapVersionInSubitems from "./func/updateBootstrapVersionInSubitems"
 import AssetsSection from './assets/AssetsSection.vue';
-import {SelectInputField, CheckBoxField} from "@/components/fields"
+import {SelectInputField, CheckBoxField, TextInputField} from "@/components/fields"
+import CollapseExpand from "../CollapseExpand.vue";
 
 const props = defineProps<{
     pageConfig: PageConfig
 }>()
+
+const toggleState = reactive({
+    advanced_config: false,
+    assets: false,
+})
 
 const state = reactive({
     isAdvancedExpanded: false,
@@ -84,6 +82,10 @@ watch(
         updateBootstrapVersionInSubitems(newVal)
     },
 )
+
+const handleToggleExpandable = (name: "advanced_config" | 'assets' ) => {
+    toggleState[name] = !toggleState[name]
+}
 </script>
 
 <style scoped></style>

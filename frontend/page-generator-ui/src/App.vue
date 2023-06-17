@@ -24,19 +24,15 @@ import { onMounted, watch } from 'vue';
 
 // logic
 import mounted from "./logic/mounted"
-import resetPageContent from "./logic/pageContent/resetPageContent"
-import resetPageConfig from "./logic/pageConfig/resetPageConfig"
-import resetPageHTMLObject from "./logic/pageHTMLObject/resetPageHTMLObject"
 import setNestableConfigFromData from "./logic/nestable/setNestableConfigFromData"
 import setDataFromNestableConfig from "./logic/nestable/setDataFromNestableConfig"
-import renderPageHTMLObject from "./logic/generation/renderPageHTMLObject"
 import unsetSelectedAreaBlockClasses from "./logic/unsetSelectedAreaBlockClasses"
 
 // state
-import {currentPageContent, newAreaContentMap} from "./state/pageContentState"
-import {currentPageConfig, newAreaConfigMap} from "./state/pageConfigState"
-import {currentPageHTMLObject} from "./state/pageHTMLObjectState"
-import {nestableConfig, currentNestableItem} from './state/nestableState';
+import { currentPageContent, newAreaContentMap } from "./state/pageContentState"
+import { currentPageConfig, newAreaConfigMap } from "./state/pageConfigState"
+import { currentPageHTMLObject } from "./state/pageHTMLObjectState"
+import { nestableConfig, currentNestableItem } from './state/nestableState';
 import idToIdMap from "./state/idToIdMap"
 import isJSONView from "./state/isJSONView"
 import isDisplaySidebar from "./state/isDisplaySidebar"
@@ -53,6 +49,7 @@ import getIdToIdMap from './logic/getIdToIdMap';
 // classes
 import { NestableItemBlock } from './classes/NestableItemBlock';
 import { NestableItemArea } from './classes/NestableItemArea';
+import { pageContentService, pageConfigService, pageHTMLObjectService } from './computed/services';
 
 
 // CSS styles URL
@@ -85,12 +82,11 @@ watch(
   () => {
     resetNewItemMaps()
     resetIdToIdMap()
-    resetPageContent()
-    resetPageConfig()
-    resetPageHTMLObject()
+    pageContentService.value.resetPageContent()
+    pageConfigService.value.resetPageConfig()
+    pageHTMLObjectService.value.resetPageHTMLObject()
     setNestableConfigFromData()
-    if (!currentPageHTMLObject.value) throw new Error("currentPageHTMLObject.value cannot be undefined")
-    renderPageHTMLObject(currentPageHTMLObject.value)
+    if (currentPageHTMLObject.value) pageHTMLObjectService.value.renderPageHTMLObject()
   }
 )
 
@@ -124,7 +120,7 @@ onMounted(mounted)
 
 
 <style scoped lang="scss">
-@import '../node_modules/bootstrap/scss/bootstrap';
+// @import '../node_modules/bootstrap/scss/bootstrap';
 
 #page-generator-app {
   background-color: gray;
@@ -150,15 +146,14 @@ onMounted(mounted)
   height: 100vh;
   box-shadow: 0px 0px 8px 0px grey;
   transform: translateX(100%);
+
   &.open {
     transform: translateX(0);
   }
 }
-
 </style>
 
 <style>
-
 .currently-hovered-area {
   outline: 5px solid #67171f40;
   box-shadow: 0px 0px 5px 5px #67171f40;
@@ -178,5 +173,4 @@ onMounted(mounted)
   outline: 5px solid #576717;
   box-shadow: 0px 0px 5px 5px #576717;
 }
-
 </style>

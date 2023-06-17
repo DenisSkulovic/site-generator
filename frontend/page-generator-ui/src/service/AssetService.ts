@@ -1,7 +1,7 @@
 import axios from "axios"
 import { AdminService } from "./AdminService"
 import getUUID from "@/utils/getUUID"
-import { ScriptAsset, StyleAsset } from "../../../../page_cls_module/src"
+import { ScriptAsset, StyleAsset } from "../../../../page_cls_module/build_browser"
 
 export type S3Path = string
 export class AssetService extends AdminService {

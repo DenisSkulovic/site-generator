@@ -1,7 +1,7 @@
 import axios from "axios"
 
-import {GeneratePageRequest, GeneratePageResponse, PageConfig, PageContent, PageHTMLObject} from "../../../../../page_cls_module"
-import {buildPageHTMLObject} from "../../../../../page_cls_module"
+import {GeneratePageRequest, GeneratePageResponse, PageConfig, PageContent, PageHTMLObject} from "../../../../../page_cls_module/build_browser"
+import {buildPageHTMLObject} from "../../../../../page_cls_module/build_browser"
 
 const generatePage = async (
     pageConfig: PageConfig,

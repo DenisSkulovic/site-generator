@@ -1,4 +1,4 @@
-import { BlockTemplateEnum } from "../../../../../page_cls_module/src"
+import { BlockTemplateEnum } from "../../../../../page_cls_module/build_browser"
 
 const defaultFields: Map<BlockTemplateEnum, { [key: string]: any }> = new Map([
     [BlockTemplateEnum.IMAGE, {

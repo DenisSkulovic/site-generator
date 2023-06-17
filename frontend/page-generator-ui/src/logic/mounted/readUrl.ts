@@ -1,4 +1,4 @@
-import { LangEnum } from "../../../../../page_cls_module/src"
+import { LangEnum } from "../../../../../page_cls_module/build_browser"
 import getQueryParams from "../../utils/getQueryParams"
 
 export type UrlParams = {

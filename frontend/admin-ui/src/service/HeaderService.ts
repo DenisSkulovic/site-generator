@@ -37,14 +37,16 @@ export class HeaderService extends AdminService {
     async fetchHeaderConfig(force = false) {
         if (!force && headerConfigCurrent.value) return
         const url = `${this.adminUrl}/header-config`
-        headerConfigCurrent.value = await axios.get(url)
+        const { data } = await axios.get(url)
+        headerConfigCurrent.value = data
         this.resetHeader()
     }
 
     async fetchHeaderContent(force = false) {
         if (!force && headerContentCurrent.value) return
         const url = `${this.adminUrl}/header-content`
-        headerContentCurrent.value = await axios.get(url)
+        const { data } = await axios.get(url)
+        headerContentCurrent.value = data
         this.resetHeader()
     }
 
@@ -53,13 +55,15 @@ export class HeaderService extends AdminService {
         const body = headerConfigEdit.value
         const params = {}
         const headers = {}
-        headerConfigCurrent.value = await axios.put(
+        const { data } = await axios.put(
             url,
-            body, {
+            body,
+            {
                 params,
                 headers,
             },
         )
+        headerConfigCurrent.value = data
         headerConfigCurrent.value = cloneDeep(headerConfigEdit.value)
     }
 
@@ -68,14 +72,16 @@ export class HeaderService extends AdminService {
         const body = headerContentEdit.value
         const params = {}
         const headers = {}
-        headerContentCurrent.value = await axios.put(
+        const { data } = await axios.put(
             url,
-            body, {
+            body,
+            {
                 params,
                 headers,
             },
         )
-        headerContentCurrent.value = cloneDeep(headerContentEdit.value)   
+        headerContentCurrent.value = data
+        headerContentCurrent.value = cloneDeep(headerContentEdit.value)
     }
 
     async regenerateHeader() {

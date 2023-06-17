@@ -1,6 +1,6 @@
-import type {LangEnum} from "../../../../../page_cls_module/src"
-import type {Pagemeta} from "../../../../../admin_cls_module/src"
-import {buildPagemeta} from "../../../../../admin_cls_module/src"
+import type {LangEnum} from "../../../../../page_cls_module/build_browser"
+import type {Pagemeta} from "../../../../../admin_cls_module/build_browser"
+import {buildPagemeta} from "../../../../../admin_cls_module/build_browser"
 import axios from "axios"
 
 const getPagemeta = async (path: string, lang: LangEnum): Promise<Pagemeta> => {

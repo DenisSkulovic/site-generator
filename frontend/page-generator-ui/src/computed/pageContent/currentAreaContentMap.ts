@@ -1,6 +1,6 @@
 import { computed } from "vue"
 import type { ComputedRef } from "vue"
-import { AreaContent, BlockContent } from "../../../../../page_cls_module/src"
+import { AreaContent, BlockContent } from "../../../../../page_cls_module/build_browser"
 import {currentPageContent} from "../../state/pageContentState"
 
 type AreaContentUUID = string
