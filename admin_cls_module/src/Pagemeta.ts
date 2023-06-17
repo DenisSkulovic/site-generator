@@ -21,6 +21,7 @@ export class Pagemeta {
     configUUID: string
     isPublished: boolean
     metadata: PagemetaMetadata
+    clazz: string
     constructor(
         path: string,
         s3Path: string,
@@ -37,5 +38,6 @@ export class Pagemeta {
         this.configUUID = configUUID
         this.isPublished = isPublished
         this.metadata = metadata
+        this.clazz = this.constructor.name
     }
 }

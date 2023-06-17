@@ -120,6 +120,34 @@ class S3Operations {
             throw new Error("Unable to upload JSON file. Error: " + JSON.stringify(error));
         }
     }
+    async getFile(fileName) {
+        const params = {
+            Bucket: this.bucketName,
+            Key: `${fileName}`,
+        };
+        try {
+            const data = await this.s3.getObject(params).promise();
+            console.log(`Retrieved file "${fileName}": ${data}`);
+            return data;
+        }
+        catch (error) {
+            throw new Error("Unable to retrieve file. Error: " + JSON.stringify(error));
+        }
+    }
+    async putFile(fileName, data) {
+        const params = {
+            Bucket: this.bucketName,
+            Key: `${fileName}`,
+            Body: JSON.stringify(data),
+        };
+        try {
+            await this.s3.putObject(params).promise();
+            console.log(`Uploaded file "${fileName}"`);
+        }
+        catch (error) {
+            throw new Error("Unable to upload file. Error: " + JSON.stringify(error));
+        }
+    }
     async getJson(fileName) {
         const params = {
             Bucket: this.bucketName,

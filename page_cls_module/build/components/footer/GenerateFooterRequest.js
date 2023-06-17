@@ -1,17 +1,22 @@
-import { buildFooterConfig, buildFooterContent } from "../../";
-export const buildGenerateFooterRequest = (obj) => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.GenerateFooterRequest = exports.buildGenerateFooterRequest = void 0;
+const __1 = require("../../");
+const buildGenerateFooterRequest = (obj) => {
     if (obj.clazz !== "GenerateFooterRequest")
         throw new Error("clazz cannot be anything other than 'GenerateFooterRequest'");
-    const content = buildFooterContent(obj.content);
-    const config = buildFooterConfig(obj.config);
+    const content = (0, __1.buildFooterContent)(obj.content);
+    const config = (0, __1.buildFooterConfig)(obj.config);
     const generateBlockRequest = new GenerateFooterRequest(content, config);
     return generateBlockRequest;
 };
-export class GenerateFooterRequest {
+exports.buildGenerateFooterRequest = buildGenerateFooterRequest;
+class GenerateFooterRequest {
     constructor(content, config) {
         this.content = content;
         this.config = config;
         this.clazz = this.constructor.name;
     }
 }
+exports.GenerateFooterRequest = GenerateFooterRequest;
 //# sourceMappingURL=GenerateFooterRequest.js.map

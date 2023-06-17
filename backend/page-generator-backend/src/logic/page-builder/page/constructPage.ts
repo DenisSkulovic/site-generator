@@ -38,17 +38,17 @@ export const renderEjsFile = async (
 export const buildPageRenderData = (
     pageConfig: PageConfig,
     pageContent: PageContent,
-    headerHTMLObject: HeaderHTMLObject,
+    headerHTML: string,
     areaHTMLObjectsArr: AreaHTMLObject[],
-    footerHTMLObject: FooterHTMLObject,
+    footerHTML: string,
     assets: Asset[],
 ) => {
     return new RenderData_Page(
         pageConfig,
         pageContent,
-        headerHTMLObject,
+        headerHTML,
         areaHTMLObjectsArr,
-        footerHTMLObject,
+        footerHTML,
         assets,
     );
 }
@@ -58,14 +58,14 @@ export const getSkeletonTemplatePath = (
     bootstrapVersion: BootstrapVersionEnum,
     templateVersion: SkeletonVersionEnum,
 ) => {
-    return `${__dirname}/templates/html/${bootstrapVersion}/skeleton/${templateVersion}/index.ejs`;
+    return `${__dirname}/../../../templates/html/${bootstrapVersion}/skeleton/${templateVersion}/index.ejs`;
 }
 
 export const constructPage = async (
     pageContent: PageContent,
     pageConfig: PageConfig,
-    headerHTMLObject: HeaderHTMLObject,
-    footerHTMLObject: FooterHTMLObject,
+    headerHTML: string,
+    footerHTML: string,
     __dirname: string,
     constructArea: (areaConfig: AreaConfig, areaContent: AreaContent) => Promise<AreaHTMLObject>,
     guidFn: () => string,
@@ -89,7 +89,7 @@ export const constructPage = async (
     })
     const areaHTMLObjectsArr: AreaHTMLObject[] = await Promise.all(areaHTMLObjectsPromiseArr)
 
-    const pageRenderData = buildPageRenderData(pageConfig, pageContent, headerHTMLObject, areaHTMLObjectsArr, footerHTMLObject, pageConfig.assets)
+    const pageRenderData = buildPageRenderData(pageConfig, pageContent, headerHTML, areaHTMLObjectsArr, footerHTML, pageConfig.assets)
     const pageHtml = await renderEjsFile(skeletonTemplatePath, pageRenderData)
 
     const createdTimestamp: number = Date.now()

@@ -60,10 +60,19 @@ export class FooterService extends AdminService {
         )
         footerContentCurrent.value = cloneDeep(footerContentEdit.value)    }
 
-    async regenetareFooter() {
-        if (this.isFooterEdited) throw new Error("cannot generate footer when it isn't saved")
-        throw new Error("NOT IMPLEMENTER") // TODO
-    }
+        async regenerateFooter() {
+            if (this.isFooterEdited) throw new Error("cannot generate footer when it isn't saved")
+            const url = `${this.adminUrl}/regenerate-footer`
+            const params = {}
+            const headers = {}
+            await axios.get(
+                url,
+                {
+                    params,
+                    headers,
+                },
+            )
+        }
 
     get isFooterContentEdited() {
         return JSON.stringify(footerContentCurrent.value) !== JSON.stringify(footerContentEdit.value)

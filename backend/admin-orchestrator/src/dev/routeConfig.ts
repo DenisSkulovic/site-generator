@@ -36,6 +36,14 @@ const routeConfig = {
         routeKey: "/footer-content",
         pathParameters: [],
     },
+    "^/regenerate-footer$": {
+        routeKey: "/regenerate-footer",
+        pathParameters: [],
+    },
+    "^/get-footer$": {
+        routeKey: "/get-footer",
+        pathParameters: [],
+    },
 
     /** HEADER */
     "^/header-config$": {
@@ -44,6 +52,14 @@ const routeConfig = {
     },
     "^/header-content$": {
         routeKey: "/header-content",
+        pathParameters: [],
+    },
+    "^/regenerate-header$": {
+        routeKey: "/regenerate-header",
+        pathParameters: [],
+    },
+    "^/get-header$": {
+        routeKey: "/get-header",
         pathParameters: [],
     },
 
@@ -58,11 +74,19 @@ const routeConfig = {
         routeKey: "/page-config/{uuid}",
         pathParameters: ["uuid"],
     },
+    "^/page-config$": {
+        routeKey: "/page-config",
+        pathParameters: [],
+    },
 
     /** PAGE CONTENT */
     "^/page-content/([^/]+)$": {
         routeKey: "/page-content/{uuid}",
         pathParameters: ["uuid"],
+    },
+    "^/page-content$": {
+        routeKey: "/page-content",
+        pathParameters: [],
     },
 
     /** PAGE GENERATOR */

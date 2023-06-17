@@ -19,7 +19,7 @@ const generateArea = async (
         areaContent,
         areaConfig,
     )
-    const url = `${VITE_APP_PAGE_GENERATOR_LAMBDA_URL}/page-generator/generate-area`
+    const url = `${VITE_APP_PAGE_GENERATOR_LAMBDA_URL}/generate-area`
     const {data} = await axios.post(
         url,
         body,

@@ -1,20 +1,13 @@
-import * as DTO from "@page_cls_module"
-import * as AWS from "aws-sdk"
+import { S3Operations } from "@s3_module"
+import getEnvVariable from "@/logic/getEnvVariable"
 
-const s3 = new AWS.S3();
-
-const fetchFooterFromS3 = async (): Promise<DTO.FooterHTMLObject | undefined> => {
-    if (!process.env.BUCKET_NAME) throw new Error("BUCKET_NAME is a mandatory env param")
-    if (!process.env.FOOTER_KEY_S3) throw new Error("FOOTER_KEY_S3 is a mandatory env param")
-    const params = {
-        Bucket: process.env.BUCKET_NAME,
-        Key: process.env.FOOTER_KEY_S3
-    };
-    
+const fetchFooterFromS3 = async (): Promise<string | undefined> => {
+    const bucketName = getEnvVariable("BUCKET_NAME")
+    const s3 = new S3Operations(bucketName);
     try {
-        const data = await s3.getObject(params).promise();
-        const footerObject = JSON.parse(data.Body as string);
-        return DTO.buildFooterHTMLObject(footerObject);
+        const html = await s3.getFile("footer");
+        console.log(`footer html`, html)
+        return html.Body.toString("utf-8")
     } catch (error) {
         console.log(error);
         return undefined;

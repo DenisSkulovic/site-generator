@@ -1,5 +1,8 @@
-import { buildBlockHTMLMetadata } from "./BlockHTMLMetadata";
-export const buildBlockHTMLObject = (obj) => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BlockHTMLObject = exports.buildBlockHTMLObject = void 0;
+const BlockHTMLMetadata_1 = require("./BlockHTMLMetadata");
+const buildBlockHTMLObject = (obj) => {
     if (obj.clazz !== "BlockHTMLObject")
         throw new Error("clazz cannot be anything other than 'BlockHTMLObject'");
     if (!obj.uuid)
@@ -8,11 +11,12 @@ export const buildBlockHTMLObject = (obj) => {
         throw new Error("html cannot be undefined");
     if (!obj.blockMetadata)
         throw new Error("blockMetadata cannot be undefined");
-    const blockHTMLMetadata = buildBlockHTMLMetadata(obj.blockMetadata);
+    const blockHTMLMetadata = (0, BlockHTMLMetadata_1.buildBlockHTMLMetadata)(obj.blockMetadata);
     const blockHTMLObject = new BlockHTMLObject(obj.uuid, obj.html, blockHTMLMetadata);
     return blockHTMLObject;
 };
-export class BlockHTMLObject {
+exports.buildBlockHTMLObject = buildBlockHTMLObject;
+class BlockHTMLObject {
     constructor(uuid, html, metadata) {
         this.uuid = uuid;
         this.html = html;
@@ -20,4 +24,5 @@ export class BlockHTMLObject {
         this.clazz = this.constructor.name;
     }
 }
+exports.BlockHTMLObject = BlockHTMLObject;
 //# sourceMappingURL=BlockHTMLObject.js.map

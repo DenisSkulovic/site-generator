@@ -31,6 +31,7 @@ export function createPagemeta(params: Partial<Pagemeta> = {}): Pagemeta {
         configUUID: guid(),
         isPublished: false,
         metadata: createPagemetaMetadata({}),
+        clazz: "Pagemeta",
     };
 
     return { ...defaultPagemeta, ...params };

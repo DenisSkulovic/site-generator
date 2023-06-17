@@ -10,7 +10,7 @@ const putContent = async (pageContent: PageContent): Promise<PageContent> => {
     }
     const body: PageContent = pageContent
     const content_uuid: string = pageContent.uuid
-    const url = `${VITE_APP_ADMIN_LAMBDA_URL}/admin/page-content/${content_uuid}`
+    const url = `${VITE_APP_ADMIN_LAMBDA_URL}/page-content/${content_uuid}`
     const {data} = await axios.put(
         url,
         body,

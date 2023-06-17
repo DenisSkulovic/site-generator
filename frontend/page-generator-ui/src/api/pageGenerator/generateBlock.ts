@@ -19,7 +19,7 @@ const generateBlock = async (
         blockContent,
         blockConfig,
     )
-    const url = `${VITE_APP_PAGE_GENERATOR_LAMBDA_URL}/page-generator/generate-block`
+    const url = `${VITE_APP_PAGE_GENERATOR_LAMBDA_URL}/generate-block`
     const {data} = await axios.post(
         url,
         body,

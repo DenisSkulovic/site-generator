@@ -8,7 +8,7 @@ const getContent = async (content_uuid: string): Promise<PageContent> => {
     const headers = {
         "Content-Type": "application/json"
     }
-    const url = `${VITE_APP_ADMIN_LAMBDA_URL}/admin/page-content/${content_uuid}`
+    const url = `${VITE_APP_ADMIN_LAMBDA_URL}/page-content/${content_uuid}`
     const {data} = await axios.get(
         url,
         {

@@ -63,7 +63,7 @@ export const handleRegenerateFooter = async () => {
     startLoadingThis()
 
     const footerService = new FooterService(adminUrl.value)
-    const res = await footerService.regenetareFooter()
+    const res = await footerService.regenerateFooter()
     stopLoadingThis()
     return res
 }
@@ -94,7 +94,7 @@ export const handleAddNewPageClick = async (pagePath: string, lang: LangEnum) =>
     await Promise.all([
         pagemetaService.createPageConfig(pageConfig),
         pagemetaService.createPageContent(pageContent),
-        pagemetaService.createPagemeta(pagemeta),
+        pagemetaService.createPagemeta(pagemeta, lang),
     ])
 
     handleOpenPageInEditor(pagePath, lang)

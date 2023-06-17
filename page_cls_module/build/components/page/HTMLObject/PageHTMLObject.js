@@ -1,12 +1,16 @@
-import { buildPageHTMLMetadata } from "./PageHTMLMetadata";
-export const buildPageHTMLObject = (obj) => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PageHTMLObject = exports.buildPageHTMLObject = void 0;
+const PageHTMLMetadata_1 = require("./PageHTMLMetadata");
+const buildPageHTMLObject = (obj) => {
     if (obj.clazz !== "PageHTMLObject")
         throw new Error("clazz cannot be anything other than 'PageHTMLObject'");
-    const pageHTMLMetadata = buildPageHTMLMetadata(obj.metadata);
+    const pageHTMLMetadata = (0, PageHTMLMetadata_1.buildPageHTMLMetadata)(obj.metadata);
     const pageHTMLObject = new PageHTMLObject(obj.uuid, obj.html, pageHTMLMetadata);
     return pageHTMLObject;
 };
-export class PageHTMLObject {
+exports.buildPageHTMLObject = buildPageHTMLObject;
+class PageHTMLObject {
     constructor(uuid, html, metadata) {
         this.uuid = uuid;
         this.html = html;
@@ -14,4 +18,5 @@ export class PageHTMLObject {
         this.clazz = this.constructor.name;
     }
 }
+exports.PageHTMLObject = PageHTMLObject;
 //# sourceMappingURL=PageHTMLObject.js.map

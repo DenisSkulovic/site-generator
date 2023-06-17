@@ -37,10 +37,13 @@
         "src/*"
       ],
       "@repository_module": [
-        "../../repository_module"
+        "../repository_module"
       ],
       "@page_cls_module": [
         "../../page_cls_module"
+      ],
+      "@s3_module": [
+        "../s3_module"
       ]
     }, /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
@@ -120,6 +123,11 @@
     },
     {
       "path": "../repository_module",
+      // add 'prepend' if you want to include the referenced project in your output file
+      "prepend": false
+    },
+    {
+      "path": "../s3_module",
       // add 'prepend' if you want to include the referenced project in your output file
       "prepend": false
     },

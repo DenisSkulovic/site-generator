@@ -13,21 +13,21 @@ const handleGeneratePage = async (
     const content: PageContent = requestData.content
     const config: PageConfig = requestData.config
 
-    const promises: [Promise<HeaderHTMLObject | undefined>, Promise<FooterHTMLObject | undefined>] = [
+    const promises: [Promise<string | undefined>, Promise<string | undefined>] = [
         fetchHeader(),
         fetchFooter(),
     ]
 
-    const [headerHTMLObject, footerHTMLObject] = await Promise.all(promises)
+    const [headerHTML, footerHTML] = await Promise.all(promises)
 
-    if (!headerHTMLObject) throw new Error("failed to fetch header")
-    if (!footerHTMLObject) throw new Error("failed to fetch footer")
+    if (!headerHTML) throw new Error("failed to fetch header")
+    if (!footerHTML) throw new Error("failed to fetch footer")
 
     const pageHTMLObject: PageHTMLObject = await constructPage(
         content,
         config,
-        headerHTMLObject,
-        footerHTMLObject,
+        headerHTML,
+        footerHTML,
         __dirname,
         constructArea,
         guid,

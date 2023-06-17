@@ -5,8 +5,8 @@
     "node_modules"
   ],
   "compilerOptions": {
-    "target": "es2019",
-    "module": "CommonJS",
+    "target": "es2020",
+    "module": "es2020",
     "baseUrl": ".",
     "strict": true,
     "paths": {

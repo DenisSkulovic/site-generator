@@ -1,12 +1,16 @@
-import { buildAreaHTMLMetadata } from "./AreaHTMLMetadata";
-export const buildAreaHTMLObject = (obj) => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AreaHTMLObject = exports.buildAreaHTMLObject = void 0;
+const AreaHTMLMetadata_1 = require("./AreaHTMLMetadata");
+const buildAreaHTMLObject = (obj) => {
     if (obj.clazz !== "AreaHTMLObject")
         throw new Error("clazz cannot be anything other than 'AreaHTMLObject'");
-    const areaMetadata = buildAreaHTMLMetadata(obj.areaMetadata);
+    const areaMetadata = (0, AreaHTMLMetadata_1.buildAreaHTMLMetadata)(obj.areaMetadata);
     const areaHTMLObject = new AreaHTMLObject(obj.uuid, obj.html, areaMetadata);
     return areaHTMLObject;
 };
-export class AreaHTMLObject {
+exports.buildAreaHTMLObject = buildAreaHTMLObject;
+class AreaHTMLObject {
     constructor(uuid, html, metadata) {
         this.uuid = uuid;
         this.html = html;
@@ -14,4 +18,5 @@ export class AreaHTMLObject {
         this.clazz = this.constructor.name;
     }
 }
+exports.AreaHTMLObject = AreaHTMLObject;
 //# sourceMappingURL=AreaHTMLObject.js.map

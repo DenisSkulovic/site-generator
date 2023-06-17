@@ -1,42 +1,43 @@
 import { APIGatewayEvent } from "aws-lambda";
 import { PageContentRepository } from "../../../../../repository_module";
 import { PageContent, buildPageContent } from "../../../../../../page_cls_module";
+import { Key } from "aws-sdk/clients/dynamodb";
 
 export const handlePageContentDelete = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {
-    const key: string | undefined = event.pathParameters?.key;
-    if (!key) {
-        throw new Error("key is a mandatory path param");
+    const uuid: string | undefined = event.pathParameters?.uuid;
+    if (!uuid) {
+        throw new Error("uuid is a mandatory path param");
     }
 
     const repo = new PageContentRepository();
-    await repo.deleteItem(key);
+    await repo.deleteItem({uuid} as Key);
 }
 
 export const handlePageContentGet = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<PageContent> => {
-    const key: string | undefined = event.pathParameters?.key;
-    if (!key) {
-        throw new Error("key is a mandatory path param");
+    const uuid: string | undefined = event.pathParameters?.uuid;
+    if (!uuid) {
+        throw new Error("uuid is a mandatory path param");
     }
 
     const repo = new PageContentRepository();
-    const data: any = await repo.getItem(key);
-    const objectData = data.Body.toString('utf-8');
-    const jsonData = JSON.parse(objectData); 
-    return buildPageContent(jsonData)
+    const data: any = await repo.getItem({uuid: uuid} as Key);
+    return buildPageContent(data)
 }
 
-export const handlePageContentPost = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {
+export const handlePageContentPost = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<PageContent> => {
     const body = JSON.parse(event.body || "{}");
 
     const item: PageContent = buildPageContent(body);
     const repo = new PageContentRepository();
     await repo.putItem(item);
+    return item
 }
 
-export const handlePageContentPut = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<void> => {
+export const handlePageContentPut = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<PageContent> => {
     const body = JSON.parse(event.body || "{}");
 
     const item: PageContent = buildPageContent(body);
     const repo = new PageContentRepository();
     await repo.putItem(item);
+    return item
 } 

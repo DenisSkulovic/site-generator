@@ -7,7 +7,7 @@
         </v-row>
 
         <!-- MAIN SECTION -->
-        <v-sheet overflow-y-auto class="px-3 my-3">
+        <v-sheet overflow-y-auto class="px-3 my-3 overflow-auto">
             <slot name="main"></slot>
         </v-sheet>
 

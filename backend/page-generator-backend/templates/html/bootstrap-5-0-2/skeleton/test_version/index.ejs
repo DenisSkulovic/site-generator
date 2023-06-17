@@ -14,7 +14,7 @@
         <% }) %>
 
         <%# HEADER %>
-        <%- headerHTMLObject.html %>
+        <%- headerHTML %>
         
         <%# MAIN %>
         <% for (areaHTMLObject of areaHTMLObjectArr) { %>
@@ -22,7 +22,7 @@
         <% } %>
         
         <%# FOOTER %>
-        <%- footerHTMLObject.html %>
+        <%- footerHTML %>
 
         <%# BODY_END_ASSETS %>
         <% assets.filter(asset => asset.position === 'body_end').forEach(asset => { %>

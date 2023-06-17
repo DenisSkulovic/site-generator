@@ -10,6 +10,8 @@ export declare class S3Operations {
     getImage(key: string): Promise<AWS.S3.GetObjectOutput | undefined>;
     deleteImage(key: string): Promise<void>;
     putJson(fileName: string, data: any): Promise<void>;
+    getFile(fileName: string): Promise<any>;
+    putFile(fileName: string, data: any): Promise<void>;
     getJson(fileName: string): Promise<any>;
     uploadCSS(css: string, key: string, contentType?: string): Promise<void>;
     getCSS(key: string): Promise<AWS.S3.GetObjectOutput | undefined>;

@@ -98,6 +98,34 @@ export class S3Operations {
         }
     }
 
+    async getFile(fileName: string): Promise<any> {
+        const params: AWS.S3.GetObjectRequest = {
+            Bucket: this.bucketName,
+            Key: `${fileName}`,
+        };
+        try {
+            const data = await this.s3.getObject(params).promise();
+            console.log(`Retrieved file "${fileName}": ${data}`);
+            return data
+        } catch (error) {
+            throw new Error("Unable to retrieve file. Error: " + JSON.stringify(error));
+        }
+    }
+
+    async putFile(fileName: string, data: any): Promise<void> {
+        const params: AWS.S3.PutObjectRequest = {
+            Bucket: this.bucketName,
+            Key: `${fileName}`,
+            Body: JSON.stringify(data),
+        };
+        try {
+            await this.s3.putObject(params).promise();
+            console.log(`Uploaded file "${fileName}"`);
+        } catch (error) {
+            throw new Error("Unable to upload file. Error: " + JSON.stringify(error));
+        }
+    }
+
     async getJson(fileName: string): Promise<any> {
         const params: AWS.S3.GetObjectRequest = {
             Bucket: this.bucketName,

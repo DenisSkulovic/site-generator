@@ -33,6 +33,7 @@ import {
 import adminUrl from '@/state/adminUrl';
 import { FooterService } from '@/service/FooterService';
 import { HeaderService } from '@/service/HeaderService';
+import { handleRegenerateHeader, handleRegenerateFooter } from '@/logic/handlers';
 
 
 // Fetch header and footer configuration and content
@@ -59,8 +60,8 @@ const saveContent = async () => {
 // Regenerate header and footer
 const regenerate = async () => {
     await Promise.all([
-        headerService.regenerateHeader(),
-        footerService.regenetareFooter(),
+        handleRegenerateHeader(),
+        handleRegenerateFooter(),
     ]);
 };
 

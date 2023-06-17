@@ -1,5 +1,5 @@
 import { pagemetasCurrent, pagemetasEdit } from "@/state/pagemetas";
-import { buildPagemeta, type Pagemeta } from "../../../../admin_cls_module/build";
+import { buildPagemeta, type Pagemeta } from "../../../../admin_cls_module/src";
 import { AdminService } from "./AdminService";
 import axios from "axios"
 import { cloneDeep } from "lodash"
@@ -21,7 +21,7 @@ export class PagemetaService extends AdminService {
         }
         try {
             const {data} = await axios.get(url, {params, headers})
-            return buildPagemeta(data)
+            if (data) return buildPagemeta(data)
         } catch (error: any) {
             console.error(error)
         }
@@ -109,8 +109,15 @@ export class PagemetaService extends AdminService {
     }
 
     async checkPageExists(path: string, lang: LangEnum): Promise<boolean> {
-        const pagemeta = this.fetchPagemeta(path, lang)
-        return !!pagemeta;
+        let flag: boolean = false
+
+        try {
+            const pagemeta: Pagemeta | undefined = await this.fetchPagemeta(path, lang)
+            if (!!pagemeta) flag = true
+        } catch (err) {
+            flag = false
+        }
+        return flag;
     }
 
     async createPageConfig(config: PageConfig) {
@@ -153,9 +160,9 @@ export class PagemetaService extends AdminService {
         return data
     }
 
-    async createPagemeta(pagemeta: Pagemeta) {
+    async createPagemeta(pagemeta: Pagemeta, lang: LangEnum) {
         const params = {
-
+            lang,
         }
         const headers = {
 

@@ -80,7 +80,16 @@ export class HeaderService extends AdminService {
 
     async regenerateHeader() {
         if (this.isHeaderEdited) throw new Error("cannot generate header when it isn't saved")
-        throw new Error("NOT IMPLEMENTER") // TODO
+        const url = `${this.adminUrl}/regenerate-header`
+        const params = {}
+        const headers = {}
+        await axios.get(
+            url,
+            {
+                params,
+                headers,
+            },
+        )
     }
 
     get isHeaderContentEdited() {

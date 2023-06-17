@@ -1,7 +1,10 @@
-export var LangEnum;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.LangEnum = void 0;
+var LangEnum;
 (function (LangEnum) {
     LangEnum["LT"] = "lt";
     LangEnum["EN"] = "en";
     LangEnum["RU"] = "ru";
-})(LangEnum || (LangEnum = {}));
+})(LangEnum || (exports.LangEnum = LangEnum = {}));
 //# sourceMappingURL=LangEnum.js.map

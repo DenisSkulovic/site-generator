@@ -19,7 +19,7 @@ const generatePage = async (
         pageContent,
         pageConfig,
     )
-    const url = `${VITE_APP_PAGE_GENERATOR_LAMBDA_URL}/page-generator/generate-page`
+    const url = `${VITE_APP_PAGE_GENERATOR_LAMBDA_URL}/generate-page`
     const {data} = await axios.post(
         url,
         body,

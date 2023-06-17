@@ -1,11 +1,8 @@
-import { Repository } from "./Repository"
+import { PagemetaRepository } from "./PagemetaRepository"
 import {TableEnum} from "./TableEnum"
 
-export class PagemetaLTRepository extends Repository {
+export class PagemetaLTRepository extends PagemetaRepository {
     constructor() {
-        const tableName = TableEnum.PAGEMETA_LT
-        const region = process.env.REGION
-        if (!region) throw new Error("REGION is a mandatory env param")
-        super(tableName, region)
+        super(TableEnum.PAGEMETA_LT)
     }
 }

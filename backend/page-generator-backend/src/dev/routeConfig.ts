@@ -10,27 +10,27 @@ export type RouteConfig = {
 
 const routeConfig: RouteConfig = {
 
-    "^\/page-generator\/generate-header$": {
+    "^\/generate-header$": {
         routeKey: "/generate-header",
         pathParameters: [],
     },
 
-    "^\/page-generator\/generate-footer$": {
+    "^\/generate-footer$": {
         routeKey: "/generate-footer",
         pathParameters: [],
     },
 
-    "^\/page-generator\/generate-page$": {
+    "^\/generate-page$": {
         routeKey: "/generate-page",
         pathParameters: [],
     },
 
-    "^\/page-generator\/generate-area$": {
+    "^\/generate-area$": {
         routeKey: "/generate-area",
         pathParameters: [],
     },
 
-    "^\/page-generator\/generate-block$": {
+    "^\/generate-block$": {
         routeKey: "/generate-block",
         pathParameters: [],
     },

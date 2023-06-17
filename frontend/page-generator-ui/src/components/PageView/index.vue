@@ -32,14 +32,6 @@
                                                 @click="handleResetConfigClick">
                                                 Reset
                                             </v-btn>
-                                            <v-btn @click.stop="replaceHeader"
-                                                :disabled="!!currentPageConfig.value?.headerId && currentPageConfig.value.headerId === editPageConfig.value?.headerId">
-                                                Refresh Header
-                                            </v-btn>
-                                            <v-btn @click.stop="replaceFooter"
-                                                :disabled="!!currentPageConfig.value?.footerId && currentPageConfig.value.footerId === editPageConfig.value?.footerId">
-                                                Refresh Footer
-                                            </v-btn>
                                         </v-col>
                                     </v-row>
                                     <v-row v-if="editPageConfig?.value">

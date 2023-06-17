@@ -7,6 +7,9 @@ import { ref, onMounted, watch } from 'vue';
 import tinymce, { Editor } from 'tinymce';
 import 'tinymce/themes/silver';
 import 'tinymce/plugins/code';
+import 'tinymce/icons/default';
+import 'tinymce/skins/ui/oxide/skin.min.css';
+import 'tinymce/skins/ui/oxide/content.min.css';
 
 const props = defineProps<{
     json: string
@@ -18,6 +21,7 @@ const editorValue = ref(JSON.stringify(props.json, null, 4)); // replace this wi
 const editor = ref();
 
 onMounted(async () => {
+    console.log(`editor.value`, editor.value)
     const editors: Editor[] = await tinymce.init({
         target: editor.value,
         plugins: 'code',

@@ -1,26 +1,26 @@
-import { AreaHTMLObject, Asset, FooterHTMLObject, HeaderHTMLObject, PageConfig, PageContent } from "@page_cls_module"
+import { AreaHTMLObject, Asset, PageConfig, PageContent } from "@page_cls_module"
 
 export class RenderData_Page {
     config: PageConfig
     content: PageContent
-    headerHTMLObject: HeaderHTMLObject
+    headerHTML: string
     areaHTMLObjectArr: Array<AreaHTMLObject>
-    footerHTMLObject: FooterHTMLObject
+    footerHTML: string
     assets: Asset[]
     clazz: string
     constructor(
         config: PageConfig,
         content: PageContent,
-        headerHTMLObject: HeaderHTMLObject,
+        headerHTML: string,
         areaHTMLObjectArr: Array<AreaHTMLObject>,
-        footerHTMLObject: FooterHTMLObject,
+        footerHTML: string,
         assets: Asset[],
     ) {
         this.config = config
         this.content = content
-        this.headerHTMLObject = headerHTMLObject
+        this.headerHTML = headerHTML
         this.areaHTMLObjectArr = areaHTMLObjectArr
-        this.footerHTMLObject = footerHTMLObject
+        this.footerHTML = footerHTML
         this.assets = assets
         this.clazz = this.constructor.name
     }

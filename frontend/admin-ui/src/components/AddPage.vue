@@ -4,6 +4,8 @@
             Add new page
         </v-btn>
 
+        <div v-if="isPageExistsError">Page Exists!</div>
+
         <v-dialog v-model="state.dialog" max-width="600px">
             <v-card>
                 <v-card-title>
@@ -38,12 +40,14 @@
 import { reactive } from "vue"
 import { handleAddNewPageClick } from "@/logic/handlers"
 import lang from "@/state/lang";
+import isPageExistsError from "@/state/isPageExistsError"
 
 const state = reactive({
     dialog: false,
     pagePath: '',
 })
 const createPage = async () => {
+    isPageExistsError.value = false
     await handleAddNewPageClick(state.pagePath, lang.value)
     state.dialog = false;
 }

@@ -1,0 +1,1 @@
+{"version":3,"file":"GeneratePageResponse.js","sourceRoot":"","sources":["../../../src/components/page/GeneratePageResponse.ts"],"names":[],"mappings":"AAEA,MAAM,OAAO,oBAAoB;IAG7B,YACI,IAAoB;QAEpB,IAAI,CAAC,IAAI,GAAG,IAAI,CAAA;QAChB,IAAI,CAAC,KAAK,GAAG,IAAI,CAAC,WAAW,CAAC,IAAI,CAAA;IACtC,CAAC;CACJ"}

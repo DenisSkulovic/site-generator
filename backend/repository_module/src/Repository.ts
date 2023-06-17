@@ -1,5 +1,5 @@
 import * as AWS from "aws-sdk";
-import { DocumentClient } from "aws-sdk/clients/dynamodb";
+import { DocumentClient, Key } from "aws-sdk/clients/dynamodb";
 
 export class Repository {
     protected docClient: DocumentClient;
@@ -45,7 +45,7 @@ export class Repository {
         }
     }
 
-    async getItem(key: any): Promise<any> {
+    async getItem(key: Key): Promise<any> {
         const params: DocumentClient.GetItemInput = {
             TableName: this.tableName,
             Key: key
@@ -58,7 +58,7 @@ export class Repository {
         }
     }
 
-    async deleteItem(key: any): Promise<void> {
+    async deleteItem(key: Key): Promise<void> {
         const params: DocumentClient.DeleteItemInput = {
             TableName: this.tableName,
             Key: key

@@ -1,6 +1,5 @@
 import Response from "../classes/Response"
 
-
 const handleError = async (err: any) => {
     console.error(`my name is steve`, JSON.stringify(err).slice(0, 2000));
     if (err instanceof TypeError || err instanceof SyntaxError) {

@@ -1,23 +1,21 @@
+import { LangEnum } from "../../../../../page_cls_module/src"
 import getQueryParams from "../../utils/getQueryParams"
 
 export type UrlParams = {
-    page_config_uuid?: string
-    page_content_uuid?: string
-    page_html_object_uuid?: string
-    page_url?: string
+    path: string
+    lang: LangEnum
 }
 
 const readUrl = (): UrlParams => {
     const query: {[key: string]: string} = getQueryParams()
-    const page_config_uuid: string | undefined = query.page_config_uuid
-    const page_content_uuid: string | undefined = query.page_content_uuid
-    const page_html_object_uuid: string | undefined = query.page_html_object_uuid
-    const page_url: string | undefined = query.page_url
+    const path: string | undefined = query.path
+    const lang: string | undefined = query.lang
+    if (!path) throw new Error("path is a mandatory query param")
+    if (!lang) throw new Error("lang is a mandatory query param")
+    if (!Object.values(LangEnum).includes(lang as LangEnum)) throw new Error("lang is not recognized")
     return {
-        page_config_uuid,
-        page_content_uuid,
-        page_html_object_uuid,
-        page_url,
+        path,
+        lang: lang as LangEnum,
     }
 }
 
