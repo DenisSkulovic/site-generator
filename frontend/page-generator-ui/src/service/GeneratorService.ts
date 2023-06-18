@@ -5,12 +5,8 @@ import { buildAreaHTMLObject, AreaHTMLObject } from "../../../../page_cls_module
 
 export type S3Path = string
 export class GeneratorService extends AdminService {
-    bucketName: string
-    pagePath: string
-    constructor(adminUrl: string, bucketName: string, pagePath: string) {
+    constructor(adminUrl: string) {
         super(adminUrl)
-        this.bucketName = bucketName
-        this.pagePath = pagePath
     }
 
     async generatePage(

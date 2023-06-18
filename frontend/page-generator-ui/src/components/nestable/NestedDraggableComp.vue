@@ -36,8 +36,8 @@ import NestableItemBlockComp from "./NestableItemBlockComp.vue"
 import type { NestableItem } from "../../classes/NestableItem";
 import NestedDraggableComp from "./NestedDraggableComp.vue"
 import { NestableItemArea } from "../../classes/NestableItemArea";
-import setDataFromNestableConfig from "../../logic/nestable/setDataFromNestableConfig"
 import handleDisplayNestableItem from "../../logic/handlers/handleDisplayNestableItem";
+import { nestableService } from "@/computed/services";
 
 const props = defineProps<{
     list: NestableItem[]
@@ -51,7 +51,7 @@ const nextLevel: ComputedRef<number> = computed(() => {
 })
 
 const handleChange = (e: any) => {
-    setDataFromNestableConfig()
+    nestableService.value.setDataFromNestableConfig()
     emit("change", e)
 }
 

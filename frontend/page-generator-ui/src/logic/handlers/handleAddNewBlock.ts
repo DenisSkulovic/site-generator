@@ -6,10 +6,10 @@ import {editPageContent, newBlockContentMap} from "../../state/pageContentState"
 import type {NestableConfig} from "../../classes/NestableConfig"
 
 import { NestableItemBlock } from "@/classes/NestableItemBlock"
-import setDataFromNestableConfig from "../nestable/setDataFromNestableConfig"
 import idToIdMap from "../../state/idToIdMap"
 import defaultBlockFieldMap from "../../config/defaultFields/blockContent"
 import {cloneDeep} from "lodash"
+import { nestableService } from "@/computed/services";
 
 const handleAddNewBlock = (
     nestableArr: NestableConfig
@@ -38,7 +38,7 @@ const handleAddNewBlock = (
 
     nestableArr?.push(newNestableItem)
 
-    setDataFromNestableConfig()
+    nestableService.value.setDataFromNestableConfig()
 }
 
 export default handleAddNewBlock

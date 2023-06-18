@@ -11,11 +11,9 @@ import _ from "lodash"
 
 export type S3Path = string
 export class PageConfigService extends AdminService {
-    bucketName: string
     pagePath: string
-    constructor(adminUrl: string, bucketName: string, pagePath: string) {
+    constructor(adminUrl: string, pagePath: string) {
         super(adminUrl)
-        this.bucketName = bucketName
         this.pagePath = pagePath
     }
 

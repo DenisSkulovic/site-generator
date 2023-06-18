@@ -1,23 +1,26 @@
 import readUrl from "./readUrl"
 import type { UrlParams } from "./readUrl"
 import type { PageConfig, PageContent, PageHTMLObject, GeneratePageResponse, LangEnum } from "../../../../../page_cls_module/build_browser"
-import getPagemeta from "@/api/pagemeta/getPagemeta"
 import pagemeta from "@/state/pagemeta"
 import pagePath from "@/state/pagePath"
-import { pageContentService, pageConfigService, pageHTMLObjectService, generatorService } from "@/computed/services"
+import { pageContentService, pageConfigService, pageHTMLObjectService, generatorService, pagemetaService } from "@/computed/services"
 import setNestableConfigFromData from "../nestable/setNestableConfigFromData"
 import { nextTick } from "vue"
+import lang from "@/state/lang"
 
 
 const mounted = async () => {
     const urlParams: UrlParams = readUrl()
 
     const path: string = urlParams.path
-    const lang: LangEnum = urlParams.lang
+    const langStr: LangEnum = urlParams.lang
 
     pagePath.value = path
-    pagemeta.value = await getPagemeta(pagePath.value, lang)
+    lang.value = langStr
+    await pagemetaService.value.getPagemeta()
 
+    if (!pagemeta.value) throw new Error("pagemeta.value cannot be undefined")
+    
     const [pageContent, pageConfig]: [
         PageContent,
         PageConfig,

@@ -6,8 +6,8 @@ import {editPageContent, newAreaContentMap} from "../../state/pageContentState"
 import type {NestableConfig} from "../../classes/NestableConfig"
 
 import { NestableItemArea } from "@/classes/NestableItemArea"
-import setDataFromNestableConfig from "../nestable/setDataFromNestableConfig"
 import idToIdMap from "../../state/idToIdMap"
+import { nestableService } from "@/computed/services";
 
 const handleAddNewArea = (
     nestableArr: NestableConfig
@@ -31,7 +31,7 @@ const handleAddNewArea = (
 
     nestableArr?.push(newNestableItem)
 
-    setDataFromNestableConfig()
+    nestableService.value.setDataFromNestableConfig()
 }
 
 export default handleAddNewArea
