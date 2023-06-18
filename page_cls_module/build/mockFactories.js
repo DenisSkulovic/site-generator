@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createStyleAsset = exports.createScriptAsset = exports.createLinkAsset = exports.createAsset = exports.createHeaderConfigMetadata = exports.createFooterConfigMetadata = exports.createHeaderHTMLMetadata = exports.createFooterHTMLMetadata = exports.createPageHTMLMetadata = exports.createBlockHTMLMetadata = exports.createAreaHTMLMetadata = exports.createBlockConfigMetadata = exports.createAreaConfigMetadata = exports.createPageContentMetadata = exports.createPageConfigMetadata = exports.createFooterContentMetadata = exports.createHeaderContentMetadata = exports.createBlockContentMetadata = exports.createAreaContentMetadata = exports.createBlockContent_TEXT = exports.createBlockContent_IMAGE = exports.createBlockContent_HTML = exports.createGenerateHeaderResponse = exports.createGenerateFooterResponse = exports.createHeaderHTMLObject = exports.createFooterHTMLObject = exports.createGenerateHeaderRequest = exports.createGenerateFooterRequest = exports.createFooterConfig = exports.createFooterContent = exports.createHeaderConfig = exports.createHeaderContent = exports.createNavItem = exports.createMetadata = exports.createProduct = exports.createBlockHTMLObject = exports.createAreaHTMLObject = exports.createPageHTMLObject = exports.createGeneratePageResponse = exports.createGeneratePageRequest = exports.createGenerateBlockResponse = exports.createGenerateBlockRequest = exports.createGenerateAreaResponse = exports.createGenerateAreaRequest = exports.createBlockContent = exports.createAreaContent = exports.createBlockConfig = exports.createAreaConfig = exports.createPageContent = exports.createPageConfig = void 0;
+exports.createScriptAsset = exports.createLinkAsset = exports.createAsset = exports.createHeaderConfigMetadata = exports.createFooterConfigMetadata = exports.createHeaderHTMLMetadata = exports.createFooterHTMLMetadata = exports.createPageHTMLMetadata = exports.createBlockHTMLMetadata = exports.createAreaHTMLMetadata = exports.createBlockConfigMetadata = exports.createAreaConfigMetadata = exports.createPageContentMetadata = exports.createPageConfigMetadata = exports.createFooterContentMetadata = exports.createHeaderContentMetadata = exports.createBlockContentMetadata = exports.createAreaContentMetadata = exports.createBlockContent_TEXT = exports.createBlockContent_IMAGE = exports.createBlockContent_HTML = exports.createGenerateHeaderResponse = exports.createGenerateFooterResponse = exports.createHeaderHTMLObject = exports.createFooterHTMLObject = exports.createGenerateHeaderRequest = exports.createGenerateFooterRequest = exports.createFooterConfig = exports.createFooterContent = exports.createHeaderConfig = exports.createHeaderContent = exports.createNavItem = exports.createMetadata = exports.createProduct = exports.createBlockHTMLObject = exports.createAreaHTMLObject = exports.createPageHTMLObject = exports.createGeneratePageResponse = exports.createGeneratePageRequest = exports.createGenerateBlockResponse = exports.createGenerateBlockRequest = exports.createGenerateAreaResponse = exports.createGenerateAreaRequest = exports.createBlockContent = exports.createAreaContent = exports.createBlockConfig = exports.createAreaConfig = exports.createPageContent = exports.createPageConfig = void 0;
 const DTO = __importStar(require("."));
 const guid = () => {
     const s4 = () => {
@@ -412,6 +412,7 @@ exports.createAsset = createAsset;
 function createLinkAsset(params) {
     const defaultLinkAsset = {
         ...createAsset({ tag: DTO.AssetTagEnum.LINK, ...params }),
+        href: "",
         rel: DTO.AssetRelEnum.STYLESHEET,
         clazz: "LinkAsset"
     };
@@ -429,13 +430,4 @@ function createScriptAsset(params) {
     return { ...defaultScriptAsset, ...params };
 }
 exports.createScriptAsset = createScriptAsset;
-function createStyleAsset(params) {
-    const defaultStyleAsset = {
-        ...createAsset({ tag: DTO.AssetTagEnum.STYLE, ...params }),
-        type: DTO.AssetTypeEnum.CSS,
-        clazz: "StyleAsset"
-    };
-    return { ...defaultStyleAsset, ...params };
-}
-exports.createStyleAsset = createStyleAsset;
 //# sourceMappingURL=mockFactories.js.map

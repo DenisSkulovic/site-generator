@@ -1,6 +1,10 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "include": [
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue"
+  ],
   "exclude": [
     "node_modules"
   ],
@@ -33,12 +37,10 @@
     },
     {
       "path": "../../page_cls_module",
-      // add 'prepend' if you want to include the referenced project in your output file
       "prepend": false
     },
     {
       "path": "../common_components_module",
-      // add 'prepend' if you want to include the referenced project in your output file
       "prepend": false
     }
   ]

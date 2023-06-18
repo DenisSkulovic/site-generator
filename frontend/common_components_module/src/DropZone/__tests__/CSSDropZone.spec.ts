@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { mount } from '@vue/test-utils'
 import DropzoneComponent from '@/path-to-your-component/DropzoneComponent.vue'
 import Dropzone from '../Dropzone.vue'

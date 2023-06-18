@@ -465,6 +465,7 @@ export function createAsset(params: Partial<DTO.Asset>): DTO.Asset {
 export function createLinkAsset(params: Partial<DTO.LinkAsset>): DTO.LinkAsset {
     const defaultLinkAsset: DTO.LinkAsset = {
         ...createAsset({ tag: DTO.AssetTagEnum.LINK, ...params }),
+        href: "",
         rel: DTO.AssetRelEnum.STYLESHEET, // Use your default enum value here
         clazz: "LinkAsset"
     };
@@ -483,14 +484,4 @@ export function createScriptAsset(params: Partial<DTO.ScriptAsset>): DTO.ScriptA
     };
 
     return { ...defaultScriptAsset, ...params };
-}
-
-export function createStyleAsset(params: Partial<DTO.StyleAsset>): DTO.StyleAsset {
-    const defaultStyleAsset: DTO.StyleAsset = {
-        ...createAsset({ tag: DTO.AssetTagEnum.STYLE, ...params }),
-        type: DTO.AssetTypeEnum.CSS,
-        clazz: "StyleAsset"
-    };
-
-    return { ...defaultStyleAsset, ...params };
 }

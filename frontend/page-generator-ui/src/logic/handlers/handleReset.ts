@@ -1,11 +1,10 @@
-import setNestableConfigFromData from "../../logic/nestable/setNestableConfigFromData"
-import { pageContentService, pageConfigService, pageHTMLObjectService } from "@/computed/services"
+import { pageContentService, pageConfigService, pageHTMLObjectService, nestableService } from "@/computed/services"
 
 const handleReset = () => {
     pageConfigService.value.resetPageConfig()
     pageContentService.value.resetPageContent()
     pageHTMLObjectService.value.resetPageHTMLObject()
-    setNestableConfigFromData()
+    nestableService.value.setNestableConfigFromData()
 }
 
 export default handleReset

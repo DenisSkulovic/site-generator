@@ -1,7 +1,7 @@
 const vue = require('rollup-plugin-vue'); // Handle .vue SFC files
 const typescript = require('rollup-plugin-typescript2'); // Transpile .ts files
-const resolve = require('@rollup/plugin-node-resolve'); // Transpile .ts files
-const postcss = require('rollup-plugin-postcss'); // Transpile .ts files
+const resolve = require('@rollup/plugin-node-resolve'); // Node.js modules resolution
+const postcss = require('rollup-plugin-postcss'); // Add support for CSS
 
 module.exports = {
     input: 'src/index.ts', // Path relative to package.json
@@ -13,14 +13,25 @@ module.exports = {
     plugins: [
         resolve(),
         typescript({
-            tsconfigOverride: { compilerOptions: { module: "esnext" } }
+            tsconfigOverride: {
+                compilerOptions: {
+                    module: "esnext",
+                    declaration: true,
+                    declarationDir: "./dist"
+                }
+            }
         }), // Compile TypeScript files
         vue({
             target: 'browser',
             css: false,
         }),
         postcss({
-            extract: true,  // extracts to an external .css file
+            // extract: true would extract the css to a separate file
+            extract: false,
+            // Minify the output
+            minimize: true,
+            // Enable source maps
+            sourceMap: true,
         }),
     ],
     external: ['vue'], // List of dependencies

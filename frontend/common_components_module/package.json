@@ -1,10 +1,11 @@
 {
   "name": "@denis/common_components_module",
   "version": "1.0.0",
-  "description": "A Vue.js TypeScript library for dropzone components",
+  "description": "A Vue.js TypeScript library for common components",
   "main": "dist/common-components-module.esm.js",
   "module": "dist/common-components-module.esm.js",
-  "unpkg": "dist/your-library.umd.min.js",
+  "unpkg": "dist/common-components-module.umd.min.js",
+  "types": "dist/src/index.d.ts",
   "files": [
     "dist/*",
     "src/*"

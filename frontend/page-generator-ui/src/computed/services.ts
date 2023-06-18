@@ -1,4 +1,4 @@
-import { PageContentService, PageConfigService, PageHTMLObjectService, GeneratorService, PagemetaService, NestableService } from "@/service"
+import { AssetService, PageContentService, PageConfigService, PageHTMLObjectService, GeneratorService, PagemetaService, NestableService } from "@/service"
 import adminUrl from "../state/adminUrl"
 import bucketName from "../state/bucketName"
 import lang from "../state/lang"
@@ -22,4 +22,7 @@ export const pagemetaService: ComputedRef<PagemetaService> = computed(() => {
 })
 export const nestableService: ComputedRef<NestableService> = computed(() => {
     return new NestableService(adminUrl.value)
+})
+export const assetService: ComputedRef<AssetService> = computed(() => {
+    return new AssetService(adminUrl.value, bucketName.value, pagePath.value)
 })

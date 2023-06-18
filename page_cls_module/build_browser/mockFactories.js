@@ -339,6 +339,7 @@ export function createAsset(params) {
 export function createLinkAsset(params) {
     const defaultLinkAsset = {
         ...createAsset({ tag: DTO.AssetTagEnum.LINK, ...params }),
+        href: "",
         rel: DTO.AssetRelEnum.STYLESHEET,
         clazz: "LinkAsset"
     };
@@ -353,13 +354,5 @@ export function createScriptAsset(params) {
         clazz: "ScriptAsset"
     };
     return { ...defaultScriptAsset, ...params };
-}
-export function createStyleAsset(params) {
-    const defaultStyleAsset = {
-        ...createAsset({ tag: DTO.AssetTagEnum.STYLE, ...params }),
-        type: DTO.AssetTypeEnum.CSS,
-        clazz: "StyleAsset"
-    };
-    return { ...defaultStyleAsset, ...params };
 }
 //# sourceMappingURL=mockFactories.js.map

@@ -109,5 +109,4 @@ export declare function createHeaderConfigMetadata(params: Partial<DTO.HeaderCon
 export declare function createAsset(params: Partial<DTO.Asset>): DTO.Asset;
 export declare function createLinkAsset(params: Partial<DTO.LinkAsset>): DTO.LinkAsset;
 export declare function createScriptAsset(params: Partial<DTO.ScriptAsset>): DTO.ScriptAsset;
-export declare function createStyleAsset(params: Partial<DTO.StyleAsset>): DTO.StyleAsset;
 //# sourceMappingURL=mockFactories.d.ts.map

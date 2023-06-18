@@ -1,4 +1,4 @@
-import { AdminService } from "./AdminService"
+import { AdminService, type IAdminService } from "./AdminService"
 import { AreaConfig, AreaContent, BlockConfig, BlockContent, PageConfig, PageContent } from "../../../../page_cls_module/build_browser"
 import { NestableConfig } from "@/classes/NestableConfig"
 import type { NestableItem } from "@/classes/NestableItem"
@@ -11,12 +11,18 @@ import { editPageContent, newAreaContentMap, newBlockContentMap, toDeleteAreaCon
 import { cloneDeep } from "lodash"
 import { reactive } from "vue"
 
-export class NestableService extends AdminService {
+export interface INestableService extends IAdminService {
+    setDataFromNestableConfig(): void 
+    setNestableConfigFromData(): void 
+    getItemMapFromNestableConfig(config: NestableConfig): Map<string, NestableItem>
+}
+
+export class NestableService extends AdminService implements INestableService {
     constructor(adminUrl: string) {
         super(adminUrl)
     }
 
-    buildPageConfigFromNestableConfig(nestableConfig: NestableConfig): PageConfig {
+    private buildPageConfigFromNestableConfig(nestableConfig: NestableConfig): PageConfig {
         if (!editPageConfig.value) throw new Error("editPageConfig.value cannot be undefined")
         const pageConfigClone: PageConfig = reactive(cloneDeep(editPageConfig.value))
         pageConfigClone.areaConfigArr = [] // clone, but empty the array
@@ -48,7 +54,7 @@ export class NestableService extends AdminService {
         return reactive(pageConfigClone)
     }
 
-    buildPageContentFromNestableConfig(nestableConfig: NestableConfig) {
+    private buildPageContentFromNestableConfig(nestableConfig: NestableConfig) {
         if (!editPageContent.value) throw new Error("editPageContent.value cannot be undefined")
         const pageContentClone: PageContent = reactive(cloneDeep(editPageContent.value))
         pageContentClone.data = {} // clone, but empty the data object
@@ -81,7 +87,7 @@ export class NestableService extends AdminService {
         return reactive(pageContentClone)
     }
 
-    generateNestableConfigFromPageConfig(pageConfig: PageConfig): NestableConfig {
+    private generateNestableConfigFromPageConfig(pageConfig: PageConfig): NestableConfig {
         const nestableConfig: NestableConfig = reactive(new NestableConfig())
         const processItem = ( // tasty recursion
             item: AreaConfig | BlockConfig,
@@ -116,7 +122,7 @@ export class NestableService extends AdminService {
         return nestableConfig
     }
 
-    generateNestableConfigFromToDeleteMaps(
+    private generateNestableConfigFromToDeleteMaps(
         toDeleteAreasMap: Map<string, AreaConfig>,
         toDeleteBlocksMap: Map<string, BlockConfig>,
     ): NestableConfig {
@@ -139,7 +145,7 @@ export class NestableService extends AdminService {
     }
 
 
-    getItemMapFromNestableConfig(config: NestableConfig) {
+    public getItemMapFromNestableConfig(config: NestableConfig): Map<string, NestableItem> {
         const map: Map<string, NestableItem> = new Map()
 
         const processItem = (item: NestableItem, map: Map<string, NestableItem>) => {
@@ -156,7 +162,7 @@ export class NestableService extends AdminService {
     }
 
 
-    setDataFromNestableConfig(): void {
+    public setDataFromNestableConfig(): void {
         const setPageConfig = () => {
             const pageConfig: PageConfig = this.buildPageConfigFromNestableConfig(nestableConfig.config)
             editPageConfig.value = pageConfig
@@ -201,7 +207,7 @@ export class NestableService extends AdminService {
         updateNewItemsFromNestableConfig()
     }
 
-    setNestableConfigFromData(): void {
+    public setNestableConfigFromData(): void {
         const pageConfig: PageConfig | null = editPageConfig.value
         if (!pageConfig) throw new Error("pageConfig cannot be undefined")
         const newNestableConfig: NestableConfig = this.generateNestableConfigFromPageConfig(pageConfig)

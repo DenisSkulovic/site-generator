@@ -24,8 +24,6 @@ import { onMounted, watch } from 'vue';
 
 // logic
 import mounted from "./logic/mounted"
-import setNestableConfigFromData from "./logic/nestable/setNestableConfigFromData"
-import setDataFromNestableConfig from "./logic/nestable/setDataFromNestableConfig"
 import unsetSelectedAreaBlockClasses from "./logic/unsetSelectedAreaBlockClasses"
 
 // state
@@ -49,7 +47,7 @@ import getIdToIdMap from './logic/getIdToIdMap';
 // classes
 import { NestableItemBlock } from './classes/NestableItemBlock';
 import { NestableItemArea } from './classes/NestableItemArea';
-import { pageContentService, pageConfigService, pageHTMLObjectService } from './computed/services';
+import { pageContentService, pageConfigService, pageHTMLObjectService, nestableService } from './computed/services';
 
 
 // CSS styles URL
@@ -85,14 +83,14 @@ watch(
     pageContentService.value.resetPageContent()
     pageConfigService.value.resetPageConfig()
     pageHTMLObjectService.value.resetPageHTMLObject()
-    setNestableConfigFromData()
+    nestableService.value.setNestableConfigFromData()
     if (currentPageHTMLObject.value) pageHTMLObjectService.value.renderPageHTMLObject()
   }
 )
 
 watch(
   () => nestableConfig.config,
-  setDataFromNestableConfig
+  () => nestableService.value.setDataFromNestableConfig()
 )
 watch(
   () => currentNestableItem.value,

@@ -151,7 +151,7 @@ enum TitleEnum {
 }
 
 const state = reactive({
-    collapsedSet: new Set()
+    collapsedSet: new Set([NameEnum.CONFIG])
 })
 
 

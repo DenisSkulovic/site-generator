@@ -2,7 +2,7 @@
     <div>
         <!-- PAGE NAME -->
         <TextInputField :label="'Page Name'" :value="props.pageConfig.pageName"
-            @change="(val) => props.pageConfig.pageName = val" class="mb-4" />
+            @change="(val) => handleChange('pageName', val)" class="mb-4" />
 
         <v-divider class="my-4"></v-divider>
 
@@ -13,19 +13,19 @@
             <template #content>
                 <!-- INCLUDE BOOTSTRAP -->
                 <CheckBoxField :label="'Include Bootstrap CSS into bundle'" :value="props.pageConfig.isIncludeBootstrap"
-                    @change="(val) => props.pageConfig.isIncludeBootstrap = val" class="mb-4" />
+                @change="(val) => handleChange('isIncludeBootstrap', val)" class="mb-4" />
 
                 <!-- HEAD VERSION -->
                 <SelectInputField :label="'Head Version'" :value="props.pageConfig.headVersion" :options="headVersions"
-                    @change="(val) => props.pageConfig.headVersion = val" class="mb-4" />
+                @change="(val) => handleChange('headVersion', val)" class="mb-4" />
 
                 <!-- BOOTSTRAP VERSION -->
                 <SelectInputField :label="'Bootstrap Version'" :value="props.pageConfig.bootstrapVersion"
-                    :options="bootstrapVersions" @change="(val) => props.pageConfig.bootstrapVersion = val" class="mb-4" />
+                    :options="bootstrapVersions" @change="(val) => handleChange('bootstrapVersion', val)" class="mb-4" />
 
                 <!-- SKELETON VERSION -->
                 <SelectInputField :label="'Skeleton Version'" :value="props.pageConfig.templateVersion"
-                    :options="skeletonVersions" @change="(val) => props.pageConfig.templateVersion = val" class="mb-4" />
+                    :options="skeletonVersions" @change="(val) => handleChange('templateVersion', val)" class="mb-4" />
             </template>
         </CollapseExpand>
 
@@ -45,7 +45,6 @@
 
 <script setup lang="ts">
 import { computed, watch, reactive } from "vue"
-import type { ComputedRef } from "vue"
 import { PageConfig, HeadVersionEnum, BootstrapVersionEnum, SkeletonVersionEnum } from '../../../../../page_cls_module/build_browser';
 import updateBootstrapVersionInSubitems from "./func/updateBootstrapVersionInSubitems"
 import AssetsSection from './assets/AssetsSection.vue';
@@ -67,14 +66,15 @@ const state = reactive({
 })
 
 const headVersions = computed(() => {
-    return Object.values(HeadVersionEnum)
+    return Object.values(HeadVersionEnum).map(item => ({value: item, label: item}))
 })
 const bootstrapVersions = computed(() => {
-    return Object.values(BootstrapVersionEnum)
+    return Object.values(BootstrapVersionEnum).map(item => ({value: item, label: item}))
 })
 const skeletonVersions = computed(() => {
-    return Object.values(SkeletonVersionEnum)
+    return Object.values(SkeletonVersionEnum).map(item => ({value: item, label: item}))
 })
+
 
 watch(
     () => props.pageConfig.bootstrapVersion,
@@ -85,6 +85,10 @@ watch(
 
 const handleToggleExpandable = (name: "advanced_config" | 'assets' ) => {
     toggleState[name] = !toggleState[name]
+}
+
+const handleChange = (fieldName: string, e: any) => {
+    (props.pageConfig as any)[fieldName] = e.target.value
 }
 </script>
 

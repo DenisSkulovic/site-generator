@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-for="(input, input_i) in props.blockDefinition.inputs" :key="input_i">
-            <LineComponent class="py-3" v-if="input_i !== 0"></LineComponent>
+            <v-divider class="my-3"></v-divider>
             <component :is="(input.component as any)" :value="blockContent.data[input.name]" :label="input.label" :options="input.options"
                 @change="(e: any) => handleChange(input.name, e)"></component>
         </div>
@@ -18,8 +18,8 @@ const props = defineProps<{
     blockDefinition: BlockDefinition
 }>()
 
-const handleChange = (fieldName: string, newVal: any) => {
-    props.blockContent.data[fieldName] = newVal
+const handleChange = (fieldName: string, e: any) => {
+    props.blockContent.data[fieldName] = e.target.value
 }
 
 

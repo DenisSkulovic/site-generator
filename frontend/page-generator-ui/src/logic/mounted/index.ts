@@ -3,8 +3,7 @@ import type { UrlParams } from "./readUrl"
 import type { PageConfig, PageContent, PageHTMLObject, GeneratePageResponse, LangEnum } from "../../../../../page_cls_module/build_browser"
 import pagemeta from "@/state/pagemeta"
 import pagePath from "@/state/pagePath"
-import { pageContentService, pageConfigService, pageHTMLObjectService, generatorService, pagemetaService } from "@/computed/services"
-import setNestableConfigFromData from "../nestable/setNestableConfigFromData"
+import { pageContentService, pageConfigService, pageHTMLObjectService, generatorService, pagemetaService, nestableService } from "@/computed/services"
 import { nextTick } from "vue"
 import lang from "@/state/lang"
 
@@ -41,7 +40,7 @@ const mounted = async () => {
 
     pageHTMLObjectService.value.renderPageHTMLObject()
 
-    nextTick(setNestableConfigFromData)
+    nextTick(nestableService.value.setNestableConfigFromData)
 }
 
 export default mounted

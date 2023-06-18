@@ -2,13 +2,13 @@
     <div>
         <!-- BLOCK NAME -->
         <TextInputField :label="'Block Name'" :value="props.blockConfig.blockName"
-            @change="(val) => props.blockConfig.blockName = val" class="mb-4" />
+            @change="(e) => handleChange('blockName', e)" class="mb-4" />
 
         <v-divider class="my-4"></v-divider>
 
         <!-- BLOCK TEMPLATE NAME -->
         <SelectInputField :label="'Block Template Name'" :value="props.blockConfig.blockTemplateName"
-            :options="blockTemplateNames" @change="(val) => props.blockConfig.blockTemplateName = val" />
+            :options="blockTemplateNames" @change="(e) => handleChange('blockTemplateName', e)" />
     </div>
 </template>
 
@@ -23,14 +23,12 @@ const props = defineProps<{
     blockConfig: BlockConfig
 }>()
 
-const blockTemplateNames: ComputedRef<string[]> = computed(() => {
-    return Object.values(BlockTemplateEnum)
+const blockTemplateNames: ComputedRef<{value: string, label: string}[]> = computed(() => {
+    return Object.values(BlockTemplateEnum).map(item => ({value: item, label: item}))
 })
 
-const handleChange = (fieldName: string, newVal: any) => {
-    console.log(`props.blockConfig`, props.blockConfig)
-    console.log(`newVal`, newVal);
-    (props.blockConfig as any)[fieldName] = newVal
+const handleChange = (fieldName: string, e: any) => {
+    (props.blockConfig as any)[fieldName] = e.target.value
 }
 
 </script>

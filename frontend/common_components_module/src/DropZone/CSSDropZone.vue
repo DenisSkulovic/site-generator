@@ -1,13 +1,13 @@
 <template>
     <div>
         <div v-if="isDisplayDropzone">
-            <Dropzone @droppedFiles="handleDroppedFiles">
+            <Dropzone @droppedFile="handleDroppedFile">
                 <template v-slot:default>
-                    <h2>Drop CSS file here</h2>
+                    <h5>Drop CSS file here</h5>
                     <p>or click to upload</p>
                 </template>
                 <template v-slot:dragging>
-                    <h2>Release to drop the file</h2>
+                    <h5>Release to drop the file</h5>
                 </template>
             </Dropzone>
             <button v-if="cssExists" @click="cancelChange">Cancel</button>
@@ -34,13 +34,11 @@ const emit = defineEmits<{
     (e: "upload", file: File): void
 }>()
 
-const isDisplayDropzone: Ref<boolean> = ref(props.cssExists ? true : false);
+const isDisplayDropzone: Ref<boolean> = ref(props.cssExists ? false : true);
 
-const handleDroppedFiles = (files: FileList) => {
-    if (files.length > 0) {
-        emit('upload', files.item(0));
-        isDisplayDropzone.value = false;
-    }
+const handleDroppedFile = (file: File) => {
+    emit('upload', file);
+    isDisplayDropzone.value = false;
 }
 
 const download = () => {
@@ -54,4 +52,5 @@ const changeFile = () => {
 const cancelChange = () => {
     isDisplayDropzone.value = false;
 }
+
 </script>

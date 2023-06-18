@@ -72,5 +72,4 @@ export { AssetPositionEnum } from "./components/asset/AssetPositionEnum";
 export { Asset } from "./components/asset/Asset";
 export { LinkAsset } from "./components/asset/LinkAsset";
 export { ScriptAsset } from "./components/asset/ScriptAsset";
-export { StyleAsset } from "./components/asset/StyleAsset";
 //# sourceMappingURL=index.d.ts.map

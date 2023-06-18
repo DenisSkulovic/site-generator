@@ -35,14 +35,19 @@ class TfContext implements Context { // TODO make a proper context, this is just
     /** @deprecated Use handler callback or promise result */
 }
 
-const mapIncomingMessageHeadersToAWSHeaders = (req: http.IncomingMessage): APIGatewayProxyEventHeaders => {
+const mapIncomingMessageHeadersToAWSHeaders = (req: http.IncomingMessage): [APIGatewayProxyEventHeaders, boolean] => {
     // header objects should be the same, the only exception is that AWS does not support multivalue headers, so checking for it
+    let isBase64Encoded = false;
     Object.entries(req.headers).forEach(([key, value]) => {
         if (Array.isArray(value)) {
             throw new Error(`multivalue headers are not supported; HEADER: ${key}`)
         }
+        if (key.toLowerCase() === 'content-transfer-encoding' && value === 'base64') {
+            isBase64Encoded = true;
+        }
     })
-    return req.headers as APIGatewayProxyEventHeaders
+    console.log(`isBase64Encoded`, isBase64Encoded)
+    return [req.headers as APIGatewayProxyEventHeaders, isBase64Encoded];
 }
 
 
@@ -91,7 +96,7 @@ export const mapIncomingMessageToAPIGatewayEvent = (req: http.IncomingMessage, b
     }
     console.log(`NODEMON :>> ${req.method} ${path}`)
 
-    const headers = mapIncomingMessageHeadersToAWSHeaders(req)
+    const [headers, isBase64Encoded] = mapIncomingMessageHeadersToAWSHeaders(req)
 
     const [pattern, routeConfig] = getConfigForPath(path)
     const pathParameters = getPathParameters(path, pattern, routeConfig)
@@ -142,7 +147,7 @@ export const mapIncomingMessageToAPIGatewayEvent = (req: http.IncomingMessage, b
             apiId: 'm8rae50asl'
         },
         body,
-        isBase64Encoded: false
+        isBase64Encoded: isBase64Encoded
     };
 }
 
@@ -158,7 +163,7 @@ export const mapIncomingMessageToAPIGatewayEventV2 = (req: http.IncomingMessage,
     }
     console.log(`NODEMON :>> ${req.method} ${path}`)
 
-    const headers = mapIncomingMessageHeadersToAWSHeaders(req)
+    const [headers, isBase64Encoded] = mapIncomingMessageHeadersToAWSHeaders(req)
 
     const [pattern, routeConfig] = getConfigForPath(path)
     const pathParameters = getPathParameters(path, pattern, routeConfig)
@@ -191,7 +196,7 @@ export const mapIncomingMessageToAPIGatewayEventV2 = (req: http.IncomingMessage,
             timeEpoch: 1667429135999, // TODO
         },
         body,
-        isBase64Encoded: false,
+        isBase64Encoded: isBase64Encoded,
     };
 }
 

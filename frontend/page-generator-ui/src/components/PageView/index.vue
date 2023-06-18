@@ -95,13 +95,11 @@
 
 
 <script setup lang="ts">
-import { reactive, computed } from "vue"
+import { reactive } from "vue"
 
 // logic
 import handleReset from "../../logic/handlers/handleReset"
 import handleAddNewArea from "../../logic/handlers/handleAddNewArea"
-import replaceHeader from "../../logic/headerFooter/replaceHeader"
-import replaceFooter from "../../logic/headerFooter/replaceFooter"
 import handleToggleJSONView from "../../logic/handlers/handleToggleJSONView"
 import handleRefreshUI from "../../logic/handlers/handleRefreshUI"
 import handleSave from "../../logic/handlers/handleSave"
@@ -112,13 +110,11 @@ import type { NestableConfig } from '../../classes/NestableConfig';
 // state
 import {nestableConfig} from "../../state/nestableState"
 import {editPageConfig} from '../../state/pageConfigState';
-import {currentPageConfig} from '../../state/pageConfigState';
 
 // components
 import CollapseExpand from '../CollapseExpand.vue';
 import PageConfigComp from "./PageConfig.vue";
 import PageSubitemsView from './PageSubitemsView.vue';
-import LineComponent from "../Line.vue"
 import GridFrame from "../MainSidebar/GridFrame.vue";
 
 // computed
@@ -137,7 +133,7 @@ enum TitleEnum {
 }
 
 const state = reactive({
-    collapsedSet: new Set()
+    collapsedSet: new Set([NameEnum.CONFIG])
 })
 
 defineProps<{
