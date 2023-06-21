@@ -1,6 +1,8 @@
 <template>
   <div id="page-generator-app">
 
+    <CreateVersionPopup @create-tag="(tag: string) => handleSave(tag)"></CreateVersionPopup>
+
     <Overlay :isOpen="isLoadingAny" class="overlay-open">
       <div class="loading-gif" :style="loadingGifStyle"></div>
     </Overlay>
@@ -25,6 +27,7 @@ import { onMounted, watch } from 'vue';
 // logic
 import mounted from "./logic/mounted"
 import unsetSelectedAreaBlockClasses from "./logic/unsetSelectedAreaBlockClasses"
+import handleSave from "./logic/handlers/handleSave"
 
 // state
 import { currentPageContent, newAreaContentMap } from "./state/pageContentState"
@@ -39,6 +42,7 @@ import isDisplaySidebar from "./state/isDisplaySidebar"
 import Overlay from './components/Overlay.vue';
 import MainSidebar from './components/MainSidebar/index.vue';
 import JSONView from './components/JSONView/index.vue';
+import CreateVersionPopup from "./components/CreateVersionPopup.vue"
 
 // composables
 import { isLoadingAny } from "./composables/useLoading"

@@ -81,4 +81,24 @@ export class Repository {
             throw new Error("Unable to scan items. Error: " + JSON.stringify(error));
         }
     }
+
+    async queryItems(partitionKey: string, partitionValue: string): Promise<any[]> {
+        const params: DocumentClient.QueryInput = {
+            TableName: this.tableName,
+            KeyConditionExpression: '#pk = :pkval',
+            ExpressionAttributeNames: {
+                '#pk': partitionKey,
+            },
+            ExpressionAttributeValues: {
+                ':pkval': partitionValue,
+            },
+        };
+
+        try {
+            const data = await this.docClient.query(params).promise();
+            return data.Items || [];
+        } catch (error) {
+            throw new Error("Unable to query items. Error: " + JSON.stringify(error));
+        }
+    }
 }

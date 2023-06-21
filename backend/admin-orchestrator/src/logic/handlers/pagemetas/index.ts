@@ -9,7 +9,7 @@ const langToPagemetaRepo: Map<LangEnum, Constructor<PagemetaRepository>> = new M
     [LangEnum.LT, PagemetaLTRepository]
 ])
 
-const getRepoConstructor = (lang: LangEnum): Constructor<PagemetaRepository> => {
+export const getRepoConstructor = (lang: LangEnum): Constructor<PagemetaRepository> => {
     const repoConstructor: Constructor<PagemetaRepository> | undefined = langToPagemetaRepo.get(lang as LangEnum)
     if (!repoConstructor) throw new Error("lang unrecognized: " + lang)
     return repoConstructor
@@ -89,7 +89,11 @@ export const handlePagemetaDelete = async (event: APIGatewayEvent, env: "dev" | 
 
     const repoConstructor = getRepoConstructor(lang as LangEnum)
     const pagemetaRepo = new repoConstructor();
+    const pagemetaItem = await pagemetaRepo.getPagemeta(path)
+    const pagemeta: Pagemeta = buildPagemeta(pagemetaItem)
 
-    await pagemetaRepo.deleteItem({path} as Key);
+    if (pagemeta.isPublished) throw new Error("cannot delete pagemeta of a page that is still published")
+
+    await pagemetaRepo.deletePagemeta(pagemeta);
     return `Pagemeta with path ${path} deleted successfully.`;
 };

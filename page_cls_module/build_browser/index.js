@@ -73,4 +73,8 @@ export { AssetPositionEnum } from "./components/asset/AssetPositionEnum";
 export { Asset } from "./components/asset/Asset";
 export { LinkAsset } from "./components/asset/LinkAsset";
 export { ScriptAsset } from "./components/asset/ScriptAsset";
+/**
+ * VERSION
+ */
+export { PageVersion, buildPageVersion } from "./components/page/version/PageVersion";
 //# sourceMappingURL=index.js.map

@@ -11,7 +11,7 @@
                 </v-card-title>
 
                 <v-card-text>
-                    Are you sure you want to {{ isPublished ? 'unpublish' : 'publish' }} this page?
+                    Are you sure you want to {{ isPublished ? 'unpublish' : 'publish' }} this page with version tag "{{ props.versionTag }}"?
                 </v-card-text>
 
                 <v-card-actions>
@@ -35,6 +35,7 @@ import { handlePublishUnpublishPageClick } from "@/logic/handlers"
 const props = defineProps<{
     isPublished: boolean,
     path: string,
+    versionTag: string,
 }>()
 
 const emit = defineEmits<{
@@ -47,7 +48,7 @@ const state = reactive({
 
 const togglePublishStatus = async () => {
     const newStatus = !props.isPublished;
-    await handlePublishUnpublishPageClick(props.path, newStatus)
+    await handlePublishUnpublishPageClick(props.path, props.versionTag, newStatus)
     state.dialog = false;
     emit('refreshData');
 }

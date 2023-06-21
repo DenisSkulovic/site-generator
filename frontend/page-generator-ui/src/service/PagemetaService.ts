@@ -5,22 +5,17 @@ import { AdminService } from "./AdminService"
 import pagemeta from "@/state/pagemeta"
 
 export class PagemetaService extends AdminService {
-    pagePath: string
-    lang: LangEnum | null
-    constructor(adminUrl: string, pagePath: string, lang: LangEnum | null) {
+    constructor(adminUrl: string) {
         super(adminUrl)
-        this.pagePath = pagePath
-        this.lang = lang
     }
 
-    async fetchPagemeta(): Promise<Pagemeta> {
-        if (!this.lang) throw new Error("this.lang cannot be null")
+    async fetchPagemeta(path: string, lang: LangEnum): Promise<Pagemeta> {
         const headers = {
             "Content-Type": "application/json"
         }
         const params = {
-            path: this.pagePath,
-            lang: this.lang,
+            path,
+            lang,
         }
         const url = `${this.adminUrl}/pagemeta`
         const { data } = await axios.get(
@@ -34,8 +29,9 @@ export class PagemetaService extends AdminService {
         return pagemeta
     }
 
-    async getPagemeta(): Promise<void> {
-        const pagemetaObj = await this.fetchPagemeta()
+    async getPagemeta(path: string, lang: LangEnum): Promise<Pagemeta> {
+        const pagemetaObj = await this.fetchPagemeta(path, lang)
         pagemeta.value = pagemetaObj
+        return pagemetaObj
     }
 }

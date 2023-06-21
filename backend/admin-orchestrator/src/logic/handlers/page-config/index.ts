@@ -28,16 +28,12 @@ export const handlePageConfigPost = async (event: APIGatewayEvent, env: "dev" | 
     const body = JSON.parse(event.body || "{}");
 
     const item: PageConfig = buildPageConfig(body);
-    const repo = new PageConfigRepository();
-    await repo.putItem(item);
-    return item
-}
+    const uuid: string | undefined = body.uuid;
 
-export const handlePageConfigPut = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<PageConfig> => {
-    const body = JSON.parse(event.body || "{}");
-
-    const item: PageConfig = buildPageConfig(body);
     const repo = new PageConfigRepository();
+    const existingItem: any = await repo.getItem({uuid: uuid} as Key);
+    if (existingItem) throw new Error("page config with this uuid already exists: " + uuid)
+
     await repo.putItem(item);
     return item
 }

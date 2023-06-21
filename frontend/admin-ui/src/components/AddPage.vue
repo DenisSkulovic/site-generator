@@ -27,10 +27,10 @@
 
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="blue darken-1" text @click="state.dialog = false">
+                    <v-btn color="blue darken-1" type="text" @click="state.dialog = false">
                         Close
                     </v-btn>
-                    <v-btn color="blue darken-1" text @click="createPage">
+                    <v-btn color="blue darken-1" type="text" @click="createPage">
                         Create Page
                     </v-btn>
                 </v-card-actions>

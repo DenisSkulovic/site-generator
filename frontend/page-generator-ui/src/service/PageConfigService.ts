@@ -7,7 +7,7 @@ import type { AreaConfig, BootstrapVersionEnum, HeadVersionEnum, LangEnum, Skele
 import defaultFields from "../config/defaultFields/pageConfig"
 import getUUID from "../utils/getUUID"
 import { editPageConfig, currentPageConfig } from "@/state/pageConfigState"
-import _ from "lodash"
+import _, { cloneDeep } from "lodash"
 
 export type S3Path = string
 export class PageConfigService extends AdminService {
@@ -32,14 +32,14 @@ export class PageConfigService extends AdminService {
         return pageConfig
     }
 
-    async putConfig(pageConfig: PageConfig): Promise<PageConfig> {
+    async createConfig(pageConfig: PageConfig): Promise<PageConfig> {
         const headers = {
             "Content-Type": "application/json"
         }
         const body: PageConfig = pageConfig
         const config_uuid: string = pageConfig.uuid
         const url = `${this.adminUrl}/page-config/${config_uuid}`
-        const { data } = await axios.put(
+        const { data } = await axios.post(
             url,
             body,
             {
@@ -102,6 +102,14 @@ export class PageConfigService extends AdminService {
             metadata,
         ))
         return obj
-
+    }
+    getPageConfigCopy(pageConfig: PageConfig) {
+        const clone = cloneDeep(pageConfig)
+        const newUUID = getUUID()
+        const now = Date.now()
+        clone.uuid = newUUID
+        clone.metadata.createdTimestamp = now
+        clone.metadata.updatedTimestamp = now
+        return clone
     }
 }

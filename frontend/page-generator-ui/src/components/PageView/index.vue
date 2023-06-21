@@ -86,7 +86,7 @@
                 <v-card-actions>
                     <v-btn color="secondary" @click.stop="handleToggleJSONView">TOGGLE JSON VIEW</v-btn>
                     <v-btn color="success" :disabled="!isDataForRefreshValid" @click.stop="handleRefreshUI">REFRESH</v-btn>
-                    <v-btn color="success" :disabled="!isPageContentEdited && !isPageConfigEdited" @click.stop="handleSave">SAVE</v-btn>
+                    <v-btn color="success" :disabled="!isPageContentEdited && !isPageConfigEdited" @click.stop="handleSaveClick">SAVE</v-btn>
                 </v-card-actions>
             </v-card>
         </template>
@@ -102,7 +102,6 @@ import handleReset from "../../logic/handlers/handleReset"
 import handleAddNewArea from "../../logic/handlers/handleAddNewArea"
 import handleToggleJSONView from "../../logic/handlers/handleToggleJSONView"
 import handleRefreshUI from "../../logic/handlers/handleRefreshUI"
-import handleSave from "../../logic/handlers/handleSave"
 
 // classes
 import type { NestableConfig } from '../../classes/NestableConfig';
@@ -149,7 +148,7 @@ const handleResetConfigClick = () => {
     handleReset()
 }
 
-const handleToggleSection = (name: string) => {
+const handleToggleSection = (name: NameEnum) => {
     if (!state.collapsedSet.has(name)) {
         state.collapsedSet.add(name)
     } else {
@@ -157,7 +156,11 @@ const handleToggleSection = (name: string) => {
     }
 }
 
-const getIsActive = (name: string) => {
+const handleSaveClick = () => {
+    
+}
+
+const getIsActive = (name: NameEnum) => {
     return !state.collapsedSet.has(name)
 }
 

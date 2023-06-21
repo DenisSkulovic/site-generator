@@ -26,18 +26,14 @@ export const handlePageContentGet = async (event: APIGatewayEvent, env: "dev" | 
 
 export const handlePageContentPost = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<PageContent> => {
     const body = JSON.parse(event.body || "{}");
-
+    
     const item: PageContent = buildPageContent(body);
+    const uuid: string | undefined = body.uuid;
+
     const repo = new PageContentRepository();
+    const existingItem: any = await repo.getItem({uuid: uuid} as Key);
+    if (existingItem) throw new Error("page content with this uuid already exists: " + uuid)
+
     await repo.putItem(item);
     return item
 }
-
-export const handlePageContentPut = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<PageContent> => {
-    const body = JSON.parse(event.body || "{}");
-
-    const item: PageContent = buildPageContent(body);
-    const repo = new PageContentRepository();
-    await repo.putItem(item);
-    return item
-} 

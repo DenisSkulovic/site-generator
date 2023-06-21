@@ -21,6 +21,7 @@ import * as publishing from "./logic/handlers/publishing";
 import * as product from "./logic/handlers/product";
 import * as siteConfig from "./logic/handlers/site-config";
 import * as pageAssets from "./logic/handlers/page-assets";
+import * as pageVersion from "./logic/handlers/page-version";
 
 
 
@@ -51,11 +52,9 @@ const routes: Routes = {
     'DELETE /image/{key}': image.handleImageDelete,
     'GET /page-config/{uuid}': pageConfig.handlePageConfigGet,
     'POST /page-config': pageConfig.handlePageConfigPost,
-    'PUT /page-config/{uuid}': pageConfig.handlePageConfigPut,
     'DELETE /page-config/{uuid}': pageConfig.handlePageConfigDelete,
     'GET /page-content/{uuid}': pageContent.handlePageContentGet,
     'POST /page-content': pageContent.handlePageContentPost,
-    'PUT /page-content/{uuid}': pageContent.handlePageContentPut,
     'DELETE /page-content/{uuid}': pageContent.handlePageContentDelete,
     'POST /page-generator/footer': pageGenerator.handleGenerateFooter,
     'POST /page-generator/header': pageGenerator.handleGenerateHeader,
@@ -65,7 +64,6 @@ const routes: Routes = {
     'PUT /pagemeta': pagemetas.handlePagemetaPut,
     'POST /pagemeta': pagemetas.handlePagemetaPost,
     'DELETE /pagemeta': pagemetas.handlePagemetaDelete,
-    'GET /publishing/publish-all': publishing.handlePublishPagesAll,
     'GET /publishing/publish-page': publishing.handlePublishPage,
     'GET /publishing/unpublish-page': publishing.handleUnpublishPage,
     'GET /product/all': product.handleProductGetAll,
@@ -79,6 +77,10 @@ const routes: Routes = {
     'GET /design-system': siteConfig.handleDesignSystemGet,
     'PUT /design-system': siteConfig.handleDesignSystemPut,
     'POST /page-assets': pageAssets.handleAssetUpload,
+    'GET /page-versions-for-path': pageVersion.handlePageVersionsForPageGet,
+    'GET /page-version': pageVersion.handlePageVersionGet,
+    'POST /page-version': pageVersion.handlePageVersionPost,
+    'GET /page-version-exists': pageVersion.handlePageVersionTagExists,
 };
 
 

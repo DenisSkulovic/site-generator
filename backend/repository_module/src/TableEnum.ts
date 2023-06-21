@@ -1,5 +1,6 @@
 export enum TableEnum {
     PAGE_CONTENT = "page-content",
+    PAGE_VERSION = "page-version",
     PAGE_CONFIG = "page-config",
     PRODUCT = "product",
     PAGEMETA_LT = "pagemeta-lt",

@@ -4,11 +4,13 @@ import adminUrl from "@/state/adminUrl"
 import getEnvVariable from "./getEnvVariable";
 import useLoading from "@/composables/useLoading";
 import { pagemetasMapEdit } from "@/computed/pagemetas";
-import { CloudFrontService, PagemetaService, SiteConfigService } from "@/service";
+import { PageVersionService, CloudFrontService, PagemetaService, SiteConfigService } from "@/service";
 import type { Pagemeta } from "@admin_cls_module";
 import isPageExistsError from "@/state/isPageExistsError"
-import type { PageConfig, LangEnum, PageContent } from "../../../../page_cls_module/src";
-import { getNewPageConfig, getNewPageContent, getNewPagemeta } from "./add-page";
+import type { PageConfig, LangEnum, PageContent, PageVersion } from "../../../../page_cls_module/src";
+import { cloneDeep } from "lodash";
+import { PublishingService } from "@/service/PublishingService";
+import lang from "@/state/lang";
 
 
 export const handleResetLinks = () => {
@@ -87,13 +89,15 @@ export const handleAddNewPageClick = async (pagePath: string, lang: LangEnum, is
     if (isPageExistsError.value) return false
 
     // create pagemeta object, page content and page config
-    const pageContent: PageContent = getNewPageContent()
-    const pageConfig: PageConfig = getNewPageConfig(pagePath, pageContent.uuid)
-    const pagemeta: Pagemeta = getNewPagemeta(pagePath, lang, pageContent.uuid, pageConfig.uuid)
+    const pageContent: PageContent = pagemetaService.getNewPageContent()
+    const pageConfig: PageConfig = pagemetaService.getNewPageConfig(pagePath, pageContent.uuid)
+    const pageVersion: PageVersion = pagemetaService.getNewPageVersion("initial", pagePath, pageConfig.uuid, pageContent.uuid)
+    const pagemeta: Pagemeta = pagemetaService.getNewPagemeta(pagePath, lang, pageVersion.tag)
 
     await Promise.all([
         pagemetaService.createPageConfig(pageConfig),
         pagemetaService.createPageContent(pageContent),
+        pagemetaService.createPageVersion(pageVersion),
         pagemetaService.createPagemeta(pagemeta, lang),
     ])
 
@@ -102,19 +106,19 @@ export const handleAddNewPageClick = async (pagePath: string, lang: LangEnum, is
     return true
 };
 
-export const handleOpenPageInEditor = (pagePath: string, lang: LangEnum) => {
+export const handleOpenPageInEditor = (pagePath: string, lang: LangEnum, versionTag?: string | undefined) => {
     const liveEditorUrl = getEnvVariable("VITE_APP_LIVE_EDITOR_URL")
-    window.open(liveEditorUrl + `?path=${pagePath}&lang=${lang}`)
+    let url = `${liveEditorUrl}?path=${pagePath}&lang=${lang}`
+    if (versionTag) url += `&versionTag=${versionTag}`
+    window.open(url)
 };
 
-export const handleDeletePageClick = async (path: string): Promise<boolean> => {
+export const handleDeleteVersionClick = async (pageVersion: PageVersion): Promise<boolean> => {
     const { startLoadingThis, stopLoadingThis } = useLoading();
     try {
-        const pagemetaService = new PagemetaService(adminUrl.value);
-        const pagemeta: Pagemeta | undefined = pagemetasMapEdit.value.get(path)
-        if (!pagemeta) throw new Error("pagemeta cannot be undefined")
+        const pageVersionService = new PageVersionService(adminUrl.value);
         startLoadingThis();
-        if(pagemeta.isPublished) await pagemetaService.unpublishPage(pagemeta)
+        await pageVersionService.deleteVersion(pageVersion)
         return true
     } catch (err) {
         console.error(err);
@@ -124,19 +128,31 @@ export const handleDeletePageClick = async (path: string): Promise<boolean> => {
     }
 };
 
-export const handlePublishUnpublishPageClick = async (path: string, newStatus: boolean): Promise<boolean> => {
+export const handleDeletePageClick = async (pagemeta: Pagemeta): Promise<boolean> => {
     const { startLoadingThis, stopLoadingThis } = useLoading();
     try {
-        const pagemetaService = new PagemetaService(adminUrl.value);
-        const pagemeta: Pagemeta | undefined = pagemetasMapEdit.value.get(path)
-        if (!pagemeta) throw new Error("pagemeta cannot be undefined")
+        const publishingService = new PublishingService(adminUrl.value);
+        startLoadingThis();
+        
+        if(pagemeta.isPublished) await publishingService.unpublishPage(pagemeta.path, lang.value)
+        return true
+    } catch (err) {
+        console.error(err);
+        return false
+    } finally {
+        stopLoadingThis();
+    }
+};
+
+export const handlePublishUnpublishPageClick = async (path: string, versionTag: string, newStatus: boolean): Promise<boolean> => {
+    const { startLoadingThis, stopLoadingThis } = useLoading();
+    try {
+        const publishingService = new PublishingService(adminUrl.value);
         startLoadingThis();
         if(newStatus) {
-            // publish page
-            await pagemetaService.publishPage(pagemeta);
+            await publishingService.publishPage(path, versionTag, lang.value);
         } else {
-            // unpublish page
-            await pagemetaService.unpublishPage(pagemeta);
+            await publishingService.unpublishPage(path, lang.value);
         }
         return true
     } catch (err) {
@@ -147,12 +163,11 @@ export const handlePublishUnpublishPageClick = async (path: string, newStatus: b
     }
 };
 
-
-export const handleRegenerateAllPages = async () => {
-    const pagemetaService = new PagemetaService(adminUrl.value);
+export const handleRegeneratePage = async (pagemeta: Pagemeta) => {
+    const publishingService = new PublishingService(adminUrl.value);
     const { startLoadingThis, stopLoadingThis } = useLoading();
     startLoadingThis();
-    await pagemetaService.regenerateAll();
+    await publishingService.publishPage(pagemeta.path, pagemeta.versionTag, lang.value);
     stopLoadingThis();
 };
 

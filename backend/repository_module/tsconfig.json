@@ -16,9 +16,9 @@
     "skipLibCheck": true,
     "moduleResolution": "node",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"],
+      "@page_cls_module": ["../../page_cls_module"],
+      "@admin_cls_module": ["../../admin_cls_module"],
     }
   },
   "include": [
@@ -26,5 +26,15 @@
   ],
   "exclude": [
     "node_modules"
+  ],
+  "references": [
+    {
+      "path": "../../page_cls_module",
+      "prepend": false
+    },
+    {
+      "path": "../../admin_cls_module",
+      "prepend": false
+    },
   ]
 }

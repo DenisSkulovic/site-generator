@@ -4,7 +4,7 @@ import { AdminService } from "./AdminService"
 import { PageContentMetadata, buildPageContent, type AreaContent, PageContent } from "../../../../page_cls_module/build_browser"
 import { editPageContent, currentPageContent } from "@/state/pageContentState"
 import getUUID from "@/utils/getUUID"
-import _ from "lodash"
+import { cloneDeep } from "lodash"
 
 export type S3Path = string
 export class PageContentService extends AdminService {
@@ -31,14 +31,14 @@ export class PageContentService extends AdminService {
         return pageContent
     }
 
-    async putContent(pageContent: PageContent): Promise<PageContent> {
+    async createContent(pageContent: PageContent): Promise<PageContent> {
         const headers = {
             "Content-Type": "application/json"
         }
         const body: PageContent = pageContent
         const content_uuid: string = pageContent.uuid
         const url = `${this.adminUrl}/page-content/${content_uuid}`
-        const { data } = await axios.put(
+        const { data } = await axios.post(
             url,
             body,
             {
@@ -73,11 +73,20 @@ export class PageContentService extends AdminService {
     }
 
     resetPageContent() {
-        editPageContent.value = _.cloneDeep(currentPageContent.value)
+        editPageContent.value = cloneDeep(currentPageContent.value)
     }
 
     setPageContent(obj: PageContent) {
         currentPageContent.value = obj
         this.resetPageContent()
+    }
+    getPageContentCopy(pageContent: PageContent) {
+        const clone = cloneDeep(pageContent)
+        const newUUID = getUUID()
+        const now = Date.now()
+        clone.uuid = newUUID
+        clone.metadata.createdTimestamp = now
+        clone.metadata.updatedTimestamp = now
+        return clone
     }
 }
