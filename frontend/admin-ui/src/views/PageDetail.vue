@@ -109,14 +109,13 @@ const refreshData = async () => {
 const pagePath: Ref<string> = ref("")
 
 
-onMounted(() => {
+onMounted(async () => {
     const params = getQueryParams()
     if (!params.pagePath) throw new Error("pagePath is a mandatory query string param")
     pagePath.value = params.pagePath
     await refreshData()
-}
+})
 
 </script>
-
 
 <style scoped></style>

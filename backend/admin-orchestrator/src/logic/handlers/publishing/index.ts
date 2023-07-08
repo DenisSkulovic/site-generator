@@ -3,9 +3,9 @@ import { Pagemeta, buildPagemeta } from "../../../../../../admin_cls_module";
 import { GeneratePageResponse, LangEnum, PageConfig, PageContent, PageVersion, buildGeneratePageRequest, buildPageConfig, buildPageContent, buildPageVersion } from "../../../../../../page_cls_module";
 import { PageConfigRepository, PageContentRepository, PageVersionRepository } from "../../../../../repository_module";
 import { getRepoConstructor } from "../pagemetas";
-import { PageGenerator } from "@/generator/PageGenerator";
+import { PageGenerator } from "../../../generator/PageGenerator";
 import { S3Operations } from "../../../../../s3_module/src";
-import getEnvVariable from "@/logic/getEnvVariable";
+import getEnvVariable from "../../../logic/getEnvVariable";
 
 export const handlePublishPage = async (event: APIGatewayEvent, env: "dev" | "prod"): Promise<Pagemeta> => {
     // extract query params

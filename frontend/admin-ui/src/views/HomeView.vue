@@ -8,13 +8,7 @@
         </v-btn>
       </v-col>
     </v-row>
-    <v-row>
-      <v-col>
-        <v-btn @click="handleRegenerateAllPages" :disabled="isLoadingAny">
-          Regenerate All Pages
-        </v-btn>
-      </v-col>
-    </v-row>
+
     <!-- Additional controls go here -->
   </v-container>
 </template>
@@ -26,7 +20,7 @@ import adminUrl from '@/state/adminUrl';
 import { siteConfigCurrent, siteConfigEdit } from '@/state/configState';
 import { onMounted } from 'vue';
 import useLoading, { isLoadingAny } from '@/composables/useLoading';
-import { handleRegenerateAllPages, handleSaveSiteConfig, handleClearCloudFrontCache } from '@/logic/handlers';
+import { handleSaveSiteConfig, handleClearCloudFrontCache } from '@/logic/handlers';
 
 const siteConfigService: SiteConfigService = new SiteConfigService(adminUrl.value);
 

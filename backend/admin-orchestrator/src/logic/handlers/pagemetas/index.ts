@@ -1,6 +1,6 @@
 import { APIGatewayEvent } from "aws-lambda";
 import { PagemetaLTRepository, PagemetaRepository } from "../../../../../repository_module/src";
-import { buildPagemeta, Pagemeta } from "../../../../../../admin_cls_module/src";
+import { buildPagemeta, Pagemeta } from "../../../../../../admin_cls_module";
 import { LangEnum } from "../../../../../../page_cls_module/src";
 import { Key } from "aws-sdk/clients/dynamodb";
 

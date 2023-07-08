@@ -1,1 +1,1 @@
-{"version":3,"file":"TableEnum.d.ts","sourceRoot":"","sources":["../src/TableEnum.ts"],"names":[],"mappings":"AAAA,oBAAY,SAAS;IACjB,YAAY,iBAAiB;IAC7B,WAAW,gBAAgB;IAC3B,OAAO,YAAY;IACnB,QAAQ,aAAa;CACxB"}
+{"version":3,"file":"TableEnum.d.ts","sourceRoot":"","sources":["../src/TableEnum.ts"],"names":[],"mappings":"AAAA,oBAAY,SAAS;IACjB,YAAY,iBAAiB;IAC7B,YAAY,iBAAiB;IAC7B,WAAW,gBAAgB;IAC3B,OAAO,YAAY;IACnB,WAAW,gBAAgB;IAC3B,WAAW,gBAAgB;IAC3B,WAAW,gBAAgB;CAC9B"}

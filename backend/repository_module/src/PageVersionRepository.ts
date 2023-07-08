@@ -1,6 +1,6 @@
 import { Repository } from "./Repository"
 import {TableEnum} from "./TableEnum"
-import {PageVersion, buildPageVersion} from "@page_cls_module"
+import {PageVersion, buildPageVersion} from "../../../page_cls_module"
 
 export class PageVersionRepository extends Repository {
     constructor() {
@@ -10,8 +10,8 @@ export class PageVersionRepository extends Repository {
         super(tableName, region)
     }
 
-    async getPageVersion(tag: string, pagePath: string): Promise<PageVersion> {
-        const item = await this.getItem({tag: {S: tag}, pagePath: {S: pagePath}})
+    async getPageVersion(versionTag: string, pagePath: string): Promise<PageVersion> {
+        const item = await this.getItem({versionTag: {S: versionTag}, pagePath: {S: pagePath}})
         return buildPageVersion(item);
     }
     

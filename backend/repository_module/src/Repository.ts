@@ -82,8 +82,13 @@ export class Repository {
         }
     }
 
-    async queryItems(partitionKey: string, partitionValue: string): Promise<any[]> {
-        const params: DocumentClient.QueryInput = {
+    async queryItems(
+        partitionKey: string, 
+        partitionValue: string,
+        sortKey?: string, 
+        sortValue?: string
+    ): Promise<any[]> {
+        let params: DocumentClient.QueryInput = {
             TableName: this.tableName,
             KeyConditionExpression: '#pk = :pkval',
             ExpressionAttributeNames: {
@@ -93,7 +98,17 @@ export class Repository {
                 ':pkval': partitionValue,
             },
         };
-
+    
+        // If sort key is provided, adjust the params
+        if(sortKey) {
+            params.ExpressionAttributeNames['#sk'] = sortKey;
+    
+            if(sortValue) {
+                params.KeyConditionExpression += ' and #sk = :skval';
+                params.ExpressionAttributeValues[':skval'] = sortValue;
+            }
+        }
+    
         try {
             const data = await this.docClient.query(params).promise();
             return data.Items || [];
@@ -101,4 +116,6 @@ export class Repository {
             throw new Error("Unable to query items. Error: " + JSON.stringify(error));
         }
     }
+    
+    
 }

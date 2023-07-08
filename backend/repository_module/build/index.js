@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProductRepository = exports.PagemetaRepository = exports.PageConfigRepository = exports.PageContentRepository = exports.Repository = exports.TableEnum = void 0;
+exports.PageVersionRepository = exports.ProductRepository = exports.PagemetaRURepository = exports.PagemetaENRepository = exports.PagemetaLTRepository = exports.PagemetaRepository = exports.PageConfigRepository = exports.PageContentRepository = exports.Repository = exports.TableEnum = void 0;
 var TableEnum_1 = require("./TableEnum");
 Object.defineProperty(exports, "TableEnum", { enumerable: true, get: function () { return TableEnum_1.TableEnum; } });
 var Repository_1 = require("./Repository");
@@ -11,6 +11,14 @@ var PageConfigRepository_1 = require("./PageConfigRepository");
 Object.defineProperty(exports, "PageConfigRepository", { enumerable: true, get: function () { return PageConfigRepository_1.PageConfigRepository; } });
 var PagemetaRepository_1 = require("./PagemetaRepository");
 Object.defineProperty(exports, "PagemetaRepository", { enumerable: true, get: function () { return PagemetaRepository_1.PagemetaRepository; } });
+var PagemetaLTRepository_1 = require("./PagemetaLTRepository");
+Object.defineProperty(exports, "PagemetaLTRepository", { enumerable: true, get: function () { return PagemetaLTRepository_1.PagemetaLTRepository; } });
+var PagemetaENRepository_1 = require("./PagemetaENRepository");
+Object.defineProperty(exports, "PagemetaENRepository", { enumerable: true, get: function () { return PagemetaENRepository_1.PagemetaENRepository; } });
+var PagemetaRURepository_1 = require("./PagemetaRURepository");
+Object.defineProperty(exports, "PagemetaRURepository", { enumerable: true, get: function () { return PagemetaRURepository_1.PagemetaRURepository; } });
 var ProductRepository_1 = require("./ProductRepository");
 Object.defineProperty(exports, "ProductRepository", { enumerable: true, get: function () { return ProductRepository_1.ProductRepository; } });
+var PageVersionRepository_1 = require("./PageVersionRepository");
+Object.defineProperty(exports, "PageVersionRepository", { enumerable: true, get: function () { return PageVersionRepository_1.PageVersionRepository; } });
 //# sourceMappingURL=index.js.map

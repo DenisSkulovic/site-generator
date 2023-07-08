@@ -68,6 +68,10 @@ const routeConfig = {
         routeKey: "/image/{key}",
         pathParameters: ["key"],
     },
+    "^/image$": {
+        routeKey: "/image",
+        pathParameters: [],
+    },
 
     /** PAGE CONFIG */
     "^/page-config/([^/]+)$": {
@@ -108,19 +112,19 @@ const routeConfig = {
         routeKey: "/pagemeta/all",
         pathParameters: [],
     },
-    "^/pagemeta": {
+    "^/pagemeta$": {
         routeKey: "/pagemeta",
         pathParameters: [],
     },
 
-    /** PAGES */
-    "^/page-s3$": {
-        routeKey: "/page-s3",
+    /** PUBLISHING */
+    "^/publishing/publish-page$": {
+        routeKey: "/publishing/publish-page",
         pathParameters: [],
     },
-    "^/page-s3/([^/]+)$": {
-        routeKey: "/page-s3/{key}",
-        pathParameters: ["key"],
+    "^/publishing/unpublish-page$": {
+        routeKey: "/publishing/unpublish-page",
+        pathParameters: [],
     },
 
     /** PRODUCT */
@@ -131,6 +135,10 @@ const routeConfig = {
     "^/product/([^/]+)$": {
         routeKey: "/product/{uuid}",
         pathParameters: ["uuid"],
+    },
+    "^/product$": {
+        routeKey: "/product",
+        pathParameters: [],
     },
 
     /** SITE CONFIG */
@@ -146,6 +154,20 @@ const routeConfig = {
     /** PAGE ASSETS */
     "^/page-assets$": {
         routeKey: "/page-assets",
+        pathParameters: [],
+    },
+
+    /** PAGE VERSIONS */
+    "^/page-versions-for-path$": {
+        routeKey: "/page-versions-for-path",
+        pathParameters: [],
+    },
+    "^/page-version$": {
+        routeKey: "/page-version",
+        pathParameters: [],
+    },
+    "^/page-version-exists$": {
+        routeKey: "/page-version-exists",
         pathParameters: [],
     },
 }

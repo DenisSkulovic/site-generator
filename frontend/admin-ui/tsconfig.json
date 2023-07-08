@@ -49,7 +49,7 @@
       "prepend": false
     },
     {
-      "path": "../backend/page-generator-backend",
+      "path": "../../backend/page-generator-backend",
       "prepend": false
     }
   ]
